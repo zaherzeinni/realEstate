@@ -29,9 +29,18 @@ import Galary from "./galary";
 import Accord from "../../components/components/accordion/Accord";
 import Calc from "./calc";
 import Footer from "../../components/components/footer/Footer";
-import { FacebookShareButton, FacebookIcon,FacebookMessengerShareButton,FacebookMessengerIcon,EmailShareButton,EmailIcon,WhatsappIcon,TelegramShareButton,TelegramIcon }  from 'react-share';
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  EmailShareButton,
+  EmailIcon,
+  WhatsappIcon,
+  TelegramShareButton,
+  TelegramIcon,
+} from "react-share";
 
-/// instagram youtube tiktok linkedin
 
 const ProjectDetails = () => {
   const [isOpenimg, setOpenimg] = useState({
@@ -108,28 +117,18 @@ const ProjectDetails = () => {
 
   console.log("images22", images2, "imagess", images);
 
-
-
-  
   const [getUrl, setGetUrl] = useState();
- 
 
   useEffect(() => {
     const currentUrl = window.parent.location.href;
     console.log(currentUrl, "urlllllllll");
     setGetUrl(currentUrl);
-  }, );
+  });
 
-
-
-  const copyToClipboard = e => {
-    navigator.clipboard.writeText(window.location.toString())
+  const copyToClipboard = (e) => {
+    navigator.clipboard.writeText(window.location.toString());
     // message.info("URL copied to clipboard successfully")
-  }
-
-  
-
-
+  };
 
   return (
     <div dir="ltr">
@@ -241,7 +240,6 @@ const ProjectDetails = () => {
                       {data?.book?.price}$
                     </h5>
                   </div>
-           
 
                   <div className="single-info flex">
                     <span className="text-[17px]">Destination:</span>
@@ -270,7 +268,9 @@ const ProjectDetails = () => {
                     )}
                   </div>
                   <div className="single-info flex">
-                    <span className="text-[17px]">{language==="en"?"Type:":"Taper:"}</span>
+                    <span className="text-[17px]">
+                      {language === "en" ? "Type:" : "Taper:"}
+                    </span>
                     {language === "en" ? (
                       <h5 className="ml-2 font-semibold text-[19px]">
                         {data?.book?.type}
@@ -381,85 +381,110 @@ const ProjectDetails = () => {
                         ? "Prêt"
                         : "Construction"}
                     </h5>
-                    </div>
-                    
+                  </div>
+
                   {/* ------------------Social Media Icons------------------ */}
 
-
                   <div className="my-2 mt-">
-                      <div className="mx-1 my-1">
-                      {language === "en" ?   "Share this property" :"Partager cette propriété" }
-                      </div>
-                    <div className="flex justify-start mx-auto" >
-                       
-                       
-                        <Link href={`https://api.whatsapp.com/send?phone=&text=Salam, please check this product. %0D%0A *${data?.book?.reference}* %0D%0A *Price:* ${data?.book?.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
-                          target="_blank">
-                        <WhatsappIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
-                        </Link>
-
-                        <FacebookShareButton
-                          url={getUrl}     //eg. https://www.example.com
-                          quotes='qoutess'  //"Your Quotes"
-                          hashtag='@' // #hashTag
-                          >
-                            <FacebookIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
-                          </FacebookShareButton>                         
-                                            
-                          <FacebookMessengerShareButton
-                          url={getUrl}     //eg. https://www.example.com
-                          quotes='qoutess'  //"Your Quotes"
-                          hashtag='@' // #hashTag
-                          >
-                            <FacebookMessengerIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
-                          </FacebookMessengerShareButton>    
-                          
-                          
-                          <EmailShareButton
-                          url={getUrl}     //eg. https://www.example.com
-                          quotes='qoutess'  //"Your Quotes"
-                          hashtag='@' // #hashTag
-                          >
-                            <EmailIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
-                          </EmailShareButton>    
-
-
-                          <TelegramShareButton
-                          url={getUrl}     //eg. https://www.example.com
-                          quotes='qoutess'  //"Your Quotes"
-                          hashtag='@' // #hashTag
-                          >
-                            <TelegramIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
-                          </TelegramShareButton>    
-
-
-                        
-           {/* <a href="https://www.instagram.com/Wanlounge">
-            <Instagram className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
-          </a> */}
-
-
-
-             {/* <a href="https://www.snapchat.com/?original_referrer=none">
-              <Snapchat className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
-            </a> */}
-            
-                        
-
-                        <button onClick={copyToClipboard} className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500">
-                        <img src="/copylink-s.jpg" alt="copylink" />
-                        </button>
-
-                      </div>
+                    <div className="mx-1 my-1">
+                      {language === "en"
+                        ? "Share this property"
+                        : "Partager cette propriété"}
                     </div>
-                     
+                    <div className="justify-center flex  flex-col items-start space-y-1 mx-auto">
+                      <div className=" flex">
+                      <Link
+                        href={`https://api.whatsapp.com/send?phone=&text=Salam, please check this product. %0D%0A *${data?.book?.reference}* %0D%0A *Price:* ${data?.book?.price} $ %0D%0A *URL:* ${getUrl} %0D%0A Thank you!   `}
+                        target="_blank"
+                      >
+                        <WhatsappIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
+                      </Link>
+
+                      <FacebookShareButton
+                        url={getUrl} //eg. https://www.example.com
+                        quotes="qoutess" //"Your Quotes"
+                        hashtag="@" // #hashTag
+                      >
+                        <FacebookIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
+                      </FacebookShareButton>
+
+                      <FacebookMessengerShareButton
+                        url={getUrl} //eg. https://www.example.com
+                        quotes="qoutess" //"Your Quotes"
+                        hashtag="@" // #hashTag
+                      >
+                        <FacebookMessengerIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
+                      </FacebookMessengerShareButton>
+
+                      <EmailShareButton
+                        url={getUrl} //eg. https://www.example.com
+                        quotes="qoutess" //"Your Quotes"
+                        hashtag="@" // #hashTag
+                      >
+                        <EmailIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
+                      </EmailShareButton>
+
+                      <TelegramShareButton
+                        url={getUrl} //eg. https://www.example.com
+                        quotes="qoutess" //"Your Quotes"
+                        hashtag="@" // #hashTag
+                      >
+                        <TelegramIcon className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500" />
+                      </TelegramShareButton>
+                      </div>
+
+                      <div className="flex">
+                      <a
+                        href="https://www.linkedin.com/share?url=https://www.example.com/my-page"
+                        target="_blank"
+                      >
+                        <img
+                          src="/linkedin.png"
+                          className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500"
+                        />
+                      </a>
+
+                      <a
+                        href="https://www.youtube.com/share?url=https://www.example.com/my-page"
+                        target="_blank"
+                      >
+                        <img
+                          src="/youtube.png"
+                          className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500"
+                        />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/share?url=https://www.example.com/my-page"
+                        target="_blank"
+                      >
+                        <img
+                          src="/insta.webp"
+                          className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500"
+                        />
+                      </a>
+
+                      <a
+                        href="https://www.tiktok.com/share?url=https://www.example.com/my-page"
+                        target="_blank"
+                      >
+                        <img
+                          src="/tiktok.png"
+                          className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500"
+                        />
+                      </a>
+
+                      <button
+                        onClick={copyToClipboard}
+                        className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500"
+                      >
+                        <img src="/copylink-s.jpg" alt="copylink" />
+                      </button>
+                    </div>
+                    </div>
 
 
+                  </div>
 
-
-
-
-              
                   <Calc price={data?.book?.price} />
                   <div className="mt-3">
                     <ProjectForm reference={data?.book?.reference} />
@@ -566,10 +591,7 @@ const ProjectDetails = () => {
         />
       )}
 
-
-      
-<Footer/>
-
+      <Footer />
     </div>
   );
 };
