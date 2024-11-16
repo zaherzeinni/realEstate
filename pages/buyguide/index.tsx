@@ -1,0 +1,183 @@
+"use client"
+
+// Handle selected guide from Header2.js
+
+
+import * as React from "react"
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
+import { PageLayout } from "@/layouts"
+import { useLanguageContext } from "@/context/languageContext"
+import { CircularLoading as Loading } from "@/components/loading"
+import { Box, Typography, Container, Button } from "@mui/material"
+
+import Header from "@/components/components/header/Header2";
+import Newslatter from "@/components/components/common/Newslatter";
+import Footer from "@/components/components/footer/Footer";
+import Breadcrumb from "@/components/components/common/Breadcrumb";
+
+ 
+// Fetcher function for SWR
+const fetcher = async (url: string) => {
+  const res = await fetch(url)
+  if (!res.ok) throw new Error('Failed to fetch data')
+  const data = await res.json()
+  return data.map((guide: Buyguide) => ({
+    ...guide,
+    link: `/buyguide/${guide.title.toLowerCase().replace(/\s+/g, '-')}`,
+  }))
+}
+
+export default function BuyguideList() {
+  const { language } = useLanguageContext()
+  const router = useRouter()
+  const { guide } = router.query
+  console.log(guide)
+  
+  // Use SWR to fetch data
+  const { data: buyguides, error } = useSWR('/api/buyguide', fetcher)
+  const [currentGuide, setCurrentGuide] = React.useState<Buyguide | null>(null)
+  const [selectedItem, setSelectedItem] = React.useState<BuyguideItem | null>(null)
+
+  // Set initial guide when data is loaded
+  console.log(buyguides , "buyguides")
+  React.useEffect(() => {
+    if (buyguides?.length > 0) {
+        // handle if query guide
+        if (guide) {
+          const selectedGuide = buyguides.find(g => 
+            g.title.toLowerCase().replace(/\s+/g, '-') === guide
+          )
+          setCurrentGuide(selectedGuide)
+        } else {
+          setCurrentGuide(buyguides[0])
+        }
+    }
+  }, [buyguides , guide])
+
+
+
+
+
+
+  const handleGuideChange = (guide: Buyguide) => {
+    if (currentGuide?._id === guide._id) {
+      // If clicking the same guide, just clear the selected item
+      setSelectedItem(null)
+    } else {
+      // If clicking a different guide, update current guide and clear selected item
+      setCurrentGuide(guide)
+      setSelectedItem(null)
+    }
+  }
+
+  const handleItemSelect = (item: BuyguideItem) => {
+    setSelectedItem(!selectedItem?.id === item.id ? null : item)
+  }
+
+  if (error) return <div>Failed to load buyguides</div>
+  if (!buyguides) return <Loading />
+
+  return (
+    <div className=" pt mb-" dir="ltr">
+  <Breadcrumb  pagename={language === "en" ? "Buy Guide" : "Guide d'achat"} pagetitle={language === "en" ? "Buy Guide":"Guide d'achat"}/>
+
+        <Header />
+      <Container maxWidth={false} disableGutters>
+        <Box sx={{ width: "100%", backgroundColor: "#14345B" }}>
+            
+          <Container maxWidth="lg">
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, py: 1 }}>
+
+                
+              {currentGuide && (
+                <Box key={currentGuide._id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Button
+                    onClick={() => handleGuideChange(currentGuide)}
+                    sx={{
+                      textTransform: "uppercase", 
+                      fontWeight: 600,
+                      fontSize: "14px",
+                      color: "#fff",
+                      backgroundColor: "#c92a2a",
+                      borderRadius: "4px 4px 0 0",
+                      minHeight: "40px",
+                      '&:hover': {
+                        backgroundColor: "#c92a2a",
+                      }
+                    }}
+                  >
+                   {language === 'en' ? currentGuide.title : currentGuide.titlefr}
+                  </Button>
+                  {currentGuide.items.length > 0 && (
+                    <Box sx={{ display: 'flex', gap: 1 }}>
+                      {currentGuide.items.map((item: BuyguideItem) => (
+                        <Button
+                          key={item.id}
+                          onClick={() => handleItemSelect(item)}
+                          sx={{
+                            textTransform: "none",
+                            fontSize: "13px", 
+                            color: !selectedItem?.id === item.id ? "#fff" : "#14345B",
+                            minHeight: "40px",
+                            backgroundColor: !selectedItem?.id === item.id ? "#c92a2a" : "#fff",
+                            border: "1px solid rgba(255,255,255,0.2)",
+                            '&:hover': {
+                              backgroundColor: !selectedItem?.id === item.id ? "#c92a2a" : "#f8f9fa",
+                            }
+                          }}
+                        >
+                          {language === 'en' ? item.title : item.titlefr}
+                        </Button>
+                      ))}
+                    </Box>
+                  )}
+                </Box>
+              )}
+
+
+            </Box>
+          </Container>
+        </Box>
+        <Container maxWidth="lg">
+          {currentGuide && (
+            <Box sx={{ mt: 3, mb: 2 }}>
+              <Typography 
+                variant="h4" 
+                component="h1" 
+                gutterBottom
+                sx={{ 
+                  color: '#14345B',
+                  fontWeight: 700,
+                  fontSize: { xs: '1.5rem', md: '2rem' }
+                }}
+              >
+                {/* TITLE DELETED BY ME */}
+                {/* {language === 'en' ? currentGuide.title : currentGuide.titlefr} */}
+              </Typography>
+              {!selectedItem && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: language === 'en' 
+                      ? currentGuide.desc 
+                      : currentGuide.descfr
+                  }}
+                />
+              )}
+              {selectedItem && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: language === 'en' 
+                      ? selectedItem.desc 
+                      : selectedItem.descfr
+                  }}
+                />
+              )}
+            </Box>
+          )}
+        </Container>
+      </Container>
+      <Footer />
+    </div>
+  )
+} 

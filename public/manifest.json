@@ -1,0 +1,32 @@
+{
+  "theme_color": "#d3af37",
+  "background_color": "#d3af37",
+  "display": "fullscreen",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Sand n Sea",
+  "short_name": "Sand n Sea",
+  "description": "Sand n Sea",
+  "icons": [
+    {
+      "src": "/logoDoc.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logoDoc.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/logoDoc.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/logoDoc.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

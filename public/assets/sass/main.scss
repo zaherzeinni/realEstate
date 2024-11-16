@@ -1,0 +1,44 @@
+/* Template Name: Towntor - Real Estate Bootstrap 5 Landing Template
+   Author: Shreethemes
+   Email: support@shreethemes.in
+   Website: https://shreethemes.in
+   Version: 1.0.0
+   Created: January 2022
+   File Description: Main Css file of the template
+*/
+
+/*********************************/
+/*         INDEX                 */
+/*================================
+ *     01.  Variables            *
+ *     02.  General              *
+ *     03.  Helper               *
+ *     04.  Bootstrap Custom     *
+ *     05.  Components           *
+ *     06.  Menu                 *
+ *     07.  Home / Landing       *
+ *     08.  About Us             *
+ *     09.  Blog                 *
+ *     11.  Countdown            *
+ *     12.  Features             *
+ *     13.  Testimonial          *
+ *     14.  Price                *
+                *
+ *     16.  Contact              *
+ *     17.  Footer               *
+ ================================*/
+
+ @import "./_variables";
+ @import "./_general";
+ @import "./_helper";
+ @import "./_bootstrap-custom";
+ @import "./_components";
+ 
+ @import "./_home";
+ @import "./_about";
+ @import "./_blog";
+
+ @import "./_features";
+
+ @import "./_contact";
+ @import "./_footer";

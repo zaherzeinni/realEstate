@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("./siteStyle.css");
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  /* border: 0; */
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  /* background-color: white !important; */
+  /* overflow-x: hidden !important; */
+  /* font-family: '"Cairo", sans-serif' !important; */
+}
+
+
+
+
+:root {
+  --primary-color: #29221f;
+  --secondary-color: #575757;
+  --tertiary-color: #c45e4c;
+  /* --quaternary-color: #a38579; */
+  --quaternary-color:#29221f ;
+
+  --quinary-color: #dad7ce;
+  --paper-color: #a3857934;
+  --background-color: #dad7ce;
+}
+
+
+
+
+/* 
+ .first-para strong {
+  background-color:transparent !important;
+  font-family: "Rubik !important";
+} */
+
+
+.st-current strong {
+  @apply   !font-rubik 
+}
+
+/* .first-para1  p {
+  @apply !font-bold !text-[#292e26] 
+}
+
+.first-para1  * {
+  @apply !font-bold !text-[#292e26] 
+} */
+
+.p strong {
+  @apply   !font-rubik 
+}
+
+
+ strong {
+  @apply   !font-rubik   !bg-transparent
+} 
+
+.border-primary {
+  @apply !border-primary !border 
+}
+
+
+.css-13cymwt-control {
+  @apply !border-primary !border-none
+}
+
+
+.login-form-page  input {
+
+  @apply !border-primary !border-none
+}
+
+
+.automotive-hero {
+  background-image: url("/bg-who-we-are.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-1-hero{
+  background-image: url("/hero-1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+/* -------------SECTION TWO BACKGROUND-------------- */
+.section-2-hero{
+  /* background-image: url("/assets/img/home2/teams-card-bg.png"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #63ab45;
+}
+
+/* text-xl md:!text-2xl !font-bold  */
+
+.m-t {
+
+  @apply !text-2xl md:text-[32px]   !font-rubik   !text-[#16426F]
+}
+
+.react-select-container .react-select__control {
+  @apply bg-gray-50 border border-gray-200 rounded-lg shadow-sm;
+}
+
+.react-select-container .react-select__control:hover {
+  @apply border-primary;
+}
+
+.react-select-container .react-select__control--is-focused {
+  @apply border-primary ring-2 ring-primary/20;
+}
+
+.react-select-container .react-select__menu {
+  @apply bg-white border border-gray-200 rounded-lg shadow-lg mt-1;
+}
+
+.react-select-container .react-select__option {
+  @apply px-4 py-2 hover:bg-gray-100 cursor-pointer;
+}
+
+.react-select-container .react-select__option--is-selected {
+  @apply bg-primary text-white;
+}
+
+
+
