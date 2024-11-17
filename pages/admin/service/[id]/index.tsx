@@ -35,21 +35,18 @@ import useProductDetails from "@/hooks/useProductDetails";
 import { ImageEndpoint, defaultImage, uploadApi } from "@/utils/global";
 import AdminMainLayout from "@/components/Site/dashboardLayout";
 
-
-
 const modules = {
   toolbar: [
-    [{ 'header': [1, 2, 3, 4, 5, false] }], // Add heading levels
-    [{ 'font': ['sans-serif', 'serif', 'monospace', 'roboto'] }], // Add more fonts
-    [{ 'size': ['small', false, 'large', 'huge'] }], // Add font sizes
-    ['bold', 'italic', 'underline'], // Text formatting options
-    [{ 'color': [] }, { 'background': [] }], // Text color and background
-    [{ 'align': [] }], // Text alignment
-    ['link', 'image', 'video'], // Media options
-    ['clean'] // Remove formatting button
-  ]
+    [{ header: [1, 2, 3, 4, 5, false] }], // Add heading levels
+    [{ font: ["sans-serif", "serif", "monospace", "roboto"] }], // Add more fonts
+    [{ size: ["small", false, "large", "huge"] }], // Add font sizes
+    ["bold", "italic", "underline"], // Text formatting options
+    [{ color: [] }, { background: [] }], // Text color and background
+    [{ align: [] }], // Text alignment
+    ["link", "image", "video"], // Media options
+    ["clean"], // Remove formatting button
+  ],
 };
-
 
 export default function BookUpdatePage() {
   const { user } = useAuth({
@@ -66,11 +63,10 @@ export default function BookUpdatePage() {
   const [images, setImages] = useState([]);
   const [rootImages, setRootImages] = useState([]);
   const { mutate, data } = useServices();
-  const { mutate: mutatesingle } = useProductDetails({ id  });
+  const { mutate: mutatesingle } = useProductDetails({ id });
   const [form, setForm] = useState({
     sizes: [],
     features: [],
-    
   });
 
   const [propertyDetails, setPropertyDetails] = useState({
@@ -83,7 +79,6 @@ export default function BookUpdatePage() {
     subdesc: "",
     subdescfr: "",
 
-   
     image: [],
     sizes: [],
     featuresPlus: [],
@@ -98,7 +93,7 @@ export default function BookUpdatePage() {
       } = res;
       console.log("??>>", book);
       setPropertyDetails(book);
-     
+
       setImages(book?.image);
       setRootImages(book?.image);
     });
@@ -133,11 +128,15 @@ export default function BookUpdatePage() {
       });
 
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
-      const response = await axios.post(`${uploadApi}/file/uploads?size=360&hieghtsize=360`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        `${uploadApi}/file/uploads?size=360&hieghtsize=360`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       console.log("Files Uplaoded successfully", response.data);
 
       return response?.data?.files;
@@ -161,8 +160,6 @@ export default function BookUpdatePage() {
 
   // ------------ SINGLE IMAGE ADD DELETE
 
-
-
   const handleUpdate = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
@@ -175,7 +172,8 @@ export default function BookUpdatePage() {
       imagesToDelete?.length > 0 && (await handleDelete(imagesToDelete));
       //  const newImagesUploaded = await uploadImages(files);
       let newImagesUploaded: any = [];
-      newImagesUploaded = files?.length > 0 && (await handleUploadImages(files));
+      newImagesUploaded =
+        files?.length > 0 && (await handleUploadImages(files));
       console.log("ITEREABLE", newImagesUploaded);
       imagesData =
         newImagesUploaded?.length > 0
@@ -188,7 +186,7 @@ export default function BookUpdatePage() {
 
       const updatedDetails = {
         ...propertyDetails,
-       
+
         image: imagesData, // Include images in the submission
       };
 
@@ -201,10 +199,14 @@ export default function BookUpdatePage() {
         })
         .catch((err) => {
           // Show the specific error message from the server
-          message.error(err?.response?.data?.message || err?.message || "An error occurred");
+          message.error(
+            err?.response?.data?.message || err?.message || "An error occurred"
+          );
         });
     } catch (error) {
-      message.error(error?.response?.data?.message || error?.message || "An error occurred");
+      message.error(
+        error?.response?.data?.message || error?.message || "An error occurred"
+      );
     }
   };
   if (user && user.role !== "admin") return <NotFound />;
@@ -238,7 +240,6 @@ export default function BookUpdatePage() {
                 />
               </Grid>
 
-
               <Grid item xs={12} md={6}>
                 <TextInput
                   name="subdesc"
@@ -258,8 +259,6 @@ export default function BookUpdatePage() {
                   onChange={(value) => handleInputChange("subdescfr", value)}
                 />
               </Grid>
-
-
 
               <Grid item xs={12} md={6}>
                 <TextInput
@@ -281,39 +280,35 @@ export default function BookUpdatePage() {
                 />
               </Grid>
 
-              <Grid  item xs={12} md={12}>
-           
-English Description
-
-<ReactQuill
-  modules={modules}
-
-
-                                    value={propertyDetails.story}
-                                    onChange={(value) => setPropertyDetails(prevState => ({
-                                      ...prevState,
-                                      story: value
-                                  }))}
-                                    className="mt-1"
-                                />
+              <Grid item xs={12} md={12}>
+                English Description
+                <ReactQuill
+                  modules={modules}
+                  value={propertyDetails.story}
+                  onChange={(value) =>
+                    setPropertyDetails((prevState) => ({
+                      ...prevState,
+                      story: value,
+                    }))
+                  }
+                  className="mt-1"
+                />
               </Grid>
 
               <Grid item xs={12} md={12}>
                 French Description
-              
-<ReactQuill
-   modules={modules}
-                                    value={propertyDetails.storyfr}
-                                    onChange={(value) => setPropertyDetails(prevState => ({
-                                      ...prevState,
-                                      storyfr: value
-                                  }))}
-                                    className="mt-1"
-                                />
-
-
+                <ReactQuill
+                  modules={modules}
+                  value={propertyDetails.storyfr}
+                  onChange={(value) =>
+                    setPropertyDetails((prevState) => ({
+                      ...prevState,
+                      storyfr: value,
+                    }))
+                  }
+                  className="mt-1"
+                />
               </Grid>
-              
 
               <Grid item xs={12} md={12}>
                 <div>

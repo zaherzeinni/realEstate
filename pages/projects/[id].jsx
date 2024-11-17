@@ -117,8 +117,8 @@ const ProjectDetails = () => {
 
   console.log("images22", images2, "imagess", images);
 
-  const [getUrl, setGetUrl] = useState();
 
+  const [getUrl, setGetUrl] = useState();
   useEffect(() => {
     const currentUrl = window.parent.location.href;
     console.log(currentUrl, "urlllllllll");
@@ -129,6 +129,77 @@ const ProjectDetails = () => {
     navigator.clipboard.writeText(window.location.toString());
     // message.info("URL copied to clipboard successfully")
   };
+
+
+
+
+  // ---------------for language change country and type-------------------
+const {
+    country,
+    type,
+    // read_time,
+  } = data.book;
+
+  const [langCountry, setLangCountry] = useState();
+  const [typeProper, setTypeProper] = useState();
+
+  useEffect(() => {
+    const languageMap = {
+      en: {
+        "Spain": "Spain",
+        "Mexico": "Mexico",
+        "North Cyprus": "North Cyprus",
+        "Cyprus": "Chypre",
+        "Republic Dominica": "Dominican Republic",
+        "Portugal": "Portugal",
+        "Canada": "Canada" ,
+        "United Arab Emirates":"United Arab Emirates",
+        "house":"house"
+      },
+      fr: {
+        "Spain": "Espagne",
+        "Mexico": "Mexique",
+        "North Cyprus": "Chypre du Nord",
+        "CYPRUS": "Chypre",
+        "Republic Dominica": "République Dominique",
+        "Portugal": "Portugal",
+        "Canada": "Canada",
+        "United Arab Emirates" : "Émirats arabes unis",
+        "house":"maison"
+      }
+    };
+  
+    if (languageMap[language] && languageMap[language][country]) {
+      setLangCountry(languageMap[language][country]);
+    } else {
+      setLangCountry(languageMap.en[country] || country); // Default to English name if not found
+    }
+  }, [country, language]); // Dependencies to re-run effect when country or language changes
+  
+
+
+
+
+  useEffect(() => {
+    const TypePropertyMap = {
+      en: {
+        "house":"house"
+      },
+      fr: {
+        "house":"maison"
+      }
+    };
+  
+    if (TypePropertyMap[language] && TypePropertyMap[language][type]) {
+      setTypeProper(TypePropertyMap[language][type]);
+    } else {
+      setTypeProper(TypePropertyMap.en[type] || type); // Default to English name if not found
+    }
+  }, [type, language]); // Dependencies to re-run effect when type or language changes
+  
+
+
+
 
   return (
     <div dir="ltr">
@@ -243,20 +314,17 @@ const ProjectDetails = () => {
 
                   <div className="single-info flex">
                     <span className="text-[17px]">Destination:</span>
-                    {language === "en" ? (
+                    
                       <h5 className="ml-2 font-semibold text-[19px]">
-                        {data?.book?.country}
+                        {langCountry}
                       </h5>
-                    ) : (
-                      <h5 className="ml-2 font-semibold text-[20px]">
-                        {handleChange(data?.book?.country)}
-                      </h5>
-                    )}
+                   
+        
                   </div>
                   <div className="single-info flex">
                     <span className="text-[17px]">
                       {language === "en" ? "City:" : "Ville:"}
-                    </span>{" "}
+                    </span>
                     {language === "en" ? (
                       <h5 className="ml-2 font-semibold text-[20px]">
                         {data?.book?.city}
@@ -277,7 +345,7 @@ const ProjectDetails = () => {
                       </h5>
                     ) : (
                       <h5 className="ml-2 font-semibold text-[20px]">
-                        {handleChange(data?.book?.type)}
+                       {typeProper}
                       </h5>
                     )}
                   </div>
@@ -536,9 +604,10 @@ const ProjectDetails = () => {
                               className=" -ml-4  text-[#100c08] text-opacity-50 hover:text-primary"
                               href={`/blogs?country=${category}`}
                             >
-                              {language === "en"
+                              {/* {language === "en"
                                 ? `${category}`
-                                : handleChange(category)}
+                                : handleChange(category)} */}
+                                {langCountry}
                             </Link>
 
                             <h5>

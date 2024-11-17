@@ -31,13 +31,13 @@ const Footer = ({ style }) => {
               <div className="footer-widget">
                 <div className="footer-logo">
                   <Link href="/">
-                    <img src="/assets/img/logo2.svg" alt="" />
+                    <img src="/1.png" alt="logo" className="w-[240px]" />
                   </Link>
                 </div>
                 <h3>
                   Want
                   <span>
-                    to Take <br />
+                    to  Take <br></br>
                   </span>
                   Tour Packages<span>?</span>
                 </h3>
@@ -222,11 +222,11 @@ const Footer = ({ style }) => {
                     </svg>
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="https://www.pinterest.com/">
                     <i className="bx bxl-pinterest-alt" />
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <a href="https://www.instagram.com/">
                     <i className="bx bxl-instagram" />
@@ -242,13 +242,16 @@ const Footer = ({ style }) => {
           50% Off Your Next Trip. Hurry Up For your new Tour!{" "}
           <Link href="/package">Book Your Tour</Link>{" "}
         </p>
-              <div className="footer-right">
+              <div className="footer-right text-center mx-auto lg:mx-0 lg:text-justify">
                 <ul>
                   <li>
-                    <a href="#">Privacy Policy</a>
+                    <a href="/privacy">{language === "en" ? "Privacy Policy" :"politique"}</a>
                   </li>
                   <li>
-                    <a href="#">Terms &amp; Condition</a>
+                    <a href="/terms"> {language === "en" ? "Terms & Condition" :"Conditions & générales"}</a>
+                  </li>
+                  <li>
+                    <a href="/policygdpr"> {language === "en" ? "Policy & GDPR":"Politique & GDPR"}</a>
                   </li>
                 </ul>
               </div>

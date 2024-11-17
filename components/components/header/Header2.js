@@ -272,10 +272,10 @@ const buyguidesData = buyguides?.map((guide) => ({
         <div className="header-logo">
           <Link href="/">
             <img
-              alt="image"
-              className="img-fluid w-[200px] md:w-[85px] xl:w-[120px]"
+              alt="logo"
+              className="img-fluid  w-[200px] md1:w-[75px] lg:w-[80px] lg1:w-[135px] xl:w-[200px]"
               // src="/assets/img/logo2.svg"
-              src="/logoNavbar.png"
+              src="/1.png"
             />
           </Link>
         </div>
@@ -283,7 +283,7 @@ const buyguidesData = buyguides?.map((guide) => ({
           <div className="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center">
             <div className="mobile-logo-wrap">
               <Link href="/">
-                <img alt="image" src="/assets/img/logo2.svg" />
+                <img alt="logo" src="/1.png" className="w-[180px]" />
               </Link>
             </div>
             <div className="menu-close-btn" onClick={toggleSidebar}>
@@ -593,7 +593,7 @@ const buyguidesData = buyguides?.map((guide) => ({
         <div className="nav-right d-flex jsutify-content-end align-items-center">
           <ul className="icon-list         ">
             <li className="d-lg-flex d-none">
-              <a href="#" data-bs-toggle="modal" data-bs-target="#user-login">
+              <a className="hidden lg:block" href="#" data-bs-toggle="modal" data-bs-target="#user-login">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={24}
@@ -652,7 +652,7 @@ const buyguidesData = buyguides?.map((guide) => ({
               </div>
 
           <ContactModal isOpen={isOpen} closeModal={closeModal} />
-                <button onClick={openModal} className="primary-btn1 rounded-full hidden 2xl:flex 2xl:text-sm 2xl:h-10 ml-2">
+                <button onClick={openModal} className="primary-btn1 rounded-full hidden xl3:flex xl3:text-sm xl3:h-10 ml-2">
                  {language === "en" ? "Book A Meet":"réservation"} 
                 </button>
             </li>
@@ -684,7 +684,7 @@ const buyguidesData = buyguides?.map((guide) => ({
         <div className="sidebar-logo-area d-flex justify-content-between align-items-center">
           <div className="sidebar-logo-wrap">
             <Link href="/">
-              <img alt="image" src="/assets/img/logo.svg" />
+              <img alt="logo" src="/logoSand.jpg" className="w-[200px] rounded-2xl"/>
             </Link>
           </div>
           <div className="right-sidebar-close-btn" onClick={toggleRightSidebar}>

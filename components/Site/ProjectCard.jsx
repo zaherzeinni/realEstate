@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ImageEndpoint } from "../../utils/global";
 import { useEffect } from "react";
-
-
+import { handleChange } from "../../utils/handleLanguage";
 export default function ProjectCard({
   blog,
   language,
@@ -43,6 +42,7 @@ export default function ProjectCard({
         "Spain": "Spain",
         "Mexico": "Mexico",
         "North Cyprus": "North Cyprus",
+        "Cyprus": "Chypre",
         "Republic Dominica": "Dominican Republic",
         "Portugal": "Portugal",
         "Canada": "Canada" ,
@@ -52,6 +52,7 @@ export default function ProjectCard({
         "Spain": "Espagne",
         "Mexico": "Mexique",
         "North Cyprus": "Chypre du Nord",
+        "CYPRUS": "Chypre",
         "Republic Dominica": "République Dominique",
         "Portugal": "Portugal",
         "Canada": "Canada",
@@ -66,28 +67,6 @@ export default function ProjectCard({
     }
   }, [country, language]); // Dependencies to re-run effect when country or language changes
   
-  const countries = [
-    { value: "", label: "All countries" },
-
-    { value: "Mexico", label: language === "en" ? "Mexico" : "Mexique" },
-    {
-      value: "North Cyprus",
-      label: language === "en" ? "North Cyprus" : "Chypre du Nord",
-    },
-    { value: "Spain", label: language === "en" ? "Spain" : "Espagne" },
-    {
-      value: "Republic Dominica",
-      label: language === "en" ? "Republic Dominica" : "République Dominique",
-    },
-    // { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
-
-    // { value: "Canada", label: language === 'en' ? "Canada" : "Canada"},
-
-    {
-      value: "United Arab Emirates",
-      label: language === "en" ? "United Arab Emirates" : "",
-    },
-  ];
 
 
 
@@ -183,7 +162,7 @@ export default function ProjectCard({
                     />
                   </g>
                 </svg>
-                {language === "en" ? "Destination: " : "Destination: "} <b  className="text-black">{lang}</b>
+                {language === "en" ? "Destination: " : "Destination: "} <b className="text-black">{lang}</b>
               </li>
               <li className="projectcard">
                 <svg

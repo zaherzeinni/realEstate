@@ -18,6 +18,8 @@ import { ImageEndpoint } from "../../utils/global";
 import { useState } from "react";
 import { useLanguageContext } from "@/context/languageContext";
 
+import { handleChange } from "../../utils/handleLanguage";
+
 const Projects = ({
   country,
   baths,
@@ -93,6 +95,12 @@ const Projects = ({
         pages.push(totalPages);
       }
     }
+
+
+
+
+
+
 
     return (
       <div className="flex justify-center items-center space-x-2">

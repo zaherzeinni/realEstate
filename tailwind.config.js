@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const { screens } = require("tailwindcss/defaultTheme")
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -17,6 +18,15 @@ module.exports = {
       maxWidth: {
         "7xl": "1920px",
       },
+
+      screens: {
+        xs: "400px",
+        md1: "992px",
+        lg1: "1080px",
+        xl3:"1600px",
+        ...screens,
+      },
+
       colors: {
         primary: "#63AB45",
         primary2: "#63AB45",

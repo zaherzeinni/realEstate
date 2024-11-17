@@ -96,8 +96,6 @@ const CreateBuyguide = () => {
   };
 
 
-
-
   const modules = {
     toolbar: [
       [{ 'header': [1, 2, 3, 4, 5, false] }], // Add heading levels
@@ -111,7 +109,7 @@ const CreateBuyguide = () => {
       ['copy', 'paste']
     ]
   };
-
+  
 
 
 
