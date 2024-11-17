@@ -1,9 +1,8 @@
 
 /* ---------------html privacy------------------ */
 
-<!--
  /* Font Definitions */
- @font-face
+ /* @font-face
 	{font-family:Wingdings;
 	panose-1:5 0 0 0 0 0 0 0 0 0;}
 @font-face
@@ -14,7 +13,7 @@
 	panose-1:2 15 5 2 2 2 4 3 2 4;}
 @font-face
 	{font-family:"Segoe UI";
-	panose-1:2 11 5 2 4 2 4 2 2 3;}
+	panose-1:2 11 5 2 4 2 4 2 2 3;} */
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{margin:0in;
@@ -35,8 +34,6 @@ div.WordSection1
 	{margin-bottom:0in;}
 ul
 	{margin-bottom:0in;}
--->
-
 
 
 
