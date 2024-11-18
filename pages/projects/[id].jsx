@@ -134,14 +134,21 @@ const ProjectDetails = () => {
 
 
   // ---------------for language change country and type-------------------
-const {
-    country,
-    type,
-    // read_time,
-  } = data.book;
+
+
+
+  // const {
+  //   country,
+  //   type,
+  //   // read_time,
+  // } = data?.book;
+
+   const country = data?.book?.country
+   const type = data?.book?.type
 
   const [langCountry, setLangCountry] = useState();
   const [typeProper, setTypeProper] = useState();
+
 
   useEffect(() => {
     const languageMap = {
@@ -175,9 +182,6 @@ const {
       setLangCountry(languageMap.en[country] || country); // Default to English name if not found
     }
   }, [country, language]); // Dependencies to re-run effect when country or language changes
-  
-
-
 
 
   useEffect(() => {
@@ -316,7 +320,8 @@ const {
                     <span className="text-[17px]">Destination:</span>
                     
                       <h5 className="ml-2 font-semibold text-[19px]">
-                        {langCountry}
+                        {langCountry} 
+                        {/* {data?.book?.country} */}
                       </h5>
                    
         
@@ -346,6 +351,7 @@ const {
                     ) : (
                       <h5 className="ml-2 font-semibold text-[20px]">
                        {typeProper}
+                       {/* {data?.book?.type} */}
                       </h5>
                     )}
                   </div>
@@ -570,7 +576,6 @@ const {
                         _id,
 
                         createdAt,
-
                         image,
                         title,
                         titlefr,

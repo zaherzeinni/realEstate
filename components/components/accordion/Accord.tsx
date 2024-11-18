@@ -53,7 +53,7 @@ export default function accord() {
               >
                 01. What is ski touring?
                 <div
-                  className={`ltr:ml-auto rtl:mr-auto flex justify-end text-end   absolute end-7 ${
+                  className={`ltr:ml-auto rtl:mr-auto flex justify-end text-end   absolute end-[15%] xl:end-[12%] 2xl:end-[20%] ${
                     active === "1" ? "rotate-180 " : ""
                   }`}
                 >
@@ -100,7 +100,7 @@ export default function accord() {
               >
                 02. What is ski touring?
                 <div
-                  className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-7   ${
+                  className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end  absolute end-[15%] xl:end-[12%] 2xl:end-[20%]   ${
                     active1 === "1" ? "rotate-180" : ""
                   }`}
                 >
@@ -147,7 +147,7 @@ export default function accord() {
               >
                 03. What is ski touring?
                 <div
-                  className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-7  ${
+                  className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end  absolute end-[15%] xl:end-[12%] 2xl:end-[20%]  ${
                     active2 === "1" ? "rotate-180" : ""
                   }`}
                 >
@@ -195,7 +195,7 @@ export default function accord() {
               >
                 04. What is ski touring?
                 <div
-                  className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-7  ${
+                  className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end  absolute end-[15%] xl:end-[12%] 2xl:end-[20%]  ${
                     active3 === "1" ? "rotate-180" : ""
                   }`}
                 >

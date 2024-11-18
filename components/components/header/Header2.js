@@ -273,7 +273,7 @@ const buyguidesData = buyguides?.map((guide) => ({
           <Link href="/">
             <img
               alt="logo"
-              className="img-fluid  w-[200px] md1:w-[75px] lg:w-[80px] lg1:w-[135px] xl:w-[200px]"
+              className="img-fluid  w-[200px] md1:w-[70px] lg:w-[80px] lg1:w-[120px] xl:w-[200px]"
               // src="/assets/img/logo2.svg"
               src="/1.png"
             />

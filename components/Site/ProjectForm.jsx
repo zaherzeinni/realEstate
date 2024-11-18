@@ -69,13 +69,16 @@ const {language ,reference} = useLanguageContext()
 
 
   return (
+    <div>
+         <img src="/1.png" alt="logo" className="w-[300px] justify-center flex mx-auto" />
     <form
       dir="ltr"
       autoComplete="off"
       className="w-full grid grid-cols-3 gap-4  !font-jost"
     >
+    
       <div className="col-span-3 search-box">
-        
+   
         <input
           type="text"
           placeholder={language === "en" ? "Name" : "Nom" }
@@ -168,6 +171,7 @@ const {language ,reference} = useLanguageContext()
         </button>
       </div>
     </form>
+</div>
   );
 };
 

@@ -177,7 +177,7 @@ const Projects = ({
         </div>
       </div>
       <Newslatter />
-      <Footer />
+      <Footer/>
     </div>
     </Suspense>
   );
