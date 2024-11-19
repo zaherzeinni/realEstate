@@ -18,6 +18,8 @@ import Spain from "../components/components/accordion/faq/Spain"
 import Portugal from "../components/components/accordion/faq/Portugal"
 
 
+import { useRouter } from "next/router";
+
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
   description:
@@ -44,6 +46,23 @@ const Faq = () => {
     isfeatured: true,
   });
 
+
+
+
+  const [search, setSearch] = useState();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    router.push(`/faq?search=#${search}`);
+  };
+
+  const handleSearchInputChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+
+  const router = useRouter();
+
   return (
     <div dir="ltr">
       <Header />
@@ -57,6 +76,33 @@ const Faq = () => {
         <div className="container">
           <div className="lg:flex lg:flex-row lg:space-x-4 g-lg-4 gy-5 flex flex-col-reverse">
             <div className="col-lg-4">
+              
+
+
+            <div className="single-widget mb-30">
+                  <h5 className="widget-title">
+                    {language === "en" ? "Search Here" : "Rechercher ici"}
+                  </h5>
+                  <form onSubmit={handleSearch}>
+                    <div className="search-box">
+                      <input
+                        placeholder={
+                          language === "en" ? "country" : "pays"
+                        }
+                        value={search}
+                        onChange={handleSearchInputChange}
+                        type="text"
+                      />
+                      <button type="submit">
+                        <i className="bx bx-search" />
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+
+
+
               <div className="banner-and-inquiry-form">
                 <div className="banner2-card four">
                   <img src="/images/banner2-card-img2.png" alt="" />

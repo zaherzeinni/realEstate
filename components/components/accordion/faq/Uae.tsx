@@ -89,7 +89,7 @@ export default function Uae() {
 const {language} = useLanguageContext()
 
   return (
-    <div dir="ltr" className="faq-content-wrap mb-48  hidden1  ">
+    <div dir="ltr" id={language === "en" ? "uae":"emirats"} className="faq-content-wrap mb-48  hidden1 scroll-my-32 ">
       <div className="faq-content-title mb-20">
       {language === "en" ?   <h4>FAQ : UAE</h4> : <h4>FAQ : Émirats Arabes Unis</h4>}
       </div>

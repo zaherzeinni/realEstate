@@ -175,8 +175,8 @@ export default function Dominican() {
 const {language} = useLanguageContext()
 
   return (
-    <div dir="ltr" className="faq-content-wrap mb-48 mt-32  hidden1  ">
-      <div className="faq-content-title mb-20">
+    <div dir="ltr" id={language === "en" ? "dominican":"republique"} className="faq-content-wrap mb-48 mt-32  scroll-my-20 hidden1  ">
+      <div id={language === "en" ? "dominican republic":"republique dominicaine"} className="faq-content-title mb-20 scroll-my-20">
       {language === "en" ?   <h4>FAQ : Dominican Republic</h4> : <h4>FAQ : République Dominicaine</h4>}
       </div>
       <div className="faq-content">

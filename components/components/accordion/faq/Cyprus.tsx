@@ -89,8 +89,8 @@ export default function Cyprus() {
 const {language} = useLanguageContext()
 
   return (
-    <div dir="ltr" className="faq-content-wrap mb-48 mt-32  hidden1  ">
-      <div className="faq-content-title mb-20">
+    <div dir="ltr" id={language === "en" ? "cyprus":"chypre"} className="faq-content-wrap mb-48 mt-32  hidden1 scroll-my-20 ">
+      <div id={language === "en" ? "northern cyprus":"chypre nord"} className="faq-content-title mb-20 scroll-my-20">
       {language === "en" ?   <h4>FAQ : Northern Cyprus</h4> : <h4>FAQ : Chypre Nord</h4>}
       </div>
       <div className="faq-content">

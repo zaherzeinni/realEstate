@@ -10,7 +10,7 @@ export default function ProductsHero({ title, text, background }) {
         <div  style={{fontfamily: "Rubik"}} className=" flex justify-center  mb-12 mt-6 text-4xl font-bold">
 
         <div>
-          <img src="/images/logoSand.jpg" className="w-48 h-10 mr-2 md:mt-1 md:mr-0 md:start-10 md:absolute flex justify-center" alt="imageLogo" />
+          <img src="/2.png" className="w-48 h-10 mr-2 md:mt-1 md:mr-0 md:start-10 md:absolute flex justify-center" alt="imageLogo" />
         </div>
          
          <p  style={{fontfamily: "Rubik"}}  className="!text-[#16426F] lg:mr-16 font-bold text-3xl md:!mt-3 md:pt-3 !font-rubik md:!text-[55px]">
@@ -101,7 +101,7 @@ export default function ProductsHero({ title, text, background }) {
               {language === "en" ? "Respect":"Respect"} 
             </p>
            
-            <p className="m-t flex gap-1 md:w-1/3 lg:w-1/4 1lg:w-[270px] lg:ml-[10px] xl:ml-[50px] herowidth">
+            <p className="m-t flex gap-1 md:w-1/3 lg:w-[24%] 1lg:w-[26%]  lg:ml-[10px] xl:-ml-[10px] herowidth">
               <span>
               <img
                   src="/checkmark-aboutpage.png"
@@ -114,7 +114,7 @@ export default function ProductsHero({ title, text, background }) {
           
 
 
-            <p className="m-t flex gap-1 md:w-1/2 md:mx-auto lg:mx-0 lg:w-[300px] xl:-mr-10  ">
+            <p className="m-t flex gap-1 md:w-1/2 md:mx-auto lg:mx-0 lg:w-[280px] xl:-mr-5 xl:-ml-10  ">
               <span>
                 <img
                   src="/checkmark-aboutpage.png"
@@ -122,7 +122,7 @@ export default function ProductsHero({ title, text, background }) {
                   className="w-11 h-9 lg:mr-10"
                 />
               </span>
-               {language === "en" ? <span className="lg:w-[380px] lg:-ml-4">Be Sand n Sea Realty</span>:<span  className="lg:w-[380px] lg:-ml-5">Être Sand n Sea Realty</span>}
+               {language === "en" ? <span className="lg:w-[380px] lg:-ml-4 ">Be Sand n Sea Realty</span>:<span  className="lg:w-[380px] lg:-ml-5">Être Sand n Sea Realty</span>}
             </p>
           </div>
 

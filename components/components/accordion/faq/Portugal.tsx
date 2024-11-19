@@ -89,7 +89,7 @@ export default function Portugal() {
 const {language} = useLanguageContext()
 
   return (
-    <div dir="ltr" className="faq-content-wrap mb-48 mt-32  hidden1  ">
+    <div dir="ltr" id="portugal" className="faq-content-wrap mb-48 mt-32  hidden1 scroll-my-20 ">
       <div className="faq-content-title mb-20">
       {language === "en" ?   <h4>FAQ : Portugal</h4> : <h4>FAQ : Portugal</h4>}
       </div>
