@@ -87,19 +87,20 @@ export default function BuyguideList() {
         <Box sx={{ width: "100%", backgroundColor: "#14345B" }}>
             
           <Container maxWidth="lg">
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, py: 1 }}>
+           
+            <Box  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, py: 1 }}>
 
                 
               {currentGuide && (
-                <Box key={currentGuide._id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Box className="!flex !flex-col sm:flex sm:flex-row" key={currentGuide._id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Button
                     onClick={() => handleGuideChange(currentGuide)}
                     sx={{
                       textTransform: "uppercase", 
                       fontWeight: 600,
                       fontSize: "14px",
-                      color: "#fff",
-                      backgroundColor: "#c92a2a",
+                      color: "#14345B",
+                      backgroundColor: "#fff",
                       borderRadius: "4px 4px 0 0",
                       minHeight: "40px",
                       '&:hover': {
@@ -120,7 +121,7 @@ export default function BuyguideList() {
                             fontSize: "13px", 
                             color: !selectedItem?.id === item.id ? "#fff" : "#14345B",
                             minHeight: "40px",
-                            backgroundColor: !selectedItem?.id === item.id ? "#c92a2a" : "#fff",
+                            backgroundColor: !selectedItem?.id === item.id ? "#fff" : "#fff",
                             border: "1px solid rgba(255,255,255,0.2)",
                             '&:hover': {
                               backgroundColor: !selectedItem?.id === item.id ? "#c92a2a" : "#f8f9fa",
@@ -153,7 +154,7 @@ export default function BuyguideList() {
                 }}
               >
                 {/* TITLE DELETED BY ME */}
-                {/* {language === 'en' ? currentGuide.title : currentGuide.titlefr} */}
+               {/* <h3> {language === 'en' ? currentGuide.title : currentGuide.titlefr}</h3> */}
               </Typography>
               {!selectedItem && (
                 <div

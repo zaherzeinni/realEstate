@@ -7,7 +7,7 @@ export   const handleChange = (country) => {
          return "Mexique"; // Set ID for Mexico
          break;
        case "North Cyprus":
-         return "North Cyprus"; // Set ID for North Cyprus
+         return "Chypre du Nord"; // Set ID for North Cyprus
          break;
        case "Spain":
         return "Espagne"; // Set ID for Spain
