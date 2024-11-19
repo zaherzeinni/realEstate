@@ -195,7 +195,7 @@ export default function ProjectCard({
               {/* <span>Per Person</span> */}
             </div>
             {!isfeaturepage ? (
-              <Link href={`/projects/${_id}`} className="primary-btn1 h-10 w-48 text-center">
+              <Link href={`/projects/${_id}`} className="primary-btn1  h-4 w-32 text-center">
                {language === "en" ? "Project Details" : "Détails du projet"} 
               </Link>
             ) : (

@@ -77,7 +77,7 @@ const  ProjectsOfferSlider = () => {
   return (
     <>
       <div className="tour-pack-section">
-        <div className="container mx-auto">
+        <div className="container mx-auto -my-20">
           <div className="row mb-50">
             <div className="col-lg-12">
               <div className="section-title2 text-center">
