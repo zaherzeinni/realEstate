@@ -70,7 +70,7 @@ const {language ,reference} = useLanguageContext()
 
   return (
     <div>
-         <img src="/1.png" alt="logo" className="w-[300px] justify-center flex mx-auto" />
+         <img src="/3.png" alt="logo" className="w-[220px] justify-center flex mx-auto" />
     <form
       dir="ltr"
       autoComplete="off"

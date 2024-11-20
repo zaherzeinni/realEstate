@@ -7,13 +7,13 @@ export default function ProductsHero({ title, text, background }) {
   return (
     <div className={rootStyle}>
       <section className=" text-center sm:text-left w-full sm:w-[70%] md:w-[100%] lg:ml-20 ">
-        <div  style={{fontfamily: "Rubik"}} className=" flex justify-center  mb-12 mt-6 text-4xl font-bold">
-
+        <div  style={{fontfamily: "Rubik"}} className=" flex justify-center flex-col  mb-12 mt-6 text-4xl font-bold">
+       
         <div>
-          <img src="/2.png" className="w-48 h-10 mr-2 md:mt-1 md:mr-0 md:start-10 md:absolute flex justify-center" alt="imageLogo" />
+          <img src="/3.png" className="w-[240px] mb-7 md:mb-0 mr-2 md:mt-1 md:mr-0 md:start-10 md:absolute flex justify-center" alt="imageLogo" />
         </div>
          
-         <p  style={{fontfamily: "Rubik"}}  className="!text-[#16426F] lg:mr-16 font-bold text-3xl md:!mt-3 md:pt-3 !font-rubik md:!text-[55px]">
+         <p  style={{fontfamily: "Rubik"}}  className="!text-[#16426F] lg:mr-16 font-bold text-5xl md:!mt-3 md:pt-3 !font-rubik md:!text-[55px]">
          {language === "en" ? "Values":"Valeurs"}       
             </p>
         </div>

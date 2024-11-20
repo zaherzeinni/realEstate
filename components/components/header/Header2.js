@@ -684,7 +684,7 @@ const buyguidesData = buyguides?.map((guide) => ({
         <div className="sidebar-logo-area d-flex justify-content-between align-items-center">
           <div className="sidebar-logo-wrap">
             <Link href="/">
-              <img alt="logo" src="/logoSand.jpg" className="w-[200px] rounded-2xl"/>
+            <img src="/3.png" alt="logo" className="w-[240px] sm:w-[260px] mt-6 " />
             </Link>
           </div>
           <div className="right-sidebar-close-btn" onClick={toggleRightSidebar}>

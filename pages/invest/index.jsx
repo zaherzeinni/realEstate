@@ -183,11 +183,14 @@ const page = () => {
         pagetitle={language === "en" ? "Invest" : "Investir"}
       />
       <div className="package-search-filter-wrapper">
+      
         <div className="container"></div>
+       
       </div>
 
       <div className="visa-with-sidebar-section pt-120 mb-24">
         <div className="container">
+        <img src="/3.png" alt="logo" className="w-[220px] sm:w-[260px] 1-mt-10 mb-10" />
           <div className="row g-lg-4 gy-5">
             <div className="col-lg-8">
               <div className="list-grid-product-wrap mb-70">

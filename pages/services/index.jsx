@@ -121,8 +121,11 @@ const BlogsMainpage = () => {
       {/* <Topbar /> */}
       <Header2 />
       <Breadcrumb pagename="Service Grid" pagetitle={language==="en" ? <span className="text-primary2">For Our Customers</span>:<span className="text-primary2">Pour nos clients</span>} />
+     
       <div className="blod-grid-section pt-120 mb-120">
+       
         <div className="container">
+        <img src="/3.png" alt="logo" className="w-[240px] sm:w-[300px] -mt-10 mb-10" />
           <div className="row g-md-4 gy-5 mb-70">
             {data?.books?.map((blog) => {
               const {

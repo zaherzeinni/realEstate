@@ -122,6 +122,7 @@ onClick={() => setOpenModalVideo(true)}><i className="bi bi-play-circle" /> Watc
           </div>
         </div> */}
         <div className="row g-xl-4 gy-5">
+        <img src="/3.png" alt="logo" className="w-[220px] sm:w-[260px] mb-10" />
           <div className="col-xl-8">
             <div className="eg-tag2">
               <span>Ski touring</span>

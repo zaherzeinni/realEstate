@@ -241,8 +241,8 @@ const ContactPage = () => {
 
             <div className="col-lg-7 ">
               <div className="contact-form-area">
-                <div className="sm:flex sm:justify-between mx-auto">
-                <img src="/2.png" alt="logo" className="w-[150px] h-10" />
+                <div className="flex flex-col space-y-2">
+                <img src="/3.png" alt="logo" className="w-[220px] -mt-7 mb-4" />
                 {language === "en" ? <h3>Reach Us Anytime</h3> : <h3>Contactez-nous à tout moment</h3> }
                
                 </div>
@@ -253,7 +253,7 @@ const ContactPage = () => {
                   <div className="row  ">
                     <div className="col-lg-12 mb-4 ">
                       <div className="form-inner !text-lg ">
-                        <label className="!text-lg">{language==="en" ? "Name*" : "Nom*"}</label>
+                        <label className="!text-lg mt-3">{language==="en" ? "Name*" : "Nom*"}</label>
                         <input
                         value={name}
                         onChange={(e) => {

@@ -151,7 +151,7 @@ const Projects = ({
       {/* <Topbar /> */}
       <Header />
       <Breadcrumb  pagename={language === "en" ? "Projects Grid" : "Grille des projets"} pagetitle={language === "en" ? "Projects Grid":"Grille des projets"}/>
-      
+      <img src="/3.png" alt="logo" className="w-[240px] sm:w-[260px] mt-6 ml-20 " />
       <FilterForm isProjectsPage={true} />
       <div className="package-grid-with-sidebar-section pt-120 mb-120">
         <div className="container">
