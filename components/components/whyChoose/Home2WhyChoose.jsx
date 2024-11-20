@@ -35,7 +35,7 @@ const Home2WhyChoose = () => {
   return (
     <>
       <div className="feature-card-section mb-120 mt-10 sm:mt-2">
-        <div className="container1 !mx-12 xl:mx-32 2xl:mx-96">
+        <div className="container1 !mx-12 xl:mx-36 2xl:mx-52 xl3:mx-80">
           <div className="row mb-50">
             <div className="col-lg-12">
               <div className="section-title2 text-center">

@@ -241,8 +241,11 @@ const ContactPage = () => {
 
             <div className="col-lg-7 ">
               <div className="contact-form-area">
+                <div className="sm:flex sm:justify-between mx-auto">
+                <img src="/2.png" alt="logo" className="w-[150px] h-10" />
                 {language === "en" ? <h3>Reach Us Anytime</h3> : <h3>Contactez-nous à tout moment</h3> }
-                
+               
+                </div>
                 <form
                  onSubmit={(e) => Submit(e)}
                 
