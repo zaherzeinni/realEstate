@@ -94,7 +94,7 @@ const Countriesslide = () => {
                             src={`${ImageEndpoint}/${country?.cover}`}
                             //   src="/assets/img/home2/destination-card2-img1.jpg"
                             alt=""
-                            
+                            className="h-96"
                           />
                         </Link>
                         <div className="batch">

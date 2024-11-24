@@ -11842,7 +11842,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
 @media (min-width: 1200px) and (max-width: 1399px) {
   .package-card3.style-2 .package-card-img img {
     min-width: 278px;
-    max-width: 400px;
+    max-width: 430px;
     min-height: auto;
     max-height: 280px;
   }
@@ -11851,7 +11851,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
 @media (min-width: 1399px) and (max-width: 2000px) {
   .package-card3.style-2 .package-card-img img {
     min-width: 278px;
-    max-width: 400px;
+    max-width: 430px;
     min-height: auto;
     max-height: 280px;
   }

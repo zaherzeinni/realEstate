@@ -57,6 +57,8 @@ const Projects = ({
     resale
   });
 
+console.log(data,"dataaa index.jsx projectsss")
+
   const handlePageChange = (value) => {
     if (value === page) return;
     setPage(value);

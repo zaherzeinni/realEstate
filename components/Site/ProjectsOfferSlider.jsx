@@ -31,7 +31,8 @@ const  ProjectsOfferSlider = () => {
     page,
     isfeatured:true,
   });
-
+ 
+  console.log(data,"dataaa")
 
 
   const settings = useMemo(() => {
@@ -56,7 +57,7 @@ const  ProjectsOfferSlider = () => {
           spaceBetween: 15,
         },
         768: {
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 15,
         },
         992: {
@@ -69,6 +70,7 @@ const  ProjectsOfferSlider = () => {
         },
         1400: {
           slidesPerView: 3,
+          spaceBetween: 15,
         },
       },
     };
@@ -101,7 +103,7 @@ const  ProjectsOfferSlider = () => {
                   {data?.books?.map((blog) => {
                     return (
                     <SwiperSlide className="swiper-slide">
-                    <ProjectCard blog={blog} language={language} />
+                    <ProjectCard blog={blog} language={language} isProjectsPage={false} />
                     </SwiperSlide>
                     )})}
 

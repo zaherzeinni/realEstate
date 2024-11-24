@@ -236,8 +236,8 @@ export default function CreateCountry() {
               </div>
 
               <Grid item xs={12} md={12}>
-                <Button type="submit" variant="contained" color="primary">
-                  إنشاء التصنيف
+                <Button type="submit" className="bg-neutral-100 hover:border hover:border-dashed hover:border-blue-200" color="primary">
+                  Add Country
                 </Button>
               </Grid>
             </Grid>

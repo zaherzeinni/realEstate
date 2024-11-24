@@ -147,7 +147,7 @@ function openModal() {
           </Swiper>
         </div>
 
-        <div className="col-xl-7 md:w-[600px] mx-auto lg:w-[660px] p-0">
+        <div className="col-xl-7 md:w-[600px] mx-auto lg:w-[640px] p-0">
           <Swiper
             {...settings}
             onSwiper={(swiper) => { rightSwiperRef.current = swiper }}
@@ -163,6 +163,7 @@ function openModal() {
                       alt={`package image ${index + 1}`}
                       width={500}
                       height={400}
+                      
                     />
                     <div className="eg-tag">
                       <span>{language==="en" ? "Featured":"En vedette"}</span>
@@ -183,9 +184,9 @@ function openModal() {
                         <li>
                           <i className="bi bi-calendar3"></i> {language === "en" ? "4 Days":"4 jours"}
                         </li>
-                        <li>
+                        {/* <li>
                           <i className="bi bi-geo-alt"></i> {language === "en" ? "6 Location":"6 Emplacement"}
-                        </li>
+                        </li> */}
                         <li>
                           <i className="bi bi-flag"></i>{language === "en" ? "2 Countries":"2 pays"} 
                         </li>
@@ -198,7 +199,7 @@ function openModal() {
                         <span>{language === "en" ? "Starting Form:":"Formulaire de départ:"}</span>
                         <h6><sub>$</sub>170.00 <span>{language === "en" ? "Per Person":"Par personne"} </span></h6>
                       </div>
-                      <button onClick={openModal} className="primary-btn2 text-[13px]">
+                      <button onClick={openModal} className="primary-btn2 text-[13px] h-7 -mt-3">
                         {language === "en" ? "Book now":"Réservez maintenant"} 
                         <i className="bi bi-arrow-right"></i>
                       </button>
