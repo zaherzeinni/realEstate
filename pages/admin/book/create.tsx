@@ -142,7 +142,7 @@ export default function BookCreatePage() {
       bathtub: false,
     },
     services: {
-      isfeatrued:false,
+      isfeatured:false,
       lockoff:false,
       resale:false,
       security: false,

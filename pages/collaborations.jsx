@@ -217,14 +217,14 @@ onClick={() => setOpenModalVideo(true)}><i className="bi bi-play-circle" /> Watc
               <div className="banner-and-inquiry-form mb-10">
                 <div className="banner2-card four">
                   <img src="/images/banner2-card-img2.png" alt="" />
-                  <div className="banner2-content-wrap">
+                  <div className="banner2-content-wrap flex flex-col">
                     <div className="banner2-content">
                       <span>{language=== "en" ? "Savings worldwide" :"Des économies dans le monde entier"}</span>
                       <h3>{language=== "en" ? "50% Off":"50% de réduction"}</h3>
                       <p>{language=== "en" ? "For Your First Book" :"Pour votre premier livre"}</p>
                     </div>
                     <ContactModal isOpen={isOpen} closeModal={closeModal} />
-                    <button onClick={openModal} className="primary-btn1">
+                    <button onClick={openModal} className="primary-btn1 justify-center w-auto">
                     {language=== "en" ?  "Book Now": "Réservez maintenant"}
                     </button>
                   </div>
@@ -245,8 +245,8 @@ onClick={() => setOpenModalVideo(true)}><i className="bi bi-play-circle" /> Watc
                       </svg>
                     </div>
                     <div className="content">
-                      <span>To More Inquiry</span>
-                      <h6><a href="tel:+990737621432">+990-737 621 432</a></h6>
+                      <span>{language === "en" ? "To More Inquiry" :"Pour plus d'enquête"}  </span>
+                      <h6><a className="hover:text-black" href="tel:+96170707627">+96170707627</a></h6>
                     </div>
                   </div>
                 </div>

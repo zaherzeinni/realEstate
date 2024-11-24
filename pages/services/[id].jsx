@@ -211,7 +211,7 @@ const BlogDetailsPage = () => {
                       <div className="content">
                       {language === 'en' ? <span>To More Inquiry</span> : <span>Pour plus d'enquête</span>}
                         <h6>
-                          <a href="tel:+990737621432">+990-737 621 432</a>
+                          <a href="tel:+96170707627">+96170707627</a>
                         </h6>
                       </div>
                     </div>

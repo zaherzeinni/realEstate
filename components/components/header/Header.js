@@ -846,7 +846,7 @@ const Header = () => {
             <div className="content">
               <span>Email:</span>
               <h6>
-                <a href="mailto:info@gmail.com">info@gmail.com</a>
+                <a href="mailto:info@sandnsearealty.ca">info@sandnsearealty.ca</a>
               </h6>
             </div>
           </div>

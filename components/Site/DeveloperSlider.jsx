@@ -71,7 +71,7 @@ const Banner1 = () => {
                             <Link href="/package" className="primary-btn1">
                               Book A Trip
                             </Link>
-                            <div className="rating-area">
+                            {/* <div className="rating-area">
                               <div className="icon">
                                 <img
                                   src="/assets/img/home1/icon/tripadvisor-logo.svg"
@@ -110,7 +110,7 @@ const Banner1 = () => {
                                   <span>4.5/5.0</span>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>
@@ -148,13 +148,13 @@ const Banner1 = () => {
                           <p className="w-auto !text-center mx-10 -ml-4 sm:ml-0 text-xs sm:text-[15px]">
                             Life is unpredictable, and we understand that plans
                             might change. Enjoy flexible booking options, so you
-                            can reschedule or modify your trip with ease.
+                            can reschedule or modify your trip with ease.1
                           </p>
                           <div className="banner-content-bottom">
                             <Link href="/package" className="primary-btn1">
                               Book A Trip{" "}
                             </Link>
-                            <div className="rating-area">
+                            {/* <div className="rating-area">
                               <div className="icon">
                                 <img
                                   src="/assets/img/home1/icon/tripadvisor-logo.svg"
@@ -193,7 +193,7 @@ const Banner1 = () => {
                                   <span>4.5/5.0</span>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>
@@ -237,7 +237,7 @@ const Banner1 = () => {
                             <Link href="/package" className="primary-btn1">
                               Book A Trip{" "}
                             </Link>
-                            <div className="rating-area">
+                            {/* <div className="rating-area">
                               <div className="icon">
                                 <img
                                   src="/assets/img/home1/icon/tripadvisor-logo.svg"
@@ -276,7 +276,7 @@ const Banner1 = () => {
                                   <span>4.5/5.0</span>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>
@@ -320,7 +320,7 @@ const Banner1 = () => {
                             <Link href="/package" className="primary-btn1">
                               Book A Trip{" "}
                             </Link>
-                            <div className="rating-area">
+                            {/* <div className="rating-area">
                               <div className="icon">
                                 <img
                                   src="/assets/img/home1/icon/tripadvisor-logo.svg"
@@ -359,7 +359,7 @@ const Banner1 = () => {
                                   <span>4.5/5.0</span>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>

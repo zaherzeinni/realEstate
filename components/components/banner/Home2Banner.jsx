@@ -1,4 +1,7 @@
 "use client";
+
+// -------------------HOME PAGE FIRST BANNER----------------
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,7 +17,9 @@ import Select from "react-select";
 import useCountries from "@/hooks/useCountries";
 import useCities from "@/hooks/useCities";
 import FilterForm from '@/components/Site/dashboardLayout/FilterForm'
+import { Language } from "@mui/icons-material";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
+import { useLanguageContext } from "@/context/languageContext";
 
 const Home2Banner = () => {
 
@@ -45,8 +50,8 @@ const Home2Banner = () => {
         setIndex(index + 1);
       }
     };
-
-    const timeoutId = setTimeout(animateText, 3000);
+    // -------------------------change this time with time of animation down change title--------------
+    const timeoutId = setTimeout(animateText, 4000);
 
     return () => clearTimeout(timeoutId); // Cleanup the timeout on component unmount
   }, [index]);
@@ -54,7 +59,7 @@ const Home2Banner = () => {
   const settings = useMemo(() => {
     return {
       slidesPerView: "auto",
-      speed: 2500,
+      speed: 2000,
       spaceBetween: 25,
       effect: "fade", // Use the fade effect
       fadeEffect: {
@@ -70,6 +75,55 @@ const Home2Banner = () => {
       },
     };
   });
+  
+
+
+// ------------------------FOR ANIMATION TEXT-------------------
+  const titles = [
+    'EXPERIENCE THE BEST IN REAL ESTATE',
+    'DISCOVER THE CHARM OF',
+    'IN OUR',
+    'DESTINATIONS:',
+  ];
+
+  const subtitles = [
+    'WITH US!',
+    'PARADISE',
+    'AMAZING',
+    'DUBAI - DOMINICAN REPUBLIC - MEXICO - SPAIN - PORTUGAL - CYPRUS',
+  ];
+
+  const titlesfr = [
+    "VIVEZ L'EXCELLENCE EN IMMOBILIER",
+    'DÉCOUVREZ LE CHARME DU',
+    'DANS NOS INCROYABLES',
+    'DESTINATIONS:',
+  ];
+
+  const subtitlesfr = [
+    'AVEC NOUS!',
+    'PARADIS',
+    'INCROYABLES',
+    'DUBAÏ- RÉPUBLIQUE DOMINICAINE - MEXIQUE - ESPAGNE -PORTUGAL - CHYPRE',
+  ];
+
+
+
+
+
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length);
+    }, 4000); // Change title every 2 seconds
+
+    return () => clearInterval(interval);
+  }, [titles.length]);
+
+  const { language } = useLanguageContext();
+
   return (
     <>
       <div className="">
@@ -156,15 +210,40 @@ const Home2Banner = () => {
                 <div className="col-lg-12">
                   <div className="home2-banner-content">
                     <div className="eg-tag">
-                      <span>New York</span>
+                      <span>SAND N SEA REALTY</span>
                     </div>
-                    <h1 className="animate-text text-[32px] sm:text-[55px] lg:text-[70px]" ref={animateTextContainerRef}>
+                    {/* <h1 className="animate-text text-[32px] sm:text-[55px] lg:text-[70px]" ref={animateTextContainerRef}>
                       Let’s Explore Your
                       <span>Holiday</span>
                       <span>Family</span>
                       <span>Honeymoon</span>
                       Trip.
-                    </h1>
+                    </h1> */}
+
+<div className="flex flex-col justify-center items-center ">
+      <h1 className="text-4xl font-bold transition-opacity duration-1000 ease-in-out text-[32px] sm:text-[40px] md:text-[50px] z1lg:w-[900px] z1xl:w-[1450px] my-2">
+        {/* {titles[currentTitleIndex]}  */}
+        {language === "en" ? titles[currentTitleIndex] : titlesfr[currentTitleIndex]}
+      </h1>
+
+      <h1 className="text-primary  animate-text text-[32px] sm:text-[40px] md:text-[50px] z1lg:w-[900px] z1xl:w-[1450px]" ref={animateTextContainerRef}> 
+                     
+                      <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
+                      <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
+                      <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
+                      <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
+                      
+                      
+                       {/* <span className=" underline-offset-4 leading-relaxed">{subtitles[currentTitleIndex]} </span>
+                      <span className=" underline-offset-4 leading-relaxed">{subtitles[currentTitleIndex]} </span>
+                      <span className=" underline-offset-4 leading-relaxed">{subtitles[currentTitleIndex]} </span>
+                      <span className=" underline-offset-4 leading-relaxed">{subtitles[currentTitleIndex]} </span> */}
+                      
+                      </h1>
+    </div>
+
+
+
                   </div>
                 </div>
               </div>

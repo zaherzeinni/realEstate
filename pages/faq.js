@@ -66,7 +66,7 @@ const Faq = () => {
   return (
     <div dir="ltr">
       <Header />
-      <Breadcrumb pagename="FAQ" pagetitle="FAQ" />
+      <Breadcrumb pagename={language === "en" ? "A WORLD OF REAL ESTATE POSSIBILITIES AT YOUR FINGERTIPS!" : "UN MONDE DE POSSIBILITÉS IMMOBILIÈRES À PORTÉE DE CLIC !"} pagetitle="FAQ" />
      
      
 

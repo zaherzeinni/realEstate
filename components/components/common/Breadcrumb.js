@@ -25,8 +25,8 @@ const Breadcrumb = ({ pagename, pagetitle }) => {
               <h1>{pagename}</h1>
               <ul className="breadcrumb-list">
                 <li>
-                  {language === "en" ? <Link href="/">Home</Link> :
-                  <Link href="/">Maison</Link>
+                  {language === "en" ? <Link href="/">Sand n Sea REALTY</Link> :
+                  <Link href="/">Sand n Sea REALTY</Link>
                 }
                 </li>
                 <li>{pagetitle}</li>

@@ -119,7 +119,7 @@ const buyguidesData = buyguides?.map((guide) => ({
       .map((city, index) => ({
         id: index,
         label: city?.title,
-        labelfr: city?.labelfr,
+        labelfr: city?.titlefr,
         link: `/projects/?city=${
           city?.title
         }&country=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`,
@@ -262,6 +262,48 @@ const buyguidesData = buyguides?.map((guide) => ({
 
 
 
+
+
+
+  
+  // --------------------------change langauge city or country-------------------
+  // const [lang, setLang] = useState();
+
+  // useEffect(() => {
+  //   const languageMap = {
+  //     en: {
+  //       "Spain": "Spain",
+  //       "Mexico": "Mexico",
+  //       "North Cyprus": "North Cyprus",
+  //       "Cyprus": "Chypre",
+  //       "CYPRUS CITY": "Chypre",
+  //       "Republic Dominica": "Dominican Republic",
+  //       "Portugal": "Portugal",
+  //       "Canada": "Canada" ,
+  //       "United Arab Emirates":"United Arab Emirates"
+  //     },
+  //     fr: {
+  //       "Spain": "Espagne",
+  //       "Mexico": "Mexique",
+  //       "North Cyprus": "Chypre du Nord",
+  //       "CYPRUS": "Chypre",
+  //       "CYPRUS CITY": "Chypre",
+  //       "Republic Dominica": "République Dominique",
+  //       "Portugal": "Portugal",
+  //       "Canada": "Canada",
+  //       "United Arab Emirates" : "Émirats arabes unis"
+  //     }
+  //   };
+  
+  //   if (languageMap[language] && languageMap[language][city]) {
+  //     setLang(languageMap[language][city]);
+  //   } else {
+  //     setLang(languageMap.en[city] || city); // Default to English name if not found
+  //   }
+  // }, [city, language]); // Dependencies to re-run effect when country or language changes
+  
+
+
   return (
     <>
       
@@ -272,10 +314,18 @@ const buyguidesData = buyguides?.map((guide) => ({
         <div className="header-logo">
           <Link href="/">
             <img
-              alt="logo"
-              className="img-fluid  w-[200px] md1:w-[70px] lg:w-[80px] lg1:w-[120px] xl:w-[200px]"
+              alt="logo header navbar"
+              className="img-fluid  w-[200px] 1md1:w-[70px] md1:hidden lg:hidden lg1:block lg1:w-[120px] xl:w-[180px]"
               // src="/assets/img/logo2.svg"
               src="/1.png"
+            />
+          </Link>
+          <Link href="/">
+            <img
+              alt="logo header navbar"
+              className="img-fluid  hidden md1:w-[40px] md1:block lg:w-[40px] lg:h-[40px]  lg1:hidden"
+              // src="/assets/img/logo2.svg"
+              src="/5.png"
             />
           </Link>
         </div>
@@ -315,7 +365,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   {groupedData?.map((subItem, subIndex) => (
                     <li key={subIndex}>
                       <Link legacyBehavior href={subItem.link}>
-                        <a>{subItem.label}</a>
+                        <a> {language === "en" ? subItem.label : subItem.labelfr }    </a>
                       </Link>
                       {subItem?.icon && subItem?.icon ? (
                         <>
@@ -343,7 +393,11 @@ const buyguidesData = buyguides?.map((guide) => ({
                           {subItem?.subMenu.map((subItem, subIndex) => (
                             <li key={subItem?.id}>
                               <Link legacyBehavior href={subItem?.link}>
-                                <a>{subItem?.label}</a>
+                               
+                               
+                                <a>{language === "en" ? subItem?.label :subItem?.labelfr } </a>
+                             
+                             
                               </Link>
                             </li>
                           ))}
@@ -576,6 +630,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                 width={28}
                 height={28}
                 viewBox="0 0 28 28"
+                
               >
                 <path d="M27.2653 21.5995L21.598 17.8201C20.8788 17.3443 19.9147 17.5009 19.383 18.1798L17.7322 20.3024C17.6296 20.4377 17.4816 20.5314 17.3154 20.5664C17.1492 20.6014 16.9759 20.5752 16.8275 20.4928L16.5134 20.3196C15.4725 19.7522 14.1772 19.0458 11.5675 16.4352C8.95784 13.8246 8.25001 12.5284 7.6826 11.4893L7.51042 11.1753C7.42683 11.0269 7.39968 10.8532 7.43398 10.6864C7.46827 10.5195 7.56169 10.3707 7.69704 10.2673L9.81816 8.61693C10.4968 8.08517 10.6536 7.1214 10.1784 6.40198L6.39895 0.734676C5.91192 0.00208106 4.9348 -0.21784 4.18082 0.235398L1.81096 1.65898C1.06634 2.09672 0.520053 2.80571 0.286612 3.63733C-0.56677 6.74673 0.0752209 12.1131 7.98033 20.0191C14.2687 26.307 18.9501 27.9979 22.1677 27.9979C22.9083 28.0011 23.6459 27.9048 24.3608 27.7115C25.1925 27.4783 25.9016 26.932 26.3391 26.1871L27.7641 23.8187C28.218 23.0645 27.9982 22.0868 27.2653 21.5995ZM26.9601 23.3399L25.5384 25.7098C25.2242 26.2474 24.7142 26.6427 24.1152 26.8128C21.2447 27.6009 16.2298 26.9482 8.64053 19.3589C1.0513 11.7697 0.398595 6.75515 1.18669 3.88421C1.35709 3.28446 1.75283 2.77385 2.2911 2.45921L4.66096 1.03749C4.98811 0.840645 5.41221 0.93606 5.62354 1.25397L7.67659 4.3363L9.39976 6.92078C9.60612 7.23283 9.53831 7.65108 9.24392 7.88199L7.1223 9.53232C6.47665 10.026 6.29227 10.9193 6.68979 11.6283L6.85826 11.9344C7.45459 13.0281 8.19599 14.3887 10.9027 17.095C13.6095 19.8012 14.9696 20.5427 16.0628 21.139L16.3694 21.3079C17.0783 21.7053 17.9716 21.521 18.4653 20.8753L20.1157 18.7537C20.3466 18.4595 20.7647 18.3918 21.0769 18.5979L26.7437 22.3773C27.0618 22.5885 27.1572 23.0128 26.9601 23.3399ZM15.8658 4.66809C20.2446 4.67296 23.7931 8.22149 23.798 12.6003C23.798 12.858 24.0069 13.0669 24.2646 13.0669C24.5223 13.0669 24.7312 12.858 24.7312 12.6003C24.7257 7.7063 20.7598 3.74029 15.8658 3.73494C15.6081 3.73494 15.3992 3.94381 15.3992 4.20151C15.3992 4.45922 15.6081 4.66809 15.8658 4.66809Z" />
                 <path d="M15.865 7.46746C18.6983 7.4708 20.9943 9.76678 20.9976 12.6001C20.9976 12.7238 21.0468 12.8425 21.1343 12.93C21.2218 13.0175 21.3404 13.0666 21.4642 13.0666C21.5879 13.0666 21.7066 13.0175 21.7941 12.93C21.8816 12.8425 21.9308 12.7238 21.9308 12.6001C21.9269 9.2516 19.2134 6.53813 15.865 6.5343C15.6073 6.5343 15.3984 6.74318 15.3984 7.00088C15.3984 7.25859 15.6073 7.46746 15.865 7.46746Z" />
@@ -583,9 +638,9 @@ const buyguidesData = buyguides?.map((guide) => ({
               </svg>
             </div>
             <div className="content">
-              <span>To More Inquiry</span>
-              <h6>
-                <a href="tel:+990737621432">+990-737 621 432</a>
+              <span>{language === "en" ? "To More Inquiry":"Pour plus d'enquête"}</span>
+              <h6 >
+                <a className="hover:text-white" href="tel:+96170707627">+96170707627</a>
               </h6>
             </div>
           </div>
@@ -952,7 +1007,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                     </svg>
                   </div>
                   <Link href="destination/style2" className="secondary-btn2">
-                    View All
+                    {language === "en" ? "View All" : "voir tout" }
                   </Link>
                   <div className="destination-sidebar-next">
                     <svg
@@ -970,8 +1025,8 @@ const buyguidesData = buyguides?.map((guide) => ({
           </div>
         </div>
         <div className="sidebar-bottom">
-          <div className="hotline-area">
-            <div className="icon">
+          <div className="hotline-area ">
+            <div className="icon  ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={28}
@@ -984,9 +1039,9 @@ const buyguidesData = buyguides?.map((guide) => ({
               </svg>
             </div>
             <div className="content">
-              <span>To More Inquiry</span>
-              <h6>
-                <a href="tel:+990737621432">+990-737 621 432</a>
+              <span>{language === "en" ? "To More Inquiry":"Pour plus d'enquête"} </span>
+              <h6 >
+                <a  href="tel:+96170707627">+96170707627</a>
               </h6>
             </div>
           </div>
@@ -1006,7 +1061,7 @@ const buyguidesData = buyguides?.map((guide) => ({
             <div className="content">
               <span>Email:</span>
               <h6>
-                <a href="mailto:info@gmail.com">info@gmail.com</a>
+                <a href="mailto:info@sandnsearealty.ca">info@sandnsearealty.ca</a>
               </h6>
             </div>
           </div>

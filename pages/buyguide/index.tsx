@@ -15,7 +15,7 @@ import Header from "@/components/components/header/Header2";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
-
+import Link from "next/link"
  
 // Fetcher function for SWR
 const fetcher = async (url: string) => {
@@ -57,6 +57,8 @@ export default function BuyguideList() {
 
 
 
+  const linkString = `/projects?city=${currentGuide?.title}&country=&baths=0&beds=0&minPrice=0&maxPrice=10000000000000&type=&rooms=0&beds=0`;
+  const linkStringfr = `/projects?city=${currentGuide?.titlefr}&country=&baths=0&beds=0&minPrice=0&maxPrice=10000000000000&type=&rooms=0&beds=0`;
 
 
 
@@ -80,7 +82,7 @@ export default function BuyguideList() {
 
   return (
     <div className=" pt mb-" dir="ltr">
-  <Breadcrumb  pagename={language === "en" ? "Buy Guide" : "Guide d'achat"} pagetitle={language === "en" ? "Buy Guide":"Guide d'achat"}/>
+  <Breadcrumb  pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} pagetitle={language === "en" ? "Buying Guide":"Guide D'achat"}/>
 
         <Header />
       <Container maxWidth={false} disableGutters>
@@ -92,50 +94,63 @@ export default function BuyguideList() {
 
                 
               {currentGuide && (
-                <Box className="!flex !flex-col sm:flex sm:flex-row" key={currentGuide._id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Button
+                <Box className="!flex !flex-col md1:flex md1:flex-row" key={currentGuide._id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <button
+                   className="primary-btn1 h-7 w-48 justify-center"
                     onClick={() => handleGuideChange(currentGuide)}
-                    sx={{
-                      textTransform: "uppercase", 
-                      fontWeight: 600,
-                      fontSize: "14px",
-                      color: "#14345B",
-                      backgroundColor: "#fff",
-                      borderRadius: "4px 4px 0 0",
-                      minHeight: "40px",
-                      '&:hover': {
-                        backgroundColor: "#c92a2a",
-                      }
-                    }}
+                    // sx={{
+                    //   textTransform: "uppercase", 
+                    //   fontWeight: 600,
+                    //   fontSize: "14px",
+                    //   color: "#14345B",
+                    //   backgroundColor: "#fff",
+                    //   borderRadius: "4px 4px 0 0",
+                    //   minHeight: "40px",
+                    //   '&:hover': {
+                    //     backgroundColor: "#c92a2a",
+                    //   }
+                    // }}
                   >
                    {language === 'en' ? currentGuide.title : currentGuide.titlefr}
-                  </Button>
+                  </button>
                   {currentGuide.items.length > 0 && (
-                    <Box sx={{ display: 'flex', gap: 1 }}>
+                    <Box className="!flex !flex-col md1:flex md1:flex-row" sx={{ display: 'flex', gap: 1 }}>
                       {currentGuide.items.map((item: BuyguideItem) => (
-                        <Button
+                        <button
+                        className="primary-btn1 h-7 w-56 text-sm justify-center"
                           key={item.id}
                           onClick={() => handleItemSelect(item)}
-                          sx={{
-                            textTransform: "none",
-                            fontSize: "13px", 
-                            color: !selectedItem?.id === item.id ? "#fff" : "#14345B",
-                            minHeight: "40px",
-                            backgroundColor: !selectedItem?.id === item.id ? "#fff" : "#fff",
-                            border: "1px solid rgba(255,255,255,0.2)",
-                            '&:hover': {
-                              backgroundColor: !selectedItem?.id === item.id ? "#c92a2a" : "#f8f9fa",
-                            }
-                          }}
+                          // sx={{
+                          //   textTransform: "none",
+                          //   fontSize: "13px", 
+                          //   color: !selectedItem?.id === item.id ? "#fff" : "#14345B",
+                          //   minHeight: "40px",
+                          //   backgroundColor: !selectedItem?.id === item.id ? "#fff" : "#fff",
+                          //   border: "1px solid rgba(255,255,255,0.2)",
+                          //   '&:hover': {
+                          //     backgroundColor: !selectedItem?.id === item.id ? "#c92a2a" : "#f8f9fa",
+                          //   }
+                          // }}
                         >
                           {language === 'en' ? item.title : item.titlefr}
-                        </Button>
+                        </button>
                       ))}
+                    
+                    {language === "en" ? 
+                    <Link href={linkString} >
+                    <button className="primary-btn1 h-7 justify-center"> Listing</button>
+                    </Link>
+                      :
+                    <Link href={linkStringfr} >
+                    <button className="primary-btn1 h-7 justify-center"> Inscription</button>
+                    </Link>
+                      }
                     </Box>
+                    
                   )}
                 </Box>
               )}
-
+     
 
             </Box>
           </Container>

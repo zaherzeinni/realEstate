@@ -517,6 +517,7 @@ const VisaDetails = () => {
                   <p>Arrange your trip in advance - book this room now!</p>
                 </div> */}
                 <div className="inquery-form">
+                    <img src="/3.png" alt="logo" className="w-[220px] sm:w-[240px] 1-mt-10 mb-10" />
                   <div className="form-title">
                     {language ==="en" ? <h4>Inquiry Form</h4> : <h4>Formulaire de demande</h4> }
                     

@@ -134,7 +134,7 @@ const Countriesslide = () => {
                   </div>
                 </div>
                 <Link href="/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=&rooms=0&beds=0" className="secondary-btn2">
-                  View All Destination
+                {language === "en" ? "View All Destination" : "Afficher toutes les destinations"}  
                 </Link>
               </div>
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect ,useRef} from "react";
 import ModalVideo from "react-modal-video";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useServices from "@/hooks/useServices";
@@ -19,7 +19,7 @@ import "swiper/swiper-bundle.css"; // Ensure you have the correct CSS imported
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
 const ServicesTabs = () => {
-  const [isOpen, setOpen] = useState(false);
+  //const [isOpen, setOpen] = useState(false);
   const { language } = useLanguageContext();
   const [activeTab, setActiveTab] = useState(0);
   const { data, isLoading, error } = useServices({
@@ -77,6 +77,58 @@ const ServicesTabs = () => {
     },
   ];
 
+
+
+  // --------------all below for video configuration-------------
+  
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal1 = () => {
+    setIsOpen(isOpen);
+  };
+
+
+
+  const videoRef = useRef(null);
+  //const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+
+    if (!isOpen) {
+      // Request full screen when opening the modal
+      if (videoRef.current) {
+        videoRef.current.play();
+        videoRef.current.requestFullscreen();
+      }
+    } else {
+      // Exit full screen when closing the modal
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      toggleModal1(); // Close the modal when Escape is pressed
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener for keydown
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      // Clean up the event listener
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+
+
+
+
+
   return (
     <div className="slider-and-tab-section mb-120">
       <div className="row g-0 ">
@@ -107,7 +159,7 @@ const ServicesTabs = () => {
                         {data.books[activeTab].image.map((image, index) => (
                           <SwiperSlide key={index} className="swiper-slide    ">
                             <div
-                              className="slide-img   "
+                              className="slide-img  "
                               style={{
                                 backgroundImage: `linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(${`${ImageEndpoint}/${image}`})`,
                               }}
@@ -225,9 +277,25 @@ const ServicesTabs = () => {
                               <a
                                 data-fancybox="popup-video"
                                 style={{ cursor: "pointer" }}
-                                onClick={() => setOpen(true)}
+                                // onClick={() => setOpen(true)}
+                                onClick={toggleModal}
                                 className="video-area"
                               >
+
+<div>
+      {isOpen && (
+        <div className="modal">
+          <div className="1modal-content">
+            <span className="1close" onClick={toggleModal}>&times;</span>
+            <video style={{    height: '550px'}} ref={videoRef} width="100%"  controls autoPlay muted>
+              <source src="/services.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
+    </div>
+
                                 <div className="icon">
                                   <svg
                                     className="video-circle"
@@ -283,7 +351,7 @@ const ServicesTabs = () => {
         </div>
       </div>
 
-      <ModalVideo
+      {/* <ModalVideo
         channel="youtube"
         onClick={() => setOpen(true)}
         isOpen={isOpen}
@@ -291,7 +359,7 @@ const ServicesTabs = () => {
         videoId="r4KpWiK08vM"
         ratio="16:9"
         onClose={() => setOpen(false)}
-      />
+      /> */}
     </div>
   );
 };

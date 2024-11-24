@@ -20,6 +20,7 @@ const Home2Testimonial = lazy(() => import("../components/components/testimonial
 const Home2Team = lazy(() => import("../components/components/team/Home2Team"));
 const Home2VideoSection = lazy(() => import("../components/components/videoSection/Home2VideoSection"));
 const Home2Banner2 = lazy(() => import("../components/components/banner/Home2Banner2"));
+import DeveloperSlider from "@/components/site/DeveloperSlider"
 
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template ",
@@ -49,6 +50,9 @@ const page = () => {
           <Header2 />
           <Home2Banner />
           <CountriesSlider />
+
+          <DeveloperSlider />
+
           <ProjectsOfferSlider />
          
           

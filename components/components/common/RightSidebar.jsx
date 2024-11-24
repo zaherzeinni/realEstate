@@ -406,7 +406,7 @@ const RightSidebar = ({ toggleRightSidebar, isRightSidebar }) => {
             <div className="content">
               <span>To More Inquiry</span>
               <h6>
-                <a href="tel:+990737621432">+990-737 621 432</a>
+                <a href="tel:+96170707627">+96170707627</a>
               </h6>
             </div>
           </div>
@@ -426,7 +426,7 @@ const RightSidebar = ({ toggleRightSidebar, isRightSidebar }) => {
             <div className="content">
               <span>Email:</span>
               <h6>
-                <a href="mailto:info@gmail.com">info@gmail.com</a>
+                <a href="mailto:info@sandnsearealty.ca">info@sandnsearealty.ca</a>
               </h6>
             </div>
           </div>

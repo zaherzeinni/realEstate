@@ -116,7 +116,7 @@ export default function BookUpdatePage() {
       bathtub: false,
     },
     services: {
-      isfeatrued:false,
+      isfeatured:false,
       lockoff:false,
       resale:false,
 

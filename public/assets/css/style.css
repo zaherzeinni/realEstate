@@ -39,6 +39,66 @@ ul
 
 
 
+  /* -------VIDEO ABOUT US HOME SECTION   Home2About.jsx------------- */
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000; /* Ensure modal is on top */
+  }
+  
+  .modal-content {
+    position: relative;
+    width: 100%; /* Adjust width as needed */
+    max-width: 330px; /* Max width for larger screens */
+
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 30px;
+    color: rgb(255, 255, 255); /* Change color as needed */
+    background: none;
+    border: none;
+  }
+  .close:hover {
+    color: red; /* Change color on hover */
+  }
+  
+  .video {
+    width: 100%;
+    height: 100%; /* Make video full height */
+    object-fit: contain; /* Cover the entire area without distortion */
+  }
+  
+
+  /* ------------------for home banner section one   ANIMATION------------------- */
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .rotate-animation {
+    animation: rotate 2s linear 1; /* 2 seconds duration, linear timing, infinite repetition */
+  }
+
+
+
+
 
 
 @font-face {
@@ -12849,6 +12909,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   background-repeat: no-repeat;
   background-position: center center;
   height: 100%;
+  filter: brightness(150%);
 }
 .slider-and-tab-section .slider-area .swiper-pagination5 {
   position: absolute;
@@ -13488,7 +13549,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
 }
 @media (max-width: 576px) {
   .teams-card .teams-img {
-    top: 60px;
+    top: 20px;
   }
 }
 .teams-card .teams-img img {

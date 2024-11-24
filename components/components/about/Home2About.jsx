@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useRef ,useEffect} from "react";
 import ModalVideo from "react-modal-video";
 import CountUp from "react-countup";
 import Link from "next/link";
@@ -9,7 +9,50 @@ const Home2About = () => {
 
   const {language} = useLanguageContext()
 
-  const [isOpen, setOpen] = useState(false);
+  // --------------all below for video configuration-------------
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal1 = () => {
+    setIsOpen(isOpen);
+  };
+
+
+
+  const videoRef = useRef(null);
+  //const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) {
+      // Request full screen when opening the modal
+      if (videoRef.current) {
+        videoRef.current.play();
+        videoRef.current.requestFullscreen();
+      }
+    } else {
+      // Exit full screen when closing the modal
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      toggleModal1(); // Close the modal when Escape is pressed
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener for keydown
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      // Clean up the event listener
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+
   return (
     <>
       <div className="home2-about-section pt-120 mb-120">
@@ -153,9 +196,29 @@ const Home2About = () => {
                   <a
                     data-fancybox="popup-video"
                     style={{ cursor: "pointer" }}
-                    onClick={() => setOpen(true)}
+                    // onClick={() => setIsOpen(true)}
+                    onClick={toggleModal}
                     className="video-area"
                   >
+
+
+
+    <div>
+      {isOpen && (
+        <div className="modal">
+          <div className="1modal-content">
+            <span className="1close" onClick={toggleModal}>&times;</span>
+            <video style={{    height: '550px'}} ref={videoRef} width="100%"  controls autoPlay muted>
+              <source src="/aboutusvideo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
+    </div>
+
+
+
                     <div className="icon">
                       <svg
                         className="video-circle"
@@ -199,7 +262,8 @@ const Home2About = () => {
               <div className="about-img-wrap">
                 <div className="about-img">
                   <img
-                    src="/assets/img/home2/home2-about-img1.png"
+                    // src="/assets/img/home2/home2-about-img1.png"
+                    src="/aboutushome.jpg"
                     alt=""
                     className="about-img"
                   />
@@ -402,17 +466,25 @@ const Home2About = () => {
             </div>
           </div> */}
         </div>
-        <React.Fragment>
+        {/* <React.Fragment>
           <ModalVideo
-            channel="youtube"
-            onClick={() => setOpen(true)}
+            //channel="youtube"
+            onClick={() => setIsOpen(true)}
             isOpen={isOpen}
             animationSpeed="350"
-            videoId="r4KpWiK08vM"
+            // videoId="bKKO5wkdd7U"
+            videoId="/aboutusvideo.mp4"
             ratio="16:9"
-            onClose={() => setOpen(false)}
+            onClose={() => setIsOpen(false)}
           />
-        </React.Fragment>
+          
+        </React.Fragment> */}
+
+
+
+
+    
+
       </div>
     </>
   );

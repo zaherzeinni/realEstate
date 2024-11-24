@@ -35,7 +35,7 @@ const Home2Banner2 = () => {
                 </div>
                 <div className="content">
                   <span>{language === "en" ? "More Inquiry": "Plus de demande"}</span>
-                  <a href="tel:+999858624984">+999-858 624 984</a>
+                  <a href="tel:+96170707627">+961 70707627</a>
                 </div>
               </div>
             </div>
@@ -60,6 +60,11 @@ const Home2Banner2 = () => {
                       </svg>
                     </button>
                   </div>
+                  {language === "en" ? 
+                <p className="w-[100%] text-center mx-auto mt-2"><b>To receive our best monthly deals</b>-------------------Register to reach your favorite lists and to be informed about campaigns, real estate news, the latest developments, and all special offers for you.</p>
+                :
+                <p className="w-[100%] text-center mx-auto mt-2"><b>Pour recevoir nos meilleures offres mensuelles</b>----------------- Inscrivez-vous pour accéder à vos listes préférées et être informé des campagnes, des actualités immobilières, des derniers développements et de toutes les offres spéciales pour vous.</p>
+              }
                 </form>
               </div>
             </div>
@@ -89,7 +94,7 @@ const Home2Banner2 = () => {
                 </div>
                 <div className="content">
                   <span>{language === "en" ? "Send Mail":"Envoyer un courrier"}</span>
-                  <a href="mailto:info@example.com">info@example.com</a>
+                  <a href="mailto:info@sandnsearealty.ca">info@sandnsearealty.ca</a>
                 </div>
               </div>
             </div>

@@ -77,8 +77,8 @@ const ContactPage = () => {
       {/* <DeveloperSlider/> */}
       <Header />
       <Breadcrumb
-        pagename={language === "en" ? "Contact us" : "À propos de nous"}
-        pagetitle={language === "en" ? "About Us" : "À propos de nous"}
+        pagename={language === "en" ? "YOUR KEY TO SMART INVESTING STARTS HERE!" : "VOTRE CLÉ POUR UN INVESTISSEMENT INTELLIGENT COMMENCE ICI!"}
+        pagetitle={language === "en" ? "Contact Us" : "Contactez-Nous"}
       />
 
       <div className="contact-page mb-16 mt-5 lg:mx-16 mx-10">
@@ -109,10 +109,10 @@ const ContactPage = () => {
                 </div>
                 <div className="!content ">
                   <h6 >
-                    <a className="!text-black hover:text-primary" href="tel:">+990-737 621 432</a>
+                    <a className="!text-black hover:text-primary" href="tel:+96170707627">+96170707627</a>
                   </h6>
                   <h6 >
-                    <a className="!text-black hover:text-primary" href="tel:">+990-737 621 432</a>
+                    <a className="!text-black hover:text-primary" href="tel:+96170707627">+96170707627</a>
                   </h6>
                 </div>
               </div>
@@ -142,10 +142,10 @@ const ContactPage = () => {
                 </div>
                 <div className="!content">
                   <h6>
-                    <a className="!text-black hover:text-primary" href="mailto:info@example.com">info@example.com</a>
+                    <a className="!text-black hover:text-primary" href="mailto:info@sandnsearealty.ca">info@sandnsearealty.ca</a>
                   </h6>
                   <h6>
-                    <a className="!text-black hover:text-primary"  href="mailto:example@example.com">example@example.com</a>
+                    <a className="!text-black hover:text-primary"  href="mailto:info@sandnsearealty.ca">info@sandnsearealty.ca</a>
                   </h6>
                 </div>
               </div>

@@ -15,7 +15,7 @@ import useProducts from "@/hooks/useProducts";
 import FilterForm from "../../components/Site/dashboardLayout/FilterForm";
 import ProjectCard from "../../components/Site/ProjectCard";
 import { ImageEndpoint } from "../../utils/global";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { useLanguageContext } from "@/context/languageContext";
 
 import { handleChange } from "../../utils/handleLanguage";
@@ -31,7 +31,7 @@ const Projects = ({
   beds,
   condition,
   lockoff,
-  resale
+  resale,
 }) => {
   const router = useRouter;
   const { query } = router;
@@ -102,6 +102,9 @@ const Projects = ({
 
 
 
+
+
+
     return (
       <div className="flex justify-center items-center space-x-2">
         <button
@@ -138,6 +141,48 @@ const Projects = ({
     );
   };
 
+
+
+
+  // --------------------------change langauge city or country-------------------
+  const [lang, setLang] = useState();
+
+  useEffect(() => {
+    const languageMap = {
+      en: {
+        "Spain": "Spain",
+        "Mexico": "Mexico",
+        "North Cyprus": "North Cyprus",
+        "Cyprus": "Chypre",
+        "CYPRUS CITY": "Chypre",
+        "Republic Dominica": "Dominican Republic",
+        "Portugal": "Portugal",
+        "Canada": "Canada" ,
+        "United Arab Emirates":"United Arab Emirates"
+      },
+      fr: {
+        "Spain": "Espagne",
+        "Mexico": "Mexique",
+        "North Cyprus": "Chypre du Nord",
+        "CYPRUS": "Chypre",
+        "CYPRUS CITY": "Chypre",
+        "Republic Dominica": "République Dominique",
+        "Portugal": "Portugal",
+        "Canada": "Canada",
+        "United Arab Emirates" : "Émirats arabes unis"
+      }
+    };
+  
+    if (languageMap[language] && languageMap[language][city]) {
+      setLang(languageMap[language][city]);
+    } else {
+      setLang(languageMap.en[city] || city); // Default to English name if not found
+    }
+  }, [city, language]); // Dependencies to re-run effect when country or language changes
+  
+
+
+
   return (
     <Suspense fallback={<div>
 
@@ -150,8 +195,8 @@ const Projects = ({
     <div dir="ltr" className="">
       {/* <Topbar /> */}
       <Header />
-      <Breadcrumb  pagename={language === "en" ? "Projects Grid" : "Grille des projets"} pagetitle={language === "en" ? "Projects Grid":"Grille des projets"}/>
-      <img src="/3.png" alt="logo" className="w-[240px] sm:w-[260px] mt-6 ml-20 " />
+      <Breadcrumb  pagename={language === "en" ? "LET'S WRITE YOUR STORY TOGETHER" : "ÉCRIVONS VOTRE HISTOIRE ENSEMBLE"} pagetitle={language === "en" ? city : lang}/>
+      {/* <img src="/3.png" alt="logo" className="w-[240px] sm:w-[260px] mt-6 ml-20 " /> */}
       <FilterForm isProjectsPage={true} />
       <div className="package-grid-with-sidebar-section pt-120 mb-120">
         <div className="container">

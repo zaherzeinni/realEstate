@@ -63,7 +63,7 @@ const Home2Team = () => {
 
   return (
     <>
-      <div className="teams-section mb-120 xl:mr-16">
+      <div className="teams-section mb-120 xl:mr-16 ">
         <div className="container">
           <div className="row mb-50">
             <div className="col-lg-12">
@@ -83,7 +83,7 @@ const Home2Team = () => {
               </div>
             </div>
           </div>
-          <div className="teams-slider-area">
+          <div className="teams-slider-area ">
             <div className="row mb-12">
               <div className="col-lg-12 ">
                 <Swiper {...settings} className="swiper teams-card-slider">
@@ -100,12 +100,12 @@ const Home2Team = () => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="slide-and-view-btn-grp style-4">
-                  <div className="slider-btn-grp3">
+                  <div className="slider-btn-grp3 ">
                     <div className="slider-btn teams-card-prev">
-                      <i className="bi bi-arrow-left" />
+                      <i className="bi bi-arrow-left " />
                       <span>{language === "en" ? "PREV" : "PREC"} </span>
                     </div>
-                    <div className="slider-btn teams-card-next xl:-mr-20">
+                    <div className="slider-btn teams-card-next lg:-mr-20 2xl:-mr-10">
                       <span>{language === "en" ? "NEXT" : "SUIVANTE"}</span>
                       <i className="bi bi-arrow-right" />
                     </div>

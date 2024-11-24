@@ -83,7 +83,7 @@ const Footer3 = () => {
                       </svg>
                       <h5>Send Mail</h5>
                     </div>
-                    <a href="mailto:info@example.com">info@example.com</a>
+                    <a href="mailto:info@sandnsearealty.co">info@sandnsearealty.ca</a>
                   </div>
                   <div className="single-contact">
                     <div className="widget-title">

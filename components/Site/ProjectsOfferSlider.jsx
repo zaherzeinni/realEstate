@@ -29,8 +29,7 @@ const  ProjectsOfferSlider = () => {
 
   const {  data } = useProducts({
     page,
-    isfeatured:true
- 
+    isfeatured:true,
   });
 
 
@@ -82,9 +81,9 @@ const  ProjectsOfferSlider = () => {
             <div className="col-lg-12">
               <div className="section-title2 text-center">
                 <div className="eg-section-tag two">
-                {language === "en" ?<span>Projects Package</span> : <span>Forfait Projets</span> }
+                {language === "en" ?<span>Featured Projects</span> : <span>Projets En Vendette</span> }
                 </div>
-                {language === "en" ? <h1 className="text-white lg:text-[60px]">Featured Projects</h1> : <h1 className="text-white lg:text-[60px]">Projets en vedette</h1>} 
+                {language === "en" ? <h1 className="text-white lg:text-[60px]">Discover Our <b className="text-primary">Real Estate</b> projects here </h1> : <h1 className="text-white lg:text-[60px]">Découvrez nos <b className="text-primary">Projets Immobiliers</b> ici</h1>} 
               </div>
             </div>
           </div>
@@ -102,7 +101,7 @@ const  ProjectsOfferSlider = () => {
                   {data?.books?.map((blog) => {
                     return (
                     <SwiperSlide className="swiper-slide">
-                    <ProjectCard blog={blog} language={language}/>
+                    <ProjectCard blog={blog} language={language} />
                     </SwiperSlide>
                     )})}
 
@@ -116,7 +115,7 @@ const  ProjectsOfferSlider = () => {
                       <span> {language === 'en' ?  'PREV' : 'Précédent'} </span>
                     </div>
                     <Link href="/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=&rooms=0&beds=0" className="secondary-btn2">
-                      View All Package
+                     {language === "en" ? "View All Package" : "Afficher tous les forfaits"} 
                     </Link>
                     <div className="slider-btn package-card-slider-next">
                     <span> {language === 'en' ?  'NEXT' : 'Suivante'}  </span>

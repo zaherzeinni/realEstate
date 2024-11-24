@@ -179,7 +179,7 @@ const page = () => {
       {/* <Topbar /> */}
       <Header />
       <Breadcrumb
-        pagename={language === "en" ? "Invest" : "Investir"}
+        pagename={language === "en" ? "CROSS-BORDER PROPERTY & FUND INVESTMENTS" : "INVESTISSEMENTS IMMOBILIERS ET DE FONDS TRANSFRONTALIERS"}
         pagetitle={language === "en" ? "Invest" : "Investir"}
       />
       <div className="package-search-filter-wrapper">
@@ -190,7 +190,7 @@ const page = () => {
 
       <div className="visa-with-sidebar-section pt-120 mb-24">
         <div className="container">
-        <img src="/3.png" alt="logo" className="w-[220px] sm:w-[260px] 1-mt-10 mb-10" />
+        {/* <img src="/3.png" alt="logo" className="w-[220px] sm:w-[260px] 1-mt-10 mb-10" /> */}
           <div className="row g-lg-4 gy-5">
             <div className="col-lg-8">
               <div className="list-grid-product-wrap mb-70">
@@ -535,9 +535,9 @@ const page = () => {
                           </svg>
                         </div>
                         <div className="content">
-                          <span>To More Inquiry</span>
+                        {language === 'en' ? <span>To More Inquiry</span> : <span>Pour plus d'enquête</span>}
                           <h6>
-                            <a href="tel:+990737621432">+990-737 621 432</a>
+                            <a href="tel:+96170707627">+96170707627</a>
                           </h6>
                         </div>
                       </div>

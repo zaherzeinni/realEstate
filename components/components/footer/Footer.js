@@ -4,8 +4,16 @@ import { useLanguageContext } from "@/context/languageContext";
 import { WhatsApp as WhatsAppIcon } from "@mui/icons-material";
 
 import ContactModal from "../../../components/Site/ContactModal"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  WhatsappIcon,
+  TelegramShareButton,
+  TelegramIcon,
+} from "react-share";
 
+import Modal from "../../components/Modal"
 const Footer = ({ style }) => {
 
 
@@ -22,6 +30,31 @@ const Footer = ({ style }) => {
 
   const { language } = useLanguageContext();
 
+
+
+
+
+
+
+// --------------------for whatsAPP text robot MODAL-------------------
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Simulate user login for demonstration
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoggedIn(true); // Simulate login after 2 seconds
+      setIsModalOpen(true); // Open modal after login
+    }, 7000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+
+
   return (
     <footer className={`footer-section ${style}`}>
       <div className="container">
@@ -35,15 +68,15 @@ const Footer = ({ style }) => {
                   </Link>
                 </div>
                 <h3>
-                  Want
+                {language === "en" ? "would you like to" : "AIMERIEZ-VOUS"} 
                   <span>
-                    to  Take <br></br>
+                   <span className="mr-2"></span>{language === "en" ? "Speak With" : "PARLER AVEC"}  <br></br>
                   </span>
-                  Tour Packages<span>?</span>
+                  {language === "en" ?   "An Expert" : "UN EXPERT"}<span>?</span>
                 </h3>
                 <ContactModal isOpen={isOpen} closeModal={closeModal} />
-                <button onClick={openModal} className="primary-btn1">
-                 {language === "en" ? "Book A Meeting":"Réserver une réunion"} 
+                <button onClick={openModal} className="primary-btn1 mt-3">
+                 {language === "en" ? "REQUEST A CONSULTATION":"DEMANDER UNE CONSULTATION"} 
                 </button>
       
               </div>
@@ -100,11 +133,11 @@ const Footer = ({ style }) => {
                         <path d="M17.5107 13.2102L14.9988 10.6982C14.1016 9.80111 12.5765 10.16 12.2177 11.3262C11.9485 12.1337 11.0514 12.5822 10.244 12.4028C8.44974 11.9542 6.0275 9.62168 5.57894 7.73772C5.3098 6.93027 5.84808 6.03314 6.65549 5.76404C7.82176 5.40519 8.18061 3.88007 7.28348 2.98295L4.77153 0.470991C4.05382 -0.156997 2.97727 -0.156997 2.34929 0.470991L0.644745 2.17553C-1.0598 3.96978 0.82417 8.72455 5.04066 12.941C9.25716 17.1575 14.0119 19.1313 15.8062 17.337L17.5107 15.6324C18.1387 14.9147 18.1387 13.8382 17.5107 13.2102Z" />
                       </g>
                     </svg>
-                    <h5>
+                    <h5 className="mr-20">
                       {language === "en" ? "More Inquiry" : "Plus de demande"}
                     </h5>
                   </div>
-                  <a href="tel:999858624984">+999-858 624 984</a>
+                  <a href="tel:+96170707627">+961 70707627</a>
                 </div>
                 <div className="single-contact mb-35">
                   <div className="widget-title">
@@ -122,7 +155,7 @@ const Footer = ({ style }) => {
                       {language === "en" ? "Send Mail" : "Envoyer un courrier"}
                     </h5>
                   </div>
-                  <a href="mailto:info@example.com">info@example.com</a>
+                  <a href="mailto:info@sandnsearealty.ca">info@sandnsearealty.ca</a>
                 </div>
                 <div className="single-contact">
                   <div className="widget-title">
@@ -139,11 +172,11 @@ const Footer = ({ style }) => {
                     <h5>{language === "en" ? "Address" : "Adresse"}</h5>
                   </div>
                   <a href="https://www.google.com/maps/place/Egens+Lab/@23.8340712,90.3631117,17z/data=!3m1!4b1!4m6!3m5!1s0x3755c14c8682a473:0xa6c74743d52adb88!8m2!3d23.8340663!4d90.3656866!16s%2Fg%2F11rs9vlwsk?entry=ttu">
-                    House 168/170, Avenue 01, Mirpur <br /> DOHS, Dhaka
+                    House 168/170, Avenue  <br /> 
                     Bangladesh
                   </a>
                 </div>
-              </div>
+              </div>              
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6 d-flex justify-content-lg-end justify-content-sm-end">
               <div className="footer-widget">
@@ -152,57 +185,134 @@ const Footer = ({ style }) => {
                     {language === "en" ? "We Are Here" : "Nous sommes là"}
                   </h5>
                 </div>
+               
+                <div className="payment-partner">
+                  <div className="widget-title">
+                    <h5>{language === "en" ? "Follow Us":"Suivez-nous"}</h5>
+                  </div>
+                  <div className="1icons">
+                    <ul>
+                      <li>
 
-                <p>
+
+                  {/* ------------------Social Media Icons------------------ */}
+
+                  <div className="my-2  mt-">
+                    <div className="justify-center flex  items-start mx-auto">
+                      <div className=" flex space-x-1">
+                      <Link
+                        href={`https://api.whatsapp.com/send?phone=&text=Salam`}
+                        target="_blank"
+                      >
+                        <WhatsappIcon className="w-[35px] h-[35px] hover:scale-110 duration-500" />
+                      </Link>
+
+                      <FacebookShareButton
+                        url='#' //eg. https://www.example.com
+                        quotes="qoutess" //"Your Quotes"
+                        hashtag="@" // #hashTag
+                      >
+                        <FacebookIcon className="w-[35px] h-[35px] hover:scale-110 duration-500" />
+                      </FacebookShareButton>
+
+                      <a
+                        href="https://www.tiktok.com/share?url=https://www.example.com/my-page"
+                        target="_blank"
+                      >
+                        <img
+                          src="/tiktok.png"
+                          className="w-[35px] h-[35px] hover:scale-110 duration-500"
+                        />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/share?url=https://www.example.com/my-page"
+                        target="_blank"
+                      >
+                        <img
+                          src="/linkedin.png"
+                          className="w-[35px] h-[35px] hover:scale-110 duration-500"
+                        />
+                      </a>
+
+                      <a
+                        href="https://www.youtube.com/share?url=https://www.example.com/my-page"
+                        target="_blank"
+                      >
+                        <img
+                          src="/youtube.png"
+                          className="w-[35px] h-[35px] hover:scale-110 duration-500"
+                        />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/share?url=https://www.example.com/my-page"
+                        target="_blank"
+                      >
+                        <img
+                          src="/insta.png"
+                          className="w-[35px] h-[35px] hover:scale-110 duration-500"
+                        />
+                      </a>
+
+
+                      </div>
+
+                    </div>
+
+
+                  </div>
+
+
+                        {/* <img
+                          src="/assets/img/home1/icon/visa-logo.svg"
+                          alt=""
+                        /> */}
+                      </li>
+                      <li className="-mb-5">
+                        {/* <img
+                          src="/assets/img/home1/icon/stripe-logo.svg"
+                          alt=""
+                        /> */}
+  {language === "en" ? 
+      <p><b>Your dream property awaits you!</b>Find a high-quality real estate development personalized for your needs in your ideal location!</p>
+      :
+      <p><b>Votre propriété de rêve vous attend!</b>trouvez un développement immobilier de haute qualité personnalisé en fonction de vos besoins dans votre emplacement idéal!</p>
+      }
+
+                      </li>
+                      <li>
+
+                        <button className="primary-btn2 -mt-5">{language === "en" ? "REQUEST OUR BROCHURE DEMANDEZ" : "NOTRE BROCHURE"}</button>
+                        {/* <img
+                          src="/assets/img/home1/icon/paypal-logo.svg"
+                          alt=""
+                        /> */}
+                      </li>
+                      <li>
+                        {/* <img src="/assets/img/home1/icon/woo-logo.svg" alt="" /> */}
+                      </li>
+                      <li>
+                        {/* <img
+                          src="/assets/img/home1/icon/skrill-logo.svg"
+                          alt=""
+                        /> */}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p className="text-center">
                   {language === "en"
                     ? "Disclaimer: While every care has been taken in the preparation of this website, the particulars and information in it are not to be construed as containing any representations upon which any interested party is entitled to rely. All illustrations, drawings and photographs are for professional presentation purposes, are indicative only and are not necessarily to scale. All information and material is subject to change without notice."
                     : "Avertissement : Bien que tous les soins aient été apportés à la préparation de ce site web, les détails et les informations qu'il contient ne doivent pas être interprétés comme des représentations sur lesquelles toute partie intéressée est en droit de se fier. Toutes les illustrations, dessins et photographies sont destinés à des fins de présentation professionnelle, sont indicatifs uniquement et ne sont pas nécessairement à l'échelle. Toutes les informations et matériaux sont susceptibles de changer sans préavis."}
                 </p>
 
-                {/* <div className="payment-partner">
-                  <div className="widget-title">
-                    <h5>Payment Partner</h5>
-                  </div>
-                  <div className="icons">
-                    <ul>
-                      <li>
-                        <img
-                          src="/assets/img/home1/icon/visa-logo.svg"
-                          alt=""
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src="/assets/img/home1/icon/stripe-logo.svg"
-                          alt=""
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src="/assets/img/home1/icon/paypal-logo.svg"
-                          alt=""
-                        />
-                      </li>
-                      <li>
-                        <img src="/assets/img/home1/icon/woo-logo.svg" alt="" />
-                      </li>
-                      <li>
-                        <img
-                          src="/assets/img/home1/icon/skrill-logo.svg"
-                          alt=""
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                </div> */}
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="footer-bottom">
           <div className="row">
             <div className="col-lg-12 d-flex flex-md-row flex-column align-items-center justify-content-md-between justify-content-center flex-wrap gap-3">
-              <ul className="social-list">
+              {/* <ul className="social-list">
                 <li>
                   <a href="https://www.facebook.com/">
                     <i className="bx bxl-facebook" />
@@ -222,25 +332,29 @@ const Footer = ({ style }) => {
                     </svg>
                   </a>
                 </li>
-                {/* <li>
+                <li>
                   <a href="https://www.pinterest.com/">
                     <i className="bx bxl-pinterest-alt" />
                   </a>
-                </li> */}
+                </li>
                 <li>
                   <a href="https://www.instagram.com/">
                     <i className="bx bxl-instagram" />
                   </a>
                 </li>
-              </ul>
+              </ul> */}
               {/* <p>
                 ©Copyright 2023 TripRex | Design By{" "}
                 <a href="https://www.egenslab.com/">Egens Lab</a>
               </p> */}
 
-<p>
-          50% Off Your Next Trip. Hurry Up For your new Tour!{" "}
-          <Link href="/package">Book Your Tour</Link>{" "}
+<p className="flex text-center mx-auto">
+   {language==="en" ? <span>   Do you want to buy a <b>&nbsp;PROPERTY</b>&nbsp;with <b>&nbsp;CRYPTOCURRENCY ?&nbsp;</b> </span> 
+   :
+   <span>   Vous voulez acheter une <b>&nbsp;PROPRIÉTÉ </b>&nbsp;avec des <b>&nbsp;CRYPTOMONNAIE ?</b> </span> 
+  }
+      <ContactModal isOpen={isOpen} closeModal={closeModal} />
+      <span onClick={openModal} className=" text-primary2 hover:underline hover:text-primary hover:cursor-pointer">{language==="en" ? "CONTACT US NOW !!" : "CONTACTEZ-NOUS MAINTENANT !!"}</span>
         </p>
               <div className="footer-right text-center mx-auto lg:mx-0 lg:text-justify">
                 <ul>
@@ -264,11 +378,35 @@ const Footer = ({ style }) => {
         href="https://wa.me/+96170707627" // Replace with your WhatsApp number
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 text-white p-2 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300 z-50"
+        className="fixed z-50 bottom-6 right-6 bg-green-500 text-white p-2 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300"
         aria-label="Chat on WhatsApp"
       >
         <WhatsAppIcon className="w-8 h-8" />
+       
       </a>
+  <div className="fixed z-50">
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        message={language=== "en" ? "Welcome to our website! If you require assistance, please feel free to respond to this message. Our team is here and ready to assist you." : "Bienvenue sur notre site ! Si vous avez besoin d'aide, n'hésitez pas à répondre à ce message. Notre équipe est à votre disposition et prête à vous assister." }
+      />
+</div>
+
+
+{/* 
+
+    <div className="flex items-center justify-center bg-gray-100">
+      <h1 className="text-3xl font-bold">Welcome to My Website</h1>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        message="You have successfully logged in!"
+      />
+    </div> */}
+
+
+
+
     </footer>
   );
 };

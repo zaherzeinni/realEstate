@@ -34,6 +34,11 @@ const Newslatter = () => {
                     </button>
                   </div>
                 </form>
+                {language === "en" ? 
+                <p className="w-[80%] text-center mx-auto mt-2"><b>To receive our best monthly deals</b>-------------------Register to reach your favorite lists and to be informed about campaigns, real estate news, the latest developments, and all special offers for you.</p>
+                :
+                <p className="w-[80%] text-center mx-auto mt-2"><b>Pour recevoir nos meilleures offres mensuelles</b>----------------- Inscrivez-vous pour accéder à vos listes préférées et être informé des campagnes, des actualités immobilières, des derniers développements et de toutes les offres spéciales pour vous.</p>
+              }
                 <img
                   src="/assets/img/home1/banner3-vector1.png"
                   alt=""

@@ -9,7 +9,7 @@ export default function TeamCard({member}) {
 
 
   return (
-    <div className="teams-card w-[250px] md:w-[290px]  mx-auto ">
+    <div className="teams-card w-[260px] sm:w-[270px] md:w-[290px]  mx-auto ">
                         <img src="/assets/img/home2/teams-card-bg.png" alt="" />
                         <div className="teams-img">
                           <img
