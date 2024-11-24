@@ -221,17 +221,17 @@ const Home2Banner = () => {
                     </h1> */}
 
 <div className="flex flex-col justify-center items-center ">
-      <h1 className="text-4xl font-bold transition-opacity duration-1000 ease-in-out text-[32px] sm:text-[40px] md:text-[50px] z1lg:w-[900px] z1xl:w-[1450px] my-2">
+      <h1 className="text-4xl font-bold transition-opacity duration-1000 ease-in-out text-[32px] sm:text-[33px] md:text-[34px] lg:text-[50px] xl:text-[55px] z1lg:w-[900px] xl:w-[1200px] my-2">
         {/* {titles[currentTitleIndex]}  */}
         {language === "en" ? titles[currentTitleIndex] : titlesfr[currentTitleIndex]}
       </h1>
 
-      <h1 className="text-primary  animate-text text-[32px] sm:text-[40px] md:text-[50px] z1lg:w-[900px] z1xl:w-[1450px]" ref={animateTextContainerRef}> 
+      <h1 className="text-primary  animate-text text-[32px] sm:text-[33px] md:text-[34px] md:w-[750px] lg:text-[50px] xl:text-[55px] lg:w-[1024px] xl:w-[1200px]" ref={animateTextContainerRef}> 
                      
                       <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
                       <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
                       <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
-                      <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
+                      <span className=" underline  "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
                       
                       
                        {/* <span className=" underline-offset-4 leading-relaxed">{subtitles[currentTitleIndex]} </span>
