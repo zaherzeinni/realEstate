@@ -4,7 +4,7 @@ import { useLanguageContext } from "@/context/languageContext";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Footer from "../components/components/footer/Footer";
 import Newsletter from "../components/components/common/Newslatter"
-import DeveloperSlider from "../components/Site/DeveloperSlider";
+
 
 
 const ContactPage = () => {

@@ -313,7 +313,7 @@ export default function AllBooks() {
                             return (
                               <TableRow key={index}>
                                <TableCell>
-                                  <Typography>{book?.isfeatured ? <h6 className=" text-green-500"> True</h6> : <h6 className=" text-red-500"> False</h6> }</Typography>
+                                  <Typography>{book.isfeatured ? <h6 className=" text-green-500"> True</h6> : <h6 className=" text-red-500"> False</h6> }</Typography>
                                 </TableCell>
                                 <TableCell>
                                   <Typography>{book?.title}</Typography>
