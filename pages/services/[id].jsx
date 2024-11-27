@@ -178,8 +178,8 @@ const BlogDetailsPage = () => {
 
 {/* -------------------FREQUENTLY ASKED & QUESTION-------------------------- */}
 
+{data?.book?.title === "BUYING" ? <Accord /> : ""}
 
-<Accord />
 
 
 
