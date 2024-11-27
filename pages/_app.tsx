@@ -64,7 +64,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-
+      <title>TripRex - Your Travel Companion</title>
       <Script id="1"  strategy='lazyOnload' src={`https://code.jquery.com/jquery-3.3.1.slim.min.js`}  />
     <Script id="1"  strategy='lazyOnload' src={`https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js`}  />
     <Script id="1"  strategy='lazyOnload' src={`https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js`}  />

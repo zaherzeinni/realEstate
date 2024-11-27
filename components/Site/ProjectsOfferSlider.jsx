@@ -78,14 +78,14 @@ const  ProjectsOfferSlider = () => {
   return (
     <>
       <div className="tour-pack-section">
-        <div className="container mx-auto -my-20">
+        <div className="mx-auto lg:max-w-screen-md lg1:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl px-4">
           <div className="row mb-50">
             <div className="col-lg-12">
               <div className="section-title2 text-center">
-                <div className="eg-section-tag two">
+                <div className="eg-section-tag two my-3">
                 {language === "en" ?<span>Featured Projects</span> : <span>Projets En Vendette</span> }
                 </div>
-                {language === "en" ? <h1 className="text-white lg:text-[60px]">Discover Our <b className="text-primary">Real Estate</b> projects here </h1> : <h1 className="text-white lg:text-[60px]">Découvrez nos <b className="text-primary">Projets Immobiliers</b> ici</h1>} 
+                {language === "en" ? <h1 className="text-[20px]  text-white sm:text-4xl lg:text-[40px] font-extrabold">Discover Our <b className="text-primary text-[20px] sm:text-4xl lg:text-[40px] font-extrabold">Real Estate</b> Projects Here </h1> : <h1 className="  text-white text-[20px] sm:text-4xl lg:text-[40px] ">Découvrez nos <b className="text-primary text-[20px]  sm:text-4xl lg:text-[40px] font-extrabold">Projets Immobiliers</b> ici</h1>} 
               </div>
             </div>
           </div>

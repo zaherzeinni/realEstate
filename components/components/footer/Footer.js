@@ -17,17 +17,6 @@ import Modal from "../../components/Modal"
 const Footer = ({ style }) => {
 
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-
   const { language } = useLanguageContext();
 
 
@@ -45,7 +34,7 @@ const Footer = ({ style }) => {
     const timer = setTimeout(() => {
       setIsLoggedIn(true); // Simulate login after 2 seconds
       setIsModalOpen(true); // Open modal after login
-    }, 7000);
+    }, 12000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -55,6 +44,32 @@ const Footer = ({ style }) => {
 
 
 
+  
+  const [isOpenW, setIsOpenW] = useState(false);
+
+  function closeModalW() {
+    setIsOpenW(false);
+  }
+
+  function openModalW() {
+    setIsOpenW(true);
+  }
+// --------------------------------------end of whatsApp code-------------------------
+
+
+  
+  let [isOpen, setIsOpen] = useState(false);
+
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  
   return (
     <footer className={`footer-section ${style}`}>
       <div className="container">
@@ -68,15 +83,15 @@ const Footer = ({ style }) => {
                   </Link>
                 </div>
                 <h3>
-                {language === "en" ? "would you like to" : "AIMERIEZ-VOUS"} 
+                {language === "en" ? "would you like to" : "Aimeriez-Vous"} 
                   <span>
-                   <span className="mr-2"></span>{language === "en" ? "Speak With" : "PARLER AVEC"}  <br></br>
+                   <span className="mr-2"></span>{language === "en" ? "Speak With" : "Parler Avec"}  <br></br>
                   </span>
-                  {language === "en" ?   "An Expert" : "UN EXPERT"}<span>?</span>
+                  {language === "en" ?   "An Expert" : "Un Expert"}<span>?</span>
                 </h3>
                 <ContactModal isOpen={isOpen} closeModal={closeModal} />
                 <button onClick={openModal} className="primary-btn1 mt-3">
-                 {language === "en" ? "REQUEST A CONSULTATION":"DEMANDER UNE CONSULTATION"} 
+                 {language === "en" ? "Request A Consultation":"Demander Une Consultation"} 
                 </button>
       
               </div>
@@ -137,7 +152,7 @@ const Footer = ({ style }) => {
                       {language === "en" ? "More Inquiry" : "Plus de demande"}
                     </h5>
                   </div>
-                  <a href="tel:+96170707627">+961 70707627</a>
+                  <a href="tel:+96170707627">+96170707627</a>
                 </div>
                 <div className="single-contact mb-35">
                   <div className="widget-title">
@@ -171,15 +186,15 @@ const Footer = ({ style }) => {
                     </svg>
                     <h5>{language === "en" ? "Address" : "Adresse"}</h5>
                   </div>
-                  <a href="https://www.google.com/maps/place/Egens+Lab/@23.8340712,90.3631117,17z/data=!3m1!4b1!4m6!3m5!1s0x3755c14c8682a473:0xa6c74743d52adb88!8m2!3d23.8340663!4d90.3656866!16s%2Fg%2F11rs9vlwsk?entry=ttu">
-                    House 168/170, Avenue  <br /> 
-                    Bangladesh
+                  <a target="_blank" href="https://www.google.com/maps/place/33%C2%B046'54.7%22N+35%C2%B029'29.1%22E/@33.7818591,35.4909465,192m/data=!3m1!1e3!4m4!3m3!8m2!3d33.7818527!4d35.4914169?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D">
+                  Dar Aytam , Aramon chwouaifat  <br /> 
+                  El Quobbeh Aalay, {language === "en" ? "Lebanon ":"Liban"}
                   </a>
                 </div>
               </div>              
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6 d-flex justify-content-lg-end justify-content-sm-end">
-              <div className="footer-widget">
+              <div className="footer-widget -mr-20">
                 <div className="widget-title">
                   <h5>
                     {language === "en" ? "We Are Here" : "Nous sommes là"}
@@ -198,7 +213,7 @@ const Footer = ({ style }) => {
                   {/* ------------------Social Media Icons------------------ */}
 
                   <div className="my-2  mt-">
-                    <div className="justify-center flex  items-start mx-auto">
+                    <div className="justify-start flex  items-start mx-auto">
                       <div className=" flex space-x-1">
                       <Link
                         href={`https://api.whatsapp.com/send?phone=&text=Salam`}
@@ -267,34 +282,27 @@ const Footer = ({ style }) => {
                           alt=""
                         /> */}
                       </li>
-                      <li className="-mb-5">
+                      <li className="-mb-5 mt-20">
                         {/* <img
                           src="/assets/img/home1/icon/stripe-logo.svg"
                           alt=""
                         /> */}
   {language === "en" ? 
-      <p><b>Your dream property awaits you!</b>Find a high-quality real estate development personalized for your needs in your ideal location!</p>
+      <p><b className="text-white">Your dream property awaits you!</b><br></br>Find a high-quality real estate development personalized for your needs in your ideal location!</p>
       :
-      <p><b>Votre propriété de rêve vous attend!</b>trouvez un développement immobilier de haute qualité personnalisé en fonction de vos besoins dans votre emplacement idéal!</p>
+      <p><b className="text-white">Votre propriété de rêve vous attend!</b><br></br>trouvez un développement immobilier de haute qualité personnalisé en fonction de vos besoins dans votre emplacement idéal!</p>
       }
 
                       </li>
                       <li>
+                     
+                        <button onClick={openModal} className="primary-btn1 -mt-5">{language === "en" ? "Request Our Brochure" : "Demandez Notre Brochure"}</button>
 
-                        <button className="primary-btn2 -mt-5">{language === "en" ? "REQUEST OUR BROCHURE DEMANDEZ" : "NOTRE BROCHURE"}</button>
-                        {/* <img
-                          src="/assets/img/home1/icon/paypal-logo.svg"
-                          alt=""
-                        /> */}
                       </li>
                       <li>
-                        {/* <img src="/assets/img/home1/icon/woo-logo.svg" alt="" /> */}
                       </li>
                       <li>
-                        {/* <img
-                          src="/assets/img/home1/icon/skrill-logo.svg"
-                          alt=""
-                        /> */}
+
                       </li>
                     </ul>
                   </div>
@@ -353,7 +361,7 @@ const Footer = ({ style }) => {
    :
    <span>   Vous voulez acheter une <b>&nbsp;PROPRIÉTÉ </b>&nbsp;avec des <b>&nbsp;CRYPTOMONNAIE ?</b> </span> 
   }
-      <ContactModal isOpen={isOpen} closeModal={closeModal} />
+      
       <span onClick={openModal} className=" text-primary2 hover:underline hover:text-primary hover:cursor-pointer">{language==="en" ? "CONTACT US NOW !!" : "CONTACTEZ-NOUS MAINTENANT !!"}</span>
         </p>
               <div className="footer-right text-center mx-auto lg:mx-0 lg:text-justify">
@@ -373,7 +381,7 @@ const Footer = ({ style }) => {
           </div>
         </div>
       </div>
-
+{/* ---------------whatsAPP with text automated------------------ */}
       <a
         href="https://wa.me/+96170707627" // Replace with your WhatsApp number
         target="_blank"
@@ -386,8 +394,8 @@ const Footer = ({ style }) => {
       </a>
   <div className="fixed z-50">
       <Modal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
+        isOpenW={isModalOpen}
+        onCloseW={handleCloseModal}
         message={language=== "en" ? "Welcome to our website! If you require assistance, please feel free to respond to this message. Our team is here and ready to assist you." : "Bienvenue sur notre site ! Si vous avez besoin d'aide, n'hésitez pas à répondre à ce message. Notre équipe est à votre disposition et prête à vous assister." }
       />
 </div>

@@ -77,7 +77,7 @@ const ContactPage = () => {
       {/* <DeveloperSlider/> */}
       <Header />
       <Breadcrumb
-        pagename={language === "en" ? "YOUR KEY TO SMART INVESTING STARTS HERE!" : "VOTRE CLÉ POUR UN INVESTISSEMENT INTELLIGENT COMMENCE ICI!"}
+        pagename={language === "en" ? "Your Key To Smart Investing Starts Here!" : "Votre Clé Pour Un Investissement Intelligent Commence Ici!"}
         pagetitle={language === "en" ? "Contact Us" : "Contactez-Nous"}
       />
 
@@ -108,12 +108,12 @@ const ContactPage = () => {
                   </svg>
                 </div>
                 <div className="!content ">
-                  <h6 >
+                  <h6 className="mt-3" >
                     <a className="!text-black hover:text-primary" href="tel:+96170707627">+96170707627</a>
                   </h6>
-                  <h6 >
+                  {/* <h6 >
                     <a className="!text-black hover:text-primary" href="tel:+96170707627">+96170707627</a>
-                  </h6>
+                  </h6> */}
                 </div>
               </div>
       </div>
@@ -141,12 +141,12 @@ const ContactPage = () => {
                   </svg>
                 </div>
                 <div className="!content">
-                  <h6>
+                  <h6 className="mt-3">
                     <a className="!text-black hover:text-primary" href="mailto:info@sandnsearealty.ca">info@sandnsearealty.ca</a>
                   </h6>
-                  <h6>
+                  {/* <h6>
                     <a className="!text-black hover:text-primary"  href="mailto:info@sandnsearealty.ca">info@sandnsearealty.ca</a>
-                  </h6>
+                  </h6> */}
                 </div>
               </div>
               </div>
@@ -160,7 +160,7 @@ const ContactPage = () => {
       <span className="absolute -top-3 left-1/2 transform -translate-x-32 bg px-2 -mt-1 !text-[17px] font-semibold text-gray-500">
       {language==="en"? "Location" :"Emplacement"}
       </span>
-                <div className="icon mr-3 mt-3">
+                <div className="icon mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={16}
@@ -173,10 +173,10 @@ const ContactPage = () => {
                 </div>
                 <div className="!content">
                   <h6>
-                    <a className="!text-black hover:text-primary" href="#">
-                      168/170, Avenue 01, Old York Drive Rich Mirpur DOHS,
-                      Bangladesh
-                    </a>
+                  <a className="hover:text-primary text-black" target="_blank" href="https://www.google.com/maps/place/33%C2%B046'54.7%22N+35%C2%B029'29.1%22E/@33.7818591,35.4909465,192m/data=!3m1!1e3!4m4!3m3!8m2!3d33.7818527!4d35.4914169?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D">
+                  Dar Aytam , Aramon chwouaifat  <br /> 
+                  El Quobbeh Aalay, {language === "en" ? "Lebanon ":"Liban"}
+                  </a>
                   </h6>
                 </div>
               </div>
@@ -192,7 +192,7 @@ const ContactPage = () => {
       <span className="absolute -top-3 left-1/2 transform -translate-x-32 bg px-2 -mt-1 !text-[17px] font-semibold text-gray-500">
       {language==="en"? "Opening Time" :"Heure d'ouverture"} 
       </span>
-                <div className="icon mr-3">
+                <div className="icon mr-3 mt-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={20}
@@ -227,7 +227,9 @@ const ContactPage = () => {
                 </div>
                 <div className="!content">
                   <h6 className="mt-2">
-                    <a className="!text-black hover:text-primary" href="#">8:00Am - 10:Pm, Friday Close</a>
+                    <a className="!text-black hover:text-primary" href="#">
+                      8:00AM - 5:00PM, {language === "en" ? "Saturday & Sunday: Closed":"Samedi et Dimanche : Fermé"}
+                      </a>
                   </h6>
                 </div>
               </div>
@@ -302,7 +304,7 @@ const ContactPage = () => {
                     </div>
                     <div className="col-lg-12 mb-30">
                       <div className="form-inner">
-                        <label className="!text-lg">{language === "en" ? "Write Your Massage*" : "Écrivez votre massage*" }</label>
+                        <label className="!text-lg">{language === "en" ? "Write Your Message*" : "Écrivez votre message*" }</label>
                         <textarea
                         value={message}
                         onChange={(e) => {

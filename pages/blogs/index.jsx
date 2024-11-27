@@ -171,7 +171,7 @@ const BlogsMainpage = ({ search, country }) => {
     <div dir="ltr" className="">
       {/* <Topbar /> */}
       <Header />
-      <Breadcrumb pagename={language === 'en' ? "HERE, TO HELP YOU FIND YOUR NEW HOME" : "ICI, POUR VOUS AIDER À TROUVER VOTRE NOUVEAU MAISON"} pagetitle={language === 'en' ? "Blogs" : "Blogs"} />
+      <Breadcrumb pagename={language === 'en' ? "Here, To Help You Find Your New Home" : "Ici, Pour Vous Aider À Trouver Votre Nouveau Maison"} pagetitle={language === 'en' ? "Blogs" : "Blogs"} />
       <div className="blog-details-section pt-120 mb-120">
         <div className="container">
           {isLoading && <Loading />}

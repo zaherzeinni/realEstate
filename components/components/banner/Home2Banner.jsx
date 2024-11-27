@@ -42,7 +42,7 @@ const Home2Banner = () => {
       for (let i = 0; i < txtslen; i++) {
         txts[i].classList.remove("text-in");
       }
-      txts[index].classList.add("text-in");
+      // txts[index].classList.add("text-in");
 
       if (index === txtslen - 1) {
         setIndex(0);
@@ -96,8 +96,8 @@ const Home2Banner = () => {
   const titlesfr = [
     "VIVEZ L'EXCELLENCE EN IMMOBILIER",
     'DÉCOUVREZ LE CHARME DU',
-    'DANS NOS INCROYABLES',
-    'DESTINATIONS:',
+    'DANS NOS',
+    'DESTINATIONS',
   ];
 
   const subtitlesfr = [
@@ -210,7 +210,7 @@ const Home2Banner = () => {
                 <div className="col-lg-12">
                   <div className="home2-banner-content">
                     <div className="eg-tag">
-                      <span>SAND N SEA REALTY</span>
+                      <span className=" font-rubik font-semibold  leading-tight">SAND N SEA REALTY</span>
                     </div>
                     {/* <h1 className="animate-text text-[32px] sm:text-[55px] lg:text-[70px]" ref={animateTextContainerRef}>
                       Let’s Explore Your
@@ -226,18 +226,15 @@ const Home2Banner = () => {
         {language === "en" ? titles[currentTitleIndex] : titlesfr[currentTitleIndex]}
       </h1>
 
-      <h1 className="text-primary  animate-text text-[32px] sm:text-[33px] md:text-[34px] md:w-[750px] lg:text-[50px] xl:text-[55px] lg:w-[1024px] xl:w-[1200px]" ref={animateTextContainerRef}> 
+      <h1 className="text-[#63AB45]  animate-text text-[32px] sm:text-[33px] md:text-[34px] md:w-[750px] lg:text-[50px] xl:text-[55px] lg:w-[1024px] xl:w-[1200px]" ref={animateTextContainerRef}> 
                      
-                      <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
-                      <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
-                      <span className=" underline "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
-                      <span className=" underline  "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
+                      <h1 className="text-[#63AB45] font-bold text-[32px] sm:text-[33px] md:text-[34px] lg:text-[50px] xl:text-[55px] "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </h1>
+                      {/* <span className="!no-underline  "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
+                      <span className="!no-underline  "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
+                      <span className="!no-underline   "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
+                       */}
                       
-                      
-                       {/* <span className=" underline-offset-4 leading-relaxed">{subtitles[currentTitleIndex]} </span>
-                      <span className=" underline-offset-4 leading-relaxed">{subtitles[currentTitleIndex]} </span>
-                      <span className=" underline-offset-4 leading-relaxed">{subtitles[currentTitleIndex]} </span>
-                      <span className=" underline-offset-4 leading-relaxed">{subtitles[currentTitleIndex]} </span> */}
+              
                       
                       </h1>
     </div>

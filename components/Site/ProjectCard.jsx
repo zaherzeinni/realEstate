@@ -181,8 +181,8 @@ export default function ProjectCard({
               </li>
             </ul>
           </div>
-          <div className="card-content-bottom -mt-4">
-            <div className="price-area">
+          <div className="card-content-bottom -mt-4 text-primary ">
+            <div className="price-area              ">
               <span className="title"> {language === "en" ? "Price Starting From:" : "Prix ​​à partir de:"} </span>
               <h6>
                 <sub>$</sub>
@@ -192,7 +192,7 @@ export default function ProjectCard({
               {/* <span>Per Person</span> */}
             </div>
             {!isfeaturepage ? (
-              <Link href={`/projects/${_id}`} className="primary-btn1  h-4 w-32 justify-center">
+              <Link href={`/projects/${_id}`} className="primary-btn1  h-4 w-40 justify-center">
                {language === "en" ? "Project Details" : "Détails du projet"} 
               </Link>
             ) : (

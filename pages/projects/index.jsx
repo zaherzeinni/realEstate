@@ -197,7 +197,7 @@ console.log(data,"dataaa index.jsx projectsss")
     <div dir="ltr" className="">
       {/* <Topbar /> */}
       <Header />
-      <Breadcrumb  pagename={language === "en" ? "LET'S WRITE YOUR STORY TOGETHER" : "ÉCRIVONS VOTRE HISTOIRE ENSEMBLE"} pagetitle={language === "en" ? city : lang}/>
+      <Breadcrumb  pagename={language === "en" ? "Let's Write Your Story Together" : "Écrivons Votre Histoire Ensemble"} pagetitle={language === "en" ? city : lang}/>
       {/* <img src="/3.png" alt="logo" className="w-[240px] sm:w-[260px] mt-6 ml-20 " /> */}
       <FilterForm isProjectsPage={true} />
       <div className="package-grid-with-sidebar-section pt-120 mb-120">

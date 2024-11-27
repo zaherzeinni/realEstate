@@ -27,6 +27,7 @@ module.exports = {
         ...screens,
       },
 
+      
       colors: {
         primary: "#63AB45",
         primary2: "#63AB45",

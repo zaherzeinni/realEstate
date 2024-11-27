@@ -40,15 +40,16 @@ const ServicesTabs = () => {
       if (data?.books?.length) {
         setActiveTab((prevTab) => (prevTab + 1) % data.books.length);
       }
-    }, 15000);
-
+    }, 5000);
+// 15000
     return () => clearInterval(interval);
   }, [data?.books]);
 
   const settings = useMemo(() => {
     return {
       slidesPerView: "auto",
-      speed: 2000,
+      speed: 1000,
+      // 2000
       spaceBetween: 25,
       effect: "fade",
       loop: true,
@@ -278,23 +279,11 @@ const ServicesTabs = () => {
                                 data-fancybox="popup-video"
                                 style={{ cursor: "pointer" }}
                                 // onClick={() => setOpen(true)}
-                                onClick={toggleModal}
+                               onClick={toggleModal}
                                 className="video-area"
                               >
 
-<div>
-      {isOpen && (
-        <div className="modal">
-          <div className="1modal-content">
-            <span className="1close" onClick={toggleModal}>&times;</span>
-            <video style={{    height: '550px'}} ref={videoRef} width="100%"  controls autoPlay muted>
-              <source src="/services.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      )}
-    </div>
+
 
                                 <div className="icon">
                                   <svg
@@ -360,6 +349,31 @@ const ServicesTabs = () => {
         ratio="16:9"
         onClose={() => setOpen(false)}
       /> */}
+
+
+
+
+<div>
+     
+     {isOpen && (
+             <div className="modal">
+               <div className="modal-content">
+                 <span className="close z-50" onClick={toggleModal}>&times;</span>
+                 <video
+                   style={{ height: '550px', backgroundColor:'black' }}
+                   ref={videoRef}
+                   width="100%"
+                   controls
+                   autoPlay
+                   loop
+                 >
+                   <source src="/services.mp4" type="video/mp4" />
+                   Your browser does not support the video tag.
+                 </video>
+               </div>
+             </div>
+           )}
+         </div>
     </div>
   );
 };

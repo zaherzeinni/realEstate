@@ -98,8 +98,9 @@ const BannerSlider = () => {
 
 const {language} = useLanguageContext()
 
+  
+let [isOpen, setIsOpen] = useState(false);
 
-const [isOpen, setIsOpen] = useState(false);
 
 function closeModal() {
   setIsOpen(false);
@@ -108,6 +109,7 @@ function closeModal() {
 function openModal() {
   setIsOpen(true);
 }
+
 
   return (
     <div className="banner4-slider-wrapper container ">
@@ -119,6 +121,11 @@ function openModal() {
             onSlideChange={handleSlideChange}
             className="banner4-card-slide lg:w-[450px]  "
           >
+            
+            
+             <ContactModal isOpen={isOpen} closeModal={closeModal} />
+            
+            
             {leftSliderImages.map((image, index) => (
               <SwiperSlide key={`thumb-${index}`}>
                 <div className={`banner4-card ${index === 1 ? 'two' : index === 2 ? 'three' : ''} md:!h-[282px]`}>
@@ -135,7 +142,7 @@ function openModal() {
                       <Link href="/contact" className="text">
                         {language === "en" ? "Discover Great Deal":"Découvrez une bonne affaire"}
                       </Link>
-                      <ContactModal isOpen={isOpen} closeModal={closeModal} />
+                     
                       <button onClick={openModal} className="primary-btn1">
                       {language === "en" ? "View This Trip":"Voir ce voyage"}
                       </button>
@@ -199,7 +206,7 @@ function openModal() {
                         <span>{language === "en" ? "Starting Form:":"Formulaire de départ:"}</span>
                         <h6><sub>$</sub>170.00 <span>{language === "en" ? "Per Person":"Par personne"} </span></h6>
                       </div>
-                      <button onClick={openModal} className="primary-btn2 text-[13px] h-7 -mt-3">
+                      <button onClick={openModal} className="primary-btn1 text-[13px] h-2 -mt-3">
                         {language === "en" ? "Book now":"Réservez maintenant"} 
                         <i className="bi bi-arrow-right"></i>
                       </button>

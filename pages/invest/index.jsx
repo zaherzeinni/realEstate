@@ -179,7 +179,7 @@ const page = () => {
       {/* <Topbar /> */}
       <Header />
       <Breadcrumb
-        pagename={language === "en" ? "CROSS-BORDER PROPERTY & FUND INVESTMENTS" : "INVESTISSEMENTS IMMOBILIERS ET DE FONDS TRANSFRONTALIERS"}
+        pagename={language === "en" ? "Cross-Border Property & Fund Investments" : "Investissements Immobiliers Et De Fonds Transfrontaliers"}
         pagetitle={language === "en" ? "Invest" : "Investir"}
       />
       <div className="package-search-filter-wrapper">

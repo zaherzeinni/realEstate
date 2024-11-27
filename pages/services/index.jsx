@@ -120,7 +120,7 @@ const BlogsMainpage = () => {
     <div dir="ltr" className="">
       {/* <Topbar /> */}
       <Header2 />
-      <Breadcrumb pagename={language==="en" ?"FOR OUR CUSTOMERS":"POUR NOS CLIENTS"} pagetitle={language==="en" ? <span className="text-primary2">Service Grid</span>:<span className="text-primary2">Grille Des Services</span>} />
+      <Breadcrumb pagename={language==="en" ?"For Our Customers":"Pour Nos Clients"} pagetitle={language==="en" ? <span className="text-primary2">Service Grid</span>:<span className="text-primary2">Grille Des Services</span>} />
      
       <div className="blod-grid-section pt-120 mb-120">
        

@@ -12,15 +12,13 @@ import ProjectForm from './ProjectForm'
 import { useLanguageContext } from "@/context/languageContext";
 
 export default function ContactModal({isOpen ,closeModal}) {
+ 
 
 
   const { language } = useLanguageContext();
 
   return (
     <>
-      <div dir='' className="">
-       
-      </div>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -62,7 +60,7 @@ export default function ContactModal({isOpen ,closeModal}) {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-primary2 text-white px-4 py-2 text-sm font-medium   focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      className="primary-btn1 inline-flex justify-center rounded-md border border-transparent bg-primary2 text-white px-4 py-2 text-sm font-medium   focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                      {language === "en" ? "Close" : "Fermer"} 

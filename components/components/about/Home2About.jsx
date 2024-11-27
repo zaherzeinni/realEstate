@@ -56,7 +56,7 @@ const Home2About = () => {
   return (
     <>
       <div className="home2-about-section pt-120 mb-120">
-        <div className="container">
+        <div className="container1 mx-auto lg:max-w-screen-md lg1:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl px-4">
           <div className="row mb-90">
             <div className="col-lg-6">
               <div className="about-content">
@@ -203,19 +203,7 @@ const Home2About = () => {
 
 
 
-    <div>
-      {isOpen && (
-        <div className="modal">
-          <div className="1modal-content">
-            <span className="1close" onClick={toggleModal}>&times;</span>
-            <video style={{    height: '550px'}} ref={videoRef} width="100%"  controls autoPlay muted>
-              <source src="/aboutusvideo.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      )}
-    </div>
+   
 
 
 
@@ -481,6 +469,20 @@ const Home2About = () => {
         </React.Fragment> */}
 
 
+
+<div>
+      {isOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close z-50" onClick={toggleModal}>&times;</span>
+            <video style={{    height: '550px',backgroundColor:'black'}} ref={videoRef} width="100%"  controls autoPlay loop>
+              <source src="/aboutusvideo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
+    </div>
 
 
     

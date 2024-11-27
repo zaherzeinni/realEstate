@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="ar">
         <Head>
-          TripRex - Your Travel Companion
+          
           <meta name="title" content="TripRex - Your Travel Companion" />
           <meta name="description" content="Discover amazing travel destinations with TripRex." />
           <meta name="keywords" content="travel, TripRex, destinations, vacation" />

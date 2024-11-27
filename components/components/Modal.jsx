@@ -1,8 +1,8 @@
-// components/Modal.js
+// components/Modal.js   whatsapp
 import React from 'react';
 import { useLanguageContext } from '@/context/languageContext';
-const Modal = ({ isOpen, onClose, message }) => {
-  if (!isOpen) return null;
+const Modal = ({ isOpenW, onCloseW, message }) => {
+  if (!isOpenW) return null;
 
   const {language} = useLanguageContext()
 
@@ -12,7 +12,7 @@ const Modal = ({ isOpen, onClose, message }) => {
         {/* <h2 className="text-lg font-bold mb-4">Welcome to our SANDnSEA website</h2> */}
         <p className=''>{message}</p>
         <button
-          onClick={onClose}
+          onClick={onCloseW}
           className="mt-4 primary-btn1 text-white px-4 py-2 rounded"
         >
   {language === "en" ? "Close":"Fermer"}        

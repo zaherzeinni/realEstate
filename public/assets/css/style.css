@@ -56,7 +56,7 @@ ul
   .modal-content {
     position: relative;
     width: 100%; /* Adjust width as needed */
-    max-width: 330px; /* Max width for larger screens */
+    max-width: 310px; /* Max width for larger screens */
 
   }
   
