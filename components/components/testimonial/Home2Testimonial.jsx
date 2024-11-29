@@ -147,12 +147,12 @@ const Home2Testimonial = () => {
                   {language === "en" ? (
                     <h2>
                       Your Trust, Our Pride <br></br>They Chose Sand n Sea
-                      Realty: Here's Their Story.
+                      Realty: <span className="text-primary"> Here's Their Story.</span>
                     </h2>
                   ) : (
                     <h2>
                       Votre Confiance, Notre Fierté <br></br>Ils Ont Choisi Sand
-                      n Sea Realty : Voici Leur Histoire.
+                      n Sea Realty :<span className="text-primary"> Voici Leur Histoire.</span>
                     </h2>
                   )}
                   {language === "en" ? (
