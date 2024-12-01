@@ -17,7 +17,16 @@ import ProjectCard from "../../components/Site/ProjectCard";
 import { useState } from "react";
 import useProducts from "@/hooks/useProducts"
 
-import Accord from "../../components/components/accordion/Accord";
+import ServicesBuying from "../../components/components/accordion/ServicesBuying";
+import ServicesSelling from "../../components/components/accordion/ServicesSelling";
+import ServicesBankF from "../../components/components/accordion/ServicesBankF";
+import ServicesLegal from "../../components/components/accordion/ServicesLegal";
+import ServicesFurniture from "../../components/components/accordion/ServicesFurniture";
+import ServicesManagement from "../../components/components/accordion/ServicesManagement";
+import ServicesTranslation from "../../components/components/accordion/ServicesTranslation";
+import ServicesResidence from "../../components/components/accordion/ServicesResidence";
+import ServicesUnder from "../../components/components/accordion/ServicesUnder";
+import ServicesFinancial from "../../components/components/accordion/ServicesFinancial";
 
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -178,8 +187,16 @@ const BlogDetailsPage = () => {
 
 {/* -------------------FREQUENTLY ASKED & QUESTION-------------------------- */}
 
-{data?.book?.title === "BUYING" ? <Accord /> : ""}
-
+{data?.book?.title === 'BUYING' ? <ServicesBuying /> : 
+              data?.book?.title === 'SELL YOUR HOME' ? <ServicesSelling /> : 
+              data?.book?.title === 'BANK FINANCING' ? <ServicesBankF /> : 
+              data?.book?.title === 'LEGAL' ? <ServicesLegal /> : 
+              data?.book?.title === 'FURNITURE' ? <ServicesFurniture /> : 
+              data?.book?.title === 'REAL ESTATE MANAGEMENT' ? <ServicesManagement /> : 
+              data?.book?.title === 'TRANSLATION SERVICES' ? <ServicesTranslation /> : 
+              data?.book?.title === 'RESIDENCE PERMIT' ? <ServicesResidence /> :
+              data?.book?.title === 'UNDER CONSTRUCTION PROPERTY' ? <ServicesUnder /> :
+              data?.book?.title === 'FINANCIAL OPTION' && <ServicesFinancial />  }
 
 
 

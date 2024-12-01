@@ -75,6 +75,31 @@ const page = () => {
   };
 
 
+  
+  const [active4, setActive4] = useState("");
+  const togglePara4 = (value) => {
+    setActive4((oldValue) => {
+      return oldValue === value ? "" : value;
+    });
+  };
+
+
+  
+  const [active5, setActive5] = useState("");
+  const togglePara5 = (value) => {
+    setActive5((oldValue) => {
+      return oldValue === value ? "" : value;
+    });
+  };
+
+  
+  const [active6, setActive6] = useState("");
+  const togglePara6 = (value) => {
+    setActive6((oldValue) => {
+      return oldValue === value ? "" : value;
+    });
+  };
+
   const { data: products } = useProducts({
     page: 1,
     isfeatured: true,
@@ -227,31 +252,10 @@ const page = () => {
                           <div className="package-card-content">
                             <div className="card-content-top">
                               <h5>{language === "en" ? title : titlefr}</h5>
-                              {/* <ul>
-                            <li>
-                              <span>Country :</span> New York
-                            </li>
-                            <li>
-                              <span>Visa Type :</span> Tourist
-                            </li>
-                            <li>
-                              <span>Visa Mode :</span> Electronic
-                            </li>
-                            <li>
-                              <span>Validity :</span> 60 Days
-                            </li>
-                            <li>
-                              <span>Processing Time :</span> 7-10 Working Day
-                            </li>
-                          </ul> */}
+             
                             </div>
                             <div className="card-content-bottom -mt-10">
-                              {/* <div className="price-area">
-                            <span>Starting Form:</span>
-                            <h6>
-                              <strong>$</strong>3860 <span>Per Person</span>
-                            </h6>
-                          </div> */}
+             
                               <Link
                                 href={`/invest/${_id}`}
                                 className="apply-btn"
@@ -304,7 +308,7 @@ const page = () => {
             <div className="col-lg-4">
               <div className="sidebar-area">
                 <h5 className="widget-title mb-30">
-                  FAQ - General Visa Information:
+                  FAQ - {language === "en" ?  "General Information"  :"General Information"}
                 </h5>
                 <div className="faq-content mb-50">
                   <div className="accordion" id="accordionTravel">
@@ -322,8 +326,7 @@ const page = () => {
                           aria-expanded="false"
                           aria-controls="travelcollapseOne"
                         >
-                          01. Can I fill in my visa application in a language
-                          other than English?
+                         {language === "en" ?  "1. What are the different real estate investment strategies?":"1. Quelles sont les différentes stratégies d'investissement immobilier ?"}
                           <div
                             className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end   ${
                               active === "1" ? "rotate-180" : ""
@@ -353,8 +356,11 @@ const page = () => {
                       >
                         <div className=" text-white-dark text-[13px] text-start">
                           <div className="accordion-body !text-start !w-auto !mx-auto">
-                            No. At Present our online application system only
-                            supports applications made in English.
+                          {language === "en" ? 
+                          "Strategies include buying for rental, flipping properties, investing in commercial real estate, and purchasing land."
+                          :
+                          "Les stratégies incluent l'achat pour la location, l'achat-revente, l'investissement dans des biens commerciaux, et l'achat de terrains."
+                          }
                           </div>
                         </div>
                       </AnimateHeight>
@@ -374,8 +380,11 @@ const page = () => {
                           aria-expanded="false"
                           aria-controls="travelcollapseOne"
                         >
-                          01. Can I fill in my visa application in a language
-                          other than English?
+                          {language === "en" ? 
+                          "2. How to get started in real estate investing ?"
+                          :
+                          "2. Comment débuter dans l'investissement immobilier ?"
+                          }
                           <div
                             className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end   ${
                               active1 === "1" ? "rotate-180" : ""
@@ -405,8 +414,11 @@ const page = () => {
                       >
                         <div className=" text-white-dark text-[13px] text-start">
                           <div className="accordion-body !text-start !w-auto !mx-auto">
-                            No. At Present our online application system only
-                            supports applications made in English.
+                          {language === "en" ? 
+                            "Start by educating yourself about the market, setting a budget, and considering consulting a real estate advisor."
+                            :
+                            "Commencez par vous informer sur le marché, établir un budget, et envisager de consulter un conseiller immobilier."
+                              }
                           </div>
                         </div>
                       </AnimateHeight>
@@ -426,8 +438,11 @@ const page = () => {
                           aria-expanded="false"
                           aria-controls="travelcollapseOne"
                         >
-                          01. Can I fill in my visa application in a language
-                          other than English?
+                           {language === "en" ? 
+                          "3. What are the main risks associated with real estate investing ?"
+                          :
+                          "3. Quels sont les principaux risques liés à l'investissement immobilier ?"
+                           }
                           <div
                             className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end   ${
                               active2 === "1" ? "rotate-180" : ""
@@ -457,8 +472,11 @@ const page = () => {
                       >
                         <div className=" text-white-dark text-[13px] text-start">
                           <div className="accordion-body !text-start !w-auto !mx-auto">
-                            No. At Present our online application system only
-                            supports applications made in English.
+                          {language === "en" ? 
+                            "Risks include vacancy rates, market fluctuations, and unexpected maintenance costs."
+                            :
+                            "Les risques incluent la vacance locative, les fluctuations du marché, et les coûts imprévus de maintenance."
+                            }
                           </div>
                         </div>
                       </AnimateHeight>
@@ -478,8 +496,11 @@ const page = () => {
                           aria-expanded="false"
                           aria-controls="travelcollapseOne"
                         >
-                          01. Can I fill in my visa application in a language
-                          other than English?
+                          {language === "en" ? 
+                          "4. How to finance a real estate investment ?"
+                          :
+                          "4. Comment financer un investissement immobilier ?"
+                          }
                           <div
                             className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end   ${
                               active3 === "1" ? "rotate-180" : ""
@@ -509,12 +530,258 @@ const page = () => {
                       >
                         <div className=" text-white-dark text-[13px] text-start">
                           <div className="accordion-body !text-start !w-auto !mx-auto">
-                            No. At Present our online application system only
-                            supports applications made in English.
+                          {language === "en" ? 
+                          "You can use mortgages, personal savings, or investment partnerships."
+                          :
+                          "Vous pouvez utiliser des prêts hypothécaires, des économies personnelles, ou des partenariats d'investissement."
+                          }
                           </div>
                         </div>
                       </AnimateHeight>
                     </div>
+
+
+                    <div className="accordion-item">
+                      <h6
+                        className="accordion-header111 text-[15px] !border-1 border-b-2 border-gray-500 my-2 "
+                        id="travelheadingOne"
+                      >
+                        <button
+                          onClick={() => togglePara4("1")}
+                          className="accordion-button- collapsed mb-2 text-start flex"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#travelcollapseOne"
+                          aria-expanded="false"
+                          aria-controls="travelcollapseOne"
+                        >
+                          {language === "en" ? 
+                          "5. What are common mistakes to avoid when investing in real estate ?"
+                          :
+                          "5. Quelles sont les erreurs courantes à éviter lors de l'investissement immobilier ?"
+                          }
+                          <div
+                            className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end   ${
+                              active4 === "1" ? "rotate-180" : ""
+                            }`}
+                          >
+                            <svg
+                              className="h-4 w-4 flex justify-end text-end "
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19 9L12 15L5 9"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        </button>
+                      </h6>
+
+                      <AnimateHeight
+                        duration={300}
+                        height={active4 === "1" ? "auto" : 0}
+                      >
+                        <div className=" text-white-dark text-[13px] text-start">
+                          <div className="accordion-body !text-start !w-auto !mx-auto">
+                          {language === "en" ? 
+                          "Avoid neglecting market research, underestimating costs, and failing to diversify your portfolio."
+                          :
+                          "Évitez de négliger la recherche de marché, de sous-estimer les coûts , et de ne pas diversifier votre portefeuille."
+                          }
+                          </div>
+                        </div>
+                      </AnimateHeight>
+                    </div>
+
+
+
+
+                    <div className="accordion-item">
+                      <h6
+                        className="accordion-header111 text-[15px] !border-1 border-b-2 border-gray-500 my-2 "
+                        id="travelheadingOne"
+                      >
+                        <button
+                          onClick={() => togglePara5("1")}
+                          className="accordion-button- collapsed mb-2 text-start flex"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#travelcollapseOne"
+                          aria-expanded="false"
+                          aria-controls="travelcollapseOne"
+                        >
+                          {language === "en" ? 
+                          "6. How to evaluate the real estate market before investing ?"
+                          :
+                          "6. Comment évaluer le marché immobilier avant d'investir ?"
+                          }
+                          <div
+                            className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end   ${
+                              active5 === "1" ? "rotate-180" : ""
+                            }`}
+                          >
+                            <svg
+                              className="h-4 w-4 flex justify-end text-end "
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19 9L12 15L5 9"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        </button>
+                      </h6>
+
+                      <AnimateHeight
+                        duration={300}
+                        height={active5 === "1" ? "auto" : 0}
+                      >
+                        <div className=" text-white-dark text-[13px] text-start">
+                          <div className="accordion-body !text-start !w-auto !mx-auto">
+                          {language === "en" ? 
+                          "Analyze price trends, rental demand, and development projects in the area."
+                          :
+                          "Analysez les tendances des prix, la demande locative, et les projets de développement dans la région."
+                          }
+                          </div>
+                        </div>
+                      </AnimateHeight>
+                    </div>
+
+
+
+                    <div className="accordion-item">
+                      <h6
+                        className="accordion-header111 text-[15px] !border-1 border-b-2 border-gray-500 my-2 "
+                        id="travelheadingOne"
+                      >
+                        <button
+                          onClick={() => togglePara6("1")}
+                          className="accordion-button- collapsed mb-2 text-start flex"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#travelcollapseOne"
+                          aria-expanded="false"
+                          aria-controls="travelcollapseOne"
+                        >
+                          {language === "en" ? 
+                          "7. Quels outils ou ressources peuvent aider à l'investissement immobilier ?"
+                          :
+                          "7. What tools or resources can assist with real estate investing?"
+                          }
+                          <div
+                            className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end   ${
+                              active6 === "1" ? "rotate-180" : ""
+                            }`}
+                          >
+                            <svg
+                              className="h-4 w-4 flex justify-end text-end "
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19 9L12 15L5 9"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        </button>
+                      </h6>
+
+                      <AnimateHeight
+                        duration={300}
+                        height={active6 === "1" ? "auto" : 0}
+                      >
+                        <div className=" text-white-dark text-[13px] text-start">
+                          <div className="accordion-body !text-start !w-auto !mx-auto">
+                          {language === "en" ? 
+                          "Utilize platforms for property searches, property management software, and books or courses on real estate investing."
+                          :
+                          "Utilisez des plateformes pour la recherche de biens, des logiciels de gestion immobilière, et des livres ou cours sur l'investissement immobilier."
+                          }
+                          </div>
+                        </div>
+                      </AnimateHeight>
+                    </div>
+
+
+
+                    {/* <div className="accordion-item">
+                      <h6
+                        className="accordion-header111 text-[15px] !border-1 border-b-2 border-gray-500 my-2 "
+                        id="travelheadingOne"
+                      >
+                        <button
+                          onClick={() => togglePara3("1")}
+                          className="accordion-button- collapsed mb-2 text-start flex"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#travelcollapseOne"
+                          aria-expanded="false"
+                          aria-controls="travelcollapseOne"
+                        >
+                          {language === "en" ? 
+                          "4. How to finance a real estate investment ?"
+                          :
+                          "4. Comment financer un investissement immobilier ?"
+                          }
+                          <div
+                            className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end   ${
+                              active3 === "1" ? "rotate-180" : ""
+                            }`}
+                          >
+                            <svg
+                              className="h-4 w-4 flex justify-end text-end "
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19 9L12 15L5 9"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        </button>
+                      </h6>
+
+                      <AnimateHeight
+                        duration={300}
+                        height={active3 === "1" ? "auto" : 0}
+                      >
+                        <div className=" text-white-dark text-[13px] text-start">
+                          <div className="accordion-body !text-start !w-auto !mx-auto">
+                          {language === "en" ? 
+                          "You can use mortgages, personal savings, or investment partnerships."
+                          :
+                          "Vous pouvez utiliser des prêts hypothécaires, des économies personnelles, ou des partenariats d'investissement."
+                          }
+                          </div>
+                        </div>
+                      </AnimateHeight>
+                    </div> */}
+
+
+
                   </div>
                 </div>
                 <div className="banner2-card">

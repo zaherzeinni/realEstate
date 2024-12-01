@@ -244,8 +244,8 @@ const ContactPage = () => {
             <div className="col-lg-7 ">
               <div className="contact-form-area">
                 <div className="flex flex-col space-y-2">
-                {/* <img src="/3.png" alt="logo" className="w-[220px] -mt-7 mb-4" /> */}
-                <img src="/SAND-250PX-BLACK.png" alt="logo" className="w-[220px] -mt-7 mb-4" />
+                <img src="/3.png" alt="logo" className="w-[220px] -mt-7 mb-4" />
+           
                 {language === "en" ? <h3>Reach Us Anytime</h3> : <h3>Contactez-nous à tout moment</h3> }
                
                 </div>
