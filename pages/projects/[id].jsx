@@ -532,7 +532,7 @@ const ProjectDetails = () => {
                         target="_blank"
                       >
                         <img
-                          src="/insta.webp"
+                          src="/insta.png"
                           className="w-[35px] h-[35px] mx-1 hover:scale-110 duration-500"
                         />
                       </a>

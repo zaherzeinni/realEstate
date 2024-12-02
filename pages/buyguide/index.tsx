@@ -2,7 +2,7 @@
 
 // Handle selected guide from Header2.js
 import * as React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { PageLayout } from "@/layouts"
@@ -17,8 +17,12 @@ import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Link from "next/link"
 import ContactModal from "@/components/Site/ContactModal"
 import ProjectCard from "@/components/Site/ProjectCard"
-import useProducts from "../../hooks/useProducts";
+import useProducts from "../../hooks/useProducts"
 
+import useBlogs from "../../hooks/useBlogs";
+import useProduct from "../../hooks/useProductDetails";
+import { ImageEndpoint } from "../../utils/global";
+import { handleChange } from "../../utils/handleLanguage";
 // Fetcher function for SWR
 const fetcher = async (url: string) => {
   const res = await fetch(url)
@@ -31,10 +35,35 @@ const fetcher = async (url: string) => {
 }
 
 export default function BuyguideList() {
+
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  const { data: products } = useProducts({
+    page: 1,
+    isfeatured: true,
+  });
+
+
   const { language } = useLanguageContext()
   const router = useRouter()
   const { guide } = router.query
   console.log(guide)
+
+  const { id } = router.query;
+  const { data } = useProduct({ id });
+
+  const { data: blogs } = useBlogs({
+    country: data?.book?.country,
+  });
+
   
   // Use SWR to fetch data
   const { data: buyguides, error } = useSWR('/api/buyguide', fetcher)
@@ -85,23 +114,20 @@ export default function BuyguideList() {
 
 
 
+ 
 
 
-
-  //const [isOpen, setIsOpen] = useState(false);
-
-  // function closeModal() {
-  //   setIsOpen(false);
-  // }
-
-  // function openModal() {
-  //   setIsOpen(true);
-  // }
-  
-  const { data: products } = useProducts({
-    page: 1,
-    isfeatured: true,
+  const images = data?.book?.image?.map((img, index) => {
+    return {
+      id: index + 1,
+      imageBig: `${ImageEndpoint}/${img}`,
+      // Add more properties if needed
+    };
   });
+
+
+
+  
 
 
 
@@ -182,7 +208,7 @@ export default function BuyguideList() {
         </Box>
         <Container maxWidth="lg">
           {currentGuide && (
-            <Box sx={{ mt: 3, mb: 2 }}>
+            <Box sx={{ mt: 3, mb: 2 }} className="flex col-lg-12">
               <Typography 
                 variant="h4" 
                 component="h1" 
@@ -196,6 +222,9 @@ export default function BuyguideList() {
                 {/* TITLE DELETED BY ME */}
                {/* <h3> {language === 'en' ? currentGuide.title : currentGuide.titlefr}</h3> */}
               </Typography>
+              
+              
+              <Container>
               {!selectedItem && (
                 <div
                   dangerouslySetInnerHTML={{
@@ -214,13 +243,80 @@ export default function BuyguideList() {
                   }}
                 />
               )}
-            </Box>
-          )}
-        </Container>
-      </Container>
+              </Container>
+              
+              
+              <div className="single-widget mb-28 mt-5 shadow-xl my-auto">
+                    {blogs?.books?.length > 0 && (
+                      <h5 className="widget-title">
+                        {language === "en" ? "Recent Post" : "Article récent"}
+                      </h5>
+                    )}
 
+                    {blogs?.books?.map((blog) => {
+                      const {
+                        _id,
 
-      {/* <ContactModal isOpen={isOpen} closeModal={closeModal} /> */}
+                        createdAt,
+                        image,
+                        title,
+                        titlefr,
+                        story,
+                        storyfr,
+                        category,
+
+                        // read_time,
+                      } = blog;
+                      return (
+                        <div className="recent-post-widget mb-20">
+                          <div className="recent-post-img mb-1">
+                            <Link href={`/blogs/${_id}`}>
+                              <img
+                                src={`${ImageEndpoint}/${image[0]}`}
+                                // src="/assets/img/innerpage/recent-post-img1.png"
+                                alt=""
+                                className="w-[300px] h-[200px]"
+                              />
+                            </Link>
+                          </div>
+
+                          <div className="recent-post-content font-rubik ">
+                            <Link
+                              className=" px-2 text-black"
+                              href={`/blogs/${_id}`}
+                            >
+                              {/* 20 July, 2023 */}
+                            </Link>
+                            <Link
+                              className=" -ml-4  text-[#100c08] text-opacity-50 hover:text-primary"
+                              href={`/blogs?country=${category}`}
+                            >
+                              {language === "en"
+                                ? `${category}`
+                                : handleChange(category)}
+                               
+                             
+                                {/* {langCountry} */}
+                           
+                            </Link>
+
+                            <h5>
+                              <Link
+                                href={`/blogs/${_id}`}
+                                className="!text-black hover:text-primary"
+                              >
+                                {language === "en"
+                                  ? title?.slice(0, 30)
+                                  : titlefr?.slice(0, 30)}
+                                ....
+                              </Link>
+                            </h5>
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                     <ContactModal isOpen={isOpen} closeModal={closeModal} />
                 <section className="projectcard mt-10 flex">
                 {products?.books && products?.books[0] && (
                   <ProjectCard
@@ -232,6 +328,16 @@ export default function BuyguideList() {
                   />
                 )}
                   </section>
+                  </div>
+
+
+            </Box>
+          )}
+        </Container>
+      </Container>
+
+
+     
       <Newslatter />
       <Footer />
     </div>
