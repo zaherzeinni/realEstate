@@ -1,9 +1,8 @@
 "use client"
 
 // Handle selected guide from Header2.js
-
-
 import * as React from "react"
+import { useState } from "react"
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { PageLayout } from "@/layouts"
@@ -16,7 +15,10 @@ import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Link from "next/link"
- 
+import ContactModal from "@/components/Site/ContactModal"
+import ProjectCard from "@/components/Site/ProjectCard"
+import useProducts from "../../hooks/useProducts";
+
 // Fetcher function for SWR
 const fetcher = async (url: string) => {
   const res = await fetch(url)
@@ -79,6 +81,29 @@ export default function BuyguideList() {
 
   if (error) return <div>Failed to load buyguides</div>
   if (!buyguides) return <Loading />
+
+
+
+
+
+
+
+  //const [isOpen, setIsOpen] = useState(false);
+
+  // function closeModal() {
+  //   setIsOpen(false);
+  // }
+
+  // function openModal() {
+  //   setIsOpen(true);
+  // }
+  
+  const { data: products } = useProducts({
+    page: 1,
+    isfeatured: true,
+  });
+
+
 
   return (
     <div className=" pt mb-" dir="ltr">
@@ -193,6 +218,21 @@ export default function BuyguideList() {
           )}
         </Container>
       </Container>
+
+
+      {/* <ContactModal isOpen={isOpen} closeModal={closeModal} /> */}
+                <section className="projectcard mt-10 flex">
+                {products?.books && products?.books[0] && (
+                  <ProjectCard
+                    openModal={openModal}
+                    isfeaturepage={true}
+                    hieght={300}
+                    blog={products?.books[0]}
+                    language={language}
+                  />
+                )}
+                  </section>
+      <Newslatter />
       <Footer />
     </div>
   )
