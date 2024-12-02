@@ -221,7 +221,10 @@ export default function AllBooks() {
                               <Typography>Title french</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>Dare</Typography>
+                              <Typography>Sub Title</Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography>Date</Typography>
                             </TableCell>
                             <TableCell>
                               <Typography>Actions</Typography>
@@ -237,6 +240,9 @@ export default function AllBooks() {
                                 </TableCell>
                                 <TableCell>
                                   <Typography>{book?.titlefr}</Typography>
+                                </TableCell>
+                                <TableCell>
+                                  <Typography>{book?.subtitle}</Typography>
                                 </TableCell>
                                 <TableCell>
                                   <Typography>

@@ -91,7 +91,7 @@ const Footer = ({ style }) => {
                 </h3>
                 <ContactModal isOpen={isOpen} closeModal={closeModal} />
                 <button onClick={openModal} className="primary-btn1 mt-3">
-                 {language === "en" ? "Request A Consultation":"Demander Une Consultation"} 
+                 {language === "en" ? "Consult Us":"Consulter Nous"} 
                 </button>
       
               </div>
@@ -288,9 +288,9 @@ const Footer = ({ style }) => {
                           alt=""
                         /> */}
   {language === "en" ? 
-      <p><b className="text-white">Your dream property awaits you!</b><br></br>Find a high-quality real estate development personalized for your needs in your ideal location!</p>
+      <p><b className="text-white">Your Dream Property Awaits You!</b><br></br>Find a high-quality real estate development personalized for your needs in your ideal location!</p>
       :
-      <p><b className="text-white">Votre propriété de rêve vous attend!</b><br></br>trouvez un développement immobilier de haute qualité personnalisé en fonction de vos besoins dans votre emplacement idéal!</p>
+      <p><b className="text-white">Votre Propriété De Rêve Vous Attend!</b><br></br>trouvez un développement immobilier de haute qualité personnalisé en fonction de vos besoins dans votre emplacement idéal!</p>
       }
 
                       </li>
