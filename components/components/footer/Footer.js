@@ -362,11 +362,11 @@ const Footer = ({ style }) => {
    <span>   Vous voulez acheter une <b>&nbsp;PROPRIÉTÉ </b>&nbsp;avec des <b>&nbsp;CRYPTOMONNAIE ?</b> </span> 
   }
       
-      <span onClick={openModal} className=" text-primary2 hover:underline hover:text-primary hover:cursor-pointer">{language==="en" ? "CONTACT US NOW !!" : "CONTACTEZ-NOUS MAINTENANT !!"}</span>
+      <span onClick={openModal} className=" text-primary2 hover:underline hover:text-primary hover:cursor-pointer">{language==="en" ? "CONTACT US NOW!!" : "CONTACTEZ-NOUS MAINTENANT !!"}</span>
         </p>
               <div className="footer-right text-center mx-auto lg:mx-0 lg:text-justify">
                 <ul>
-                  <li>
+                  <li >
                     <a href="/privacy">{language === "en" ? "Privacy Policy" :"politique"}</a>
                   </li>
                   <li>

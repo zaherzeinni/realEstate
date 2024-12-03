@@ -226,9 +226,9 @@ const Home2Banner = () => {
         {language === "en" ? titles[currentTitleIndex] : titlesfr[currentTitleIndex]}
       </h1>
 
-      <h1 className="text-[#63AB45]  animate-text text-[32px] sm:text-[33px] md:text-[34px] md:w-[750px] lg:text-[50px] xl:text-[55px] lg:w-[1024px] xl:w-[1200px]" ref={animateTextContainerRef}> 
+      <h1 className="text-[#63AB45]  animate-text text-[28px] sm:text-[33px] md:text-[34px] md:w-[750px] lg:text-[50px] xl:text-[55px] lg:w-[1024px] xl:w-[1200px]" ref={animateTextContainerRef}> 
                      
-                      <h1 className="text-[#63AB45] font-bold text-[32px] sm:text-[33px] md:text-[34px] lg:text-[50px] xl:text-[55px] "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </h1>
+                      <h1 className="text-[#63AB45] font-bold text-[28px] sm:text-[33px] md:text-[34px] lg:text-[50px] xl:text-[55px] "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </h1>
                       {/* <span className="!no-underline  "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
                       <span className="!no-underline  "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
                       <span className="!no-underline   "> {language === "en" ? subtitles[currentTitleIndex] : subtitlesfr[currentTitleIndex]} </span>
