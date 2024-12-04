@@ -599,14 +599,14 @@ export default function BuyguideList() {
                 )}
               </div>
 
-
+       
               <div className="tour-location mt-20">
               <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
               <div className="map-area mb-30">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7259008.9373557065!2d43.82589322282474!3d24.02821598116107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e1!3m2!1sen!2sbd!4v1733346086291!5m2!1sen!2sbd" width="355" height="500" loading="lazy"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7259008.9373557065!2d43.82589322282474!3d24.02821598116107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e1!3m2!1sen!2sbd!4v1733346086291!5m2!1sen!2sbd" width="365" height="500" loading="lazy"></iframe>
               </div>
             </div>
-
+    
 
             </div>
             
