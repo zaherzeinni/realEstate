@@ -23,6 +23,16 @@ import useBlogs from "../../hooks/useBlogs";
 import useProduct from "../../hooks/useProductDetails";
 import { ImageEndpoint } from "../../utils/global";
 import { handleChange } from "../../utils/handleLanguage";
+
+import SelectComponent from "@/components/Site/SelectComponent";
+
+
+
+import { message as antdMessage } from "antd";
+import axios from "axios";
+import useVisa from "@/hooks/useVisa";
+
+
 // Fetcher function for SWR
 const fetcher = async (url: string) => {
   const res = await fetch(url)
@@ -45,6 +55,52 @@ export default function BuyguideList() {
   function openModal() {
     setIsOpen(true);
   }
+
+
+
+
+    
+  const [search, setSearch] = useState<string>('')
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    router.push(`/blogs?search=${search}`);
+  };
+
+  const handleSearchInputChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+
+
+  const [selectedVisa, setSelectedVisa] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [name, setName] = useState("");
+  const [email , setEmail] = useState("");
+  const [phone , setPhone] = useState("");
+  const [message , setMessage] = useState("");
+  const [selectedlanguage , setSelectedLanguage] = useState("");
+
+
+    // CRUD State.
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [error1, setError] = useState(null);
+
+
+    useEffect(() => {
+      if (error1) {
+        antdMessage.error(error1);
+        setError(null);
+      }
+  
+      if (isSuccess) {
+        antdMessage.success("Message send successfully");
+  
+        setIsSuccess(false);
+      }
+    }, [error1, isSuccess]);
+
+
 
   const { data: products } = useProducts({
     page: 1,
@@ -131,6 +187,74 @@ export default function BuyguideList() {
 
 
 
+
+
+
+
+
+
+
+  const handleSelect = (option) => {
+    setSelectedVisa(option); // Update the selected visa state
+  };
+
+
+  const handleSelectCountry = (option) => {
+    setSelectedCountry(option); // Update the selected visa state
+  };
+
+  const handleSelectLanguage = (option) => {
+    setSelectedLanguage(option); // Update the selected visa state
+  };
+
+
+
+  
+  
+
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+       // Validation
+  if (!name || !email || !phone || !message || !selectedVisa || !selectedCountry || !selectedlanguage) {
+    antdMessage.error("Please fill in all required fields.");
+    return;
+  }
+  
+      const config = { headers: { "Content-Type": "application/json" } };
+  
+      try {
+        const { data } = await axios.post(
+          `/api/visamessage`,
+          {
+            name,
+            email,
+            phone,
+            message,
+            visa:selectedVisa,
+            country:selectedCountry,
+            language:selectedlanguage
+          },
+          config
+        );
+  
+        antdMessage.success("Your message sended successfully")
+        setIsSuccess(data.success);
+      } catch (error) {
+        setError(error.message);
+       // antdMessage.error("Your message sended successfully")
+        console.error(error.message);
+      }
+    };
+
+
+
+
+
+
+
+
   return (
     <div className=" pt mb-" dir="ltr">
   <Breadcrumb  pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} pagetitle={language === "en" ? "Buying Guide":"Guide D'achat"}/>
@@ -147,7 +271,7 @@ export default function BuyguideList() {
               {currentGuide && (
                 <Box className="!flex !flex-col md1:flex md1:flex-row" key={currentGuide._id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <button
-                   className="primary-btn1 h-7 w-48 justify-center"
+                   className="primary-btn1 h-7 w-56 justify-center"
                     onClick={() => handleGuideChange(currentGuide)}
                     // sx={{
                     //   textTransform: "uppercase", 
@@ -189,11 +313,11 @@ export default function BuyguideList() {
                     
                     {language === "en" ? 
                     <Link href={linkString} >
-                    <button className="primary-btn1 h-7 justify-center"> Listing</button>
+                    <button className="primary-btn1 h-7 w-56 justify-center"> Listing</button>
                     </Link>
                       :
                     <Link href={linkStringfr} >
-                    <button className="primary-btn1 h-7 justify-center"> Inscription</button>
+                    <button className="primary-btn1 h-7 w-56 justify-center"> Inscription</button>
                     </Link>
                       }
                     </Box>
@@ -206,7 +330,7 @@ export default function BuyguideList() {
             </Box>
           </Container>
         </Box>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           {currentGuide && (
             <Box sx={{ mt: 3, mb: 2 }} className="flex col-lg-12">
               <Typography 
@@ -222,10 +346,13 @@ export default function BuyguideList() {
                 {/* TITLE DELETED BY ME */}
                {/* <h3> {language === 'en' ? currentGuide.title : currentGuide.titlefr}</h3> */}
               </Typography>
-              
-              
-              <Container>
+
+ 
+                  <div className="md1:flex ">
+              <div className="!text-sm container" >
               {!selectedItem && (
+                 <div className="document-list">
+                <p className="w-auto">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: language === 'en' 
@@ -233,8 +360,12 @@ export default function BuyguideList() {
                       : currentGuide.descfr
                   }}
                 />
+                </p>
+                </div>
               )}
               {selectedItem && (
+                 <div className="document-list">
+                <p>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: language === 'en' 
@@ -242,94 +373,244 @@ export default function BuyguideList() {
                       : selectedItem.descfr
                   }}
                 />
+              </p>
+              </div>
               )}
-              </Container>
+
+              </div>
               
+
+
+
+              {/* ---------------------right side--------------------------- */}
+              <div className="col-lg-3 hidden xl:block ">
+                
+
+              <div className="visa-sidebar shadow-sm p-3 bg-[#dbe6d9]  mt-32 mb-20 ">
+              <div className="inquery-form">
+                    <img src="/3.png" alt="logo" className="w-[220px] sm:w-[240px] 1-mt-10 mb-10" />
+                  <div className="form-title">
+                    {language ==="en" ? <h4>Inquiry Form</h4> : <h4>Formulaire de demande</h4> }
+                    
+                    {language ==="en" ? 
+                    
+                    <p>
+                    Complete form for complaints or service inquiries; expect
+                    prompt response via phone/email.
+                  </p>
+                    : 
+                    <p>Remplissez le formulaire pour les plaintes ou les demandes de service ; attendre
+                    réponse rapide par téléphone/e-mail.</p> 
+                    }  
+                  
+                  
+                  </div>
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-inner mb-4">
+                      <label>
+                        {language === "en" ? "Full Name" : "Nom et prénom"} <span>*</span>
+                      </label>
+                      <input
+                       value={name}
+                       onChange={(e) => setName(e.target.value)}
+                      type="text" placeholder={language === "en" ?"Enter your full name":"Entrez votre nom complet"} />
+                    </div>
+                    <div className="form-inner mb-4">
+                      <label>
+                      {language === "en" ? "Email Address" : "Email Address"}  <span>*</span>
+                      </label>
+                      <input
+                       value={email}
+                       onChange={(e) => setEmail(e.target.value)}
+                        type="email"
+                        placeholder={language === "en" ?"Enter your email address":"Entrez votre adresse email"}
+                      />
+                    </div>
+                    <div className="form-inner mb-4">
+                      <label>
+                      {language === "en" ?  "Phone Number" :"Numéro de téléphone"} <span>*</span>
+                      </label>
+                      <input
+                       value={phone}
+                       onChange={(e) => setPhone(e.target.value)}
+                        type="text"
+                        placeholder={language === "en" ?"Enter your phone number":"Entrez votre numéro de téléphone"}
+                      />
+                    </div>
+                
+
+                    <div className="form-inner mb-70">
+                      <label>
+                      {language === "en" ? "Your language":"Votre langue"} <span>*</span>
+                      </label>
+                      <SelectComponent
+                        options={["English","French" ,"Spanish",]}
+                        placeholder={language === "en" ? "Select Language":"Sélectionner la langue"}
+                        onSelect={handleSelectLanguage} // Pass the handler to the SelectComponent
+                      />
+                     
+                    </div>
+
+
+
+                    <div className="form-inner mb-30">
+                      <label>
+                      {language === "en" ? "Write Your Massage":"Écrivez votre massage"}  <span>*</span>
+                      </label>
+                      <textarea
+                       value={message}
+                       onChange={(e) => setMessage(e.target.value)}
+                        placeholder= {language === "en" ? "Write your quiry" : "Écrivez votre demande"}
+                        defaultValue={""}
+                      />
+                    </div>
+                    <div className="form-inner">
+                      <button type="submit" className="primary-btn1 two">
+                      {language === "en" ?  "Submit Now":"Soumettre maintenant"}
+                      </button>
+                    </div>
+                  </form>
+
+                </div>
+
               
-              <div className="single-widget mb-28 mt-5 shadow-xl my-auto">
-                    {blogs?.books?.length > 0 && (
-                      <h5 className="widget-title">
-                        {language === "en" ? "Recent Post" : "Article récent"}
-                      </h5>
-                    )}
 
-                    {blogs?.books?.map((blog) => {
-                      const {
-                        _id,
+                
+</div>
 
-                        createdAt,
-                        image,
-                        title,
-                        titlefr,
-                        story,
-                        storyfr,
-                        category,
+<div className="banner-and-inquiry-form mb-10">
+                <div className="banner2-card four">
+                  <img src="/images/banner2-card-img2.png" alt="" />
+                  <div className="banner2-content-wrap">
+                    <div className="banner2-content">
+                      <span>
+                        {language === "en"
+                          ? "Savings worldwide"
+                          : "Des économies dans le monde entier"}
+                      </span>
+                      <h3>
+                        {language === "en" ? "50% Off" : "50% de réduction"}
+                      </h3>
+                      <p>
+                        {language === "en"
+                          ? "For Your First Book"
+                          : "Pour votre premier livre"}
+                      </p>
+                    </div>
+                    <ContactModal isOpen={isOpen} closeModal={closeModal} />
+                    <button onClick={openModal} className="primary-btn1">
+                      {language === "en" ? "Book Now" : "Réservez maintenant"}
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-                        // read_time,
-                      } = blog;
-                      return (
-                        <div className="recent-post-widget mb-20">
-                          <div className="recent-post-img mb-1">
-                            <Link href={`/blogs/${_id}`}>
-                              <img
-                                src={`${ImageEndpoint}/${image[0]}`}
-                                // src="/assets/img/innerpage/recent-post-img1.png"
-                                alt=""
-                                className="w-[300px] h-[200px]"
-                              />
-                            </Link>
-                          </div>
 
-                          <div className="recent-post-content font-rubik ">
-                            <Link
-                              className=" px-2 text-black"
-                              href={`/blogs/${_id}`}
-                            >
-                              {/* 20 July, 2023 */}
-                            </Link>
-                            <Link
-                              className=" -ml-4  text-[#100c08] text-opacity-50 hover:text-primary"
-                              href={`/blogs?country=${category}`}
-                            >
-                              {language === "en"
-                                ? `${category}`
-                                : handleChange(category)}
-                               
-                             
-                                {/* {langCountry} */}
-                           
-                            </Link>
 
-                            <h5>
-                              <Link
-                                href={`/blogs/${_id}`}
-                                className="!text-black hover:text-primary"
-                              >
-                                {language === "en"
-                                  ? title?.slice(0, 30)
-                                  : titlefr?.slice(0, 30)}
-                                ....
-                              </Link>
-                            </h5>
-                          </div>
+              {products?.books && products?.books[0] && (
+                  <ProjectCard
+                    openModal={openModal}
+                    isfeaturepage={false}
+                    blog={products?.books[0]}
+                    language={language}
+                    
+                  />
+                )}
+
+
+              <div className="sidebar-area">
+                <div className="single-widget mb-1">
+                  <h5 className="widget-title">
+                    {language === "en" ? "Search Here" : "Rechercher ici"}
+                  </h5>
+                  <form onSubmit={handleSearch}>
+                    <div className="search-box">
+                      <input
+                        placeholder={
+                          language === "en" ? "Search Here" : "Rechercher ici"
+                        }
+                        value={search}
+                        onChange={handleSearchInputChange}
+                        type="text"
+                      />
+                      <button type="submit">
+                        <i className="bx bx-search" />
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+                <div className="single-widget mb-30">
+                  <h5 className="widget-title">
+                    {language === "en" ? "Recent Post" : "Article récent"}
+                  </h5>
+
+                  {blogs?.books?.map((blog) => {
+                    const {
+                      _id,
+
+                      createdAt,
+
+                      image,
+                      title,
+                      titlefr,
+                      story,
+                      storyfr,
+                      category,
+                      // read_time,
+                    } = blog;
+                    return (
+                      <div className="recent-post-widget mb-20">
+                        <div className="recent-post-img">
+                          <Link href={`/blogs/${_id}`}>
+                            <img
+                              src={`${ImageEndpoint}/${image[0]}`}
+                              // src="/assets/img/innerpage/recent-post-img1.png"
+                              alt=""
+                            />
+                          </Link>
                         </div>
-                      );
-                    })}
 
-                     <ContactModal isOpen={isOpen} closeModal={closeModal} />
-                <section className="projectcard mt-10 flex">
+                        <div className="recent-post-content">
+                          <Link href={`/blogs/${_id}`}>{blog.category}</Link>
+                          <h6>
+                            <Link href={`/blogs/${_id}`}>
+                              {language === "en" ? title : titlefr}
+                            </Link>
+                          </h6>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <ContactModal isOpen={isOpen} closeModal={closeModal} />
+
                 {products?.books && products?.books[0] && (
                   <ProjectCard
                     openModal={openModal}
                     isfeaturepage={true}
-                    hieght={300}
+                   
                     blog={products?.books[0]}
                     language={language}
                   />
                 )}
-                  </section>
-                  </div>
+              </div>
 
+
+              <div className="tour-location mt-20">
+              <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
+              <div className="map-area mb-30">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7259008.9373557065!2d43.82589322282474!3d24.02821598116107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e1!3m2!1sen!2sbd!4v1733346086291!5m2!1sen!2sbd" width="355" height="500" loading="lazy"></iframe>
+              </div>
+            </div>
+
+
+            </div>
+            
+
+
+            </div>
 
             </Box>
           )}
