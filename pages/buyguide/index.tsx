@@ -498,7 +498,7 @@ export default function BuyguideList() {
                       </p>
                     </div>
                     <ContactModal isOpen={isOpen} closeModal={closeModal} />
-                    <button onClick={openModal} className="primary-btn1">
+                    <button onClick={openModal} className="primary-btn1 justify-center text-[13px]">
                       {language === "en" ? "Book Now" : "Réservez maintenant"}
                     </button>
                   </div>
@@ -572,7 +572,9 @@ export default function BuyguideList() {
                         </div>
 
                         <div className="recent-post-content">
-                          <Link href={`/blogs/${_id}`}>{blog.category}</Link>
+                          <Link href={`/blogs/${_id}`}> {language === "en"
+                        ? blog?.category
+                        : handleChange(blog?.category)}</Link>
                           <h6>
                             <Link href={`/blogs/${_id}`}>
                               {language === "en" ? title : titlefr}

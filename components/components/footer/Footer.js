@@ -288,9 +288,9 @@ const Footer = ({ style }) => {
                           alt=""
                         /> */}
   {language === "en" ? 
-      <p><b className="text-white">Your Dream Property Awaits You!</b><br></br>Find a high-quality real estate development personalized for your needs in your ideal location!</p>
+      <p><b className="text-white opacity-80">Your Dream Property Awaits You!</b><br></br>Find a high-quality real estate development personalized for your needs in your ideal location!</p>
       :
-      <p><b className="text-white">Votre Propriété De Rêve Vous Attend!</b><br></br>trouvez un développement immobilier de haute qualité personnalisé en fonction de vos besoins dans votre emplacement idéal!</p>
+      <p><b className="text-white opacity-80">Votre Propriété De Rêve Vous Attend!</b><br></br>trouvez un développement immobilier de haute qualité personnalisé en fonction de vos besoins dans votre emplacement idéal!</p>
       }
 
                       </li>
