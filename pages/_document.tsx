@@ -6,13 +6,13 @@ import theme from "@/site-settings/theme";
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="ar">
+      <Html lang="en">
         <Head>
           
-          <meta name="title" content="TripRex - Your Travel Companion" />
-          <meta name="description" content="Discover amazing travel destinations with TripRex." />
-          <meta name="keywords" content="travel, TripRex, destinations, vacation" />
-
+          <meta name="title" content="Sand n Sea Realty" />
+          <meta name="description" content="Sand n Sea Realty" />
+          <meta name="keywords" content="Sand n Sea Realty" />
+          <link rel="icon" href="/5.png" />
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content={theme.palette.primary.main} />
 

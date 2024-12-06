@@ -56,7 +56,7 @@ const BlogsMainpage = ({ search, country }) => {
 
     {
       value: "United Arab Emirates",
-      label: language === "en" ? "United Arab Emirates" : "",
+      label: language === "en" ? "United Arab Emirates" : "Émirats arabes unis",
     },
   ];
 

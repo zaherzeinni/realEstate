@@ -31,7 +31,7 @@ import SelectComponent from "@/components/Site/SelectComponent";
 import { message as antdMessage } from "antd";
 import axios from "axios";
 import useVisa from "@/hooks/useVisa";
-
+import Select from "react-select";
 
 // Fetcher function for SWR
 const fetcher = async (url: string) => {
@@ -56,19 +56,21 @@ export default function BuyguideList() {
     setIsOpen(true);
   }
 
-
-
+  const [searchstate, setsearchstate] = useState("");
+  const [countrystate, setCountry] = useState({ value: "", label: "" });
 
     
   const [search, setSearch] = useState<string>('')
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    router.push(`/blogs?search=${search}`);
-  };
 
   const handleSearchInputChange = (e) => {
     setSearch(e.target.value);
+  };
+
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    router.push(`/blogs?search=${searchstate}&country=${countrystate?.value}`);
   };
 
 
@@ -251,9 +253,37 @@ export default function BuyguideList() {
 
 
 
+    const countries = [
+      // { value: "", label: "All countries" },
+  
+      { value: "Mexico", label: language === "en" ? "Mexico" : "Mexique" },
+      {
+        value: "North Cyprus",
+        label: language === "en" ? "North Cyprus" : "Chypre du Nord",
+      },
+      { value: "Spain", label: language === "en" ? "Spain" : "Espagne" },
+      {
+        value: "Republic Dominica",
+        label: language === "en" ? "Republic Dominica" : "République Dominique",
+      },
+  
+      // { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
+  
+      // { value: "Canada", label: language === 'en' ? "Canada" : "Canada"},
+  
+      {
+        value: "United Arab Emirates",
+        label: language === "en" ? "United Arab Emirates" : "Émirats arabes unis",
+      },
+    ];
 
 
 
+    const languagess = [
+      {value:"English",label:language === "en" ? "English" : "Anglaise"},
+      {value:"French",label:language === "en" ? "French" : "Français"},
+      {value:"Spanish",label:language === "en" ? "Spanish" : "Espagnole"}
+    ]
 
   return (
     <div className=" pt mb-" dir="ltr">
@@ -269,9 +299,9 @@ export default function BuyguideList() {
 
                 
               {currentGuide && (
-                <Box className="!flex !flex-col md1:flex md1:flex-row" key={currentGuide._id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Box className="!flex !flex-col lg1:flex lg1:flex-row" key={currentGuide._id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <button
-                   className="primary-btn1 h-7 w-56 justify-center"
+                   className="primary-btn1 h-7 w-56 justify-center mx-auto "
                     onClick={() => handleGuideChange(currentGuide)}
                     // sx={{
                     //   textTransform: "uppercase", 
@@ -289,10 +319,10 @@ export default function BuyguideList() {
                    {language === 'en' ? currentGuide.title : currentGuide.titlefr}
                   </button>
                   {currentGuide.items.length > 0 && (
-                    <Box className="!flex !flex-col md1:flex md1:flex-row" sx={{ display: 'flex', gap: 1 }}>
+                    <Box className="!flex !flex-col lg1:flex lg1:flex-row" sx={{ display: 'flex', gap: 1 }}>
                       {currentGuide.items.map((item: BuyguideItem) => (
                         <button
-                        className="primary-btn1 h-7 w-56 text-sm justify-center"
+                        className="primary-btn1 h-7 w-56 justify-center mx-auto"
                           key={item.id}
                           onClick={() => handleItemSelect(item)}
                           // sx={{
@@ -313,11 +343,11 @@ export default function BuyguideList() {
                     
                     {language === "en" ? 
                     <Link href={linkString} >
-                    <button className="primary-btn1 h-7 w-56 justify-center"> Listing</button>
+                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto"> See Properties In {currentGuide?.title}</button>
                     </Link>
                       :
                     <Link href={linkStringfr} >
-                    <button className="primary-btn1 h-7 w-56 justify-center"> Inscription</button>
+                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto"> Voir les propriétés {currentGuide?.titlefr}</button>
                     </Link>
                       }
                     </Box>
@@ -330,7 +360,7 @@ export default function BuyguideList() {
             </Box>
           </Container>
         </Box>
-        <Container maxWidth="xl">
+        <Container maxWidth="">
           {currentGuide && (
             <Box sx={{ mt: 3, mb: 2 }} className="flex col-lg-12">
               <Typography 
@@ -352,7 +382,7 @@ export default function BuyguideList() {
               <div className="!text-sm container" >
               {!selectedItem && (
                  <div className="document-list">
-                <p className="w-auto">
+                <p className="w-auto sm:mx-10">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: language === 'en' 
@@ -386,7 +416,7 @@ export default function BuyguideList() {
               <div className="col-lg-3 hidden xl:block ">
                 
 
-              <div className="visa-sidebar shadow-sm p-3 bg-[#dbe6d9]  mt-32 mb-20 ">
+              <div className="visa-sidebar shadow-sm p-3 bg-[#dbe6d9]  mt-20 mb-20 ">
               <div className="inquery-form">
                     <img src="/3.png" alt="logo" className="w-[220px] sm:w-[240px] 1-mt-10 mb-10" />
                   <div className="form-title">
@@ -399,7 +429,7 @@ export default function BuyguideList() {
                     prompt response via phone/email.
                   </p>
                     : 
-                    <p>Remplissez le formulaire pour les plaintes ou les demandes de service ; attendre
+                    <p>Remplissez le formulaire pour les plaintes ou les demandes de service; attendre
                     réponse rapide par téléphone/e-mail.</p> 
                     }  
                   
@@ -439,22 +469,37 @@ export default function BuyguideList() {
                     </div>
                 
 
-                    <div className="form-inner mb-70">
+                    <div className="form-inner">
                       <label>
                       {language === "en" ? "Your language":"Votre langue"} <span>*</span>
                       </label>
-                      <SelectComponent
-                        options={["English","French" ,"Spanish",]}
-                        placeholder={language === "en" ? "Select Language":"Sélectionner la langue"}
+                      <Select
+                        options={languagess}
+                        placeholder={language === "en" ? <p className="ml-5 my-auto text-sm">Select Language</p>:<p className="ml-5 my-auto text-sm">Sélectionner la langue</p>}
                         onSelect={handleSelectLanguage} // Pass the handler to the SelectComponent
+
                       />
                      
                     </div>
 
+                    <div className="form-inner">
+                      <label className="mt-3">
+                      {language === "en" ? "Select Country":"Sélectionnez un pays"} <span>*</span>
+                      </label>
+                     <div className="!bg-green-500">
+                      <Select
+                      
+                        options={countries}
+                        placeholder= {language === "en" ? <p className="ml-5 my-auto text-sm">Select Country</p>:<p className="ml-5 text-sm my-auto" >Sélectionnez un pays</p>}
+                        onSelect={handleSelectCountry} // Pass the handler to the SelectComponent
+                        
+                      />
+                     </div>
+                    </div>
 
 
-                    <div className="form-inner mb-30">
-                      <label>
+                    <div className="form-inner">
+                      <label className="mt-3">
                       {language === "en" ? "Write Your Massage":"Écrivez votre massage"}  <span>*</span>
                       </label>
                       <textarea
@@ -464,7 +509,7 @@ export default function BuyguideList() {
                         defaultValue={""}
                       />
                     </div>
-                    <div className="form-inner">
+                    <div className="form-inner mt-2">
                       <button type="submit" className="primary-btn1 two">
                       {language === "en" ?  "Submit Now":"Soumettre maintenant"}
                       </button>
@@ -478,7 +523,7 @@ export default function BuyguideList() {
                 
 </div>
 
-<div className="banner-and-inquiry-form mb-10">
+<div className="banner-and-inquiry-form mb-20">
                 <div className="banner2-card four">
                   <img src="/images/banner2-card-img2.png" alt="" />
                   <div className="banner2-content-wrap">
@@ -506,7 +551,7 @@ export default function BuyguideList() {
               </div>
 
 
-
+              <div className="mb-20">
               {products?.books && products?.books[0] && (
                   <ProjectCard
                     openModal={openModal}
@@ -516,10 +561,10 @@ export default function BuyguideList() {
                     
                   />
                 )}
+              </div>
 
-
-              <div className="sidebar-area">
-                <div className="single-widget mb-1">
+              <div className="sidebar-area ">
+                <div className="single-widget">
                   <h5 className="widget-title">
                     {language === "en" ? "Search Here" : "Rechercher ici"}
                   </h5>
@@ -537,10 +582,26 @@ export default function BuyguideList() {
                         <i className="bx bx-search" />
                       </button>
                     </div>
+                    
+
+
+
+                    <div className="filte-search-fo position-relativ focus:!border-none filter-borde bg-light ">
+                        <Select
+                          onChange={(newValue) => {
+                            setCountry(newValue);
+                          }}
+                          className="form-inpu  !focus-ring-info filter-input-box !bg-gray-50  border-0 pl-5 "
+                          options={countries}
+                          placeholder={language === "en" ? "Select" : "Sélectionner"}
+                        />
+                      </div>
+
+
                   </form>
                 </div>
 
-                <div className="single-widget mb-30">
+                <div className="single-widget mb-20">
                   <h5 className="widget-title">
                     {language === "en" ? "Recent Post" : "Article récent"}
                   </h5>
@@ -560,7 +621,7 @@ export default function BuyguideList() {
                       // read_time,
                     } = blog;
                     return (
-                      <div className="recent-post-widget mb-20">
+                      <div className="recent-post-widget mb-10">
                         <div className="recent-post-img">
                           <Link href={`/blogs/${_id}`}>
                             <img
@@ -587,7 +648,7 @@ export default function BuyguideList() {
                 </div>
 
                 <ContactModal isOpen={isOpen} closeModal={closeModal} />
-
+                  <div className="mb-20">
                 {products?.books && products?.books[0] && (
                   <ProjectCard
                     openModal={openModal}
@@ -597,13 +658,15 @@ export default function BuyguideList() {
                     language={language}
                   />
                 )}
+                  </div>
+
               </div>
 
        
-              <div className="tour-location mt-20">
+              <div className="tour-location">
               <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
-              <div className="map-area mb-30">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7259008.9373557065!2d43.82589322282474!3d24.02821598116107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e1!3m2!1sen!2sbd!4v1733346086291!5m2!1sen!2sbd" width="365" height="500" loading="lazy"></iframe>
+              <div className="map-area">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7259008.9373557065!2d43.82589322282474!3d24.02821598116107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e1!3m2!1sen!2sbd!4v1733346086291!5m2!1sen!2sbd" width="360" height="500" loading="lazy"></iframe>
               </div>
             </div>
     

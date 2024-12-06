@@ -47,7 +47,7 @@ export default function BuyguideList() {
       <PageLayout title="Buyguides">
         <div className="flex justify-end mb-4">
           <Link href="/admin/buyguide/create" passHref>
-            <Button type="primary">Add New Buyguide</Button>
+            <Button type="primary" className='text-white bg-blue-200 hover:bg-blue-400'>Add New Buyguide</Button>
           </Link>
         </div>
 

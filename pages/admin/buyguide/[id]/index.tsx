@@ -28,31 +28,34 @@ const ReactQuill = dynamic(() => import("react-quill"), {
   loading: () => <Loading />,
 });
 
+
 const modules = {
   toolbar: [
-    [{ header: [1, 2, 3, 4, 5, false] }], // Add heading levels
-    [{ font: ["sans-serif", "serif", "monospace", "roboto"] }], // Add more fonts
-    [{ size: ["small", false, "large", "huge"] }], // Add font sizes
-    ["bold", "italic", "underline"], // Text formatting options
-    [{ color: [] }, { background: [] }], // Text color and background
-    [{ align: [] }], // Text alignment
-    ["link", "image", "video"], // Media options
-    ["clean"], // Remove formatting button
-  ],
+    [{ 'header': [1, 2, 3, 4, 5, false] }], // Add heading levels
+    [{ 'font': ['sans-serif', 'serif', 'monospace', 'roboto'] }], // Add more fonts
+    [{ 'size': ['small', false, 'large', 'huge'] }], // Add font sizes
+    ['bold', 'italic', 'underline'], // Text formatting options
+    [{ 'color': [] }, { 'background': [] }], // Text color and background
+    [{ 'align': [] }], // Text alignment
+    ['link', 'image', 'video'], // Media options
+    ['clean'], // Remove formatting button
+    ['copy', 'paste']
+  ]
+  
 };
 
-const formats = [
-  "header",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "blockquote",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-];
+// const formats = [
+//   "header",
+//   "bold",
+//   "italic",
+//   "underline",
+//   "strike",
+//   "blockquote",
+//   "list",
+//   "bullet",
+//   "indent",
+//   "link",
+// ];
 
 const EditBuyguide = () => {
   const [loading, setLoading] = useState(true);
@@ -199,7 +202,7 @@ const EditBuyguide = () => {
                                 handleDescChange(value, "desc")
                               }
                               modules={modules}
-                              formats={formats}
+                              // formats={formats}
                               style={{ height: "200px" }}
                             />
                           </Box>
@@ -221,7 +224,7 @@ const EditBuyguide = () => {
                                 handleDescChange(value, "descfr")
                               }
                               modules={modules}
-                              formats={formats}
+                              // formats={formats}
                               style={{ height: "200px" }}
                             />
                           </Box>
@@ -319,7 +322,7 @@ const EditBuyguide = () => {
                                     handleDescChange(value, "desc", index)
                                   }
                                   modules={modules}
-                                  formats={formats}
+                                  // formats={formats}
                                   style={{ height: "200px" }}
                                 />
                               </Box>
@@ -341,7 +344,7 @@ const EditBuyguide = () => {
                                     handleDescChange(value, "descfr", index)
                                   }
                                   modules={modules}
-                                  formats={formats}
+                                  // formats={formats}
                                   style={{ height: "200px" }}
                                 />
                               </Box>
