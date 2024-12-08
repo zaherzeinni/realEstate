@@ -9,7 +9,7 @@ const Newslatter = () => {
 
   return (
     <>
-      <div className="banner3-section">
+      <div className="banner3-section w-[90%] mx-auto">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
