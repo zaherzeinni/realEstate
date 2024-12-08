@@ -203,7 +203,7 @@ const EditBuyguide = () => {
                               }
                               modules={modules}
                               // formats={formats}
-                              style={{ height: "200px" }}
+                              style={{ height: "400px" }}
                             />
                           </Box>
                         </Grid>
@@ -225,7 +225,7 @@ const EditBuyguide = () => {
                               }
                               modules={modules}
                               // formats={formats}
-                              style={{ height: "200px" }}
+                              style={{ height: "400px" }}
                             />
                           </Box>
                         </Grid>
@@ -323,7 +323,7 @@ const EditBuyguide = () => {
                                   }
                                   modules={modules}
                                   // formats={formats}
-                                  style={{ height: "200px" }}
+                                  style={{ height: "400px" }}
                                 />
                               </Box>
                             </Grid>
@@ -345,7 +345,7 @@ const EditBuyguide = () => {
                                   }
                                   modules={modules}
                                   // formats={formats}
-                                  style={{ height: "200px" }}
+                                  style={{ height: "400px" }}
                                 />
                               </Box>
                             </Grid>

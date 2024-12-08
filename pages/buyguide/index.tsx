@@ -267,7 +267,7 @@ export default function BuyguideList() {
         label: language === "en" ? "Republic Dominica" : "République Dominique",
       },
   
-      // { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
+      { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
   
       // { value: "Canada", label: language === 'en' ? "Canada" : "Canada"},
   
@@ -395,7 +395,7 @@ export default function BuyguideList() {
               )}
               {selectedItem && (
                  <div className="document-list">
-                <p>
+                <p className="w-auto sm:mx-10">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: language === 'en' 

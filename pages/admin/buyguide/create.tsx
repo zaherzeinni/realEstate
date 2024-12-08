@@ -154,7 +154,7 @@ const CreateBuyguide = () => {
                           modules={modules}
                           value={formData.desc}
                           onChange={(value) => handleChange(value, undefined, 'desc')}
-                          style={{ height: '200px', marginBottom: '50px' }}
+                          style={{ height: '400px', marginBottom: '50px' }}
                         />
                       </Grid>
                       <Grid item xs={12} md={6}>
@@ -163,7 +163,7 @@ const CreateBuyguide = () => {
                          modules={modules}
                           value={formData.descfr}
                           onChange={(value) => handleChange(value, undefined, 'descfr')}
-                          style={{ height: '200px', marginBottom: '50px' }}
+                          style={{ height: '400px', marginBottom: '50px' }}
                         />
                       </Grid>
                     </Grid>
@@ -231,7 +231,7 @@ const CreateBuyguide = () => {
                             modules={modules}
                               value={item.desc}
                               onChange={(value) => handleChange(value, index, 'desc')}
-                              style={{ height: '200px', marginBottom: '50px' }}
+                              style={{ height: '400px', marginBottom: '50px' }}
                             />
                           </Grid>
                           <Grid item xs={12} md={6}>
@@ -240,7 +240,7 @@ const CreateBuyguide = () => {
                             modules={modules}
                               value={item.descfr}
                               onChange={(value) => handleChange(value, index, 'descfr')}
-                              style={{ height: '200px', marginBottom: '50px' }}
+                              style={{ height: '400px', marginBottom: '50px' }}
                             />
                           </Grid>
                         </Grid>
