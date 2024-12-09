@@ -483,15 +483,15 @@ export default function BuyguideList() {
 
                     <div className="form-inner">
                       <label className="mt-3">
-                      {language === "en" ? "Select Country":"Sélectionnez un pays"} <span>*</span>
+                      {language === "en" ? "Country":"Pays"}
                       </label>
                      <div className="!bg-green-500">
-                      <Select
+                      <input
                       
-                        options={countries}
-                        placeholder= {language === "en" ? <p className="ml-5 my-auto text-sm">Select Country</p>:<p className="ml-5 text-sm my-auto" >Sélectionnez un pays</p>}
-                        onSelect={handleSelectCountry} // Pass the handler to the SelectComponent
-                        
+                        // options={countries}
+                        // placeholder= {language === "en" ? <p className="ml-5 my-auto text-sm">{currentGuide.title}</p>:<p className="ml-5 text-sm my-auto" >{currentGuide.titlefr}</p>}
+                        // onSelect={handleSelectCountry} // Pass the handler to the SelectComponent
+                        value={language === "en" ? currentGuide.title:currentGuide.titlefr}
                       />
                      </div>
                     </div>
