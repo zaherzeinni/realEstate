@@ -185,8 +185,6 @@ export default function BuyguideList() {
 
 
 
-  
-
 
 
 
@@ -287,7 +285,8 @@ export default function BuyguideList() {
 
   return (
     <div className=" pt mb-" dir="ltr">
-  <Breadcrumb  pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} pagetitle={language === "en" ? "Buying Guide":"Guide D'achat"}/>
+  <Breadcrumb  pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} 
+  pagetitle={language === "en" ? selectedItem?.title ? selectedItem?.title :currentGuide?.title  :selectedItem?.titlefr ? selectedItem?.titlefr :currentGuide?.titlefr} />
 
         <Header />
       <Container maxWidth={false} disableGutters>
@@ -374,7 +373,7 @@ export default function BuyguideList() {
                 }}
               >
                 {/* TITLE DELETED BY ME */}
-               {/* <h3> {language === 'en' ? currentGuide.title : currentGuide.titlefr}</h3> */}
+               <h3> {language === 'en' ? currentGuide.title : currentGuide.titlefr}</h3>
               </Typography>
 
  
