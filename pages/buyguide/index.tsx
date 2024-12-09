@@ -373,7 +373,7 @@ export default function BuyguideList() {
                 }}
               >
                 {/* TITLE DELETED BY ME */}
-               <h3> {language === 'en' ? currentGuide.title : currentGuide.titlefr}</h3>
+               {/* <h3> {language === 'en' ? currentGuide.title : currentGuide.titlefr}</h3> */}
               </Typography>
 
  
