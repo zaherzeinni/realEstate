@@ -316,6 +316,26 @@ const VisaDetails = () => {
                      
                     </div>
 
+                    <div className="form-inner mb-3">
+                      <label className="">
+                      {language === "en" ? "Country":"Pays"}<span>*</span>
+                      </label>
+                     <div className="!bg-green-500">
+                      {/* <Select
+                      
+                        // options={countries}
+                        // placeholder= {language === "en" ? <p className="ml-5 my-auto text-sm">{currentGuide.title}</p>:<p className="ml-5 text-sm my-auto" >{currentGuide.titlefr}</p>}
+                        // onSelect={handleSelectCountry} // Pass the handler to the SelectComponent
+                        value={language === "en" ? currentGuide.title:currentGuide.titlefr}
+                      /> */}
+
+                      <input
+                       value={selectedCountry}
+                       onChange={(e) => setSelectedCountry(e.target.value)}
+                       type="text" placeholder={language === "en" ?"Which country are you contacting us from?":"De quel pays nous contactez-vous?"} />
+                     </div>
+                    </div>
+
 
 
                     <div className="form-inner mb-30">
