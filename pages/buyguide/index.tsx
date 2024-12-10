@@ -497,7 +497,7 @@ export default function BuyguideList() {
                       <input
                        value={selectedCountry}
                        onChange={(e) => setSelectedCountry(e.target.value)}
-                       type="text" placeholder={language === "en" ?"From Which Country Are You Contacting Us?":"De quel pays nous contactez-vous ?"} />
+                       type="text" placeholder={language === "en" ?"Which country are you contacting us from?":"De quel pays nous contactez-vous?"} />
                      </div>
                     </div>
 
