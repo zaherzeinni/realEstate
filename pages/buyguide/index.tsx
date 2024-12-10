@@ -342,11 +342,11 @@ export default function BuyguideList() {
                     
                     {language === "en" ? 
                     <Link href={linkString} >
-                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto"> See Properties In {currentGuide?.title}</button>
+                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto">Properties {currentGuide?.title}</button>
                     </Link>
                       :
                     <Link href={linkStringfr} >
-                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto"> Voir les propriétés {currentGuide?.titlefr}</button>
+                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto text-sm">propriétés {currentGuide?.titlefr}</button>
                     </Link>
                       }
                     </Box>
@@ -415,7 +415,7 @@ export default function BuyguideList() {
               <div className="col-lg-3 hidden xl:block ">
                 
 
-              <div className="visa-sidebar shadow-sm p-3 bg-[#dbe6d9]  mt-20 mb-20 ">
+              <div className="visa-sidebar shadow-sm p-3 bg-[#dbe6d9]  mt-36 mb-20 ">
               <div className="inquery-form">
                     <img src="/3.png" alt="logo" className="w-[220px] sm:w-[240px] 1-mt-10 mb-10" />
                   <div className="form-title">
