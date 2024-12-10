@@ -442,7 +442,7 @@ export default function BuyguideList() {
                       <input
                        value={name}
                        onChange={(e) => setName(e.target.value)}
-                      type="text" placeholder={language === "en" ?"Enter your full name":"Entrez votre nom complet"} />
+                       type="text" placeholder={language === "en" ?"Enter your full name":"Entrez votre nom complet"} />
                     </div>
                     <div className="form-inner mb-4">
                       <label>
@@ -483,16 +483,21 @@ export default function BuyguideList() {
 
                     <div className="form-inner">
                       <label className="mt-3">
-                      {language === "en" ? "Country":"Pays"}
+                      {language === "en" ? "Country":"Pays"}<span>*</span>
                       </label>
                      <div className="!bg-green-500">
-                      <input
+                      {/* <Select
                       
                         // options={countries}
                         // placeholder= {language === "en" ? <p className="ml-5 my-auto text-sm">{currentGuide.title}</p>:<p className="ml-5 text-sm my-auto" >{currentGuide.titlefr}</p>}
                         // onSelect={handleSelectCountry} // Pass the handler to the SelectComponent
                         value={language === "en" ? currentGuide.title:currentGuide.titlefr}
-                      />
+                      /> */}
+
+                      <input
+                       value={selectedCountry}
+                       onChange={(e) => setSelectedCountry(e.target.value)}
+                       type="text" placeholder={language === "en" ?"From Which Country Are You Contacting Us?":"De quel pays nous contactez-vous ?"} />
                      </div>
                     </div>
 
