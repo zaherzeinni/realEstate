@@ -346,7 +346,7 @@ export default function BuyguideList() {
                     </Link>
                       :
                     <Link href={linkStringfr} >
-                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto text-sm">propriétés {currentGuide?.titlefr}</button>
+                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto">propriétés {currentGuide?.titlefr}</button>
                     </Link>
                       }
                     </Box>
