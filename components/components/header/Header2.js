@@ -98,6 +98,7 @@ const Header2 = () => {
 const buyguidesData = buyguides?.map((guide) => ({
   id: guide._id,
   label: guide.title,
+  labelfr: guide.titlefr,
   link: `/buyguide?guide=${guide.title.toLowerCase().replace(/\s+/g, '-')}`
 }))
 

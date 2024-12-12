@@ -24,6 +24,9 @@ export   const handleChange = (country) => {
        case "United Arab Emirates":
          return "Émirats Arabes Unis"; // Set ID for UAE
          break;
+       case "U.A.E.":
+         return "E.A.U."; // Set ID for UAE
+         break;
        default:
          return ""; // Default case for "All countries"
      }
