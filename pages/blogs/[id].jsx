@@ -18,9 +18,9 @@ import ProjectCard from "../../components/Site/ProjectCard";
 import { handleChange } from "../../utils/handleLanguage";
 import moment from "moment/moment";
 export const metadata = {
-  title: "TripRex - Tour & Travel Agency  NextJs Template",
+  title: "SandnSea Realty",
   description:
-    "TripRex is a NextJs Template for Tour and Travel Agency purpose",
+    "SandnSea Realty",
   icons: {
     icon: "/assets/img/sm-logo.svg",
   },

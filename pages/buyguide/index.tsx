@@ -285,7 +285,6 @@ export default function BuyguideList() {
 
 
 
-
   return (
     <div className=" pt mb-" dir="ltr">
   <Breadcrumb  pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} 
@@ -685,7 +684,7 @@ export default function BuyguideList() {
               </div>
             </div>
             :
-            currentGuide?.title === "Dominican Rep." &&
+            currentGuide?.titlefr === "Rep.Dominicaine" &&
               <div className="tour-location">
               <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
               <div className="map-area">
