@@ -677,11 +677,19 @@ export default function BuyguideList() {
               </div>
             </div>
             :
-            currentGuide?.title === "North Cyprus" &&
+            currentGuide?.title === "North Cyprus" ?
               <div className="tour-location">
               <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
               <div className="map-area">
              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d999109.7123114157!2d33.425200000000004!3d35.168800000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0x324c3c807fc4146e!2sCyprus!5e1!3m2!1sen!2slb!4v1734042879623!5m2!1sen!2slb" width="360" height="500" loading="lazy"></iframe>
+              </div>
+            </div>
+            :
+            currentGuide?.title === "Dominican Rep." &&
+              <div className="tour-location">
+              <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
+              <div className="map-area">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2315826.739296603!2d-71.44941769804883!3d18.66789661465209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8838def1b6f5%3A0xa6020f24060df7e0!2sDominican%20Republic!5e1!3m2!1sen!2slb!4v1734050379902!5m2!1sen!2slb" width="360" height="500" loading="lazy"></iframe>
               </div>
             </div>
             }
