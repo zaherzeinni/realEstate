@@ -39,7 +39,7 @@ const modules = {
     [{ 'align': [] }], // Text alignment
     ['link', 'image', 'video'], // Media options
     ['clean'], // Remove formatting button
-    ['copy', 'paste']
+    // ['copy', 'paste']
   ]
   
 };
