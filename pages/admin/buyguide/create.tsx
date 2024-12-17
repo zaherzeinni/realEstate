@@ -138,7 +138,7 @@ const CreateBuyguide = () => {
                           required
                         />
                       </Grid>
-                      <Grid item xs={12} md={6}>
+                      <Grid item xs={12} md={6} >
                         <TextField
                           fullWidth
                           label="Title (French)"
@@ -157,7 +157,7 @@ const CreateBuyguide = () => {
                           style={{ height: '400px', marginBottom: '50px' }}
                         />
                       </Grid>
-                      <Grid item xs={12} md={6}>
+                      <Grid item xs={12} md={6} >
                         <Typography variant="body1">Description (French)</Typography>
                         <ReactQuill
                          modules={modules}
@@ -216,7 +216,7 @@ const CreateBuyguide = () => {
                               onChange={(e) => handleChange(e, index)}
                             />
                           </Grid>
-                          <Grid item xs={12} md={6}>
+                          <Grid item xs={12} md={6} className=' contents'>
                             <TextField
                               fullWidth
                               label="Title (French)"

@@ -296,7 +296,8 @@ const EditBuyguide = () => {
                                 onChange={(e) => handleChange(e, index)}
                               />
                             </Grid>
-                            <Grid item xs={12} md={6}>
+                            {/* -------- i changed here the class for view well----- */}
+                            <Grid item xs={12} md={6} className=' contents'>
                               <TextField
                                 fullWidth
                                 label="Title (French)"
@@ -305,7 +306,7 @@ const EditBuyguide = () => {
                                 onChange={(e) => handleChange(e, index)}
                               />
                             </Grid>
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={6} >
                               <Typography variant="subtitle2" gutterBottom>
                                 Description
                               </Typography>

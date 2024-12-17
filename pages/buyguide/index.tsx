@@ -334,7 +334,7 @@ export default function BuyguideList() {
                     <Box className="!flex !flex-col lg1:flex lg1:flex-row" sx={{ display: 'flex', gap: 1 }}>
                       {currentGuide.items.map((item: BuyguideItem) => (
                         <button
-                        className="primary-btn1 h-7 w-56 justify-center mx-auto"
+                        className="primary-btn1 h-7 w-56 xl:w-full justify-center mx-auto"
                           key={item.id}
                           onClick={() => handleItemSelect(item)}
                           // sx={{
@@ -355,11 +355,11 @@ export default function BuyguideList() {
                     
                     {language === "en" ? 
                     <Link href={linkString} >
-                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto">Properties {currentGuide?.title}</button>
+                    <button className="primary-btn1 h-7 w-56 xl:w-full justify-center mx-auto">Properties {currentGuide?.title}</button>
                     </Link>
                       :
                     <Link href={linkStringfr} >
-                    <button className="primary-btn1 h-7 w-56 justify-center mx-auto">Propriétés {currentGuide?.titlefr}</button>
+                    <button className="primary-btn1 h-7 w-56 xl:w-full justify-center mx-auto">Propriétés {currentGuide?.titlefr}</button>
                     </Link>
                       }
                     </Box>
