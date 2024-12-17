@@ -288,10 +288,10 @@ export default function BuyguideList() {
 
 
 
-    let obj = currentGuide.desc;
-    let jsonString = JSON.stringify(obj); // Correctly converts to JSON string
-    JSON.parse(jsonString); // This will work without errors
-    console.log(jsonString,"json strinngggg")
+    // let obj = currentGuide.desc;
+    // let jsonString = JSON.stringify(obj); // Correctly converts to JSON string
+    // JSON.parse(jsonString); // This will work without errors
+    // console.log(jsonString,"json strinngggg")
 
 
 
