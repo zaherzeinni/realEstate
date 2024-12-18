@@ -98,7 +98,7 @@ const CreateBuyguide = () => {
 
   const modules = {
     toolbar: [
-      [{ 'header': [1, 2, 3, 4, 5, false] }], // Add heading levels
+      [{ 'header': [1, 2, 3, 4, 5,6, false] }], // Add heading levels
       [{ 'font': ['sans-serif', 'serif', 'monospace', 'roboto'] }], // Add more fonts
       [{ 'size': ['small', false, 'large', 'huge'] }], // Add font sizes
       ['bold', 'italic', 'underline'], // Text formatting options
