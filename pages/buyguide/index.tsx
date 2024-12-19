@@ -407,7 +407,7 @@ export default function BuyguideList() {
               )}
               {selectedItem && (
                  <div className="document-list">
-                <p className="w-auto sm:mx-10">
+                <p className="w-auto sm:mx-10 lg:mx-20">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: language === 'en' 
