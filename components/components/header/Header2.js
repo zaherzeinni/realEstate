@@ -754,7 +754,7 @@ const buyguidesData = buyguides?.map((guide) => ({
               <li>
                
                 <Link
-                  href="buyguide?guide=cyprus"
+                  href="/buyguide?guide=north-cyprus"
                   className="single-category"
                 >
                   <div className="icon">
@@ -773,7 +773,7 @@ const buyguidesData = buyguides?.map((guide) => ({
               </li>
               <li>
                 <Link
-                  href="/activities/activities-details"
+                  href="/buyguide?guide=u.a.e."
                   className="single-category"
                 >
                   <div className="icon">
@@ -790,12 +790,12 @@ const buyguidesData = buyguides?.map((guide) => ({
                       </g>
                     </svg>
                   </div>
-                  <h6>Historical</h6>
+                  {language === "en" ?   <h6>U.A.E.</h6>: <h6>E.A.U.</h6>}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/activities/activities-details"
+                  href="/buyguide?guide=dominican-rep."
                   className="single-category"
                 >
                   <div className="icon">
@@ -810,7 +810,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                       </g>
                     </svg>
                   </div>
-                  <h6>Cultural Tours</h6>
+                  {language === "en" ?   <h6>Dominican Rep.</h6>: <h6>Rep.Dominicaine</h6>}
                 </Link>
               </li>
               <li>
