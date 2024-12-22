@@ -425,7 +425,7 @@ export default function BuyguideList() {
 
 
               {/* ---------------------right side--------------------------- */}
-              <div className="col-lg-3 hidden xl:block ">
+              <div className="col-lg-3 hidden xl:block xl:mr-10 ">
                 
 
               <div className="visa-sidebar shadow-sm p-3 bg-[#dbe6d9]  mt-36 mb-20 ">
@@ -683,7 +683,7 @@ export default function BuyguideList() {
               <div className="tour-location">
               <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
               <div className="map-area">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7259008.9373557065!2d43.82589322282474!3d24.02821598116107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e1!3m2!1sen!2sbd!4v1733346086291!5m2!1sen!2sbd" width="360" height="500" loading="lazy"></iframe>
+              <iframe className=" w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7259008.9373557065!2d43.82589322282474!3d24.02821598116107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e1!3m2!1sen!2sbd!4v1733346086291!5m2!1sen!2sbd"  height="500" loading="lazy"></iframe>
               </div>
             </div>
             :
@@ -691,7 +691,7 @@ export default function BuyguideList() {
               <div className="tour-location">
               <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
               <div className="map-area">
-             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d999109.7123114157!2d33.425200000000004!3d35.168800000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0x324c3c807fc4146e!2sCyprus!5e1!3m2!1sen!2slb!4v1734042879623!5m2!1sen!2slb" width="360" height="500" loading="lazy"></iframe>
+             <iframe className=" w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d999109.7123114157!2d33.425200000000004!3d35.168800000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767ca494d55%3A0x324c3c807fc4146e!2sCyprus!5e1!3m2!1sen!2slb!4v1734042879623!5m2!1sen!2slb" height="500" loading="lazy"></iframe>
               </div>
             </div>
             :
@@ -699,7 +699,7 @@ export default function BuyguideList() {
               <div className="tour-location">
               <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
               <div className="map-area">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17926129.21740442!2d-102.62050004999999!3d23.554126900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2sMexico!5e1!3m2!1sen!2slb!4v1734655301193!5m2!1sen!2slb" width="360" height="500"></iframe>
+              <iframe className=" w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17926129.21740442!2d-102.62050004999999!3d23.554126900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2sMexico!5e1!3m2!1sen!2slb!4v1734655301193!5m2!1sen!2slb" height="500"></iframe>
               </div>
             </div>
             :
@@ -707,7 +707,7 @@ export default function BuyguideList() {
               <div className="tour-location">
               <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
               <div className="map-area">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2315826.739296603!2d-71.44941769804883!3d18.66789661465209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8838def1b6f5%3A0xa6020f24060df7e0!2sDominican%20Republic!5e1!3m2!1sen!2slb!4v1734050379902!5m2!1sen!2slb" width="360" height="500" loading="lazy"></iframe>
+              <iframe className=" w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2315826.739296603!2d-71.44941769804883!3d18.66789661465209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8838def1b6f5%3A0xa6020f24060df7e0!2sDominican%20Republic!5e1!3m2!1sen!2slb!4v1734050379902!5m2!1sen!2slb"  height="500" loading="lazy"></iframe>
               </div>
             </div>
             }
