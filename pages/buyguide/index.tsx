@@ -702,6 +702,14 @@ export default function BuyguideList() {
               <iframe className=" w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17926129.21740442!2d-102.62050004999999!3d23.554126900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2sMexico!5e1!3m2!1sen!2slb!4v1734655301193!5m2!1sen!2slb" height="500"></iframe>
               </div>
             </div>
+             :
+             currentGuide?.title === "Spain" ?
+               <div className="tour-location">
+               <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
+               <div className="map-area">
+               <iframe  className=" w-full"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13506931.588401865!2d-17.57685401716884!3d35.32572468884803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc42e3783261bc8b%3A0xa6ec2c940768a3ec!2sSpain!5e1!3m2!1sen!2slb!4v1734951617744!5m2!1sen!2slb" height="500"></iframe>
+               </div>
+             </div>
             :
             currentGuide?.titlefr === "Rep.Dominicaine" &&
               <div className="tour-location">
