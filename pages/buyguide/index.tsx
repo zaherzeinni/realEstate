@@ -715,7 +715,7 @@ export default function BuyguideList() {
                 <div className="tour-location">
                 <h4>{language === "en" ? "Location Map":"Carte de localisation"}</h4>
                 <div className="map-area">
-                <iframe className=" w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7288158.987071988!2d-11.45832012256519!3d38.52521107429869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb32242dbf4226d5%3A0x2ab84b091c4ef041!2sPortugal!5e1!3m2!1sen!2slb!4v1734976326136!5m2!1sen!2slb" height="500"></iframe>
+                <iframe className="w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59579.03129684894!2d-9.237675037877379!3d38.74412052215297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19331a61e4f33b%3A0x400ebbde49036d0!2sLisbon%2C%20Portugal!5e1!3m2!1sen!2slb!4v1734994299099!5m2!1sen!2slb" height="500" ></iframe>
                 </div>
               </div>
             :
