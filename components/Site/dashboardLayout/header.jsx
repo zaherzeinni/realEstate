@@ -274,7 +274,7 @@ const router =useRouter()
 <li className="">
             <Link href="/admin/book">
         
-              <h6>AllProperties</h6>
+              <h6>All Properties</h6>
             </Link>
           </li>
 
