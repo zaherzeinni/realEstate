@@ -2,11 +2,10 @@ import React from 'react'
 
 import { useState } from 'react';
 import AnimateHeight from "react-animate-height";
-
-
+import { useLanguageContext } from '../../../context/languageContext';
 export default function ActivitiesPlan() {
 
-
+  const {language} = useLanguageContext()
 
     const [active, setActive] = useState("1");
     const togglePara = (value) => {
@@ -41,7 +40,8 @@ export default function ActivitiesPlan() {
 
   return (
     <div>
-                    <h4>Activities Plan</h4>
+                    <h4>Build Your Future with SAND N SEA REALTY</h4>
+                    <h6>Don't Miss This Opportunity!</h6>
             <div className="accordion tour-plan" id="tourPlan">
               <div className="!accordion-item ">
                 <h6 className="!accordion-header11  bg-white"   id="headingOne">

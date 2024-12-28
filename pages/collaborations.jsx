@@ -12,7 +12,6 @@ import Footer from "@/components/components/footer/Footer";
 import Header from "@/components/components/header/Header2";
 import useProducts from "../hooks/useProducts";
 import ProjectCard from "../components/Site/ProjectCard";
-import Accord from "../components/components/accordion/Accord";
 import {useLanguageContext} from "../context/languageContext"
 import ContactModal from "../components/Site/ContactModal";
 import ActivitiesPlan from "../components/components/accordion/ActivitiesPlan";
@@ -96,39 +95,18 @@ const {language} = useLanguageContext()
       </div>
       <div className="container">
         
-        {/* <div className="row">
-          <div className="co-lg-12">
-            <div className="package-img-group mb-50">
-              <div className="row align-items-center g-3">
-                
-                <div className="col-lg-6 hidden">
-                  <div className="gallery-img-wrap">
-                  <div className="col-6">
-                      <div className="gallery-img-wrap active">
-                        <img src="/assets/img/innerpage/ski-touring-05.jpg" alt="" />
-                        <a data-fancybox="gallery-01" style={{ cursor: "pointer" }}
-onClick={() => setOpenModalVideo(true)}><i className="bi bi-play-circle" /> Watch Video</a>
-                      </div>
-                    </div>
-
-                    <a ><i className="bi bi-eye"  onClick={() =>setOpenimg({ openingState: true, openingIndex: 0 }) }/></a>
-                  </div>
-                  
-                </div>
-         
-              
-              </div>
-            </div>
-          </div>
-        </div> */}
         <div className="row g-xl-4 gy-5">
         {/* <img src="/3.png" alt="logo" className="w-[220px] sm:w-[260px] mb-10" /> */}
           <div className="col-xl-8">
             <div className="eg-tag2">
-              <span>Ski touring</span>
+              <span>SAND N SEA REALTY</span>
             </div>
-            <h2>Powder Quest: Exploring Snow-Covered Landscapes on Skis</h2>
-            <div className="tour-price">
+            {language === "en" ? 
+            <h2>Join the SAND N SEA REALTY Referral Program</h2>
+            :
+            <h2>Rejoignez le Programme de Parrainage SAND N SEA REALTY</h2>
+            }
+            {/* <div className="tour-price">
               <h3>$175/</h3><span>per person</span>
             </div>
             <ul className="tour-info-metalist">
@@ -153,35 +131,59 @@ onClick={() => setOpenModalVideo(true)}><i className="bi bi-play-circle" /> Watc
                 </svg>
                 Italy &amp; France.
               </li>
-            </ul>
-            <p>Ski touring, also known as backcountry skiing, involves traveling across snow-covered terrain using skis. It's a blend of skiing and hiking, allowing access to remote areas not reachable by ski lifts. Skiers ascend slopes using climbing skins on their skis or specialized equipment like splitboards, then descend using skis. This activity offers a unique opportunity to explore untouched wilderness, experience serene landscapes, and challenge oneself physically and mentally while embracing the thrill of the mountains. Safety measures, including avalanche awareness and carrying appropriate gear, are paramount in ski touring due to the inherent risks of backcountry environments.</p>
-            <h4>Included and Excluded</h4>
+            </ul> */}
+             {language === "en" ? 
+            <h4>Seize an Unmatched Partnership Opportunity</h4>
+            :
+            <h4>Saisissez une Opportunité de Partenariat Inégalée</h4>
+             }
+             {language === "en" ? 
+            <p>We invite you to discover our exclusive referral program at SAND N SEA REALTY, designed for real estate advisors, agents, brokers, influencers, and investment companies.
+            This program allows you to leverage lucrative opportunities while expanding your professional network.
+            By joining our team, you will gain access to a selection of high-quality real estate projects, backed by our expertise and commitment to excellence.</p>
+              :
+              <p>Nous vous invitons à découvrir notre programme de parrainage exclusif chez SAND N SEA REALTY, conçu pour les conseillers immobiliers, agents, courtiers, influenceurs, et sociétés d'investissement. 
+              Ce programme vous permet de tirer parti d'opportunités lucratives tout en élargissant votre réseau professionnel. 
+              En rejoignant notre équipe, vous aurez accès à une sélection de projets immobiliers de haute qualité, soutenus par notre expertise et notre engagement envers l'excellence.
+              </p>
+             }
+            {language === "en" ? 
+            <h2>A Partner of Choice</h2>
+            :
+            <h2>Un Partenaire de Choix</h2>
+            }
+           {language === "en" ? 
+            <h4>Collaboration with Renowned Developers</h4>
+            :
+            <h4>Collaboration avec des Développeurs de Renommés</h4>
+             }
             <div className="includ-and-exclud-area mb-20">
               <ul>
-                <li><i className="bi bi-check-lg" /> Ski touring involves exploring remote, off-piste terrains away from ski resorts.</li>
-                <li><i className="bi bi-check-lg" /> A full-body workout combining skiing, hiking, and endurance.</li>
-                <li><i className="bi bi-check-lg" /> Engaging in challenging ascents and thrilling descents on various terrains.</li>
-                <li><i className="bi bi-check-lg" /> Enjoying pristine landscapes and serene natural environments.</li>
-                <li><i className="bi bi-check-lg" /> Carrying safety gear (avalanche transceivers, shovels, probes) and knowledge of rescue procedures.</li>
+                <li><i className="bi bi-check-lg text-green-500" />At SAND N SEA REALTY, we establish strategic partnerships with the top developers and builders in the industry</li>
+                <li><i className="bi bi-check-lg text-green-500" /> offering an impressive portfolio of successful projects</li>
+                <li><i className="bi bi-check-lg text-green-500" /> Our specialists focus on premier tourist destinations</li>
+                <li><i className="bi bi-check-lg text-green-500" /> such as Northern Cyprus, the Dominican Republic, Spain, Mexico, Portugal, Dubai, and much more</li>
+              
               </ul>
               <ul className="exclud">
-                <li><i className="bi bi-x-lg" /> Ski touring typically avoids the amenities and maintained slopes found in ski resorts.</li>
-                <li><i className="bi bi-x-lg" /> It steers clear of crowded slopes and lift systems.</li>
-                <li><i className="bi bi-x-lg" /> Ski touring often involves more challenging and varied terrains, less suitable for beginners.</li>
-                <li><i className="bi bi-x-lg" /> In case of emergencies, immediate assistance may not be readily available compared to ski resorts.</li>
-                <li><i className="bi bi-x-lg" />  Unlike ski resorts, conditions in backcountry areas can vary significantly and may not be groomed or controlled.</li>
+                <li><i className="bi bi-check-lg text-green-500" />With our unmatched know-how and in-depth market knowledge</li>
+                <li><i className="bi bi-check-lg text-green-500" />we provide you with a crucial competitive edge to maximize your potential in the real estate sector.</li>
+                <li><i className="bi bi-check-lg text-green-500" />By joining our exclusive referral program, you will receive strategic support to achieve your professional goals.</li>
+                <li><i className="bi bi-check-lg text-green-500" />Together, let's make this journey a resounding success!</li>
+               
               </ul>
             </div>
             <div className="highlight-tour mb-20">
-              <h4>Highlights of the Tour</h4>
+              <h2>Personalized Support</h2>
+              <h4>Dedicated Assistance for Your Success</h4>
               <ul>
-                <li><span><i className="bi bi-check" /></span> Immersion in breathtaking, untouched landscapes away from crowded ski resorts.</li>
-                <li><span><i className="bi bi-check" /></span> Combining endurance and skill while exploring diverse terrains.</li>
-                <li><span><i className="bi bi-check" /></span> Accessing pristine, less-traveled areas for a unique adventure.</li>
-                <li><span><i className="bi bi-check" /></span> Strengthening camaraderie among fellow skiers in a shared outdoor experience.</li>
-                <li><span><i className="bi bi-check" /></span> Accomplishing challenging ascents and thrilling descents in natural settings.</li>
+                <li><span><i className="bi bi-check" /></span>As a partner in our exclusive referral program</li>
+                <li><span><i className="bi bi-check" /></span>you can rely on our team of experts to manage the complex aspects of the sales process.</li>
+                <li><span><i className="bi bi-check" /></span>We handle all real estate transactions, allowing you to focus on what you do best: growing your business.</li>
+                <li><span><i className="bi bi-check" /></span>We are committed to providing exceptional after-sales service to ensure your clients' satisfaction.</li>
+                {/* <li><span><i className="bi bi-check" /></span> Accomplishing challenging ascents and thrilling descents in natural settings.</li>
                 <li><span><i className="bi bi-check" /></span> Feeling the elements and connecting with the mountains in a profound way.</li>
-                <li><span><i className="bi bi-check" /></span> Experiencing the freedom of traveling through snowy wilderness on skis.</li>
+                <li><span><i className="bi bi-check" /></span> Experiencing the freedom of traveling through snowy wilderness on skis.</li> */}
               </ul>
             </div>
 
@@ -189,9 +191,6 @@ onClick={() => setOpenModalVideo(true)}><i className="bi bi-play-circle" /> Watc
      
 
 
-            <div className="faq-content-wrap mb-80">
- <Accord/>
-            </div>
      
           </div>
 
