@@ -139,14 +139,15 @@ const {language} = useLanguageContext()
              }
              {language === "en" ? 
             <p>We invite you to discover our exclusive referral program at SAND N SEA REALTY, designed for real estate advisors, agents, brokers, influencers, and investment companies.
-            This program allows you to leverage lucrative opportunities while expanding your professional network.
-            By joining our team, you will gain access to a selection of high-quality real estate projects, backed by our expertise and commitment to excellence.</p>
+            <br></br>This program allows you to leverage lucrative opportunities while expanding your professional network.
+            <br></br>By joining our team, you will gain access to a selection of high-quality real estate projects, backed by our expertise and commitment to excellence.</p>
               :
               <p>Nous vous invitons à découvrir notre programme de parrainage exclusif chez SAND N SEA REALTY, conçu pour les conseillers immobiliers, agents, courtiers, influenceurs, et sociétés d'investissement. 
-              Ce programme vous permet de tirer parti d'opportunités lucratives tout en élargissant votre réseau professionnel. 
-              En rejoignant notre équipe, vous aurez accès à une sélection de projets immobiliers de haute qualité, soutenus par notre expertise et notre engagement envers l'excellence.
+              <br></br>Ce programme vous permet de tirer parti d'opportunités lucratives tout en élargissant votre réseau professionnel. 
+              <br></br>En rejoignant notre équipe, vous aurez accès à une sélection de projets immobiliers de haute qualité, soutenus par notre expertise et notre engagement envers l'excellence.
               </p>
              }
+             <br></br>
             {language === "en" ? 
             <h2>A Partner of Choice</h2>
             :
@@ -159,7 +160,8 @@ const {language} = useLanguageContext()
              }
             <div className="includ-and-exclud-area mb-20">
               <ul>
-                <li><i className="bi bi-check-lg text-green-500" />At SAND N SEA REALTY, we establish strategic partnerships with the top developers and builders in the industry</li>
+                <li><i className="bi bi-check-lg text-green-500" />Strategic Partnerships: At SAND N SEA REALTY, we work alongside top developers and builders in the industry to elevate our offerings.
+                </li>
                 <li><i className="bi bi-check-lg text-green-500" /> offering an impressive portfolio of successful projects</li>
                 <li><i className="bi bi-check-lg text-green-500" /> Our specialists focus on premier tourist destinations</li>
                 <li><i className="bi bi-check-lg text-green-500" /> such as Northern Cyprus, the Dominican Republic, Spain, Mexico, Portugal, Dubai, and much more</li>
