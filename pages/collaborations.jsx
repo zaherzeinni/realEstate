@@ -133,7 +133,7 @@ const {language} = useLanguageContext()
               </li>
             </ul> */}
              {language === "en" ? 
-            <h4>Seize an Unmatched Partnership Opportunity</h4>
+            <h4>Seize an Unmatched Partnership Opportunityy</h4>
             :
             <h4>Saisissez une Opportunité de Partenariat Inégalée</h4>
              }
