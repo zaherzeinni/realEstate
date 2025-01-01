@@ -133,35 +133,97 @@ const {language} = useLanguageContext()
             :
             <h4>Collaboration avec des Développeurs de Renommés</h4>
              }
+            
+            
             <div className="includ-and-exclud-area mb-20">
               <ul>
-                <li><i className="bi bi-check-lg text-green-500" />Strategic Partnerships: At SAND N SEA REALTY, we work alongside top developers and builders in the industry to elevate our offerings.
+              {language === "en" ?
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Strategic Partnerships:</b> At <span className="italic">SAND N SEA REALTY</span>,we work alongside top developers and builders in the industry to elevate our offerings.</div>
                 </li>
-                <li><i className="bi bi-check-lg text-green-500" /> offering an impressive portfolio of successful projects</li>
-                <li><i className="bi bi-check-lg text-green-500" /> Our specialists focus on premier tourist destinations</li>
-                <li><i className="bi bi-check-lg text-green-500" /> such as Northern Cyprus, the Dominican Republic, Spain, Mexico, Portugal, Dubai, and much more</li>
-              
+               :
+               <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Partenariats Stratégiques:</b> Chez <span className="italic">SAND N SEA REALTY</span>,nous travaillons avec les meilleurs développeurs et constructeurs du secteur pour améliorer notre offre.</div>
+                </li>
+              }
+              {language === "en" ?
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Impressive Portfolio:</b> We present an extensive collection of successful projects that highlights our capabilities.</div>
+                </li>
+                :
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Portefeuille Impressionnant:</b> Nous présentons une vaste collection de projets réussis qui met en avant nos capacités.</div>
+                </li>
+                }
+                {language === "en" ?
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Focus on Premier Destinations:</b> Our specialists are dedicated to prime tourist locations, ensuring high-quality real estate options.</div>
+                </li>
+                :
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Focus sur des Destinations de Premier Choix:</b> Nos spécialistes se consacrent à des emplacements touristiques de premier plan, garantissant des options immobilières de haute qualité.</div>
+                </li>
+                }
+                {language === "en" ?
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Global Reach:</b> We serve a variety of desirable locations, including Northern Cyprus, the Dominican Republic, Spain, Mexico, Portugal, Dubai, and more.</div>
+                </li>
+                :
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Portée Mondiale:</b> Nous desservons une variété d'emplacements recherchés, y compris Chypre du Nord, la République dominicaine, l'Espagne, le Mexique, le Portugal, Dubaï et plus encore.</div>
+                </li>
+                }
               </ul>
               <ul className="exclud">
-                <li><i className="bi bi-check-lg text-green-500" />With our unmatched know-how and in-depth market knowledge</li>
-                <li><i className="bi bi-check-lg text-green-500" />we provide you with a crucial competitive edge to maximize your potential in the real estate sector.</li>
-                <li><i className="bi bi-check-lg text-green-500" />By joining our exclusive referral program, you will receive strategic support to achieve your professional goals.</li>
-                <li><i className="bi bi-check-lg text-green-500" />Together, let's make this journey a resounding success!</li>
-               
+              {language === "en" ?
+                <h5 className="ml-6 mt-2">Why Choose Our Expertise?</h5>
+                :
+                <h5 className="ml-6 mt-2">Pourquoi Choisir Notre Expertise?</h5>
+              }
+              {language === "en" ?
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Competitive Edge:</b> Our unparalleled knowledge and insights into the market provide you with a crucial advantage to unlock your potential in real estate.</div>
+                </li>
+                :
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Avantage Concurrentiel:</b> Notre connaissance inégalée et nos insights sur le marché vous offrent un atout essentiel pour libérer votre potentiel dans l'immobilier.</div>
+                </li>
+                }
+                {language === "en" ?
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Exclusive Referral Program:</b> Joining our program means you will receive strategic support tailored to help you reach your professional aspirations.</div>
+                </li>
+                :
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Programme de Référence Exclusif:</b> En rejoignant notre programme, vous bénéficierez d'un soutien stratégique conçu pour vous aider à atteindre vos aspirations professionnelles.</div>
+                </li>
+                  }
+                  {language === "en" ?
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Collaborative Success:</b> Together, we can ensure this journey is a tremendous success!</div>
+                </li>
+                :
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Succès Collaboratif:</b> Ensemble, nous pouvons garantir que ce parcours soit un succès retentissant!</div>
+                </li>
+                }
               </ul>
             </div>
+           
+           
+           
             <div className="highlight-tour mb-20">
+            {language === "en" ?
               <h2>Personalized Support</h2>
+              :
+              <h2>Support Personnalisé</h2>
+            }
+            {language === "en" ?
               <h4>Dedicated Assistance for Your Success</h4>
+              :
+              <h4>Assistance Dédiée à Votre Réussite</h4>
+            }
+              {language === "en" ?
               <ul>
-                <li><span><i className="bi bi-check" /></span>As a partner in our exclusive referral program</li>
-                <li><span><i className="bi bi-check" /></span>you can rely on our team of experts to manage the complex aspects of the sales process.</li>
-                <li><span><i className="bi bi-check" /></span>We handle all real estate transactions, allowing you to focus on what you do best: growing your business.</li>
-                <li><span><i className="bi bi-check" /></span>We are committed to providing exceptional after-sales service to ensure your clients' satisfaction.</li>
-                {/* <li><span><i className="bi bi-check" /></span> Accomplishing challenging ascents and thrilling descents in natural settings.</li>
-                <li><span><i className="bi bi-check" /></span> Feeling the elements and connecting with the mountains in a profound way.</li>
-                <li><span><i className="bi bi-check" /></span> Experiencing the freedom of traveling through snowy wilderness on skis.</li> */}
+                <li><span><i className="bi bi-check" /></span><div><b className="text-black">Expert Support:</b> As a participant in our referral program, you will have access to a team of professionals who handle the complexities of the sales process.</div></li>
+                <li><span><i className="bi bi-check" /></span><div><b className="text-black">Focus on Your Business:</b> We take care of all real estate transactions, allowing you to focus on what you excel at—growing your business.</div></li>
+                <li><span><i className="bi bi-check" /></span><div><b className="text-black">Comprehensive Management:</b> Our team manages all aspects of real estate transactions, streamlining the process for you.</div></li>
+                <li><span><i className="bi bi-check" /></span><div><b className="text-black">Commitment to Clients:</b> We are committed to delivering outstanding after-sales service to ensure your clients are satisfied.</div></li>  
               </ul>
+              :
+              <ul>
+                <li><span><i className="bi bi-check" /></span><div><b className="text-black">Soutien d'Experts:</b> En tant que participant à notre programme de référence, vous aurez accès à une équipe de professionnels qui gère les complexités du processus de vente.</div></li>
+                <li><span><i className="bi bi-check" /></span><div><b className="text-black">Concentration sur Votre Activité:</b> Nous prenons en charge toutes les transactions immobilières, vous permettant de vous concentrer sur ce que vous faites le mieux : développer votre activité.</div></li>
+                <li><span><i className="bi bi-check" /></span><div><b className="text-black">Gestion Complète:</b> Notre équipe s'occupe de tous les aspects des transactions immobilières, simplifiant le processus pour vous.</div></li>
+                <li><span><i className="bi bi-check" /></span><div><b className="text-black">Engagement envers les Clients:</b> Nous nous engageons à fournir un service après-vente exceptionnel pour garantir la satisfaction de vos clients.</div></li>  
+              </ul>
+              }
             </div>
 
         <ActivitiesPlan/>
