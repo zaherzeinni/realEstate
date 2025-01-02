@@ -758,6 +758,15 @@ const buyguidesData = buyguides?.map((guide) => ({
           }
             <div className="row">
               <div className="col-lg-12">
+                
+              {groupedData?.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <Link legacyBehavior href={subItem.link}>
+                        <a> {language === "en" ? subItem.label : subItem.labelfr }    </a>
+                      </Link>
+                      </li>
+                      ))}
+                
                 <Swiper
                   {...settings}
                   className="swiper destination-sidebar-slider mb-35"
