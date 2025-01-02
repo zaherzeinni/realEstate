@@ -750,7 +750,7 @@ const buyguidesData = buyguides?.map((guide) => ({
         <div className="sidebar-content-wrap">
           <div className="category-wrapper">
        <h4>   {language === "en" ? "BUYING GUIDE" : "GUIDE D'ACHAT"}</h4>
-            <ul className="category-list mx-10">
+            <ul className="category-list sm:mx-10">
               <li>
                
                 <Link
