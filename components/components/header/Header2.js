@@ -747,10 +747,10 @@ const buyguidesData = buyguides?.map((guide) => ({
             <i className="bi bi-x" />
           </div>
         </div>
-        <div className="sidebar-content-wrap">
-          <div className="category-wrapper">
+        <div className="sidebar-content-wrap ">
+          <div className="category-wrapper  ">
        <h4>   {language === "en" ? "BUYING GUIDE" : "GUIDE D'ACHAT"}</h4>
-            <ul className="category-list sm:mx-10">
+            <ul className="category-list sm:mx-10 sm:flex-none sm:justify-evenly  mx-auto flex justify-center">
               <li className="ml-1">
                
                 <Link
@@ -762,7 +762,7 @@ const buyguidesData = buyguides?.map((guide) => ({
    
                       <img src="/cyprus.svg" alt='cyprus' className="w-12 h-12"></img>
                   </div>
-                  {language === "en" ?   <h6>CYPRUS</h6>: <h6>Chypre</h6>}
+                  {language === "en" ?   <h6>CYPRUS</h6>: <h6>CHYPRE</h6>}
                 </Link>
               </li>
               <li>
@@ -784,7 +784,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <div className="icon">
                   <img src="/dominican-republic.svg" alt="dominican-republic" className="w-12 h-12"></img>
                   </div>
-                  {language === "en" ?   <h6>DOMINICAN R.</h6>: <h6>Rep.Dominicaine</h6>}
+                  {language === "en" ?   <h6>DOMINICAN R.</h6>: <h6>R.DOMINICAINE</h6>}
                 </Link>
               </li>
               <li>
