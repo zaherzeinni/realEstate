@@ -677,7 +677,7 @@ const buyguidesData = buyguides?.map((guide) => ({
         <div className="sidebar-content-wrap ">
           <div className="category-wrapper  ">
        <h4>   {language === "en" ? "BUYING GUIDE" : "GUIDE D'ACHAT"}</h4>
-            <ul className="category-list sm:mx-10 sm:flex-none sm:justify-evenly  mx-auto flex justify-center">
+            <ul className="category-list sm:mx-10 sm:flex-none sm:justify-evenly grid grid-cols-2 mx-auto  justify-center">
               <li className="ml-1">
                
                 <Link
