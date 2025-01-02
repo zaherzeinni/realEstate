@@ -762,7 +762,7 @@ const buyguidesData = buyguides?.map((guide) => ({
    
                       <img src="/cyprus.svg" alt='cyprus' className="w-12 h-12"></img>
                   </div>
-                  {language === "en" ?   <h6>Cyprus</h6>: <h6>Chypre</h6>}
+                  {language === "en" ?   <h6>CYPRUS</h6>: <h6>Chypre</h6>}
                 </Link>
               </li>
               <li>
@@ -784,7 +784,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <div className="icon">
                   <img src="/dominican-republic.svg" alt="dominican-republic" className="w-12 h-12"></img>
                   </div>
-                  {language === "en" ?   <h6>Dominican Rep.</h6>: <h6>Rep.Dominicaine</h6>}
+                  {language === "en" ?   <h6>DOMINICAN REP.</h6>: <h6>Rep.Dominicaine</h6>}
                 </Link>
               </li>
               <li>
@@ -795,7 +795,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <div className="icon">
                   <img src="/mexico.svg" alt="mexico" className="w-12 h-12"></img>
                   </div>
-                  {language === "en" ?   <h6>Mexcio</h6>: <h6>Mexique</h6>}
+                  {language === "en" ?   <h6>MEXICO</h6>: <h6>Mexique</h6>}
                 </Link>
               </li>
               <li>
@@ -807,7 +807,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <img src="/spain.svg" alt="spain" className="w-12 h-12"></img>
                  
                   </div>
-                  {language === "en" ?   <h6>Spain</h6>: <h6>Espagne</h6>}
+                  {language === "en" ?   <h6>SPAIN</h6>: <h6>Espagne</h6>}
                 </Link>
               </li>
               <li>
@@ -818,7 +818,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <div className="icon">
                   <img src="/portugal.svg" alt="portugal" className="w-12 h-12"></img>
                   </div>
-                  {language === "en" ?   <h6>Portugal</h6>: <h6>Portugal</h6>}
+                  {language === "en" ?   <h6>PORTUGAL</h6>: <h6>Portugal</h6>}
                 </Link>
               </li>
             </ul>
