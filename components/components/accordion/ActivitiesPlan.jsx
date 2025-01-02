@@ -150,8 +150,8 @@ export default function ActivitiesPlan() {
                     
                     <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] md:text-lg text-white w-[150px] md:w-[200px] h-[50px] text-center  items-center flex'>Partner Benefits</span>  
                     
-                    <span className='my-auto text-[13px] md:text-lg hidden md:flex'>Earn More with &nbsp; <i>SAND N SEA REALTY</i></span>
-                    <span className='my-auto text-[13px] md:text-lg md:hidden'>Earn More with &nbsp; <br></br><i>SAND N SEA REALTY</i></span>
+                    <span className='my-auto text-[13px] md:text-lg hidden text-start md:flex'>Earn More with &nbsp; <i>SAND N SEA REALTY</i></span>
+                    <span className='my-auto text-[13px] md:text-lg md:hidden text-start'>Earn More with &nbsp; <br></br><i>SAND N SEA REALTY</i></span>
                   
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
@@ -199,9 +199,9 @@ export default function ActivitiesPlan() {
                     
                     <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] md:text-lg text-white w-[150px] md:w-[200px] h-[50px] text-center  items-center flex'>Join Us</span>  
 
-                    <span className='my-auto text-[13px] md:text-lg hidden md:flex sm:ml-0'>Transform Your Career with  <br></br><i>&nbsp; SAND N SEA REALTY!</i></span>
+                    <span className='my-auto text-[13px] md:text-lg hidden md:flex sm:ml-0 text-start'>Transform Your Career with  <br></br><i>&nbsp; SAND N SEA REALTY!</i></span>
                   
-                    <span className='my-auto text-[13px] md:text-lg md:hidden sm:ml-0'>Transform Your Career <br></br>with <i>&nbsp;SAND N SEA REALTY!</i></span>
+                    <span className='my-auto text-[13px] md:text-lg md:hidden sm:ml-0 -ml-1 text-start'>Transform Your Career <br></br>with <i>&nbsp;SAND N SEA REALTY!</i></span>
                   
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
