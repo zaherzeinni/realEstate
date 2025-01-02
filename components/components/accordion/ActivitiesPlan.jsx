@@ -201,7 +201,7 @@ export default function ActivitiesPlan() {
 
                     <span className='my-auto text-[13px] md:text-lg hidden md:flex sm:ml-0 text-start'>Transform Your Career with  <br></br><i>&nbsp; SAND N SEA REALTY!</i></span>
                   
-                    <span className='my-auto text-[13px] md:text-lg md:hidden sm:ml-0 -ml-1 text-start'>Transform Your Career <br></br>with <i>&nbsp;SAND N SEA REALTY!</i></span>
+                    <span className='my-auto text-[13px] md:text-lg md:hidden sm:ml-0 text-start'>Transform Your Career <br></br>with <i>&nbsp;SAND N SEA REALTY!</i></span>
                   
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
