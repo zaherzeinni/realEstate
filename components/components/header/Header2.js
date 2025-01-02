@@ -667,7 +667,7 @@ const buyguidesData = buyguides?.map((guide) => ({
         <div className="sidebar-logo-area d-flex justify-content-between align-items-center">
           <div className="sidebar-logo-wrap">
             <Link href="/">
-            <img src="/3.png" alt="logo" className="w-[240px] sm:w-[260px] mt-6 " />
+            <img src="/3.png" alt="logo" className="w-[240px] mt-6 " />
             </Link>
           </div>
           <div className="right-sidebar-close-btn" onClick={toggleRightSidebar}>
@@ -687,7 +687,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <div className="icon">
            
    
-                      <img src="/cyprus.svg" alt='cyprus' className="w-12 h-12"></img>
+                      <img src="/cyprus.svg" alt='cyprus' className="w-12 h-12 mx-auto"></img>
                   </div>
                   {language === "en" ?   <h6>CYPRUS</h6>: <h6>CHYPRE</h6>}
                 </Link>
@@ -698,7 +698,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   className="single-category"
                 >
                   <div className="icon">
-                  <img src="/uae.svg" alt="uae" className="w-12 h-12"></img>
+                  <img src="/uae.svg" alt="uae" className="w-12 h-12 mx-auto"></img>
                   </div>
                   {language === "en" ?   <h6>U.A.E.</h6>: <h6>E.A.U.</h6>}
                 </Link>
@@ -709,7 +709,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   className="single-category"
                 >
                   <div className="icon">
-                  <img src="/dominican-republic.svg" alt="dominican-republic" className="w-12 h-12"></img>
+                  <img src="/dominican-republic.svg" alt="dominican-republic" className="w-12 h-12 mx-auto"></img>
                   </div>
                   {language === "en" ?   <h6>DOMINICAN R.</h6>: <h6>R.DOMINICAINE</h6>}
                 </Link>
@@ -720,7 +720,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   className="single-category"
                 >
                   <div className="icon">
-                  <img src="/mexico.svg" alt="mexico" className="w-12 h-12"></img>
+                  <img src="/mexico.svg" alt="mexico" className="w-12 h-12 mx-auto"></img>
                   </div>
                   {language === "en" ?   <h6>MEXICO</h6>: <h6>MEXIQUE</h6>}
                 </Link>
@@ -731,7 +731,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   className="single-category"
                 >
                   <div className="icon">
-                  <img src="/spain.svg" alt="spain" className="w-12 h-12"></img>
+                  <img src="/spain.svg" alt="spain" className="w-12 h-12 mx-auto"></img>
                  
                   </div>
                   {language === "en" ?   <h6>SPAIN</h6>: <h6>ESPAGNE</h6>}
@@ -743,7 +743,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   className="single-category"
                 >
                   <div className="icon">
-                  <img src="/portugal.svg" alt="portugal" className="w-12 h-12"></img>
+                  <img src="/portugal.svg" alt="portugal" className="w-12 h-12 mx-auto"></img>
                   </div>
                   {language === "en" ?   <h6>PORTUGAL</h6>: <h6>PORTUGAL</h6>}
                 </Link>
