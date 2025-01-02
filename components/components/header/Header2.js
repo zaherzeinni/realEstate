@@ -445,79 +445,6 @@ const buyguidesData = buyguides?.map((guide) => ({
             {navData.map((data) => {
               const { id, label, link, icon, subMenu, labelfr } = data;
               return (
-                // <li
-                //   key={id}
-                //   className={`${icon === true ? "menu-item-has-children" : ""}`}
-                // >
-                //   <Link href={link} className="drop-down">
-                //     {language === "en" ? label : labelfr}
-                //   </Link>
-                //   {icon && (
-                //     <i
-                //       onClick={() => toggleMenu(label)}
-                //       className={`bi bi-${
-                //         state.activeMenu === label ? "dash" : "plus"
-                //       } dropdown-icon`}
-                //     />
-                //   )}
-
-                //   {subMenu && (
-                //     <ul
-                //       className={`sub-menu ${
-                //         state.activeMenu === label ? "d-block" : ""
-                //       }`}
-                //     >
-                //       {subMenu.map((subItem, subIndex) => (
-                //         <li key={subIndex}>
-                //           <Link legacyBehavior href={subItem.link}>
-                //             <a>
-                //               {language === "en"
-                //                 ? subItem?.label
-                //                 : subItem?.labelfr}{" "}
-                //             </a>
-                //           </Link>
-                //           {subItem.icon && subItem.icon ? (
-                //             <>
-                //               <i className="d-lg-flex d-none bi bi-chevron-right dropdown-icon" />
-                //               <i
-                //                 onClick={() => toggleSubMenu(subItem.label)}
-                //                 className={`d-lg-none d-flex bi bi-${
-                //                   state.activeSubMenu === subItem.label
-                //                     ? "dash"
-                //                     : "plus"
-                //                 } dropdown-icon `}
-                //               />
-                //             </>
-                //           ) : (
-                //             ""
-                //           )}
-                //           {subItem.subMenu && (
-                //             <ul
-                //               className={`sub-menu ${
-                //                 state.activeSubMenu === subItem.label
-                //                   ? "d-block"
-                //                   : ""
-                //               }`}
-                //             >
-                //               {subItem.subMenu.map((subItem, subIndex) => (
-                //                 <li key={subItem.id}>
-                //                   <Link legacyBehavior href={subItem.link}>
-                //                     <a>
-                //                       {language === "en"
-                //                         ? subItem?.label
-                //                         : subItem?.labelfr}
-                //                     </a>
-                //                   </Link>
-                //                 </li>
-                //               ))}
-                //             </ul>
-                //           )}
-                //         </li>
-                //       ))}
-                //     </ul>
-                //   )}
-                // </li>
-
                 <li
                   key={id}
                   className={`${icon === true ? "menu-item-has-children" : ""}`}
@@ -795,7 +722,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <div className="icon">
                   <img src="/mexico.svg" alt="mexico" className="w-12 h-12"></img>
                   </div>
-                  {language === "en" ?   <h6>MEXICO</h6>: <h6>Mexique</h6>}
+                  {language === "en" ?   <h6>MEXICO</h6>: <h6>MEXIQUE</h6>}
                 </Link>
               </li>
               <li>
@@ -807,7 +734,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <img src="/spain.svg" alt="spain" className="w-12 h-12"></img>
                  
                   </div>
-                  {language === "en" ?   <h6>SPAIN</h6>: <h6>Espagne</h6>}
+                  {language === "en" ?   <h6>SPAIN</h6>: <h6>ESPAGNE</h6>}
                 </Link>
               </li>
               <li>
@@ -818,19 +745,24 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <div className="icon">
                   <img src="/portugal.svg" alt="portugal" className="w-12 h-12"></img>
                   </div>
-                  {language === "en" ?   <h6>PORTUGAL</h6>: <h6>Portugal</h6>}
+                  {language === "en" ?   <h6>PORTUGAL</h6>: <h6>PORTUGAL</h6>}
                 </Link>
               </li>
             </ul>
           </div>
           <div className="destination-wrapper">
+          {language === "en" ?  
             <h4>Our Destinations</h4>
+            :
+            <h4>Nos Destinations</h4>
+          }
             <div className="row">
               <div className="col-lg-12">
                 <Swiper
                   {...settings}
                   className="swiper destination-sidebar-slider mb-35"
                 >
+                  
                   <div className="swiper-wrapper">
                     <SwiperSlide className="swiper-slide">
                       <div className="destination-card2">
@@ -843,11 +775,11 @@ const buyguidesData = buyguides?.map((guide) => ({
                             alt=""
                           />
                         </Link>
-                        <div className="batch">
+                        {/* <div className="batch">
                           <span>5 Tour</span>
-                        </div>
+                        </div> */}
                         <div className="destination-card2-content">
-                          <span>Travel To</span>
+                          {/* <span>Travel To</span> */}
                           <h4>
                             <Link href="/destination/destination-details">
                               New York
@@ -856,7 +788,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                         </div>
                       </div>
                     </SwiperSlide>
-                    <SwiperSlide className="swiper-slide">
+                    {/* <SwiperSlide className="swiper-slide">
                       <div className="destination-card2">
                         <Link
                           href="/destination/destination-details"
@@ -927,7 +859,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                           </h4>
                         </div>
                       </div>
-                    </SwiperSlide>
+                    </SwiperSlide> */}
                   </div>
                 </Swiper>
                 <div className="slide-and-view-btn-grp">
@@ -941,7 +873,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                       <path d="M53 6.5L1 6.5M1 6.5L7 12M1 6.5L7 0.999996" />
                     </svg>
                   </div>
-                  <Link href="destination/style2" className="secondary-btn2">
+                  <Link href="/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=&rooms=0&beds=0" className="secondary-btn2">
                     {language === "en" ? "View All" : "voir tout" }
                   </Link>
                   <div className="destination-sidebar-next">
