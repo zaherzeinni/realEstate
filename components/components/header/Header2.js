@@ -711,7 +711,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                   <div className="icon">
                   <img src="/dominican-republic.svg" alt="dominican-republic" className="w-12 h-12 mx-auto"></img>
                   </div>
-                  {language === "en" ?   <h6>DOMINICAN R.</h6>: <h6>R.DOMINICAINE</h6>}
+                  {language === "en" ?   <h6>DOMINICAN REP.</h6>: <h6>REP. DOMINICAINE</h6>}
                 </Link>
               </li>
               <li>
