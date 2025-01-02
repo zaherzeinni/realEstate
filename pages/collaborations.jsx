@@ -176,7 +176,7 @@ const {language} = useLanguageContext()
                 <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Competitive Edge:</b> Our unparalleled knowledge and insights into the market provide you with a crucial advantage to unlock your potential in real estate.</div>
                 </li>
                 :
-                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Avantage Concurrentiel:</b> Notre connaissance inégalée et nos insights sur le marché vous offrent un atout essentiel pour libérer votre potentiel dans l'immobilier.</div>
+                <li><i className="bi bi-check-lg text-green-500" /><div><b className="text-black">Avantage Concurrentiel:</b> Notre connaissance inégalée et nos analyses du marché vous offrent un atout essentiel pour libérer votre potentiel dans l'immobilier.</div>
                 </li>
                 }
                 {language === "en" ?

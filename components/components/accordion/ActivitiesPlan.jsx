@@ -50,8 +50,11 @@ export default function ActivitiesPlan() {
                   <button  onClick={() => togglePara("1")} className="flex accordion-button- bg-transparent h-[50px] text-black !border-white !border-solid" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
                     >
                     
-                    <span className='bg-primary2 p-2 -mt-1 mr-2 text-[13px] sm:text-lg text-white w-[70px] sm:w-[210px] h-[50px] text-center  items-center flex'>Unlock Your Success</span>  
-                    <span className='my-auto text-[13px] sm:text-lg'>Join Our Exclusive Referral Program</span>
+                    <span className='bg-primary2 p-2 -mt-1 mr-2 text-[13px] md:text-lg text-white w-[150px] md:w-[200px] h-[50px] text-center  items-center flex'>Unlock Your Success</span>  
+                    
+                    <span className='my-auto text-[13px] md:text-lg hidden sm:flex'>Join Our Exclusive Referral Program</span>
+
+                    <span className='my-auto text-[13px] md:text-lg sm:hidden'>Join Our Exclusive <br></br>Referral Program</span>
                   
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
@@ -96,8 +99,8 @@ export default function ActivitiesPlan() {
                   <button  onClick={() => togglePara1("1")} className="flex accordion-button- bg-transparent h-[50px] text-black !border-white !border-solid" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
                     >
                     
-                    <span className='bg-primary2 p-2 -mt-1 mr-2 text-[13px] sm:text-lg text-white w-[70px] sm:w-[210px] h-[50px] text-center  items-center flex'>Referral Program</span>  
-                    <span className='my-auto text-[13px] sm:text-lg'>How Does It Work?</span>
+                    <span className='bg-primary2 p-2 -mt-1 mr-2 text-[13px] md:text-lg text-white w-[150px] md:w-[200px] h-[50px] text-center  items-center flex'>Referral Program</span>  
+                    <span className='my-auto text-[13px] md:text-lg'>How Does It Work?</span>
 
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
@@ -145,8 +148,10 @@ export default function ActivitiesPlan() {
                   <button  onClick={() => togglePara2("1")} className="flex accordion-button- bg-transparent h-[50px] text-black !border-white !border-solid" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
                     >
                     
-                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] sm:text-lg text-white w-[70px] sm:w-[210px] h-[50px] text-center  items-center flex'>Partner Benefits</span>  
-                    <span className='my-auto text-[13px] sm:text-lg'>Earn More with <i>SAND N SEA REALTY</i></span>
+                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] md:text-lg text-white w-[150px] md:w-[200px] h-[50px] text-center  items-center flex'>Partner Benefits</span>  
+                    
+                    <span className='my-auto text-[13px] md:text-lg hidden md:flex'>Earn More with &nbsp; <i>SAND N SEA REALTY</i></span>
+                    <span className='my-auto text-[13px] md:text-lg md:hidden'>Earn More with &nbsp; <br></br><i>SAND N SEA REALTY</i></span>
                   
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
@@ -192,8 +197,11 @@ export default function ActivitiesPlan() {
                   <button  onClick={() => togglePara3("1")} className="flex accordion-button- bg-transparent h-[50px] text-black !border-white !border-solid" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
                     >
                     
-                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] sm:text-lg text-white w-[150px] sm:w-[250px] h-[50px] text-center  items-center flex'>Join &nbsp;<i>SAND N SEA REALTY!</i></span>  
-                    <span className='my-auto text-[13px] sm:text-lg -ml-4 sm:ml-0'>Transform Your RE Career with <i>SAND N SEA REALTY!</i></span>
+                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] md:text-lg text-white w-[150px] md:w-[200px] h-[50px] text-center  items-center flex'>Join Us</span>  
+
+                    <span className='my-auto text-[13px] md:text-lg hidden md:flex sm:ml-0'>Transform Your Career with  <br></br><i>&nbsp; SAND N SEA REALTY!</i></span>
+                  
+                    <span className='my-auto text-[13px] md:text-lg md:hidden sm:ml-0'>Transform Your Career <br></br>with <i>&nbsp;SAND N SEA REALTY!</i></span>
                   
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
@@ -245,8 +253,13 @@ export default function ActivitiesPlan() {
                   <button  onClick={() => togglePara("1")} className="flex accordion-button- bg-transparent h-[50px] text-black !border-white !border-solid" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
                     >
                     
-                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] sm:text-lg text-white w-[100px] sm:w-[250px] h-[50px] text-center  items-center flex'>Déverrouillez Votre Succès</span>  
-                    <span className='my-auto text-[13px] sm:text-lg'>Rejoignez Notre Programme de Référence Exclusif</span>
+                    <span className='bg-primary2 p-2 -mt-1 mr-2 text-[13px] md:text-lg text-white w-[150px] md:w-[250px] h-[50px] text-center  items-center md:flex hidden'>Déverrouillez Votre Succès</span>  
+
+                    <span className='bg-primary2 p-2 -mt-1 mr-2 text-[13px] md:text-lg text-white w-[100px] md:w-[200px] h-[50px] text-center  items-center flex md:hidden'>Déverrouillez<br></br> Votre Succès</span>  
+                    
+                    <span className='my-auto text-[13px] md:text-lg hidden sm:flex text-start' >Rejoignez Notre Programme de Référence Exclusif</span>
+                    
+                    <span className='my-auto text-[13px] md:text-lg sm:hidden text-start'>Rejoignez Notre Programme <br></br>de Référence Exclusif</span>
                   
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
@@ -291,8 +304,8 @@ export default function ActivitiesPlan() {
                   <button  onClick={() => togglePara1("1")} className="flex accordion-button- bg-transparent h-[50px] text-black !border-white !border-solid" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
                     >
                     
-                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] sm:text-lg text-white w-[100px] sm:w-[250px] h-[50px] text-center  items-center flex'>Programme de Référence</span>  
-                    <span className='my-auto text-[13px] sm:text-lg'>Comment Ça Marche?</span>
+                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] md:text-lg text-white w-[100px] md:w-[250px] h-[50px] text-center  items-center flex'>Programme de Référence</span>  
+                    <span className='my-auto text-[13px] md:text-lg'>Comment Ça Marche?</span>
 
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
@@ -340,8 +353,12 @@ export default function ActivitiesPlan() {
                   <button  onClick={() => togglePara2("1")} className="flex accordion-button- bg-transparent h-[50px] text-black !border-white !border-solid" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
                     >
                     
-                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] sm:text-lg text-white w-[100px] sm:w-[250px] h-[50px] text-center  items-center flex'>Avantages Partenaires</span>  
-                    <span className='my-auto text-[13px] sm:text-lg'>Gagnez Plus avec <i>SAND N SEA REALTY</i></span>
+                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] md:text-lg text-white w-[100px] md:w-[250px] h-[50px] text-center  items-center flex'>Avantages Partenaires</span>  
+                    
+                    <span className='my-auto text-[13px] md:text-lg hidden md:flex'>Gagnez Plus avec &nbsp; <i> SAND N SEA REALTY</i></span>
+
+                    <span className='my-auto text-[13px] text-start md:text-lg md:hidden'>Gagnez Plus<br></br> avec <i> SAND N SEA REALTY</i></span>
+
                   
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
@@ -387,9 +404,11 @@ export default function ActivitiesPlan() {
                   <button  onClick={() => togglePara3("1")} className="flex accordion-button- bg-transparent h-[50px] text-black !border-white !border-solid" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
                     >
                     
-                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] sm:text-lg text-white w-[230px] sm:w-[300px] h-[50px] text-center  items-center flex'>Rejoignez &nbsp; <i> SAND N SEA REALTY!</i></span>  
-                    <span className='my-auto text-[13px] sm:text-lg'>Transformez Votre Carrière Immobilière </span>
-                    {/* <span className='my-auto'>Transformez Votre Carrière Immobilière avec <i>SAND N SEA REALTY!</i></span> */}
+                    <span className='bg-primary2 p-2 -mt-1 mr-2  text-[13px] md:text-lg text-white w-[100px] md:w-[250px] h-[50px] text-center  items-center flex'>Rejoignez Nous</span>  
+                    
+                    <span className='my-auto text-[13px] md:text-lg hidden md:flex sm:ml-0 text-start'>Transformez votre carrière avec nous</span>
+                   
+                    <span className='my-auto text-[13px] md:text-lg md:hidden sm:ml-0'>Transformez votre carrière <br></br>avec <i className='text-start'>&nbsp; SAND N SEA REALTY!</i></span>
                   
                    <div
                   className={`ltr:ml-auto1 rtl:mr-auto1 w-auto flex justify-end text-end absolute end-6   ${
