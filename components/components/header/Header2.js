@@ -30,6 +30,8 @@ import SwiperCore, {
 } from "swiper";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
+import { ImageEndpoint } from "@/utils/global";
+
 const initialState = {
   activeMenu: "",
   activeSubMenu: "",
@@ -84,7 +86,9 @@ const Header2 = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const headerRef = useRef(null);
 
-  const { data: countries, isLoading, error } = useCountries();
+  const { data: countries} = useCountries();
+
+
 
   const {
     data: cities,
@@ -263,7 +267,7 @@ const buyguidesData = buyguides?.map((guide) => ({
 
 
 
-
+const { data, isLoading, error } = useCountries();
 
 
   
@@ -640,9 +644,7 @@ const buyguidesData = buyguides?.map((guide) => ({
                 </button>
             </li>
 
-          {/* <Link href="/package-grid" className="primary-btn3 d-xl-flex d-none">
-            Connect
-          </Link> */}
+  
           <div
             className="sidebar-button mobile-menu-btn"
             onClick={toggleSidebar}
@@ -667,7 +669,7 @@ const buyguidesData = buyguides?.map((guide) => ({
         <div className="sidebar-logo-area d-flex justify-content-between align-items-center">
           <div className="sidebar-logo-wrap">
             <Link href="/">
-            <img src="/3.png" alt="logo" className="w-[240px] mt-6 " />
+            <img src="/3.png" alt="logo" className="w-[240px] " />
             </Link>
           </div>
           <div className="right-sidebar-close-btn" onClick={toggleRightSidebar}>
@@ -759,119 +761,56 @@ const buyguidesData = buyguides?.map((guide) => ({
             <div className="row">
               <div className="col-lg-12">
                 
-              {/* {groupedData?.map((subItem, subIndex) => (
-                    <li key={subIndex}>
-                      <Link legacyBehavior href={subItem.link}>
-                        <a> {language === "en" ? subItem.label : subItem.labelfr }    </a>
-                      </Link>
-                      </li>
-                      ))} */}
-                
+
+
+
+
+
+
+             
                 <Swiper
                   {...settings}
                   className="swiper destination-sidebar-slider mb-35"
                 >
                   
                   <div className="swiper-wrapper">
-                    <SwiperSlide className="swiper-slide">
+                  {data?.map((country, index) => (
+                    <SwiperSlide key={index} className="swiper-slide">
                       <div className="destination-card2">
-                        <Link
-                          href="/destination/destination-details"
+                      <Link
+                          href={`/projects/?country=${
+                            country?.title
+                          }&city=${""}&baths=${0}&beds=${0}&minPrice=${0}&maxPrice=${1000000000000}&type=${""}&rooms=${0}&beds=${0}`}
                           className="destination-card-img"
                         >
+                          
                           <img
-                            src="/assets/img/home2/destination-card-sidebar-img1.png"
+                            src={`${ImageEndpoint}/${country?.cover}`}
+                            //   src="/assets/img/home2/destination-card2-img1.jpg"
                             alt=""
+                            className="h-52"
                           />
                         </Link>
-                        {/* <div className="batch">
-                          <span>5 Tour</span>
-                        </div> */}
                         <div className="destination-card2-content">
-                          {/* <span>Travel To</span> */}
                           <h4>
-                            <Link href="/destination/destination-details">
-                              New York
+                            <Link
+                              href={`/projects/?country=${
+                                country?.title
+                              }&city=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`}
+                            >
+                              {language === 'en' ? country?.title : country?.titlefr}
                             </Link>
                           </h4>
                         </div>
                       </div>
                     </SwiperSlide>
-                    {/* <SwiperSlide className="swiper-slide">
-                      <div className="destination-card2">
-                        <Link
-                          href="/destination/destination-details"
-                          className="destination-card-img"
-                        >
-                          <img
-                            src="/assets/img/home2/destination-card-sidebar-img2.png"
-                            alt=""
-                          />
-                        </Link>
-                        <div className="batch">
-                          <span>8 Tour</span>
-                        </div>
-                        <div className="destination-card2-content">
-                          <span>Travel To</span>
-                          <h4>
-                            <Link href="/destination/destination-details">
-                              Switzerland
-                            </Link>
-                          </h4>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="swiper-slide">
-                      <div className="destination-card2">
-                        <Link
-                          href="/destination/destination-details"
-                          className="destination-card-img"
-                        >
-                          <img
-                            src="/assets/img/home2/destination-card-sidebar-img3.png"
-                            alt=""
-                          />
-                        </Link>
-                        <div className="batch">
-                          <span>4 Tour</span>
-                        </div>
-                        <div className="destination-card2-content">
-                          <span>Travel To</span>
-                          <h4>
-                            <Link href="/destination/destination-details">
-                              Saudi Arab
-                            </Link>
-                          </h4>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="swiper-slide">
-                      <div className="destination-card2">
-                        <Link
-                          href="/destination/destination-details"
-                          className="destination-card-img"
-                        >
-                          <img
-                            src="/assets/img/home2/destination-card-sidebar-img4.png"
-                            alt=""
-                          />
-                        </Link>
-                        <div className="batch">
-                          <span>6 Tour</span>
-                        </div>
-                        <div className="destination-card2-content">
-                          <span>Travel To</span>
-                          <h4>
-                            <Link href="/destination/destination-details">
-                              Indonesia
-                            </Link>
-                          </h4>
-                        </div>
-                      </div>
-                    </SwiperSlide> */}
+                      ))}
                   </div>
+                  
                 </Swiper>
-                <div className="slide-and-view-btn-grp">
+            
+
+                <div className="slide-and-view-btn-grp -mb-10 sm:-mb-20">
                   <div className="destination-sidebar-prev">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

@@ -70,7 +70,7 @@ const Countriesslide = () => {
                 <div className="eg-section-tag">
                 {language === "en" ? <span>Our projects</span> : <span>Nos projets</span>}  
                 </div>
-                {language === "en" ? <h1 className="lg:text-[60px]"> Countries</h1> : <h1 className="lg:text-[60px]">Pays</h1>}
+                {language === "en" ? <h1 className="lg:text-[60px]">Countries</h1> : <h1 className="lg:text-[60px]">Pays</h1>}
               </div>
             </div>
           </div>
@@ -101,13 +101,7 @@ const Countriesslide = () => {
                         {language === "en" ? <span>Projects</span> : <span>Projets</span>}  
                         </div>
                         <div className="destination-card2-content">
-                          {/* <span>Travel To</span> */}
                           <h4>
-                            {/* 
-                        router.push(
-      `/projects/?country=${formData?.country?.value}&city=${formData.city.value}&baths=${formData.baths?.value}&beds=${formData.beds?.value}&minPrice=${formData.minPrice?.value}&maxPrice=${formData.maxPrice?.value}&type=${formData.type?.value}&rooms=${formData.rooms.value}&beds=${formData.beds.value}`
-    ); */}
-
                             <Link
                               href={`/projects/?country=${
                                 country?.title
