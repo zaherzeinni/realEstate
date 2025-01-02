@@ -751,7 +751,7 @@ const buyguidesData = buyguides?.map((guide) => ({
           <div className="category-wrapper">
        <h4>   {language === "en" ? "BUYING GUIDE" : "GUIDE D'ACHAT"}</h4>
             <ul className="category-list sm:mx-10">
-              <li>
+              <li className="ml-1">
                
                 <Link
                   href="/buyguide?guide=north-cyprus"
