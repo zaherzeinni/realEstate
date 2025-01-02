@@ -230,7 +230,7 @@ export default function ActivitiesPlan() {
                 <AnimateHeight duration={300} height={active3 === "1" ? "auto" : 0}>
                   <div className="1accordion-body ">
                     <span>
-              <p>Whether you are an independent professional or represent a firm in the industry, we invite you to join us and become a valued member of the <i>SAND N SEA REALTY</i> family! <a className=' font-bold' href='/contact' >Contact-us</a> now to learn more!</p>
+              <p>Whether you are an independent professional or represent a firm in the industry, we invite you to join us and become a valued member of the <i>SAND N SEA REALTY</i> family! <br></br> <a className=' font-bold' href='/contact' >Contact-us</a> now to learn more!</p>
                     </span>
                   </div>
                   </AnimateHeight>
@@ -437,7 +437,7 @@ export default function ActivitiesPlan() {
                 <AnimateHeight duration={300} height={active3 === "1" ? "auto" : 0}>
                   <div className="1accordion-body ">
                     <span>
-              <p>Que vous soyez un professionnel indépendant ou que vous représentiez une entreprise du secteur, nous vous invitons à nous rejoindre et à devenir un membre précieux de la famille <i>SAND N SEA REALTY</i><a className=' font-bold' href='/contact' > Contactez-nous</a> dès maintenant pour en savoir plus!</p>
+              <p>Que vous soyez un professionnel indépendant ou que vous représentiez une entreprise du secteur, nous vous invitons à nous rejoindre et à devenir un membre précieux de la famille <i>SAND N SEA REALTY!</i><br></br><a className=' font-bold' href='/contact' > Contactez-nous</a> dès maintenant pour en savoir plus!</p>
                     </span>
                   </div>
                   </AnimateHeight>
