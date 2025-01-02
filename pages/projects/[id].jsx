@@ -300,7 +300,7 @@ const ProjectDetails = () => {
                   })}
               </ul>
 
-              <ActivitiesPlan />
+              {/* <ActivitiesPlan /> */}
               <Accord />
             </div>
             <div className="col-lg-5">
