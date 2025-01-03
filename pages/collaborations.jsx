@@ -99,7 +99,7 @@ const {language} = useLanguageContext()
         {/* <img src="/3.png" alt="logo" className="w-[220px] sm:w-[260px] mb-10" /> */}
           <div className="col-xl-8">
             <div className="eg-tag2">
-              <span>SAND N SEA REALTY Friends</span>
+              <span>Sand N Sea Realty Friends</span>
             </div>
             {language === "en" ? 
             <h2>Join the <i>SAND N SEA REALTY</i> Referral Program</h2>
