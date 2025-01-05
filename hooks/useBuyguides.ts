@@ -32,10 +32,17 @@ export interface Buyguide {
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-export default function useBuyguides(id?: string) {
+//export default function useBuyguides(id?: string) {
   // If id is provided, fetch single buyguide, otherwise fetch all
-  const path = id ? `/api/buyguide/${id}` : '/api/buyguide';
+  //const path = id ? `/api/buyguide/${id}` : '/api/buyguide';
   
+
+
+  export default function useBuyguides(id?: string, isHeader = false) {
+    // If id is provided, fetch single buyguide, otherwise fetch all
+    const path = id ? `/api/buyguide/${id}` : `/api/buyguide?isHeader=${isHeader}`;
+
+
   const {
     data,
     error,

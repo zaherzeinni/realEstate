@@ -97,15 +97,18 @@ const Header2 = () => {
   } = useCities();
 
 
-  const { data: buyguides, isLoading: loadBuyguides, error: errorBuyguides } = useBuyguides();
+  // const { data: buyguides, isLoading: loadBuyguides, error: errorBuyguides } = useBuyguides();
+  const { data: buyguides, isLoading: loadBuyguides, error: errorBuyguides } = useBuyguides(undefined, true);
 
-const buyguidesData = buyguides?.map((guide) => ({
+  const buyguidesData = buyguides?.map((guide) => ({
   id: guide._id,
   label: guide.title,
   labelfr: guide.titlefr,
   link: `/buyguide?guide=${guide.title.toLowerCase().replace(/\s+/g, '-')}`
 }))
 
+
+console.log(buyguides,"dataaaaa buyguidesss")
 
 
   const groupedData = countries?.map((country) => ({

@@ -33,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           where,
         });
 
-        console.log('SERVIICES-->WWWWW' , books)
+        // console.log('SERVIICES-->WWWWW' , books)
         res.status(200).json({ books, pages });
       } catch (error) {
         console.error(error?.message);

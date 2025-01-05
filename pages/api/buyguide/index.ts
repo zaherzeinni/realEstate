@@ -17,7 +17,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     switch (req.method) {
       case "GET":
         try {
-          const buyguides = await Buyguide.find({}).lean();
+          //const buyguides = await Buyguide.find({}).lean();
+
+          const isHeader = req.query.isHeader === 'true';
+          const buyguides = await Buyguide.find({}).select(isHeader ? 'title':'').lean();
+
+
+          console.log("zaherrrrr", buyguides)
           return res.status(200).json(buyguides);
         } catch (error: any) {
           console.error('Get buyguides error:', error);
