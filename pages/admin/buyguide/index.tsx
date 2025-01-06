@@ -24,7 +24,7 @@ export default function BuyguideList() {
   const { data: buyguides, error, isLoading, mutate } = useSWR('/api/buyguide', fetcher)
   const [isDeleting, setIsDeleting] = useState(false)
 
-  if (error) return <div>Failed to load buyguides</div>
+  if (error) return <div>Failed to load buyguides admin</div>
   if (isLoading) return <Loading />
 
   const handleDelete = async (id: string) => {
