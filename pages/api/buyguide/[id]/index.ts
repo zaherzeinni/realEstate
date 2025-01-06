@@ -37,29 +37,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const user = req.user;
   const { id } = req.query;
 
-  // if (!mongoose.Types.ObjectId.isValid(id)) {
-  //   return res.status(400).json({ success: false, message: "Invalid ID format" });
-  // }
-
-
-  // Ensure id is a string
-  if (Array.isArray(id) || !mongoose.Types.ObjectId.isValid(id)) {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ success: false, message: "Invalid ID format" });
   }
-
-  // Function to introduce a delay
-  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-
 
   switch (req.method) {
     case "GET":
       try {
-
-          // Introduce a delay of 2000 milliseconds (2 seconds)
-          await delay(30000);
-
-
         const buyguide = await Buyguide.findById(id);
         if (!buyguide) {
           return res.status(404).json({ success: false, message: "Buyguide not found" });
