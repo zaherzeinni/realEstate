@@ -5,7 +5,6 @@ import dbConnect from "@/utils/dbConnect";
 import mongoose from 'mongoose';
 import { apiConfig } from "@/config/api";
 
-
 interface SubItem {
   id: string;
   title: string;
@@ -37,7 +36,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const user = req.user;
   const { id } = req.query;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  // Ensure id is a string
+  if (Array.isArray(id) || !mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ success: false, message: "Invalid ID format" });
   }
 
@@ -48,15 +48,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         if (!buyguide) {
           return res.status(404).json({ success: false, message: "Buyguide not found" });
         }
-        res.status(200).json(buyguide);
+        res.status(200).json({ success: true, data: buyguide });
       } catch (error) {
-        res.status(400).json({ success: false, error });
+        res.status(500).json({ success: false, message: "Server error", error });
       }
       break;
 
     case "PUT":
       if (user?.role !== "admin") {
-        return res.status(403).json({ message: "Not authorized" });
+        return res.status(403).json({ success: false, message: "Not authorized" });
       }
       try {
         const updatedBuyguide = await Buyguide.findByIdAndUpdate(
@@ -67,15 +67,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         if (!updatedBuyguide) {
           return res.status(404).json({ success: false, message: "Buyguide not found" });
         }
-        res.status(200).json(updatedBuyguide);
+        res.status(200).json({ success: true, data: updatedBuyguide });
       } catch (error) {
-        res.status(400).json({ success: false, error });
+        res.status(500).json({ success: false, message: "Server error", error });
       }
       break;
 
     case "DELETE":
       if (user?.role !== "admin") {
-        return res.status(403).json({ message: "Not authorized" });
+        return res.status(403).json({ success: false, message: "Not authorized" });
       }
       try {
         const deletedBuyguide = await Buyguide.findByIdAndDelete(id);
@@ -84,7 +84,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
         res.status(200).json({ success: true, message: "Buyguide deleted" });
       } catch (error) {
-        res.status(400).json({ success: false, error });
+        res.status(500).json({ success: false, message: "Server error", error });
       }
       break;
 
@@ -94,7 +94,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-
 export const config = apiConfig;
 
-export default auth(handler); 
+export default auth(handler);
