@@ -47,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const isHeader = req.query.isHeader === 'true';
 
         
-        const buyguide = await Buyguide.findById(id).lean();
+        const buyguide = await Buyguide.findById(id).catch();
         if (!buyguide) {
           return res.status(404).json({ success: false, message: "Buyguide not found" });
         }
