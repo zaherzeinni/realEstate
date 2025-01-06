@@ -57,7 +57,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
 
           // Introduce a delay of 2000 milliseconds (2 seconds)
-          await delay(10000);
+          await delay(30000);
 
 
         const buyguide = await Buyguide.findById(id);
