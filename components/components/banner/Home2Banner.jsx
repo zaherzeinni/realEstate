@@ -80,31 +80,31 @@ const Home2Banner = () => {
 
 // ------------------------FOR ANIMATION TEXT-------------------
   const titles = [
-    'EXPERIENCE THE BEST IN REAL ESTATE',
-    'DISCOVER THE CHARM OF',
-    'IN OUR',
-    'DESTINATIONS:',
+    'Experience The Best In Real Estate',
+    'Discover The Charm Of',
+    'In Our',
+    'Destinations:',
   ];
 
   const subtitles = [
-    'WITH US!',
-    'PARADISE',
-    'AMAZING',
-    'DUBAI - DOMINICAN REPUBLIC - MEXICO - SPAIN - PORTUGAL - CYPRUS',
+    'With Us!',
+    'Paradise',
+    'Amazing',
+    'Dubai - Dominican Republic - Mexico - Spain - Portugal - Cyprus',
   ];
 
   const titlesfr = [
-    "VIVEZ L'EXCELLENCE EN IMMOBILIER",
-    'DÉCOUVREZ LE CHARME DU',
-    'DANS NOS',
-    'DESTINATIONS',
+    "Vivez L'Excellence En Immobilier",
+    'Découvrez Le Charme Du',
+    'Dans Nos',
+    'Destinations',
   ];
 
   const subtitlesfr = [
-    'AVEC NOUS!',
-    'PARADIS',
-    'INCROYABLES',
-    'DUBAÏ- RÉPUBLIQUE DOMINICAINE - MEXIQUE - ESPAGNE -PORTUGAL - CHYPRE',
+    'Avec Nous!',
+    'Paradis',
+    'Incroyables',
+    'Dubaï - République Dominicaine - Mexique - Espagne - Portugal - Chypre',
   ];
 
 
@@ -117,7 +117,7 @@ const Home2Banner = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length);
-    }, 4000); // Change title every 2 seconds
+    }, 3000); // Change title every 2 seconds
 
     return () => clearInterval(interval);
   }, [titles.length]);
@@ -144,11 +144,11 @@ const Home2Banner = () => {
                   className="home2-banner-wrapper"
                   style={{
                     backgroundImage:
-                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/home2-banner-img2.jpg)",
+                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(/homebanner2.jpg)",
                   }}
                 ></div>
               </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
+              {/* <SwiperSlide className="swiper-slide">
                 <div
                   className="home2-banner-wrapper"
                   style={{
@@ -156,8 +156,8 @@ const Home2Banner = () => {
                       "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/home2-banner-img3.jpg)",
                   }}
                 ></div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
+              </SwiperSlide> */}
+              {/* <SwiperSlide className="swiper-slide">
                 <div
                   className="home2-banner-wrapper"
                   style={{
@@ -165,7 +165,7 @@ const Home2Banner = () => {
                       "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/home2-banner-img4.jpg)",
                   }}
                 ></div>
-              </SwiperSlide>
+              </SwiperSlide> */}
               <SwiperSlide className="swiper-slide">
                 <div
                   className="home2-banner-wrapper"

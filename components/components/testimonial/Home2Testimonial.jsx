@@ -57,7 +57,7 @@ const Home2Testimonial = () => {
     {
       id: 1,
       name: "Zunich Jordan",
-      parag: "Sand n Sea Realty team have served us for over 10 years now. First by finding us great rental accommodations for our family during our first few visits to UAE, and now managing the maintenance and rental of a condo in Dubai. Absolutely fantastic service.",
+      parag: "Sand n Sea Realty team have served us for over 10 years now. First by finding us great rental accommodations for our family during our first few visits to uae, and now managing the maintenance and rental of a condo in dubai. Absolutely fantastic service.",
     },
     {
       id: 2,
@@ -67,22 +67,22 @@ const Home2Testimonial = () => {
     {
       id: 3,
       name: "Magdalina Victorovich",
-      parag: "It has been a pleasure working with Sarah. He walked me through all the steps of the property buying process in Punta Cana with patience and confidence. He is very knowledgeable and made me feel comfortable making the decision to buy.",
+      parag: "It has been a pleasure working with Sarah. She walked me through all the steps of the property buying process in Punta Cana with patience and confidence. She is very knowledgeable and made me feel comfortable making the decision to buy.",
     },
     {
       id: 4,
       name: "David Levi",
-      parag: "My experience with SAND N SEA REALTY has been amazing. HAIDAR has been very helpful with this process coming from the US, connecting me to the right people to get my purchase accomplished. I am looking forward to my new home in MEXICO.",
+      parag: "My experience with SAND N SEA REALTY has been amazing. Haidar has been very helpful with this process coming from the US, connecting me to the right people to get my purchase accomplished. I am looking forward to my new home in MEXICO.",
     },
     {
       id: 5,
       name: "Amina El-Sayed",
-      parag: "L'équipe de Sand n Sea Realty a été incroyable ! Leur connaissance du marché m'a aidé à trouver la maison parfaite à CHYPRE.",
+      parag: "L'équipe de Sand n Sea Realty a été incroyable ! Leur connaissance du marché m'a aidé à trouver la maison parfaite à chypre.",
     },
     {
       id: 6,
       name: "Carlos Mendoza",
-      parag: "I am very satisfied with my experience at Sand n Sea agency. My agent was very professional and made every step of buying my property in Mexico easy.",
+      parag: "I am very satisfied with my experience at Sand n Sea agency. My agent was very professional and made every step of buying my property in mexico easy.",
     },
     {
       id: 7,
@@ -107,12 +107,12 @@ const Home2Testimonial = () => {
     {
       id: 11,
       name: "Omar Al-Farsi",
-      parag: "Je recommande vivement Sand n Sea Realty. Leur professionnalisme a fait toute la différence dans mon investissement à Dubaï et en Spain.",
+      parag: "Je recommande vivement Sand n Sea Realty. Leur professionnalisme a fait toute la différence dans mon investissement à dubaï et en spain.",
     },
     {
       id: 12,
       name: "Nina Petrova",
-      parag: "I am thrilled with my experience at Sand n Sea Realty. They were patient and guided me through every step of buying my home in PORTUGAL.",
+      parag: "I am thrilled with my experience at Sand n Sea Realty. They were patient and guided me through every step of buying my home in portugal.",
     },
     {
       id: 13,
@@ -146,12 +146,12 @@ const Home2Testimonial = () => {
                   </div>
                   {language === "en" ? (
                     <h2>
-                      Your Trust, Our Pride <br></br>They Chose Sand n Sea
+                      Your Trust, Our Pride. <br></br>They Chose Sand n Sea
                       Realty: <span className="text-primary"> Here's Their Story.</span>
                     </h2>
                   ) : (
                     <h2>
-                      Votre Confiance, Notre Fierté <br></br>Ils Ont Choisi Sand
+                      Votre Confiance, Notre Fierté. <br></br>Ils Ont Choisi Sand
                       n Sea Realty :<span className="text-primary"> Voici Leur Histoire.</span>
                     </h2>
                   )}
@@ -160,7 +160,7 @@ const Home2Testimonial = () => {
                       At Sand n Sea Realty, we turn your real estate dreams into
                       reality. Discover the testimonials of our satisfied
                       clients who chose our expertise for their buying and
-                      investment projects. Get inspired and join us to write
+                      investment projects. <br></br>Get inspired and join us to write
                       your own success story today!
                     </p>
                   ) : (
@@ -168,7 +168,7 @@ const Home2Testimonial = () => {
                       Chez Sand n Sea Realty, nous faisons de vos rêves
                       immobiliers une réalité. Découvrez les témoignages de nos
                       clients satisfaits qui ont choisi notre expertise pour
-                      leurs projets d'achat et d'investissement. Laissez-vous
+                      leurs projets d'achat et d'investissement. <br></br>Laissez-vous
                       inspirer et rejoignez-nous pour écrire votre propre
                       histoire de succès dès aujourd'hui!
                     </p>

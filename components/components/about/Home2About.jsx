@@ -1,3 +1,4 @@
+// ----------------HOME BANNER 5-----------------
 "use client";
 import React, { useState,useRef ,useEffect} from "react";
 import ModalVideo from "react-modal-video";
@@ -248,11 +249,11 @@ const Home2About = () => {
             </div>
             <div className="col-lg-6 d-flex align-items-center">
               <div className="about-img-wrap">
-                <div className="about-img">
+                <div className="about-img111">
                   <img
                     // src="/assets/img/home2/home2-about-img1.png"
                     src="/aboutushome.jpg"
-                    alt=""
+                    alt="aboutt"
                     className="about-img"
                   />
                 </div>

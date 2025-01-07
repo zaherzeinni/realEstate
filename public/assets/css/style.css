@@ -12574,7 +12574,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   -webkit-mask-image: url(../img/home2/home2-about-img-bg-vector.png);
   -webkit-mask-size: cover;
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: cover;
+  -webkit-mask-size: contain;
   position: relative;
 }
 .home2-about-section .about-img-wrap .about-img::before {
