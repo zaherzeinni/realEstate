@@ -9,6 +9,8 @@ import SwiperCore, {
 } from "swiper";
 import Link from "next/link";
 import { useCountdownTimer } from "../../../hooks/useCountDownTimer";
+import { useLanguageContext } from "@/context/languageContext";
+
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
 const Home2VideoSection = () => {
@@ -26,6 +28,10 @@ const Home2VideoSection = () => {
       },
     };
   }, []);
+
+
+  const {language} =useLanguageContext()
+  
   return (
     <>
       <div className="video-section">
