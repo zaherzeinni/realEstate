@@ -147,7 +147,10 @@ const Footer = ({ style }) => {
                   </li>
                   <li>
                     {/* contact#map */}
-                  <Link href="https://www.google.com/maps/@23.834278,90.363635,18z?hl=en&entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" className="primary-btn1 !text-white !text-md !font-semibold mt-2">
+
+
+                  
+                  <Link href="https://www.google.com/maps/place/33%C2%B046'53.7%22N+35%C2%B029'26.7%22E/@33.7816518,35.481065,4138m/data=!3m1!1e3!4m4!3m3!8m2!3d33.781574!4d35.490757?entry=ttu&g_ep=EgoyMDI1MDEwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" className="primary-btn1 !text-white !text-md !font-semibold mt-2">
                   {language === "en" ? "Go To Map" :"Aller à la carte"}
                   </Link>
                   </li>
@@ -206,7 +209,7 @@ const Footer = ({ style }) => {
                     </svg>
                     <h5>{language === "en" ? "Address" : "Adresse"}</h5>
                   </div>
-                  <a target="_blank" href="https://www.google.com/maps/place/33%C2%B046'54.7%22N+35%C2%B029'29.1%22E/@33.7818591,35.4909465,192m/data=!3m1!1e3!4m4!3m3!8m2!3d33.7818527!4d35.4914169?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D">
+                  <a target="_blank" href="https://www.google.com/maps/place/33%C2%B046'53.7%22N+35%C2%B029'26.7%22E/@33.7816518,35.481065,4138m/data=!3m1!1e3!4m4!3m3!8m2!3d33.781574!4d35.490757?entry=ttu&g_ep=EgoyMDI1MDEwMi4wIKXMDSoASAFQAw%3D%3D">
                   Dar Aytam , Aramon chwouaifat  <br /> 
                   El Quobbeh Aalay, {language === "en" ? "Lebanon ":"Liban"}
                   </a>

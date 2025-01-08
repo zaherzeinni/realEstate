@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLanguageContext } from "@/context/languageContext";
 import Header2 from "../components/components/header/Header2"
-import Header from "../components/components/header/Header"
+import Header3 from "../components/components/header/Header3"
 
 export default function Policygdpr() {
 
@@ -10,8 +10,8 @@ export default function Policygdpr() {
 
   return (
     <div dir='ltr' >
-  <Header />
-<div className="WordSection1 px-12">
+  <Header3 />
+<div className="WordSection1 px-12 mt-20">
 
 <p className="MsoNormal">&nbsp;</p>
 
@@ -427,7 +427,7 @@ export default function Policygdpr() {
           }}
         >
           
-If you have any questions, concerns, or requests regarding the processing of your personal data or this GDPR Compliance Notice, please contact us at <a href="mailto:hello@sandnsearealty.lb" >hello@sandnsearealty.lb</a>
+If you have any questions, concerns, or requests regarding the processing of your personal data or this GDPR Compliance Notice, please contact us at <a href="mailto:hello@sandnsearealty.ca" >hello@sandnsearealty.ca</a>
 
 
 </span> :
@@ -437,7 +437,7 @@ If you have any questions, concerns, or requests regarding the processing of you
         }}
       >
         
-        Si vous avez des questions, des préoccupations ou des demandes concernant le traitement de vos données personnelles ou cet avis de conformité au RGPD, veuillez nous contacter à  <a href="mailto:hello@sandnsearealty.lb" >hello@sandnsearealty.lb</a>
+        Si vous avez des questions, des préoccupations ou des demandes concernant le traitement de vos données personnelles ou cet avis de conformité au RGPD, veuillez nous contacter à  <a href="mailto:hello@sandnsearealty.ca" >hello@sandnsearealty.ca</a>
 
 
 </span>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLanguageContext } from "@/context/languageContext";
 import Header2 from "../components/components/header/Header2"
+import Header3 from "../components/components/header/Header3"
 import Header from "../components/components/header/Header"
 
 export default function Terms() {
@@ -10,8 +11,8 @@ export default function Terms() {
 
   return (
     <div dir='ltr' >
-  <Header />
-<div className="WordSection1 px-12">
+  <Header3 />
+<div className="WordSection1 px-12 mt-20">
 
 <p className="MsoNormal">&nbsp;</p>
 
@@ -76,13 +77,13 @@ export default function Terms() {
             fontFamily: '"Calibri",sans-serif',
           }}
         >
-       {language === "en" ? <div>These Terms of Use (the “Terms”) apply to the <b>Sand n Sea Realty</b> website located at <a href='www.sandnsearealty.lb'>www.sandnsearealty.lb</a> by <b>Sand n Sea Realty</b>Realty and its affiliates (collectively, the “Site”). 
+       {language === "en" ? <div>These Terms of Use (the “Terms”) apply to the <b>Sand n Sea Realty</b> website located at <a href='www.sandnsearealty.ca'>www.sandnsearealty.ca</a> by <b>Sand n Sea Realty</b>Realty and its affiliates (collectively, the “Site”). 
         The Site is the property of <b>Sand n Sea Realty</b>Realty (“Company,” “we,” “our,” and “us”) and its licensors. 
 By using the Site, you agree to these Terms. We may revise or modify these Terms at any time by updating this posting. You are bound by such revisions and modifications, so we encourage you to visit this page to review the most current Terms from time to time. 
 We reserve the right, without notice and for any reason, to modify or remove content from this site, suspend or terminate the operation of the Site, and deny access to any user to all or part of this site.
 </div>
 :
-<div>Ces Conditions d'Utilisation (les « Conditions ») s'appliquent au site Web de  <b>Sand n Sea Realty</b> situé à<a href='www.sandnsearealty.lb'>www.sandnsearealty.lb</a> par <b>Sand n Sea Realty</b>et ses affiliés (collectivement, le « Site »). 
+<div>Ces Conditions d'Utilisation (les « Conditions ») s'appliquent au site Web de  <b>Sand n Sea Realty</b> situé à<a href='www.sandnsearealty.ca'>www.sandnsearealty.ca</a> par <b>Sand n Sea Realty</b>et ses affiliés (collectivement, le « Site »). 
 Le site est la propriété de  <b>Sand n Sea Realty</b>(« Société », « nous », « notre » et « nos ») et de ses concédants. 
 En utilisant le site, vous acceptez ces Conditions. 
 Nous pouvons à tout moment réviser ou modifier ces Conditions en mettant à jour cette publication. Vous êtes lié par ces révisions et modifications, nous vous encourageons donc à visiter cette page pour consulter les Conditions les plus récentes de temps à autre. 
@@ -408,7 +409,7 @@ Cela inclut les frais d'avocat.
           }}
         >
           
-If you have any questions, concerns, or requests regarding the processing of your personal data or this GDPR Compliance Notice, please contact us at <a href="mailto:hello@sandnsearealty.lb" >hello@sandnsearealty.lb</a>
+If you have any questions, concerns, or requests regarding the processing of your personal data or this GDPR Compliance Notice, please contact us at <a href="mailto:hello@sandnsearealty.ca" >hello@sandnsearealty.ca</a>
 
 
 </span> :
@@ -418,7 +419,7 @@ If you have any questions, concerns, or requests regarding the processing of you
         }}
       >
         
-        Si vous avez des questions, des préoccupations ou des demandes concernant le traitement de vos données personnelles ou cet avis de conformité au RGPD, veuillez nous contacter à  <a href="mailto:hello@sandnsearealty.lb" >hello@sandnsearealty.lb</a>
+        Si vous avez des questions, des préoccupations ou des demandes concernant le traitement de vos données personnelles ou cet avis de conformité au RGPD, veuillez nous contacter à  <a href="mailto:hello@sandnsearealty.ca" >hello@sandnsearealty.ca</a>
 
 
 </span>
@@ -439,7 +440,7 @@ If you have any questions, concerns, or requests regarding the processing of you
           }} >
             
             {language === "en" ?
-            <span>Read Our: <a href='/policy'>GDPR Policy</a></span>:<span>Lisez notre : <a href='/policy'>Politique RGPD</a></span>}
+            <span>Read Our: <a href='/policygdpr'>GDPR Policy</a></span>:<span>Lisez notre : <a href='/policygdpr'>Politique RGPD</a></span>}
           </span>
           </div>
       </div>

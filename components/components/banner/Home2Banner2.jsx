@@ -68,7 +68,7 @@ const Home2Banner2 = () => {
               </div>
             </div>
             <div className="col-lg-3 col-sm-6 d-flex align-items-center justify-content-lg-end justify-content-center order-3">
-              <div className="single-contact green">
+              <div className="single-contact green  -mr-7 xl:-mr-10">
                 <div className="icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

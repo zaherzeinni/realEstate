@@ -106,14 +106,14 @@ export default function ProductsHero({ title, text, background }) {
               <img
                   src="/checkmark-aboutpage.png"
                   alt=""
-                  className="w-11 h-9"
+                  className="w-11 h-9 lg:-ml-1"
                 />
               </span>
-             <span> {language === "en" ? "Honesty":"Honnêteté"}</span> 
+             <span > {language === "en" ? "Honesty":"Honnêteté"}</span> 
             </p>
           
 
-
+            {language === "en" ?
             <p className="m-t flex gap-1 md:w-1/2 md:mx-auto lg:mx-0 lg:w-[280px] xl:-mr-5 xl:-ml-10  ">
               <span>
                 <img
@@ -122,8 +122,22 @@ export default function ProductsHero({ title, text, background }) {
                   className="w-11 h-9 lg:mr-10"
                 />
               </span>
-               {language === "en" ? <span className="lg:w-[380px] lg:-ml-4 ">Be Sand n Sea Realty</span>:<span  className="lg:w-[380px] lg:-ml-5">Être Sand n Sea Realty</span>}
+               {language === "en" ? <span className="lg:w-[380px] lg:-ml-4 ">Be Sand n Sea Realty</span>:<span  className="lg:w-[500px] lg:-ml-5">Être Sand n Sea Realty</span>}
             </p>
+            
+            :
+           
+           <p className="m-t flex gap-1 md:w-1/2 md:mx-auto lg:-mx-7 lg:w-[320px] xl:-mx-14  ">
+            <span>
+              <img
+                src="/checkmark-aboutpage.png"
+                alt=""
+                className="w-11 h-9 lg:mr-10"
+              />
+            </span>
+             {language === "en" ? <span className="lg:w-[380px] xl:-ml-4 ">Be Sand n Sea Realty</span>:<span  className="lg:w-[500px] lg:-ml-5">Être Sand n Sea Realty</span>}
+          </p>
+          }
           </div>
 
           <div  className=" mt-16 !w-full">
