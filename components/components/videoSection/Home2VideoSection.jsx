@@ -34,6 +34,8 @@ const Home2VideoSection = () => {
 
   return (
     <>
+   
+    {language === "en" ?
       <div className="video-section">
         <video
           autoPlay
@@ -43,6 +45,19 @@ const Home2VideoSection = () => {
           src="assets/video/production_25.mp4"
         ></video>
       </div>
+      :
+      <div className="video-section">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          src="assets/video/production_25fren.mp4"
+        ></video>
+      </div>
+    }
+
+
       <div className="banner5-section mb-120">
         <div className="container">
           <div className="row">

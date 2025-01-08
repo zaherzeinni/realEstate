@@ -302,7 +302,7 @@ const BlogsMainpage = ({ search, country }) => {
                             
 
                             <li>
-                              <Link href="/blogs">{language ==='en' ? category : handleChange(category)}</Link>
+                              <Link href="/blogs">{language ==='en' ? category==="Republic Dominica" ? "Dominican Republic" : category : handleChange(category)}</Link>
                             </li>
                     
 

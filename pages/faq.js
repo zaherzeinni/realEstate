@@ -83,7 +83,7 @@ const Faq = () => {
                     <div className="search-box">
                       <input
                         placeholder={
-                          language === "en" ? "country name" : "nom du pays"
+                          language === "en" ? "uae,dominican,mexico,spain,cyprus,portugal" : "nom du pays"
                         }
                         value={search}
                         onChange={handleSearchInputChange}
@@ -110,7 +110,7 @@ const Faq = () => {
                     <div className="search-box">
                       <input
                         placeholder={
-                          language === "en" ? "country name" : "nom du pays"
+                          language === "en" ? "uae,dominican,mexico,spain,cyprus,portugal" : "nom du pays"
                         }
                         value={search}
                         onChange={handleSearchInputChange}
