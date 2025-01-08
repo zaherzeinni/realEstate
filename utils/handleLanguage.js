@@ -15,15 +15,15 @@ export   const handleChange = (country) => {
         return "Espagne"; // Set ID for Spain
          break;
 
-      //  case "Republic Dominica":
-      //    return "République Dominicaine"; // Set ID for Dominican Republic
-      //    break;
+       case "Rep.Dominicaine":
+         return "RÉP. DOMINICAINE"; // Set ID for Dominican Republic
+         break;
          
       //  case "Republic Dominica":
       //    return "Dominican Republic"; // Set ID for Dominican Republic
       //    break;
 
-
+          //correct
          case "Republic Dominica":
           switch (language) {
               case "fr":
@@ -34,6 +34,20 @@ export   const handleChange = (country) => {
           }
           break;
 
+          // case "Rep.Dominicaine":
+          //   switch (language) {
+          //       case "fr":
+          //           return "République Dominicaine"; // French
+          //       case "en":
+          //       default:
+          //           return "Dominican Republic"; // English
+          //   }
+          //   break;
+
+
+
+  
+          
 
        case "Portugal":
          return "Portugal"; // Set ID for Portugal

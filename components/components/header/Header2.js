@@ -19,6 +19,7 @@ import useCities from "@/hooks/useCities";
 import useBuyguides from "@/hooks/useBuyguides";
 
 import ContactModal from "../../../components/Site/ContactModal"
+import { handleChange } from "../../../utils/handleLanguage";
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -107,8 +108,12 @@ const Header2 = () => {
   link: `/buyguide?guide=${guide.title.toLowerCase().replace(/\s+/g, '-')}`
 }))
 
-
 console.log(buyguides,"dataaaaa buyguidesss")
+
+
+
+
+
 
 
   const groupedData = countries?.map((country) => ({
@@ -144,6 +149,12 @@ console.log(buyguides,"dataaaaa buyguidesss")
   //   `/projects/?city=${""}&country=${""}&baths=${0}&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${type}&rooms=${0}`;
 
 
+
+
+
+
+
+    
 
   const handleScroll = () => {
     const { scrollY } = window;
@@ -274,42 +285,7 @@ const { data, isLoading, error } = useCountries();
 
 
   
-  // --------------------------change langauge city or country-------------------
-  // const [lang, setLang] = useState();
 
-  // useEffect(() => {
-  //   const languageMap = {
-  //     en: {
-  //       "Spain": "Spain",
-  //       "Mexico": "Mexico",
-  //       "North Cyprus": "North Cyprus",
-  //       "Cyprus": "Chypre",
-  //       "CYPRUS CITY": "Chypre",
-  //       "Dominican Republic": "Dominican Republic",
-  //       "Portugal": "Portugal",
-  //       "Canada": "Canada" ,
-  //       "United Arab Emirates":"United Arab Emirates"
-  //     },
-  //     fr: {
-  //       "Spain": "Espagne",
-  //       "Mexico": "Mexique",
-  //       "North Cyprus": "Chypre du Nord",
-  //       "CYPRUS": "Chypre",
-  //       "CYPRUS CITY": "Chypre",
-  //       "Dominican Republic": "République Dominique",
-  //       "Portugal": "Portugal",
-  //       "Canada": "Canada",
-  //       "United Arab Emirates" : "Émirats arabes unis"
-  //     }
-  //   };
-  
-  //   if (languageMap[language] && languageMap[language][city]) {
-  //     setLang(languageMap[language][city]);
-  //   } else {
-  //     setLang(languageMap.en[city] || city); // Default to English name if not found
-  //   }
-  // }, [city, language]); // Dependencies to re-run effect when country or language changes
-  
 
 
   return (
@@ -511,9 +487,15 @@ const { data, isLoading, error } = useCountries();
                               {buyguidesData?.map((guide, idx) => (
                                 <li key={idx}>
                                   <Link legacyBehavior href={guide.link}>
-                                    <a>{language === "en" ? guide.label : guide.labelfr}</a>
+                                    <a>{language === "en"
+                       ? guide.label
+                        : handleChange(guide.label)}
+                                      </a>
                                   </Link>
                                
+
+                                  {/* ? "Dominican Rep."==="Rep.Dominicaine" ? "République Dominicaine" : */}
+
                                 </li>
                               ))}
                             </ul>
