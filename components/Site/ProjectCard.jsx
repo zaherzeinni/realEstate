@@ -43,7 +43,7 @@ export default function ProjectCard({
         "Mexico": "Mexico",
         "North Cyprus": "North Cyprus",
         "Cyprus": "Chypre",
-        "Republic Dominica": "Dominican Republic",
+        "Dominican Republic": "Dominican Republic",
         "Portugal": "Portugal",
         "Canada": "Canada" ,
         "United Arab Emirates":"United Arab Emirates"
@@ -53,7 +53,7 @@ export default function ProjectCard({
         "Mexico": "Mexique",
         "North Cyprus": "Chypre du Nord",
         "CYPRUS": "Chypre",
-        "Republic Dominica": "République Dominique",
+        "Dominican Republic": "République Dominique",
         "Portugal": "Portugal",
         "Canada": "Canada",
         "United Arab Emirates" : "Émirats arabes unis"

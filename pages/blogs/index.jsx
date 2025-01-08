@@ -46,11 +46,11 @@ const BlogsMainpage = ({ search, country }) => {
     },
     { value: "Spain", label: language === "en" ? "Spain" : "Espagne" },
     {
-      value: "Republic Dominica",
-      label: language === "en" ? "Republic Dominica" : "République Dominique",
+      value: "Dominican Republic",
+      label: language === "en" ? "Dominican Republic" : "République Dominicaine",
     },
 
-    // { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
+  { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
 
     // { value: "Canada", label: language === 'en' ? "Canada" : "Canada"},
 

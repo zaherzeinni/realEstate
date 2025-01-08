@@ -77,7 +77,7 @@ export default function BookCreatePage() {
     { value: "Mexico", label: "Mexico" },
     { value: "North Cyprus", label: "North Cyprus" },
     { value: "Spain", label: "Spain" },
-    { value: "Republic Dominica", label: "Republic Dominica" },
+    { value: "Dominican Republic", label: "Dominican Republic" },
 
     { value: "Portugal", label: "Portugal" },
 

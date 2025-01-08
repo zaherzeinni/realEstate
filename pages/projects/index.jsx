@@ -157,7 +157,7 @@ console.log(data,"dataaa index.jsx projectsss")
         "North Cyprus": "North Cyprus",
         "Cyprus": "Chypre",
         "CYPRUS CITY": "Chypre",
-        "Republic Dominica": "Dominican Republic",
+        "Dominican Republic": "Dominican Republic",
         "Portugal": "Portugal",
         "Canada": "Canada" ,
         "United Arab Emirates":"United Arab Emirates"
@@ -168,7 +168,7 @@ console.log(data,"dataaa index.jsx projectsss")
         "North Cyprus": "Chypre du Nord",
         "CYPRUS": "Chypre",
         "CYPRUS CITY": "Chypre",
-        "Republic Dominica": "République Dominique",
+        "Dominican Republic": "République Dominique",
         "Portugal": "Portugal",
         "Canada": "Canada",
         "United Arab Emirates" : "Émirats arabes unis"

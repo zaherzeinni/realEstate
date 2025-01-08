@@ -12,8 +12,8 @@ export   const handleChange = (country) => {
        case "Spain":
         return "Espagne"; // Set ID for Spain
          break;
-       case "Republic Dominica":
-         return "République Dominique"; // Set ID for Republic Dominica
+       case "Dominican Republic":
+         return "République Dominicaine"; // Set ID for Dominican Republic
          break;
        case "Portugal":
          return "Portugal"; // Set ID for Portugal

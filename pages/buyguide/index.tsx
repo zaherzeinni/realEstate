@@ -261,8 +261,8 @@ export default function BuyguideList() {
       },
       { value: "Spain", label: language === "en" ? "Spain" : "Espagne" },
       {
-        value: "Republic Dominica",
-        label: language === "en" ? "Republic Dominica" : "République Dominique",
+        value: "Dominican Republic",
+        label: language === "en" ? "Dominican Republic" : "République Dominique",
       },
   
       { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
