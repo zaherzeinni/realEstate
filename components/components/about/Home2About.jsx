@@ -252,9 +252,9 @@ const Home2About = () => {
                 <div className="about-img111">
                   <img
                     // src="/assets/img/home2/home2-about-img1.png"
-                    src="/aboutushome.jpg"
+                    src="/aboutushome1.jpg"
                     alt="aboutt"
-                    className="about-img"
+                    className="about-img  !object-fill"
                   />
                 </div>
                 <div className="experience">

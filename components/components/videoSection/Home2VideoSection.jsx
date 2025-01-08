@@ -31,7 +31,7 @@ const Home2VideoSection = () => {
 
 
   const {language} =useLanguageContext()
-  
+
   return (
     <>
       <div className="video-section">
@@ -40,7 +40,7 @@ const Home2VideoSection = () => {
           loop
           muted
           playsInline
-          src="assets/video/production_.mp4"
+          src="assets/video/production_25.mp4"
         ></video>
       </div>
       <div className="banner5-section mb-120">
