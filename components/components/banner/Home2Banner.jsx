@@ -90,7 +90,7 @@ const Home2Banner = () => {
     'With Us!',
     'Paradise',
     'Amazing',
-    'Dubai - Dominican Republic - Mexico - Spain - Portugal - Cyprus',
+    'U.A.E. - Dominican Republic - Mexico - Spain - Portugal - Cyprus',
   ];
 
   const titlesfr = [
@@ -104,7 +104,7 @@ const Home2Banner = () => {
     'Avec Nous!',
     'Paradis',
     'Incroyables',
-    'Dubaï - République Dominicaine - Mexique - Espagne - Portugal - Chypre',
+    'E.A.U. - République Dominicaine - Mexique - Espagne - Portugal - Chypre',
   ];
 
 

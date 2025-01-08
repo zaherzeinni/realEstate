@@ -141,12 +141,14 @@ export default function ProductsHero({ title, text, background }) {
           </div>
 
           <div  className=" mt-16 !w-full">
+          
+          <img src="/khitem.png" alt="logo"  className="w-48 h-32  mx-auto  absolute -end-7 sm:end-48 lg:end-72 xl:end-[450px]"/> 
             <p style={{fontfamily:  'Rubik' }} className=" !text-[#16426F] text-2xl lg:-ml-16  md:!text-[36px] !font-rubik  ">
             {language === "en" ? "We'll exceed your expectations":"Nous dépasserons vos attentes"}  
             </p>
-            <p  style={{fontfamily: "Rubik"}}  className="!text-[#16426F] lg:-ml-16 font-bold text-3xl md:!mt-3 md:pt-3 !font-rubik md:!text-[36px]">
-            {language === "en" ? "GUARANTEED":"GARANTI"}     
-            <img src="/khitem.png" alt="logo"  className="w-48 h-32  mx-auto"/>  
+            
+            <p  style={{fontfamily: "Rubik"}}  className="!text-[#16426F] lg:-ml-16 mt-4 font-bold text-3xl md:!mt-3 md:pt-3 !font-rubik md:!text-[36px]">
+            {language === "en" ? "GUARANTEED":"GARANTI"}                
             </p>
             
             <div className=" flex pb-5  justify-center m-6 lg:-ml-16">
