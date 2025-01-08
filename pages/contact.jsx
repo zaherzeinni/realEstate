@@ -364,13 +364,11 @@ const ContactPage = () => {
       
       <div className="contact-map mb-20" id="map">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.5647631857846!2d90.36311167605992!3d23.83407118555764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c14c8682a473%3A0xa6c74743d52adb88!2sEgens%20Lab!5e0!3m2!1sen!2sbd!4v1700138349574!5m2!1sen!2sbd"
+          src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d26874.93749649704!2d35.481065!3d33.7816518!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ2JzUzLjciTiAzNcKwMjknMjYuNyJF!5e1!3m2!1sen!2slb!4v1736331952215!5m2!1sen!2slb"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
-    
-        
       </div>
       <Newsletter/>
       <Footer/>

@@ -73,13 +73,9 @@ const Faq = () => {
 
 
       <div className="faq-section pt-20 mb-120 hidden1">
-        <div className="container">
-          <div className="lg:flex lg:flex-row lg:space-x-4 g-lg-4 gy-5 flex flex-col-reverse">
-            <div className="col-lg-4">
-              
-
-
-            <div className="single-widget mb-30">
+       
+{/* ------------------search---------------- */}
+      <div className="single-widget mb-12 md:hidden mx-10 sm:mx-20">
                   <h5 className="widget-title">
                     {language === "en" ? "Search Here" : "Rechercher ici"}
                   </h5>
@@ -87,7 +83,34 @@ const Faq = () => {
                     <div className="search-box">
                       <input
                         placeholder={
-                          language === "en" ? "country" : "pays"
+                          language === "en" ? "country name" : "nom du pays"
+                        }
+                        value={search}
+                        onChange={handleSearchInputChange}
+                        type="text"
+                      />
+                      <button type="submit">
+                        <i className="bx bx-search" />
+                      </button>
+                    </div>
+                  </form>
+                </div>
+       
+        <div className="container">
+          <div className="lg:flex lg:flex-row lg:space-x-4 g-lg-4 gy-5 flex flex-col-reverse">
+            <div className="col-lg-4">
+              
+
+                              {/* -------------search-------------- */}
+            <div className="single-widget mb-30 hidden md:block">
+                  <h5 className="widget-title">
+                    {language === "en" ? "Search Here" : "Rechercher ici"}
+                  </h5>
+                  <form onSubmit={handleSearch}>
+                    <div className="search-box">
+                      <input
+                        placeholder={
+                          language === "en" ? "country name" : "nom du pays"
                         }
                         value={search}
                         onChange={handleSearchInputChange}

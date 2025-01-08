@@ -46,7 +46,7 @@ const BlogsMainpage = ({ search, country }) => {
     },
     { value: "Spain", label: language === "en" ? "Spain" : "Espagne" },
     {
-      value: "Dominican Republic",
+      value: "Republic Dominica",
       label: language === "en" ? "Dominican Republic" : "République Dominicaine",
     },
 
@@ -299,9 +299,14 @@ const BlogsMainpage = ({ search, country }) => {
                             {/* <li>
                             By <Link href="/blog">Admin</Link>
                           </li> */}
+                            
+
                             <li>
-                              <Link href="/blogs">{language ==='en' ? category  : handleChange(category)}</Link>
+                              <Link href="/blogs">{language ==='en' ? category : handleChange(category)}</Link>
                             </li>
+                    
+
+
                           </ul>
                         </div>
                         <h5>
