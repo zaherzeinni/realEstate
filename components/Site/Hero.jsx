@@ -145,12 +145,13 @@ export default function ProductsHero({ title, text, background }) {
             {language === "en" ? "We'll exceed your expectations":"Nous dépasserons vos attentes"}  
             </p>
             <p  style={{fontfamily: "Rubik"}}  className="!text-[#16426F] lg:-ml-16 font-bold text-3xl md:!mt-3 md:pt-3 !font-rubik md:!text-[36px]">
-            {language === "en" ? "GUARANTEED":"GARANTI"}       
+            {language === "en" ? "GUARANTEED":"GARANTI"}     
+            <img src="/khitem.png" alt="logo"  className="w-48 h-32  mx-auto"/>  
             </p>
-
+            
             <div className=" flex pb-5  justify-center m-6 lg:-ml-16">
               <img
-                src="https://bluecaribbeanproperties.com/wp-content/uploads/2023/07/separator-1.png"
+                src="/separator-1.png"
                 alt=""
               />
             </div>

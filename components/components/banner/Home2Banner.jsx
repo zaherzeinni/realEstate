@@ -148,24 +148,34 @@ const Home2Banner = () => {
                   }}
                 ></div>
               </SwiperSlide>
-              {/* <SwiperSlide className="swiper-slide">
+              <SwiperSlide className="swiper-slide">
                 <div
                   className="home2-banner-wrapper"
                   style={{
                     backgroundImage:
-                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/home2-banner-img3.jpg)",
+                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(/home1.jpg)",
                   }}
                 ></div>
-              </SwiperSlide> */}
-              {/* <SwiperSlide className="swiper-slide">
+              </SwiperSlide>
+              <SwiperSlide className="swiper-slide">
                 <div
                   className="home2-banner-wrapper"
                   style={{
                     backgroundImage:
-                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/home2-banner-img4.jpg)",
+                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(/home2.jpg)",
                   }}
                 ></div>
-              </SwiperSlide> */}
+              </SwiperSlide>
+              <SwiperSlide className="swiper-slide">
+                <div
+                  className="home2-banner-wrapper"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(/home3.jpg)",
+                  }}
+                ></div>
+              </SwiperSlide>
+
               <SwiperSlide className="swiper-slide">
                 <div
                   className="home2-banner-wrapper"
