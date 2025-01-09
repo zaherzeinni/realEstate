@@ -10,6 +10,8 @@ import SwiperCore, {
 import Link from "next/link";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
+import { useLanguageContext } from "@/context/languageContext";
+
 const Banner1 = () => {
   const settings = useMemo(() => {
     return {
@@ -31,6 +33,8 @@ const Banner1 = () => {
       },
     };
   }, []);
+
+  const {language} = useLanguageContext()
   return (
     <>
       <div className="home1-banner-area p-0 ">
@@ -68,8 +72,9 @@ const Banner1 = () => {
                             Life is unpredictable, and we understand that plans might change. Enjoy flexible booking options, so you can reschedule or modify your trip with ease.
                           </p>
                           <div className="banner-content-bottom">
-                            <Link href="/package" className="primary-btn1">
-                              Book A Trip
+                            <Link href="/contact" className="primary-btn1">
+                             {language === "en" ? "Explore":"Explorer"}
+                              
                             </Link>
                             {/* <div className="rating-area">
                               <div className="icon">
@@ -151,8 +156,8 @@ const Banner1 = () => {
                             can reschedule or modify your trip with ease.1
                           </p>
                           <div className="banner-content-bottom">
-                            <Link href="/package" className="primary-btn1">
-                              Book A Trip{" "}
+                            <Link href="/contact" className="primary-btn1">
+                            {language === "en" ? "Explore":"Explorer"}
                             </Link>
                             {/* <div className="rating-area">
                               <div className="icon">
@@ -234,8 +239,8 @@ const Banner1 = () => {
                             can reschedule or modify your trip with ease.
                           </p>
                           <div className="banner-content-bottom">
-                            <Link href="/package" className="primary-btn1">
-                              Book A Trip{" "}
+                            <Link href="/contact" className="primary-btn1">
+                            {language === "en" ? "Explore":"Explorer"}
                             </Link>
                             {/* <div className="rating-area">
                               <div className="icon">
@@ -317,8 +322,8 @@ const Banner1 = () => {
                             can reschedule or modify your trip with ease.
                           </p>
                           <div className="banner-content-bottom">
-                            <Link href="/package" className="primary-btn1">
-                              Book A Trip{" "}
+                            <Link href="/contact" className="primary-btn1">
+                            {language === "en" ? "Explore":"Explorer"}
                             </Link>
                             {/* <div className="rating-area">
                               <div className="icon">
