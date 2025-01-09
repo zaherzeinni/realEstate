@@ -492,8 +492,9 @@ const { data, isLoading, error } = useCountries();
                         : handleChange(guide.label)}
                                       </a>
                                   </Link>
-                               
-
+                                  {/* Dominican Rep. */}
+                                  {/* Rep.Dominicaine  french */}
+                                  
                                   {/* ? "Dominican Rep."==="Rep.Dominicaine" ? "République Dominicaine" : */}
 
                                 </li>
