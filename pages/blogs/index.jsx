@@ -306,7 +306,6 @@ const BlogsMainpage = ({ search, country }) => {
                             </li>
                     
 
-
                           </ul>
                         </div>
                         <h5>
