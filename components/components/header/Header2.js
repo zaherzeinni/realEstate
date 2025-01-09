@@ -487,10 +487,11 @@ const { data, isLoading, error } = useCountries();
                               {buyguidesData?.map((guide, idx) => (
                                 <li key={idx}>
                                   <Link legacyBehavior href={guide.link}>
-                                    <a>{language === "en"
-                       ? guide.label
+                                    <a>{language === "en" ? guide.label
                         : handleChange(guide.label)}
                                       </a>
+
+
                                   </Link>
                                   {/* Dominican Rep. */}
                                   {/* Rep.Dominicaine  french */}
