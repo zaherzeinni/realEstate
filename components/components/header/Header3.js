@@ -32,6 +32,8 @@ SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
 import { ImageEndpoint } from "@/utils/global";
 
+import { handleChange } from "../../../utils/handleLanguage";
+
 const initialState = {
   activeMenu: "",
   activeSubMenu: "",
@@ -511,7 +513,9 @@ const { data, isLoading, error } = useCountries();
                               {buyguidesData?.map((guide, idx) => (
                                 <li key={idx}>
                                   <Link legacyBehavior href={guide.link}>
-                                    <a>{language === "en" ? guide.label : guide.labelfr}</a>
+                                  <a>{language === "en" ? guide.label
+                        : handleChange(guide.label)}
+                                      </a>
                                   </Link>
                                
                                 </li>
