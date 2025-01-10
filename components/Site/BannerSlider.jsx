@@ -137,16 +137,16 @@ const BannerSlider = () => {
   }
 
   return (
-    <div className="banner4-slider-wrapper container1 lg:mx-20 sm:mx-44 mx-10 xl:px-1 ">
+    <div className="banner4-slider-wrapper container1 lg:mx-10 2xl:mx-80 xl:mx-10 sm:mx-44 mx-10 xl:px-1 ">
       <div className="row g-xl-2 gy-5 mb-12 mt-12 ">
-        <div className="col-xl-5 md:w-[600px] mx-auto lg:w-auto">
+        <div className="col-xl-5 md:w-[600px] mx-auto lg:w-auto xl:w-[400px] 2xl:w-auto">
           <Swiper
             {...settings}
             onSwiper={(swiper) => {
               leftSwiperRef.current = swiper;
             }}
             onSlideChange={handleSlideChange}
-            className="banner4-card-slide lg:w-[450px]  "
+            className="banner4-card-slide lg:w-[420px] xl:w-[440px] xl1:w-[490px] "
           >
             <ContactModal isOpen={isOpen} closeModal={closeModal} />
 
@@ -162,6 +162,7 @@ const BannerSlider = () => {
                     alt={`banner image ${index + 1}`}
                     width={526}
                     height={300}
+                    
                   />
                   <div className="banner4-content-wrapper">
                     <div className="banner4-content">
@@ -192,7 +193,7 @@ const BannerSlider = () => {
           </Swiper>
         </div>
 
-        <div className="col-xl-7 md:w-[600px] mx-auto lg:w-[640px] p-0">
+        <div className="col-xl-7 md:w-[600px] mx-auto lg:w-[700px] p-0">
           <Swiper
             {...settings}
             onSwiper={(swiper) => {
@@ -221,7 +222,7 @@ const BannerSlider = () => {
                     </div>
                   </Link>
                   <div className="package-card-content 2xl:h-[180px] 2xl:mb-[100px] xl:mx-auto">
-                    <div className="card-content-top xl:w-[120px] xl:mx-auto -mx-20 sm:mx-auto xl:p-0  ">
+                    <div className="card-content-top xl:w-[190px] xl:mx-auto -mx-20 sm:mx-auto xl:p-0  ">
                       <div className="rating-area lg:mt-6">
                         <ul className="rating">
                           {[...Array(5)].map((_, i) => (
@@ -240,7 +241,7 @@ const BannerSlider = () => {
                           : "Un voyage à travers l'histoire et la culture."}
                       </h6>
 
-                      <ul className="feature-list xl:mx-auto xl:-ml-5 xl:-space-x-4">
+                      <ul className="feature-list xl:mx-auto xl:space-x-2 mb-3">
                         <li className="projectcard">
                           <svg
                             className="with-stroke"
@@ -322,7 +323,7 @@ const BannerSlider = () => {
                             ? "Starting Form:"
                             : "Formulaire de départ:"}
                         </span>
-                        <h6>
+                        <h6 className="xl:my-2">
                           <sub>$</sub>170.00 <span> </span>
                         </h6>
                       </div>
@@ -344,7 +345,7 @@ const BannerSlider = () => {
 
       <div className="row mb-12">
         <div className="col-lg-12">
-          <div className="slide-and-view-btn-grp">
+          <div className="slide-and-view-btn-grp lg:mx-20">
             <div className="slider-btn-grp3">
               <div className="slider-btn banner4-slider-prev">
                 <i className="bi bi-arrow-left"></i>

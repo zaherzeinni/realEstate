@@ -1,45 +1,41 @@
-import React from 'react'
+import React from "react";
 import { MdEmail } from "react-icons/md";
-import { useLanguageContext } from '@/context/languageContext';
+import { useLanguageContext } from "@/context/languageContext";
 
-export default function TeamCard({member}) {
-
-
+export default function TeamCard({ member }) {
   const { language } = useLanguageContext();
-
 
   return (
     <div className="teams-card w-[260px] sm:w-[270px] md:w-[290px]  mx-auto ">
-                        <img src="/assets/img/home2/teams-card-bg.png" alt="" />
-                        <div className="teams-img">
-                          <img
-                          className='     object-top'
-                           src={member?.image}
-                          // src="/assets/img/home2/teams-card-img1.png"
-                            alt=""
-                          />
-                        </div>
-                        <div className="teams-content px-1">
-                          <h4>{member?.name}</h4>
-                          <span> 
+      <img src="/assets/img/home2/teams-card-bg.png" alt="" />
+      <div className="teams-img">
+        <img className="     object-top" src={member?.image} alt="" />
+      </div>
+      <div className="teams-content px-1">
+        <h4>{member?.name}</h4>
+        <span>
+          {member.languages.length > 0 && (
+            <p>
+              {language === "en" ? "Languages:" : "Langues:"}{" "}
+              {language === "en"
+                ? `${member.languages.join(", ")}`
+                : `${member.languagesfr.join(", ")}`}
+            </p>
+          )}
+        </span>
+        <span>
+          {language === "en" ? `${member?.title}` : `${member?.titlefr}`}
+        </span>
+      </div>
 
-                          {member.languages.length > 0 && (
-      <p>{language === "en" ? "Languages:" : "Langues:"} {language === "en" ? `${member.languages.join(', ')}` : `${member.languagesfr.join(', ')}`}</p>
-    )}
-
-                          </span>
-                          <span>{language === "en" ? `${member?.title}` : `${member?.titlefr}`}</span>
-                          
-                        </div>
-                        
-                        <ul className="social-list">
-                          <li>
-                            <a href={`mailto:${member?.email}`}>
-                              <i className="bx bxl-gmail" />
-                              <MdEmail className="text-xl"/>
-                            </a>
-                          </li>
-                          {/* <li>
+      <ul className="social-list">
+        <li>
+          <a href={`mailto:${member?.email}`}>
+            <i className="bx bxl-gmail" />
+            <MdEmail className="text-xl" />
+          </a>
+        </li>
+        {/* <li>
                             <a href="https://www.pinterest.com/">
                               <i className="bx bxl-pinterest-alt" />
                             </a>
@@ -63,7 +59,7 @@ export default function TeamCard({member}) {
                               <i className="bx bxl-facebook" />
                             </a>
                           </li> */}
-                        </ul>
-                      </div>
-  )
+      </ul>
+    </div>
+  );
 }

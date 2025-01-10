@@ -97,7 +97,7 @@ export const teamData = [
   titlefr: "",
   languages: ["Engish", "Arabic"], // Add spoken languages as needed
   languagesfr: ["Anglais", "Arabe"], // Add more languages as needed
-  email: "e.herrera@groupeimmobilieraml.ca",
+  email: "nabilballout@groupeimmobilieraml.ca",
   image: "/team/nabilballout.jpg" // Replace with the actual image path
 }
 

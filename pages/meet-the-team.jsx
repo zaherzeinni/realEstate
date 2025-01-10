@@ -26,7 +26,7 @@ export default function Meetteam() {
 
 <div className="guide-section pt-120 mb-120">
         <div className="container mx-auto lg:px-20">
-          <div className="row g-lg-4 gy-5 lg:-mx-16 xl:-mx-32">
+          <div className="row g-lg-4 gy-5 lg:-mx-16 xl:-mx-32 2xl:-mx-72">
 
           {teamData.map((member, index) => (
 

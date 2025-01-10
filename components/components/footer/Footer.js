@@ -150,7 +150,7 @@ const Footer = ({ style }) => {
 
 
                   
-                  <Link href="https://www.google.com/maps/dir/33.892668,35.487142/33.781853,35.491417/@33.8381795,35.4092356,24670m/data=!3m2!1e3!4b1!4m6!4m5!1m1!4e1!1m1!4e1!3e0?entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" className="primary-btn1 !text-white !text-md !font-semibold mt-2">
+                  <Link href="https://www.google.com/maps/place/33%C2%B046'54.7%22N+35%C2%B029'29.1%22E/@33.7818527,35.488842,733m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d33.7818527!4d35.4914169?entry=ttu&g_ep=EgoyMDI1MDEwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" className="primary-btn1 !text-white !text-md !font-semibold mt-2">
                   {language === "en" ? "Go To Map" :"Aller à la carte"}
                   </Link>
                   </li>
@@ -209,7 +209,7 @@ const Footer = ({ style }) => {
                     </svg>
                     <h5>{language === "en" ? "Address" : "Adresse"}</h5>
                   </div>
-                  <a target="_blank" href="https://www.google.com/maps/dir/33.892668,35.487142/33.781853,35.491417/@33.8381795,35.4092356,24670m/data=!3m2!1e3!4b1!4m6!4m5!1m1!4e1!1m1!4e1!3e0?entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D">
+                  <a target="_blank" href="https://www.google.com/maps/place/33%C2%B046'54.7%22N+35%C2%B029'29.1%22E/@33.7818527,35.488842,733m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d33.7818527!4d35.4914169?entry=ttu&g_ep=EgoyMDI1MDEwOC4wIKXMDSoASAFQAw%3D%3D">
                   Dar Aytam , Aramon chwouaifat  <br /> 
                   El Quobbeh Aalay, {language === "en" ? "Lebanon ":"Liban"}
                   </a>

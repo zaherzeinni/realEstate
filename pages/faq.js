@@ -21,9 +21,9 @@ import Portugal from "../components/components/accordion/faq/Portugal"
 import { useRouter } from "next/router";
 
 export const metadata = {
-  title: "TripRex - Tour & Travel Agency  NextJs Template",
+  title: "SAND N SEA REALTY FAQS",
   description:
-    "TripRex is a NextJs Template for Tour and Travel Agency purpose",
+    "SAND N SEA REALTY FAQS",
   icons: {
     icon: "/assets/img/sm-logo.svg",
   },

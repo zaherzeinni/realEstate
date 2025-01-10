@@ -493,10 +493,7 @@ const { data, isLoading, error } = useCountries();
 
 
                                   </Link>
-                                  {/* Dominican Rep. */}
-                                  {/* Rep.Dominicaine  french */}
-                                  
-                                  {/* ? "Dominican Rep."==="Rep.Dominicaine" ? "République Dominicaine" : */}
+                   
 
                                 </li>
                               ))}
