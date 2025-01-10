@@ -66,7 +66,7 @@ const Home2Banner = () => {
         crossFade: true, // Enable cross-fade transition
       },
       autoplay: {
-        delay: 3000, // Autoplay duration in milliseconds
+        delay: 2000, // Autoplay duration in milliseconds
         disableOnInteraction: false,
       },
       navigation: {
@@ -130,7 +130,7 @@ const Home2Banner = () => {
         <div className="home2-banner-area">
           <Swiper {...settings} className="swiper home1-banner-slider">
             <div className="swiper-wrapper">
-              <SwiperSlide className="swiper-slide">
+              {/* <SwiperSlide className="swiper-slide">
                 <div
                   className="home2-banner-wrapper"
                   style={{
@@ -138,7 +138,7 @@ const Home2Banner = () => {
                       "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/home2-banner-img1.jpg)",
                   }}
                 ></div>
-              </SwiperSlide>
+              </SwiperSlide> */}
               <SwiperSlide className="swiper-slide">
                 <div
                   className="home2-banner-wrapper"

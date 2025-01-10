@@ -173,7 +173,7 @@ const ContactPage = () => {
                 </div>
                 <div className="!content">
                   <h6>
-                  <a className="hover:text-primary text-black" target="_blank" href="https://www.google.com/maps/place/33%C2%B046'54.7%22N+35%C2%B029'29.1%22E/@33.7818591,35.4909465,192m/data=!3m1!1e3!4m4!3m3!8m2!3d33.7818527!4d35.4914169?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D">
+                  <a className="hover:text-primary text-black" target="_blank" href="https://www.google.com/maps/dir/33.892668,35.487142/33.781853,35.491417/@33.8381795,35.4092356,24670m/data=!3m2!1e3!4b1!4m6!4m5!1m1!4e1!1m1!4e1!3e0?entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D">
                   Dar Aytam , Aramon chwouaifat  <br /> 
                   El Quobbeh Aalay, {language === "en" ? "Lebanon ":"Liban"}
                   </a>
@@ -364,11 +364,12 @@ const ContactPage = () => {
       
       <div className="contact-map mb-20" id="map">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d26874.93749649704!2d35.481065!3d33.7816518!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ2JzUzLjciTiAzNcKwMjknMjYuNyJF!5e1!3m2!1sen!2slb!4v1736331952215!5m2!1sen!2slb"
+       src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d107428.74677660444!2d35.409235561108964!3d33.83817949364897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d33.892668!2d35.487142!4m3!3m2!1d33.781853!2d35.491417!5e1!3m2!1sen!2slb!4v1736520293975!5m2!1sen!2slb"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
+
       </div>
       <Newsletter/>
       <Footer/>

@@ -67,7 +67,7 @@ export default function SectionOne({ background }) {
 <p class="has-text-align-center !font-jost   !text-gray-700  max-w-[900px] text-center my-6">For buyers, we offer tailored support, facilitating your navigation in the real estate market. We help you identify properties that meet your criteria and are committed to securing the best offers for you. <br></br>For sellers, we implement effective marketing strategies to optimize your property's visibility. From pricing evaluation to staging advice, our aim is to ensure a smooth and successful sale.
 </p>
 :
-<p class="has-text-align-center !font-jost   !text-gray-700 max-w-[900px] text-center my-6">Pour les acheteurs, nous offrons un soutien adapté, facilitant votre navigation sur le marché immobilier. Nous vous aidons à identifier des propriétés qui répondent à vos critères et nous nous engageons à sécuriser les meilleures offres pour vous.Pour les vendeurs, nous mettons en œuvre des stratégies de marketing efficaces pour optimiser la visibilité de votre propriété. De l'évaluation des prix aux conseils de mise en scène, notre objectif est d'assurer une vente fluide et réussie.
+<p class="has-text-align-center !font-jost   !text-gray-700 max-w-[900px] text-center my-6">Pour les acheteurs, nous offrons un soutien adapté, facilitant votre navigation sur le marché immobilier. Nous vous aidons à identifier des propriétés qui répondent à vos critères et nous nous engageons à sécuriser les meilleures offres pour vous.<br></br>Pour les vendeurs, nous mettons en œuvre des stratégies de marketing efficaces pour optimiser la visibilité de votre propriété. De l'évaluation des prix aux conseils de mise en scène, notre objectif est d'assurer une vente fluide et réussie.
 </p>
 }
 

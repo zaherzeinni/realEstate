@@ -56,8 +56,8 @@ export default function TeamCard2({member}) {
                           </li> */}
                         </ul>
 
-                        <div className="teams-content px-1 h-[120px] -mb-1">
-                          <h4>{member?.name}</h4>
+                        <div className="teams-content px-1 h-[90px]">
+                          <h4 className='-mt-3'>{member?.name}</h4>
                           <span> 
 
                           {member.languages.length > 0 && (
@@ -66,7 +66,7 @@ export default function TeamCard2({member}) {
 
                           </span>
                           
-                          <div className='flex justify-center'>
+                          <div className='flex justify-center -mt-3'>
                           <span>{language === "en" ? `${member?.title}` : `${member?.titlefr}`}</span>
                           {/* <span><a href={`mailto:${member?.email}`}>
                               <i className="1bx bxl-gmail  " />
