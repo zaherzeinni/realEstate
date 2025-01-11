@@ -120,8 +120,8 @@ const Faq = () => {
       <h5 className="widget-title">
                     {language === "en" ? "Search Here" : "Rechercher ici"}
                   </h5>
-                  <form onSubmit={handleCountryChange} className="w-64">
-                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1  mt-1 p-2 block --ml-20    focus:outline-none  md:text-base">
+                  <form onSubmit={handleCountryChange} className="w-72 py-1 bg-white">
+                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1  mt-1 p-2 block   focus:outline-none  md:text-base">
                     <select className="hover:cursor-pointer" onChange={handleCountryChange} value={selectedCountry}>
        
          <option value="">{language === "en" ? "Select A Country":"Sélectionnez Un Pays"}</option>
@@ -146,8 +146,8 @@ const Faq = () => {
                   <h5 className="widget-title">
                     {language === "en" ? "Search Here" : "Rechercher ici"}
                   </h5>
-                  <form onSubmit={handleCountryChange} className="w-56 py-1 bg-white">
-                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1  mt-1 p-2 block --ml-20    focus:outline-none  md:text-base">
+                  <form onSubmit={handleCountryChange} className="w-60 py-1 bg-white">
+                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1  mt-1 p-2 block  focus:outline-none  md:text-base">
                     <select className="hover:cursor-pointer" onChange={handleCountryChange} value={selectedCountry}>
          <option value="">{language === "en" ? "Select A Country":"Sélectionnez Un Pays"}</option>
         <option value="UAE">{language === "en" ? "U.A.E.":"E.A.U."}</option>
