@@ -62,6 +62,46 @@ const Faq = () => {
 
 
   const router = useRouter();
+  
+
+
+// ---------------------------program to select country--------------------------
+  const [selectedCountry, setSelectedCountry] = useState('');
+
+
+   // Function to handle country selection
+   const handleCountryChange = (event) => {
+    setSelectedCountry(event.target.value);
+  };
+
+
+  // Function to render the selected country component
+  const renderCountryComponent = () => {
+    switch (selectedCountry) {
+      case 'UAE':
+        return <Uae />;
+      case 'Dominican':
+        return <Dominican />;
+      case 'Mexico':
+        return <Mexico />;
+      case 'Spain':
+        return <Spain />;
+      case 'Cyprus':
+        return <Cyprus />;
+      case 'Portugal':
+        return <Portugal />;
+      default:
+        return <div>  
+         <Uae/>
+        <Dominican />
+          <Mexico />
+          <Spain />
+      <Cyprus/>
+      <Portugal />
+      </div>;
+    }
+  };
+
 
   return (
     <div dir="ltr">
@@ -72,26 +112,26 @@ const Faq = () => {
 
 
 
+
       <div className="faq-section pt-20 mb-120 hidden1">
        
-{/* ------------------search---------------- */}
-      <div className="single-widget mb-12 md:hidden mx-10 sm:mx-20">
-                  <h5 className="widget-title">
+{/* ------------------search----- at small size screen----------- */}
+      <div className="single-widget mb-12 lg:hidden  pl-5 sm:pl-20 ">
+      <h5 className="widget-title">
                     {language === "en" ? "Search Here" : "Rechercher ici"}
                   </h5>
-                  <form onSubmit={handleSearch}>
-                    <div className="search-box">
-                      <input
-                        placeholder={
-                          language === "en" ? "uae,dominican,mexico,spain,cyprus,portugal" : "nom du pays"
-                        }
-                        value={search}
-                        onChange={handleSearchInputChange}
-                        type="text"
-                      />
-                      <button type="submit">
-                        <i className="bx bx-search" />
-                      </button>
+                  <form onSubmit={handleCountryChange} className="w-64">
+                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1  mt-1 p-2 block --ml-20    focus:outline-none  md:text-base">
+                    <select className="hover:cursor-pointer" onChange={handleCountryChange} value={selectedCountry}>
+       
+         <option value="">{language === "en" ? "Select A Country":"Sélectionnez Un Pays"}</option>
+        <option value="UAE">{language === "en" ? "U.A.E.":"E.A.U."}</option>
+        <option value="Dominican">{language === "en" ? "Dominican Republic":"République Dominicaine"}</option>
+        <option value="Mexico">{language === "en" ? "Mexico":"Mexique"}</option>
+        <option value="Spain">{language === "en" ? "Spain":"Espagne"}</option>
+        <option value="Cyprus">{language === "en" ? "Northern Cyprus":"Chypre Nord"}</option>
+        <option value="Portugal">{language === "en" ? "Portugal":"Portugal"}</option>
+      </select>
                     </div>
                   </form>
                 </div>
@@ -101,24 +141,22 @@ const Faq = () => {
             <div className="col-lg-4">
               
 
-                              {/* -------------search-------------- */}
-            <div className="single-widget mb-30 hidden md:block">
+                              {/* -------------search----- at large size screen--------- */}
+            <div className="single-widget mb-30 hidden lg:block">
                   <h5 className="widget-title">
                     {language === "en" ? "Search Here" : "Rechercher ici"}
                   </h5>
-                  <form onSubmit={handleSearch}>
-                    <div className="search-box">
-                      <input
-                        placeholder={
-                          language === "en" ? "uae,dominican,mexico,spain,cyprus,portugal" : "nom du pays"
-                        }
-                        value={search}
-                        onChange={handleSearchInputChange}
-                        type="text"
-                      />
-                      <button type="submit">
-                        <i className="bx bx-search" />
-                      </button>
+                  <form onSubmit={handleCountryChange} className="w-56 py-1 bg-white">
+                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1  mt-1 p-2 block --ml-20    focus:outline-none  md:text-base">
+                    <select className="hover:cursor-pointer" onChange={handleCountryChange} value={selectedCountry}>
+         <option value="">{language === "en" ? "Select A Country":"Sélectionnez Un Pays"}</option>
+        <option value="UAE">{language === "en" ? "U.A.E.":"E.A.U."}</option>
+        <option value="Dominican">{language === "en" ? "Dominican Republic":"République Dominicaine"}</option>
+        <option value="Mexico">{language === "en" ? "Mexico":"Mexique"}</option>
+        <option value="Spain">{language === "en" ? "Spain":"Espagne"}</option>
+        <option value="Cyprus">{language === "en" ? "Cyprus":"Chypre"}</option>
+        <option value="Portugal">{language === "en" ? "Portugal":"Portugal"}</option>
+      </select>
                     </div>
                   </form>
                 </div>
@@ -146,7 +184,7 @@ const Faq = () => {
                       </p>
                     </div>
                     <ContactModal isOpen={isOpen} closeModal={closeModal} />
-                    <button onClick={openModal} className="primary-btn1">
+                    <button onClick={openModal} className="primary-btn1 w-full flex  justify-center">
                       {language === "en" ? "Book Now" : "Réservez maintenant"}
                     </button>
                   </div>
@@ -168,12 +206,20 @@ const Faq = () => {
             <div className="col-lg-8">
               <div className="faq-content-wrap">
 
+               
+                {/* <div>
                   <Uae/>
                 <Dominican />
                   <Mexico />
                   <Spain />
               <Cyprus/>
               <Portugal />
+              </div> */}
+
+        <div>
+        {renderCountryComponent()}
+      </div>
+
 
               </div>
             </div>
