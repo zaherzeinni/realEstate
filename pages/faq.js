@@ -120,16 +120,15 @@ const Faq = () => {
       <h5 className="widget-title">
                     {language === "en" ? "Search Here" : "Rechercher ici"}
                   </h5>
-                  <form onSubmit={handleCountryChange} className="w-72 py-1 bg-white">
-                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1  mt-1 p-2 block   focus:outline-none  md:text-base">
-                    <select className="hover:cursor-pointer" onChange={handleCountryChange} value={selectedCountry}>
-       
+                  <form onSubmit={handleCountryChange} className="w-auto py-2">
+                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1 py-2 mt-1 block  focus:outline-none  md:text-base">
+                    <select className="hover:cursor-pointer py-2" onChange={handleCountryChange} value={selectedCountry}>
          <option value="">{language === "en" ? "Select A Country":"Sélectionnez Un Pays"}</option>
         <option value="UAE">{language === "en" ? "U.A.E.":"E.A.U."}</option>
         <option value="Dominican">{language === "en" ? "Dominican Republic":"République Dominicaine"}</option>
         <option value="Mexico">{language === "en" ? "Mexico":"Mexique"}</option>
         <option value="Spain">{language === "en" ? "Spain":"Espagne"}</option>
-        <option value="Cyprus">{language === "en" ? "Northern Cyprus":"Chypre Nord"}</option>
+        <option value="Cyprus">{language === "en" ? "Cyprus":"Chypre"}</option>
         <option value="Portugal">{language === "en" ? "Portugal":"Portugal"}</option>
       </select>
                     </div>
@@ -185,7 +184,7 @@ const Faq = () => {
                     </div>
                     <ContactModal isOpen={isOpen} closeModal={closeModal} />
                     <button onClick={openModal} className="primary-btn1 w-full flex  justify-center">
-                      {language === "en" ? "Book Now" : "Réservez maintenant"}
+                      {language === "en" ? "Book Now" : "Réservez Mnt."}
                     </button>
                   </div>
                 </div>
