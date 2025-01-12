@@ -146,9 +146,9 @@ const Faq = () => {
                   <h5 className="widget-title">
                     {language === "en" ? "Search Here" : "Rechercher ici"}
                   </h5>
-                  <form onSubmit={handleCountryChange} className="w-60 py-1 bg-white">
-                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1  mt-1 p-2 block  focus:outline-none  md:text-base">
-                    <select className="hover:cursor-pointer" onChange={handleCountryChange} value={selectedCountry}>
+                  <form onSubmit={handleCountryChange} className="w-auto py-2">
+                    <div className="search-box mx-auto hover:cursor-pointer text-xl font-bold bg-white1 py-2 mt-1 block  focus:outline-none  md:text-base">
+                    <select className="hover:cursor-pointer py-2" onChange={handleCountryChange} value={selectedCountry}>
          <option value="">{language === "en" ? "Select A Country":"Sélectionnez Un Pays"}</option>
         <option value="UAE">{language === "en" ? "U.A.E.":"E.A.U."}</option>
         <option value="Dominican">{language === "en" ? "Dominican Republic":"République Dominicaine"}</option>
