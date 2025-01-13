@@ -1,5 +1,17 @@
 export const teamData = [
-    {
+    
+  
+  {
+    id:5,
+    name: "SARAH YEHIA",
+    title: "Chief Executive Officer",
+    titlefr: "Président-Directeur Général",
+    languages: ["English" ,"French"], // Add spoken languages as needed
+    languagesfr: ["Anglais", "Français"], // Add more languages as needed
+    email: "s.yehia@groupeimmobilieraml.ca",
+    image: "/team/5.png" 
+  },
+  {
         id:1,
       name: "MOHAMAD HAIDAR",
       title: "",
@@ -45,16 +57,7 @@ export const teamData = [
         image: "/team/4.png"  // Replace with the actual image path
       }
 ,
-{
-    id:5,
-    name: "SARAH YEHIA",
-    title: "Chief Executive Officer",
-    titlefr: "Président-Directeur Général",
-    languages: ["English" ,"French"], // Add spoken languages as needed
-    languagesfr: ["Anglais", "Français"], // Add more languages as needed
-    email: "s.yehia@groupeimmobilieraml.ca",
-    image: "/team/5.png" 
-  },
+
 
 
   {

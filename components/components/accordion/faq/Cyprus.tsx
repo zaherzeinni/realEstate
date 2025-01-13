@@ -91,7 +91,7 @@ const {language} = useLanguageContext()
   return (
     <div dir="ltr" id={language === "en" ? "cyprus":"chypre"} className="faq-content-wrap mb-48   hidden1 scroll-my-20 ">
       <div id={language === "en" ? "northern cyprus":"chypre nord"} className="faq-content-title mb-20 scroll-my-20">
-      {language === "en" ?   <h4>FAQ : Northern Cyprus</h4> : <h4>FAQ : Chypre Nord</h4>}
+      {language === "en" ?   <h4>FAQ :<span className="text-primary">Northern Cyprus</span></h4> : <h4>FAQ :<span className="text-primary">Chypre Nord</span></h4>}
       </div>
       <div className="faq-content">
         <div className="accordion" id="accordionTravel">

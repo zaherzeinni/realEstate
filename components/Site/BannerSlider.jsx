@@ -266,8 +266,8 @@ const BannerSlider = () => {
                             </g>
                           </svg>
                           {language === "en"
-                            ? "DEST:"
-                            : "DEST:"}
+                            ? "Dest:"
+                            : "Dest:"}
                           <b className="text-black block">{language === "en" ? "U.A.E.":"E.A.U."}</b>
                         </li>
                         <li className="projectcard">

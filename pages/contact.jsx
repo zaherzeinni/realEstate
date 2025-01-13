@@ -2,6 +2,7 @@ import React ,{useState} from "react";
 import Header from "@/components/components/header/Header2";
 import { useLanguageContext } from "@/context/languageContext";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
+import BreadcrumbContact from "../components/components/common/BreadcrumbContact";
 import Footer from "../components/components/footer/Footer";
 import Newsletter from "../components/components/common/Newslatter"
 
@@ -76,7 +77,7 @@ const ContactPage = () => {
     <div dir="ltr">
       {/* <DeveloperSlider/> */}
       <Header />
-      <Breadcrumb
+      <BreadcrumbContact
         pagename={language === "en" ? "Your Key To Smart Investing Starts Here!" : "Votre Clé Pour Un Investissement Intelligent Commence Ici!"}
         pagetitle={language === "en" ? "Contact Us" : "Contactez-Nous"}
       />
