@@ -3,7 +3,7 @@ import { useLanguageContext } from "@/context/languageContext";
 
 import useBlogs from "../hooks/useBlogs";
 import AboutBlogs from "@/components/Site/AboutBlogs";
-import Breadcrumb from "@/components/components/common/Breadcrumb";
+import BreadAbout from "@/components/components/common/BreadAbout";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
 import Header from "@/components/components/header/Header2";
@@ -34,7 +34,9 @@ const page = () => {
     <div className="" dir="ltr">
       {/* <Topbar /> */}
       <Header />
-      <Breadcrumb pagename={language === 'en' ? "About Us" : "À propos de nous"} pagetitle={language === 'en' ? "About Us" : "À propos de nous"} />
+
+      <BreadAbout pagename={language === 'en' ? "About Us" : "À propos de nous"} pagetitle={language === 'en' ? "About Us" : "À propos de nous"} />
+      
       <Home2About />
       <Home2WhyChoose />
       <BannerSlider />

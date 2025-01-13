@@ -30,7 +30,14 @@ import AccordRental from "../../components/components/accordion/AccordRental"
 import AccordHotels from "../../components/components/accordion/AccordHotels"
 import AccordBargain from "../../components/components/accordion/AccordBargain"
 import AccordInvestVillas from "../../components/components/accordion/AccordInvestVillas"
-
+import BreadcrumbinvestBulkProperties from "../../components/components/common/BreadcrumbinvestBulkProperties";
+import BreadAirBnb from "../../components/components/common/BreadAirBnb";
+import BreadinvestInPorfitable from "../../components/components/common/BreadinvestInPorfitable";
+import BreadOffPlan from "../../components/components/common/BreadOffPlan";
+import BreadRental from "../../components/components/common/BreadRental";
+import BreadHotel from "../../components/components/common/BreadHotel";
+import BreadHunting from "../../components/components/common/BreadHunting";
+import BreadVillas from "../../components/components/common/BreadVillas";
 
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -151,14 +158,56 @@ const VisaDetails = () => {
    
 
 
+
+  const { query } = router;
+  console.log(query, "Query dataaaa");
+  const currentPath = router.asPath; // Get the current path
+  console.log(currentPath,"current pathhhhhh")
+
+
   return (
     <div dir="ltr">
       {/* <Topbar /> */}
       <Header />
-      <Breadcrumb
+
+
+      <>
+            {currentPath === '/invest/6737af0484db5bd81a1c4679' ? (
+                <BreadcrumbinvestBulkProperties />
+            ) : currentPath === '/invest/6737af0484db5bd81a1c467a' ? (
+                <BreadAirBnb />
+            ) : currentPath === '/invest/6737af0484db5bd81a1c467b' ? (
+              <BreadinvestInPorfitable />
+              )               
+             : currentPath === '/invest/6737af0484db5bd81a1c467c' ? (
+              <BreadOffPlan />
+              )               
+             : currentPath === '/invest/6737af0484db5bd81a1c467d' ? (
+              <BreadRental />
+              )               
+             : currentPath === '/invest/6737af0484db5bd81a1c467e' ? (
+              <BreadHotel />
+              )               
+             : currentPath === '/invest/6737af0484db5bd81a1c467f' ? (
+              <BreadHunting />
+              )               
+             : currentPath === '/invest/6737af0484db5bd81a1c4680' ? (
+              <BreadVillas />
+              )               
+              : (
+                <Breadcrumb
         pagename={language === "en" ? "Invest Details" : "Détails d'investissement"}
         pagetitle={language === "en" ? "Invest Details" : "Détails d'investissement"}
       />
+            )}
+        </>
+
+
+
+ 
+
+
+
       <div className="visa-details-pages pt-10 mb-20">
         <div className="container">
           <div className="row g-lg-4 gy-5">

@@ -1,5 +1,5 @@
 import React from "react";
-import Breadcrumb from "@/components/components/common/Breadcrumb";
+import BreadcrumbInvest from "@/components/components/common/BreadcrumbInvest";
 // import QuantityCounter from "@/uitils/QuantityCounter";
 import Link from "next/link";
 import Topbar from "@/components/components/topbar/Topbar";
@@ -203,7 +203,7 @@ const page = () => {
     <div dir="ltr">
       {/* <Topbar /> */}
       <Header />
-      <Breadcrumb
+      <BreadcrumbInvest
         pagename={language === "en" ? "Cross-Border Property & Fund Investments" : "Investissements Immobiliers Et De Fonds Transfrontaliers"}
         pagetitle={language === "en" ? "Invest" : "Investir"}
       />

@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/components/common/Breadcrumb";
+import BreadDestinations from "@/components/components/common/BreadDestinations";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
 import Header from "@/components/components/header/Header2";
@@ -20,6 +20,12 @@ import { useLanguageContext } from "@/context/languageContext";
 
 import { handleChange } from "../../utils/handleLanguage";
 
+import BreadcrumbForSaleApp from "../../components/components/common/BreadcrumbForSaleApp";
+import Breadcrumbforsaleoffice from "../../components/components/common/Breadcrumbforsaleoffice";
+import Breadcrumbforsaletownhouse from "../../components/components/common/Breadcrumbforsaletownhouse";
+import Breadcrumbforsalevilla from "../../components/components/common/Breadcrumbforsalevilla";
+import Breadcrumbforsalehouse from "../../components/components/common/Breadcrumbforsalehouse";
+
 const Projects = ({
   country,
   baths,
@@ -33,12 +39,12 @@ const Projects = ({
   lockoff,
   resale,
 }) => {
-  const router = useRouter;
-  const { query } = router;
+  // const router = useRouter;
+  // const { query } = router;
 
   const { language } = useLanguageContext();
 
-  console.log(query, "Query data");
+  // console.log(query, "Query data");
 
   const [page, setPage] = useState(1);
 
@@ -183,7 +189,12 @@ console.log(data,"dataaa index.jsx projectsss")
   }, [city, language]); // Dependencies to re-run effect when country or language changes
   
 
-
+// --------------------------- show image upon the page change ***FOR SALE*** ---------------------
+const router = useRouter();
+const { query } = router;
+console.log(query, "Query dataaaa");
+const currentPath = router.asPath; // Get the current path
+console.log(currentPath,"current pathhhhhh")
 
   return (
     <Suspense fallback={<div>
@@ -197,8 +208,32 @@ console.log(data,"dataaa index.jsx projectsss")
     <div dir="ltr" className="">
       {/* <Topbar /> */}
       <Header />
-      <Breadcrumb  pagename={language === "en" ? "Let's Write Your Story Together" : "Écrivons Votre Histoire Ensemble"} pagetitle={language === "en" ? city : lang}/>
-      {/* <img src="/3.png" alt="logo" className="w-[240px] sm:w-[260px] mt-6 ml-20 " /> */}
+      
+    
+      <>
+            {currentPath === '/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=apartment&rooms=0&beds=0' ? (
+                <BreadcrumbForSaleApp />
+            ) : currentPath === '/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=office&rooms=0&beds=0' ? (
+                <Breadcrumbforsaleoffice />
+            ) : currentPath === '/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=town&rooms=0&beds=0' ? (
+              <Breadcrumbforsaletownhouse />
+              )               
+             : currentPath === '/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=villa&rooms=0&beds=0' ? (
+              <Breadcrumbforsalevilla />
+              )               
+             : currentPath === '/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=house&rooms=0&beds=0' ? (
+              <Breadcrumbforsalehouse />
+              )               
+              : (
+                <BreadDestinations 
+                    pagename={language === "en" ? "Let's Write Your Story Together" : "Écrivons Votre Histoire Ensemble"} 
+                    pagetitle={language === "en" ? city : lang}
+                />
+            )}
+        </>
+    
+    
+    
       <FilterForm isProjectsPage={true} />
       <div className="package-grid-with-sidebar-section pt-120 mb-120">
         <div className="container">

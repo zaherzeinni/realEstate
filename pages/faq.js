@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/components/common/Breadcrumb";
+import Breadfaq from "@/components/components/common/Breadfaq";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
 import Header from "@/components/components/header/Header2";
@@ -106,7 +106,7 @@ const Faq = () => {
   return (
     <div dir="ltr">
       <Header />
-      <Breadcrumb pagename={language === "en" ? "A World Of Real Estate Possibilities At Your Fingertips!" : "Un Monde De Possibilités Immobilières À Portée De Clic !"} pagetitle="FAQ" />
+      <Breadfaq pagename={language === "en" ? "A World Of Real Estate Possibilities At Your Fingertips!" : "Un Monde De Possibilités Immobilières À Portée De Clic!"} pagetitle="FAQ" />
      
      
 

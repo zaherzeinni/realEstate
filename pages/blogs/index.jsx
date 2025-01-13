@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/components/common/Breadcrumb";
+import Breadblogs from "@/components/components/common/Breadblogs";
 import blogData from "../../data/blog.json";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -171,7 +171,7 @@ const BlogsMainpage = ({ search, country }) => {
     <div dir="ltr" className="">
       {/* <Topbar /> */}
       <Header />
-      <Breadcrumb pagename={language === 'en' ? "Here, To Help You Find Your New Home" : "Ici, Pour Vous Aider À Trouver Votre Nouveau Maison"} pagetitle={language === 'en' ? "Blogs" : "Blogs"} />
+      <Breadblogs pagename={language === 'en' ? "Here, To Help You Find Your New Home" : "Ici, Pour Vous Aider À Trouver Votre Nouveau Maison"} pagetitle={language === 'en' ? "Blogs" : "Blogs"} />
       <div className="blog-details-section pt-120 mb-120">
         <div className="container">
           {isLoading && <Loading />}

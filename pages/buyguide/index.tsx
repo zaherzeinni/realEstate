@@ -14,6 +14,7 @@ import Header from "@/components/components/header/Header2";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
+
 import Link from "next/link"
 import ContactModal from "@/components/Site/ContactModal"
 import ProjectCard from "@/components/Site/ProjectCard"
@@ -32,6 +33,14 @@ import { message as antdMessage } from "antd";
 import axios from "axios";
 import useVisa from "@/hooks/useVisa";
 import Select from "react-select";
+
+import BreadUAE from "@/components/components/common/BreadUAE";
+import BreadSpain from "@/components/components/common/BreadSpain";
+import BreadMex from "@/components/components/common/BreadMex";
+import BreadCyprus from "@/components/components/common/BreadCyprus";
+import BreadPort from "@/components/components/common/BreadPort";
+import BreadRep from "@/components/components/common/BreadRep";
+
 
 // Fetcher function for SWR
 const fetcher = async (url: string) => {
@@ -288,18 +297,61 @@ export default function BuyguideList() {
 
 
 
-    // let obj = currentGuide.desc;
-    // let jsonString = JSON.stringify(obj); // Correctly converts to JSON string
-    // JSON.parse(jsonString); // This will work without errors
-    // console.log(jsonString,"json strinngggg")
+
+    const currentPath = router.asPath; // Get the current path
+    console.log(currentPath,"current pathhhhhh")
 
 
 
 
   return (
     <div className=" pt mb-" dir="ltr">
+
+<>
+            {currentPath === '/buyguide?guide=u.a.e.' ? 
+            (
+               <BreadUAE pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} 
+               pagetitle={language === "en" ? selectedItem?.title ? selectedItem?.title :currentGuide?.title  :selectedItem?.titlefr ? selectedItem?.titlefr :currentGuide?.titlefr} />
+            )
+            :      
+            currentPath === '/buyguide?guide=spain' ? 
+            (
+               <BreadSpain pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} 
+               pagetitle={language === "en" ? selectedItem?.title ? selectedItem?.title :currentGuide?.title  :selectedItem?.titlefr ? selectedItem?.titlefr :currentGuide?.titlefr} />
+            )  
+            :      
+            currentPath === '/buyguide?guide=mexico' ? 
+            (
+               <BreadMex pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} 
+               pagetitle={language === "en" ? selectedItem?.title ? selectedItem?.title :currentGuide?.title  :selectedItem?.titlefr ? selectedItem?.titlefr :currentGuide?.titlefr} />
+            ) 
+            :      
+            currentPath === '/buyguide?guide=north-cyprus' ? 
+            (
+               <BreadCyprus pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} 
+               pagetitle={language === "en" ? selectedItem?.title ? selectedItem?.title :currentGuide?.title  :selectedItem?.titlefr ? selectedItem?.titlefr :currentGuide?.titlefr} />
+            ) 
+            :     
+            currentPath === '/buyguide?guide=portugal' ? 
+            (
+               <BreadPort pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} 
+               pagetitle={language === "en" ? selectedItem?.title ? selectedItem?.title :currentGuide?.title  :selectedItem?.titlefr ? selectedItem?.titlefr :currentGuide?.titlefr} />
+            ) 
+            :   
+            currentPath === '/buyguide?guide=dominican-rep.' ? 
+            (
+               <BreadRep pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} 
+               pagetitle={language === "en" ? selectedItem?.title ? selectedItem?.title :currentGuide?.title  :selectedItem?.titlefr ? selectedItem?.titlefr :currentGuide?.titlefr} />
+            ) 
+            :        
+              (
+           
   <Breadcrumb  pagename={language === "en" ? currentGuide?.title : currentGuide?.titlefr} 
   pagetitle={language === "en" ? selectedItem?.title ? selectedItem?.title :currentGuide?.title  :selectedItem?.titlefr ? selectedItem?.titlefr :currentGuide?.titlefr} />
+            )}
+        </>
+
+
 
         <Header />
       <Container maxWidth={false} disableGutters>
