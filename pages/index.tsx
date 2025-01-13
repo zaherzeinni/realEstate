@@ -65,8 +65,6 @@ const page = () => {
           <Home2VideoSection />
           <AboutBlogs language={language} blogs={memoizedBlogs} />
           <Home2Banner2 />
-       
-         
           <Footer style="style-2" />
         </Suspense>
       </div>
