@@ -28,8 +28,9 @@ export default function DashboardPage({
     redirectTo: "/auth/login",
     redirectIfFound: false,
   });
-  if (user && user.role !== "admin") return <NotFound />;
 
+
+  if (user && user.role !== "admin") return <NotFound />;
 
 
   

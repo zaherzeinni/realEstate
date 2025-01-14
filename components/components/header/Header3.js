@@ -1,4 +1,4 @@
-// ------------------ THIS HEADER NAVBAR ----------------------
+// ------------------ THIS HEADER NAVBAR for FOOTER PRIVACY ----------------------
 
 import { useState } from "react";
 import Link from "next/link";

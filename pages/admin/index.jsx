@@ -73,7 +73,7 @@ console.log("DATA-->" , data)
           <div dir="ltr" className="row">
             <div className="col-xl-12">
               <div className="main-content-title-profile mb-50">
-                <div className="main-content-title">
+                <div className="main-content-title mt-10">
                   <h3>Hi, Egens! </h3>
                 </div>
                 <div className="profile">
