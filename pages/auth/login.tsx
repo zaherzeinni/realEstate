@@ -53,7 +53,7 @@ export default function Login() {
       const res = await login({ email, password });
       localStorage.setItem("user", JSON.stringify(res.data));
       mutate();
-      // router.push("/");
+      router.push("/");
     } catch (e) {
       setHasError(true);
       setLoading(false);
