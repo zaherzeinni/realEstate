@@ -62,6 +62,10 @@ console.log("DATA-->" , data)
     };
   }, []);
 
+
+
+  console.log(data,"dataaa")
+
   return (
     <>
       
