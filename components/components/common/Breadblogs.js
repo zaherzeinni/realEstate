@@ -15,7 +15,7 @@ const Breadblogs = ({ pagename, pagetitle }) => {
       className="breadcrumb-section"
       style={{
         backgroundImage:
-          "linear-gradient(270deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.3) 101.02%), url(/images/new/blogs.webp)",
+          "linear-gradient(270deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.3) 101.02%), url(/images/new/destinations.webp)",
       }}
     >
       <div className="container">

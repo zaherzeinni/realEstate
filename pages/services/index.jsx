@@ -1,4 +1,6 @@
 import Breadcrumb from "@/components/components/common/Breadcrumb";
+import BreadcrumbOurServices from "@/components/components/common/BreadcrumbOurServices";
+
 import blogData from "../../data/blog.json";
 import Link from "next/link";
 import Newslatter from "@/components/components/common/Newslatter";
@@ -120,7 +122,7 @@ const BlogsMainpage = () => {
     <div dir="ltr" className="">
       {/* <Topbar /> */}
       <Header2 />
-      <Breadcrumb pagename={language==="en" ?"For Our Customers":"Pour Nos Clients"} pagetitle={language==="en" ? <span className="text-primary2">Service Grid</span>:<span className="text-primary2">Grille Des Services</span>} />
+      <BreadcrumbOurServices pagename={language==="en" ?"For Our Customers":"Pour Nos Clients"} pagetitle={language==="en" ? <span className="text-primary2">Service Grid</span>:<span className="text-primary2">Grille Des Services</span>} />
      
       <div className="blod-grid-section pt-120 mb-120">
        
