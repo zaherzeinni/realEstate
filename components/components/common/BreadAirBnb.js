@@ -12,7 +12,7 @@ const BreadAirBnb = ({ pagename, pagetitle }) => {
 
   return (
     <div
-      className="breadcrumb-section"
+      className="breadcrumb-section  p-7 sm:p-[150px]"
       style={{
         backgroundImage:
           "linear-gradient(270deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.3) 101.02%), url(/images/new/InvestPage.webp)",

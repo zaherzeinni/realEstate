@@ -149,12 +149,12 @@ const Home2About = () => {
                       <div className="content">
                       {language === "en" ?   
                         <h6>
-                        Customer    <br />
+                        Customer    
                         Orientation
                         </h6>
                       :
                       <h6>
-                      Orientation     <br />
+                      Orientation     
                       client
                       </h6> 
                         }
