@@ -6,11 +6,10 @@ export default function NotFound() {
   return (
     <>
       <Head>
-        <title>الصفحة غير موجودة - Sand n Sea</title>
+        <title>Page Not Found -  Sand n Sea</title>
         <meta
           name="description"
-          content="للأسف لم نتمكن من العثور على الصفحة التي طلبتها. ما رأيك أن تجرب البحث بالموقع؟"
-        />
+          content="Sorry Page Not Found"        />
       </Head>
       <Container
         sx={{
@@ -41,12 +40,11 @@ export default function NotFound() {
             404
           </Typography>
           <Typography className="mb-5">
-            للأسف لم نتمكن من العثور على الصفحة التي طلبتها. ما رأيك أن تجرب
-            البحث بالموقع؟
+        Sorry,  Page Not Found
           </Typography>
 
           <Button variant="contained" color="primary" href="/">
-            أكمل الى الصفحة الرئيسية
+          Goto Home Page (Sand N Sea Realty)
           </Button>
         </Paper>
       </Container>
