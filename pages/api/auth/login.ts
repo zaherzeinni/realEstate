@@ -23,7 +23,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
     user.password = undefined;
     delete user.password;
-    res.status(200).json(user);
+    
+    // Add redirect URL based on role
+    const redirectUrl = user.role === 'staff' ? '/staff/properties' : '/admin/dashboard';
+    res.status(200).json({ user, redirectUrl });
   } catch (error) {
     res.status(400).json({
       success: false,

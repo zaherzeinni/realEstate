@@ -11,7 +11,7 @@ import {
 import { FormattedMessage } from "react-intl";
 import { AuthBackgroundPattern } from "@/components/pattern";
 import useAuth from "@/hooks/useAuth";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { useTranslation } from "@/context/useTranslation";
 import { useMemo } from "react";
 
@@ -54,13 +54,11 @@ export default function Auth({ children, width = "xs"  , dir}: any) {
           <Grid item xs={12} md={6}>
             <Paper className={classes.paper}>
               {/* start: Content */}
-              <motion.section
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 2 }}
+              <section
+              
               >
                 {children}
-              </motion.section>
+              </section>
          
               {/* <Box mt={5}>
                 <Typography

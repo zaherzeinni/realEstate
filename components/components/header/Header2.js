@@ -108,7 +108,7 @@ const Header2 = () => {
   link: `/buyguide?guide=${guide.title.toLowerCase().replace(/\s+/g, '-')}`
 }))
 
-console.log(buyguides,"dataaaaa buyguidesss")
+// console.log(buyguides,"dataaaaa buyguidesss")
 
 
 

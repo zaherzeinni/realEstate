@@ -1,7 +1,7 @@
 import { Box, Typography, Divider, Paper, Container } from "@mui/material";
 import { makeStyles } from "@material-ui/core";
 import { FormattedMessage } from "react-intl";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 const useStyles: any = makeStyles((theme: any) => ({
   title: {
@@ -57,12 +57,12 @@ export default function Page({ children, title ,dir }: any) {
 
 
     <div className=" bg-white p-3 m:px-8 mi--[100vh]">
-           <motion.section
+           <section
            initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 2 }}    >
           {children}
-        </motion.section>
+        </section>
     </div>
   
 

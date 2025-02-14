@@ -31,7 +31,7 @@ const schema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["user", "admin"],
+      enum: ["user", "admin", "staff"],
       default: "user",
       required: true,
     },
@@ -45,6 +45,31 @@ const schema = new mongoose.Schema(
       default: "jwt",
       required: true,
     },
+    country: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Country",
+    },
+
+    properties: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Book",
+      required: true,
+    }],
+
+
+
+    position: String,
+    department: String,
+    joinDate: Date,
+    status: {
+      type: String,
+      enum: ['active', 'inactive'],
+      default: 'active'
+    }
+
+    // properties array of ids of properties that the user has added
+
+
   },
   {
     timestamps: true,

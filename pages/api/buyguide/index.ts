@@ -23,7 +23,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           const buyguides = await Buyguide.find({}).select(isHeader ? 'title':'').lean();
 
 
-          console.log("zaherrrrr", buyguides)
+          // console.log("zaherrrrr", buyguides)
           return res.status(200).json(buyguides);
         } catch (error: any) {
           console.error('Get buyguides error:', error);
