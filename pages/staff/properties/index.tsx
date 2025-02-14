@@ -97,14 +97,13 @@ export default function StaffProperties() {
   };
 
   return (
-  
       <PageLayout title="Properties in Your Region">
   <Header />
 
 <BreadcrumbForSaleApp />
 
 
-        <div dir="rtl" className="container pt-6 mb-12">
+        <div dir="ltr" className="container pt-6 mb-12">
           <div className="bg-white rounded-lg shadow-lg p-6">
             <form className="text-start">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

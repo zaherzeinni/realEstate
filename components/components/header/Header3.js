@@ -315,7 +315,7 @@ const { data, isLoading, error } = useCountries();
 
 
   return (
-    <>
+    <div dir="ltr">
       
       <header
         ref={headerRef}
@@ -892,7 +892,7 @@ const { data, isLoading, error } = useCountries();
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

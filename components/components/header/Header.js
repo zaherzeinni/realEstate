@@ -230,7 +230,7 @@ const Header = () => {
   });
 
   return (
-    <>
+    <div dir="ltr">
       {/* <LoginModal isOpen={isOpen} closeModal={closeModal} /> */}
       <header
         ref={headerRef}
@@ -852,7 +852,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
