@@ -9,6 +9,32 @@ const schema = new mongoose.Schema(
       required: [true, "Please Enter Property ID"],
     },
 
+    status: {
+      type: String,
+      required: true,
+      default: "pending",
+    },
+
+    whatsapp: {
+      type: String,
+      required: true,
+      default: "",
+    },
+
+    video: {
+      type: String,
+      required: true,
+      default: "",
+    },
+
+    googleLink: {
+      type: String,
+      required: true,
+      default: "",
+    },
+    
+    
+
     title: {
       type: String,
       required: true,

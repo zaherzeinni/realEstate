@@ -21,13 +21,15 @@ export default function CreateStaff() {
     position: "",
     department: "",
     phone: "",
-    country: "",
+    country: countries?.[0]?._id || "",
     status: "active",
     joinDate: "",
     properties: [],
   });
 
-  const { properties, isLoading: propertiesLoading } = useCountryProperties(formData.country);
+  const { properties, isLoading: propertiesLoading } = useCountryProperties(
+    formData.country
+  );
 
   const [selectedProperties, setSelectedProperties] = useState<string[]>([]);
 

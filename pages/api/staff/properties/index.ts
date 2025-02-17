@@ -22,6 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const {
           page = 1,
           limit = 10,
+          country = "",
           search = "",
           type = "",
           minPrice,
@@ -30,20 +31,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           baths,
         } = req.query;
         
-        console.log(user , "user❎✳❎✳❎✳");
-        // First, get the country name from the user's country ID
-        const userCountry = await Country.findById(user.country);
+        // console.log(user , "user❎✳❎✳❎✳");
+        // // First, get the country name from the user's country ID
+        const userCountry = country ? await Country.findById(country) : null;
         
-        if (!userCountry) {
-          return res.status(404).json({
-            success: false,
-            message: "Staff country not found",
-          });
-        }
+        // if (!userCountry) {
+        //   return res.status(404).json({
+        //     success: false,
+        //     message: "Staff country not found",
+        //   });
+        // }
 
         // Build filter query using country title and staff's assigned properties
         let query: any = {
-          country: userCountry.title, // Use country title instead of ID
+          // country: country, // Use country title instead of ID
           _id: { $in: user.properties } // Only show properties assigned to this staff member
         };
 
@@ -59,6 +60,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             { storyfr: { $regex: search, $options: "i" } },
             { area: { $regex: search, $options: "i" } },
             { address: { $regex: search, $options: "i" } },
+            { reference: { $regex: search, $options: "i" } },
           ];
         }
 
@@ -66,6 +68,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         if (type) {
           query.type = type;
         }
+
+
+        if (country !== "" && userCountry !== null) {
+          query.country = userCountry?.title;
+        }
+
+        console.log(query , "query❎✳❎✳❎✳");
+
 
         // Add price range filter
         if (minPrice || maxPrice) {
@@ -111,7 +121,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             style: "currency",
             currency: "USD",
           }).format(property.price),
-          countryName: userCountry.title,
+          // countryName: userCountry.title,
           details: {
             ...property.details,
             totalRooms: property.details?.rooms || 0,
@@ -191,7 +201,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               maxPrice,
               beds,
               baths,
-              country: userCountry.title,
+               country: country,
             },
           },
         });

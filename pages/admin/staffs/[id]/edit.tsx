@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import { TextInput } from "@/components/inputs";
 import { PageLayout } from "@/layouts";
@@ -61,11 +61,9 @@ export default function EditStaff() {
         properties: staff.properties || [],
       });
       
-      // If properties is an array of strings (IDs)
+      // Update to handle populated property objects
       if (Array.isArray(staff.properties)) {
-        const propertyIds = staff.properties.map((p: any) => 
-          typeof p === 'string' ? p : p._id
-        ).filter(Boolean);
+        const propertyIds = staff.properties.map((p: any) => p._id);
         setSelectedProperties(propertyIds);
       }
     } catch (error) {
@@ -78,7 +76,39 @@ export default function EditStaff() {
     }
   };
 
-  const { properties, isLoading: propertiesLoading } = useCountryProperties(formData.country);
+  const { properties: countryProperties, isLoading: propertiesLoading } = useCountryProperties(formData.country);
+
+  // Merge staff properties with country properties to ensure we show all available properties
+  const mergedProperties = useMemo(() => {
+    const staffPropertiesMap = new Map(
+      formData.properties.map((p: any) => [p._id, p])
+    );
+
+    // Process country properties
+    const countryProps = countryProperties?.map((property: any) => ({
+      ...property,
+      title: property.title,
+      price: property.price,
+      isAssigned: staffPropertiesMap.has(property._id),
+      _id: property._id
+    })) || [];
+
+    // Get staff properties not in country properties
+    const countryIds = new Set(countryProps.map((p: any) => p._id));
+    const additionalProps = Array.from(staffPropertiesMap.values())
+      .filter((p: any) => !countryIds.has(p._id))
+      .map(p => ({
+        ...p,
+        value: p, // Maintain consistent structure with country properties
+        formattedPrice: `$${p.price}`,
+        isAssigned: true,
+        _id: p._id
+      }));
+      
+    console.log(additionalProps, 'additionalProps');
+
+    return [...countryProps, ...additionalProps];
+  }, [countryProperties, formData.properties]);
 
   const handlePropertySelect = (propertyId: string) => {
     setSelectedProperties(prev => 
@@ -194,8 +224,7 @@ export default function EditStaff() {
                 </Select>
               </FormControl>
             </Grid>
-            {formData.country && (
-              <Grid item xs={12}>
+            <Grid item xs={12}>
                 <Typography variant="h6" gutterBottom>
                   Select Properties
                 </Typography>
@@ -204,18 +233,19 @@ export default function EditStaff() {
                     <Grid item xs={12}>
                       <Typography>Loading properties...</Typography>
                     </Grid>
-                  ) : properties?.length === 0 ? (
+                  ) : mergedProperties?.length === 0 ? (
                     <Grid item xs={12}>
                       <Typography>No properties found for this country</Typography>
                     </Grid>
                   ) : (
-                    properties.map((property: any) => (
+                    mergedProperties.map((property: any) => (
                       <Grid item xs={12} sm={6} md={4} key={property._id}>
                         <FormControlLabel
                           control={
                             <Checkbox
                               checked={selectedProperties.includes(property._id)}
                               onChange={() => handlePropertySelect(property._id)}
+                              name={property._id}
                             />
                           }
                           label={
@@ -232,7 +262,6 @@ export default function EditStaff() {
                   )}
                 </Grid>
               </Grid>
-            )}
             <Grid item xs={12}>
               <Button type="submit" variant="contained" color="primary">
                 Update Staff

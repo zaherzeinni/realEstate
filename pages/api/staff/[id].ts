@@ -12,6 +12,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       try {
         const staff = await User.findById(id)
           .populate("country", "name")
+          .populate("properties", "title  price _id")
           // .select("-password"); // Exclude password from response
         console.log(staff ,'staff');
         if (!staff) {

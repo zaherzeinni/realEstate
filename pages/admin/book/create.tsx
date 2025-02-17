@@ -47,6 +47,13 @@ const conditions = [
   { id: 2, label: "Construction", value: "construction" },
 ];
 
+const statusOptions = [
+  { id: 1, label: "Pending", value: "pending" },
+  { id: 2, label: "Active", value: "active" },
+  { id: 3, label: "Completed", value: "completed" },
+  { id: 4, label: "Rejected", value: "rejected" },
+];
+
 const modules = {
   toolbar: [
     [{ 'header': [1, 2, 3, 4, 5, false] }], // Add heading levels
@@ -171,6 +178,10 @@ export default function BookCreatePage() {
     },
     address: "",
     addBy: "Admin",
+    status: "",
+    whatsapp: "",
+    video: "",
+    googleLink: "",
   });
 
    const [selectedCountry, setSelectedCountry] = useState({});
@@ -179,6 +190,7 @@ export default function BookCreatePage() {
   const [selectedArea, setSelectedArea] = useState({});
   const [selectedType, setSelectedType] = useState({});
   const [selectedCondition, setSelectedCondition] = useState({});
+  const [selectedStatus, setSelectedStatus] = useState({});
 
   // console.log("CITIES" , CitiesData)
   const cities = CitiesData?.filter(
@@ -264,6 +276,15 @@ export default function BookCreatePage() {
       }));
     }
   }, [selectedCondition]);
+
+  useEffect(() => {
+    if (selectedStatus.value) {
+      setPropertyDetails((prev) => ({
+        ...prev,
+        status: selectedStatus.value,
+      }));
+    }
+  }, [selectedStatus]);
 
   const handleUploadImages = async (filesarray: any) => {
     try {
@@ -381,7 +402,7 @@ export default function BookCreatePage() {
       message.error(error?.message);
     }
   };
-
+  console.log('Usser role', user?.role)
   if (user && user.role !== "admin") return <NotFound />;
   return (
     <div dir="ltr" className="cart-are !bg-[#ffff]  product-area">
@@ -659,6 +680,50 @@ export default function BookCreatePage() {
                   options={conditions}
                   selected={selectedCondition}
                   setSelected={setSelectedCondition}
+                />
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <SelectInput
+                  placeholder="Select Status"
+                  options={statusOptions}
+                  selected={selectedStatus}
+                  setSelected={setSelectedStatus}
+                />
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <TextInput
+                  name="whatsapp"
+                  label="WhatsApp Number"
+                  value={propertyDetails.whatsapp}
+                  onChange={(value) => handleInputChange("whatsapp", value)}
+                />
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <TextInput
+                  name="video"
+                  label="YouTube Video URL"
+                  value={propertyDetails.video}
+                  onChange={(value) => {
+                    // Basic YouTube URL validation
+                    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/;
+                    if (value && !youtubeRegex.test(value)) {
+                      message.error("Please enter a valid YouTube URL");
+                      return;
+                    }
+                    handleInputChange("video", value);
+                  }}
+                />
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <TextInput
+                  name="googleLink"
+                  label="Google Maps Link"
+                  value={propertyDetails.googleLink}
+                  onChange={(value) => handleInputChange("googleLink", value)}
                 />
               </Grid>
 

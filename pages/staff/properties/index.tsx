@@ -34,6 +34,7 @@ import { BiArea } from "react-icons/bi";
 import { FaParking } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi";
 import BreadcrumbForSaleApp from "@/components/components/common/BreadcrumbForSaleApp";
+import useCountries from "@/hooks/useCountries";
 
 interface PropertyCardProps {
   property: {
@@ -71,6 +72,7 @@ export default function StaffProperties() {
   const [filters, setFilters] = useState({
     search: "",
     type: "",
+    country: "",
   });
 
   // Redirect if not authenticated or not staff
@@ -85,10 +87,12 @@ export default function StaffProperties() {
     return null;
   }
 
-  const { properties, isLoading, pages } = useStaffProperties({ 
+  const { properties, isLoading, totalPages } = useStaffProperties({ 
     page,
     ...filters 
   });
+
+  const { data: countries, isLoading: isLoadingCountries } = useCountries();
 
   console.log(properties , "properties");
 
@@ -97,6 +101,8 @@ export default function StaffProperties() {
   };
 
   return (
+
+    
   
       <PageLayout title="Properties in Your Region">
   <Header />
@@ -104,10 +110,45 @@ export default function StaffProperties() {
 <BreadcrumbForSaleApp />
 
 
-        <div dir="rtl" className="container pt-6 mb-12">
+        <div dir="" className="container pt-6 mb-12">
           <div className="bg-white rounded-lg shadow-lg p-6">
             <form className="text-start">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Country
+                  </label>
+                  <div className="relative">
+                    <TextField
+                      dir="rtl"
+                      select
+                      fullWidth
+                      size="small"
+                      value={filters.country}
+                      onChange={(e) => setFilters({...filters, country: e.target.value})}
+                      className="bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                      SelectProps={{
+                        MenuProps: {
+                          PaperProps: {
+                            style: {
+                              borderRadius: '8px',
+                              marginTop: '8px',
+                              boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+                            },
+                          },
+                        },
+                      }}
+                    >
+                      <MenuItem value="">All Countries</MenuItem>
+                      {countries?.map((country: any) => (
+                        <MenuItem key={country._id} value={country._id}>
+                          {country.title}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Property Type
@@ -158,17 +199,17 @@ export default function StaffProperties() {
                   </div>
                 </div>
 
-                <div className="md:col-span-2 flex gap-4 justify-end">
-                  <button
+                <div className="md:col-span-3 flex gap-4 justify-end">
+                  {/* <button
                     type="submit"
                     className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2"
                   >
                     Search
-                  </button>
+                  </button> */}
                   <button
                     type="button"
-                    onClick={() => setFilters({ search: "", type: "" })}
-                    className="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                    onClick={() => setFilters({ search: "", type: "", country: "" })}
+                   className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2"
                   >
                     Reset
                   </button>
@@ -208,7 +249,7 @@ export default function StaffProperties() {
                   <div className="col-lg-12">
                     <nav className="inner-pagination-area text-center">
                       <Pagination
-                        count={pages}
+                        count={totalPages}
                         page={page}
                         onChange={handlePageChange}
                         color="primary"

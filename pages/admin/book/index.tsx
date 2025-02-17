@@ -75,6 +75,21 @@ const AnimatedTypography = styled(Typography)`
   }
 `;
 
+const getStatusColor = (status: string) => {
+  switch (status?.toLowerCase()) {
+    case 'active':
+      return 'text-green-500';
+    case 'pending':
+      return 'text-yellow-500';
+    case 'completed':
+      return 'text-blue-500';
+    case 'rejected':
+      return 'text-red-500';
+    default:
+      return 'text-gray-500';
+  }
+};
+
 export default function AllBooks() {
   const { user } = useAuth({
     redirectTo: "/auth/login",
@@ -291,7 +306,7 @@ export default function AllBooks() {
                       >
                         <TableHead>
                           <TableRow>
-                          <TableCell>
+                            <TableCell>
                               <Typography>isFeatured</Typography>
                             </TableCell>
                             <TableCell>
@@ -299,6 +314,9 @@ export default function AllBooks() {
                             </TableCell>
                             <TableCell>
                               <Typography>Price</Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography>Status</Typography>
                             </TableCell>
                             <TableCell>
                               <Typography>Date</Typography>
@@ -312,7 +330,7 @@ export default function AllBooks() {
                           {map(data?.books, (book: any, index: number) => {
                             return (
                               <TableRow key={index}>
-                               <TableCell>
+                                <TableCell>
                                   <Typography>{book.services.isfeatured ? <h6 className=" text-green-500"> True</h6> : <h6 className=" text-red-500"> False</h6> }</Typography>
                                 </TableCell>
                                 <TableCell>
@@ -322,10 +340,13 @@ export default function AllBooks() {
                                   <Typography>{book?.price}</Typography>
                                 </TableCell>
                                 <TableCell>
+                                  <Typography className={getStatusColor(book?.status)}>
+                                    {book?.status || 'pending'}
+                                  </Typography>
+                                </TableCell>
+                                <TableCell>
                                   <Typography>
-                                    {new Date(
-                                      book.createdAt
-                                    ).toLocaleDateString()}
+                                    {new Date(book.createdAt).toLocaleDateString()}
                                   </Typography>
                                 </TableCell>
                                 <TableCell className="btn-icons">
