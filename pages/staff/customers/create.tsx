@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import useAuth from "@/hooks/useAuth";
 import { PageLayout } from "@/layouts";
-import AdminMainLayout from "@/components/Site/dashboardLayout";
+import StaffMainLayout from "@/components/Site/dashboardLayout/staffLayout";
 import {
   Grid,
   TextField,
@@ -95,7 +95,7 @@ export default function CreateCustomer() {
   };
 
   return (
-    <AdminMainLayout>
+    <StaffMainLayout>
       <PageLayout title="Create Customer">
         <div className="p-20">
           <Paper className="p-6">
@@ -193,6 +193,6 @@ export default function CreateCustomer() {
           </Paper>
         </div>
       </PageLayout>
-    </AdminMainLayout>
+    </StaffMainLayout>
   );
 } 
