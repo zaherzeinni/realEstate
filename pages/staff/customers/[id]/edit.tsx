@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useAuth from "@/hooks/useAuth";
 import { PageLayout } from "@/layouts";
-import AdminMainLayout from "@/components/Site/dashboardLayout";
+import StaffMainLayout from "@/components/Site/dashboardLayout/staffLayout";
 import {
   Grid,
   TextField,
@@ -115,7 +115,7 @@ export default function EditCustomer() {
   };
 
   return (
-    <AdminMainLayout>
+    <StaffMainLayout>
       <PageLayout title="Edit Customer">
         <div className="p-20">
           <Paper className="p-6">
@@ -230,6 +230,6 @@ export default function EditCustomer() {
           </Paper>
         </div>
       </PageLayout>
-    </AdminMainLayout>
+    </StaffMainLayout>
   );
 } 
