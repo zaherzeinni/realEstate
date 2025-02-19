@@ -25,6 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           country = "",
           search = "",
           type = "",
+          status = "",
           minPrice,
           maxPrice,
           beds,
@@ -42,11 +43,38 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         //   });
         // }
 
-        // Build filter query using country title and staff's assigned properties
-        let query: any = {
-          // country: country, // Use country title instead of ID
-          _id: { $in: user.properties } // Only show properties assigned to this staff member
+        // Base query for staff's properties
+        let baseQuery = { _id: { $in: user.properties } };
+
+        // Get status counts first
+        const statusCounts = await Book.aggregate([
+          { $match: baseQuery },
+          {
+            $group: {
+              _id: { $ifNull: ["$status", "pending"] },
+              count: { $sum: 1 }
+            }
+          }
+        ]);
+
+        // Build the main query
+        let query = {
+          ...baseQuery
         };
+
+        // Add status filter
+        if (status) {
+          // Handle 'pending' status specially since it could be null or 'pending'
+          if (status === 'pending') {
+            query.$or = [
+              { status: 'pending' },
+              { status: null },
+              { status: { $exists: false } }
+            ];
+          } else {
+            query.status = status;
+          }
+        }
 
         // Add search filter
         if (search) {
@@ -69,13 +97,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           query.type = type;
         }
 
-
         if (country !== "" && userCountry !== null) {
           query.country = userCountry?.title;
         }
 
         console.log(query , "query❎✳❎✳❎✳");
-
 
         // Add price range filter
         if (minPrice || maxPrice) {
@@ -182,10 +208,27 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           }
         }));
 
+        // Format status counts
+        const formattedStatusCounts = {
+          active: 0,
+          pending: 0,
+          completed: 0,
+          rejected: 0,
+          ...Object.fromEntries(
+            statusCounts.map(({ _id, count }) => [
+              (_id || "pending").toLowerCase(),
+              count
+            ])
+          )
+        };
+
+        console.log(formattedStatusCounts , "formattedStatusCounts❎✳❎✳❎✳");
+
         res.status(200).json({
           success: true,
           data: {
             properties: transformedProperties,
+            statusCounts: formattedStatusCounts,
             pagination: {
               currentPage: Number(page),
               totalPages,
@@ -201,7 +244,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               maxPrice,
               beds,
               baths,
-               country: country,
+              country,
+              status,
             },
           },
         });

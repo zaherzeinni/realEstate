@@ -41,6 +41,12 @@ import useCities from "@/hooks/useCities";
 import useCountries from "@/hooks/useCountries";
 import AdminMainLayout from "@/components/Site/dashboardLayout";
 import { ImageEndpoint, defaultImage, uploadApi } from "@/utils/global";
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+
 interface Book {
   _id: string | number;
   title: string;
@@ -104,6 +110,11 @@ export default function AllBooks() {
   const [search, setSearch] = useState<string>("");
   const [fetch, setFetch] = useState<boolean>(false);
   const [localUser, setLocalUser] = useState<any>();
+  const [statusDialog, setStatusDialog] = useState({
+    open: false,
+    bookId: '',
+    currentStatus: ''
+  });
 
   // ----------
 
@@ -235,10 +246,30 @@ export default function AllBooks() {
 
 
 
-  if (!user || (user.role !== "admin")) {
+  if (!user) {
     return <NotFound />;
-}
+  }
 
+  const handleStatusClick = (book: any) => {
+    setStatusDialog({
+      open: true,
+      bookId: book._id,
+      currentStatus: book.status || 'pending'
+    });
+  };
+
+  const handleStatusUpdate = async (newStatus: string) => {
+    try {
+      await axios.put(`/api/book/${statusDialog.bookId}/status`, {
+        status: newStatus
+      });
+      message.success("Status updated successfully");
+      mutate();
+      setStatusDialog({ open: false, bookId: '', currentStatus: '' });
+    } catch (error) {
+      message.error("Error updating status");
+    }
+  };
 
   return (
     <div dir="ltr">
@@ -340,8 +371,12 @@ export default function AllBooks() {
                                   <Typography>{book?.price}</Typography>
                                 </TableCell>
                                 <TableCell>
-                                  <Typography className={getStatusColor(book?.status)}>
-                                    {book?.status || 'pending'}
+                                  <Typography 
+                                    className={getStatusColor(book?.status)}
+                                    onClick={() => handleStatusClick(book)}
+                                    sx={{ cursor: 'pointer' }}
+                                  >
+                                    {book?.status || 'pending'} 
                                   </Typography>
                                 </TableCell>
                                 <TableCell>
@@ -412,6 +447,30 @@ export default function AllBooks() {
           </div>
         </PageLayout>
       </AdminMainLayout>
+
+      <Dialog open={statusDialog.open} onClose={() => setStatusDialog({ open: false, bookId: '', currentStatus: '' })}>
+        <DialogTitle>Update Status</DialogTitle>
+        <DialogContent>
+          <FormControl fullWidth sx={{ mt: 2 }}>
+            <InputLabel>Status</InputLabel>
+            <Select
+              value={statusDialog.currentStatus}
+              label="Status"
+              onChange={(e) => handleStatusUpdate(e.target.value)}
+            >
+              <MenuItem value="active">Active</MenuItem>
+              <MenuItem value="pending">Pending</MenuItem>
+              <MenuItem value="completed">Completed</MenuItem>
+              <MenuItem value="rejected">Rejected</MenuItem>
+            </Select>
+          </FormControl>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setStatusDialog({ open: false, bookId: '', currentStatus: '' })}>
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       <CartButton user={localUser} />
     </div>

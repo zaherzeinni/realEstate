@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import SidebarAdmin from "./sidebar";
+import SidebarAdmin from "./sidebarStaff";
 import FooterAdmin from "./footer";
 import Header4 from "../../../components/components/header/Header4";
 import useAuth from '@/hooks/useAuth';
 import { useRouter } from 'next/router';
 
-const AdminMainLayout = ({ children }) => {
+const StaffMainLayout = ({ children }) => {
   const router = useRouter();
   const { user, loading } = useAuth({
     redirectTo: "/auth/login",
@@ -14,7 +14,7 @@ const AdminMainLayout = ({ children }) => {
 
   useEffect(() => {
     // If we have user data and they're not an admin, redirect to home
-    if (user && user.role !== 'admin') {
+    if (user && user.role !== 'staff') {
       router.push('/');
     }
   }, [user, router]);
@@ -25,7 +25,7 @@ const AdminMainLayout = ({ children }) => {
   }
 
   // If user is not admin, don't render the layout
-  if (user.role !== 'admin') {
+  if (user.role !== 'staff') {
     return null;
   }
 
@@ -42,4 +42,4 @@ const AdminMainLayout = ({ children }) => {
   );
 };
 
-export default AdminMainLayout;
+export default StaffMainLayout;
