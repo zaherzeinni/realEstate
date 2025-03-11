@@ -66,7 +66,6 @@ export default function StaffCustomers() {
         console.log(err);
       });
   };
-
   return (
     <StaffMainLayout>
       <PageLayout title="Customers">
