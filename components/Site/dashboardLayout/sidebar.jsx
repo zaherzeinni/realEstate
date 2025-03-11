@@ -70,6 +70,34 @@ const router =useRouter()
           </li>
 
           <li className="">
+            <Link href="/admin/booking">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={18}
+                height={18}
+                viewBox="0 0 18 18"
+              >
+                <path d="M12 2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6V4h12v12zM8 7h8v2H8zm0 4h8v2H8zm0 4h8v2H8z"/>
+              </svg>
+              <h6>Bookings</h6>
+            </Link>
+          </li>
+
+          <li className="">
+            <Link href="/admin/booking/create">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={18}
+                height={18}
+                viewBox="0 0 18 18"
+              >
+                <path d="M12 2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6V4h12v12zM8 7h8v2H8zm0 4h8v2H8zm0 4h8v2H8z"/>
+              </svg>
+              <h6>Add Booking</h6>
+            </Link>
+          </li>
+
+          <li className="">
             <Link href="/admin/country">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

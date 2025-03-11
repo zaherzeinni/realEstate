@@ -80,4 +80,6 @@ schema.set("toJSON", {
   virtuals: true,
 });
 
-export default mongoose.models.Customer || mongoose.model("Customer", schema); 
+// Fix the model registration
+const CustomerModel = mongoose.models.Customer || mongoose.model("Customer", schema);
+export default CustomerModel; 
