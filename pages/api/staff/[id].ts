@@ -12,7 +12,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       try {
         const staff = await User.findById(id)
           .populate("country", "name")
-          .populate("properties", "title  price _id")
+          
           // .select("-password"); // Exclude password from response
         console.log(staff ,'staff');
         if (!staff) {
@@ -42,13 +42,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
         console.log(updateData ,'updateData');
 
-        //if not update properties so show error
-        if (!updateData.properties) {
-          return res.status(400).json({
-            success: false,
-            message: "Properties are required"
-          });
-        }
+  
 
         const staff = await User.findByIdAndUpdate(
           id,

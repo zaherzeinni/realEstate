@@ -1,20 +1,3 @@
-// // hooks/useStaffs.ts
-// import axios from "axios";
-// import { useEffect } from "react";
-// import useSWR from "swr";
-
-// const fetcher = (url: string) => axios.get(url).then((res) => res.data);
-
-// export default function useStaffs() {
-//   const { data, error, mutate } = useSWR("/api/staff", fetcher);
-
-//   return {
-//     staffs: data?.staffs,
-//     isLoading: !error && !data,
-//     error: error,
-//     mutate: mutate,
-//   };
-// }
 
 
 import axios from "axios";

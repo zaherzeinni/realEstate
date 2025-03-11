@@ -50,24 +50,3 @@ export default function useCustomers({
   };
 }
 
-
-// import useSWR from "swr";
-// import axios from "axios";
-// const fetcher = (url: string) =>
-//     axios.get(url).then(({ data }: any) => data?.data);
-
-// export default function useCustomers({ page = 1, search = "" } = {}) {
-//   const { data, error, mutate } = useSWR(
-//     `/api/customer?page=${page}&search=${search}`,
-//     fetcher
-//   );    
-
-//   console.log("da3333",data ,error);
-
-//   return {
-//     data,
-//     isLoading: !error && !data,
-//     error,
-//     mutate,
-//   };
-// } 

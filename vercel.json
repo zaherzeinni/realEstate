@@ -1,0 +1,9 @@
+{
+    "version": 1,
+    "jobs": {
+      "cleanup-expired-bookings": {
+        "schedule": "0 0 * * *",
+        "path": "/api/cron/cleanup-bookings?token=1234567890"
+      }
+    }
+  }

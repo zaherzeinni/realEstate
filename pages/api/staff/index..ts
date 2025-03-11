@@ -46,12 +46,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     case "POST":
       try {
-        const { properties = [], ...rest } = req.body;
+        const {  ...rest } = req.body;
         const staff = await User.create({
           ...rest,
           role: "staff",
           provider: "jwt",
-          properties, // <-- Make sure this is passed
+         
         });
         return res.status(201).json({ success: true, staff });
       } catch (error: any) {

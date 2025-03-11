@@ -7,7 +7,7 @@ import { Grid, Button, FormControl, InputLabel, Select, MenuItem, Typography, Fo
 import axios from "axios";
 import useCountries from "@/hooks/useCountries";
 import { message } from "antd";
-import useCountryProperties from "@/hooks/useCountryProperties";
+
 
 export default function EditStaff() {
   const router = useRouter();
@@ -29,10 +29,10 @@ export default function EditStaff() {
     country: "",
     status: "",
     joinDate: "",
-    properties: [],
+
   });
 
-  const [selectedProperties, setSelectedProperties] = useState<string[]>([]);
+
 
   useEffect(() => {
     if (id) {
@@ -58,14 +58,10 @@ export default function EditStaff() {
         country: staff.country?._id || "",
         status: staff.status || "active",
         joinDate: staff.joinDate ? staff.joinDate.split('T')[0] : "",
-        properties: staff.properties || [],
+   
       });
       
-      // Update to handle populated property objects
-      if (Array.isArray(staff.properties)) {
-        const propertyIds = staff.properties.map((p: any) => p._id);
-        setSelectedProperties(propertyIds);
-      }
+
     } catch (error) {
       setSnackbar({
         open: true,
@@ -76,54 +72,15 @@ export default function EditStaff() {
     }
   };
 
-  const { properties: countryProperties, isLoading: propertiesLoading } = useCountryProperties(formData.country);
 
-  // Merge staff properties with country properties to ensure we show all available properties
-  const mergedProperties = useMemo(() => {
-    const staffPropertiesMap = new Map(
-      formData.properties.map((p: any) => [p._id, p])
-    );
 
-    // Process country properties
-    const countryProps = countryProperties?.map((property: any) => ({
-      ...property,
-      title: property.title,
-      price: property.price,
-      isAssigned: staffPropertiesMap.has(property._id),
-      _id: property._id
-    })) || [];
-
-    // Get staff properties not in country properties
-    const countryIds = new Set(countryProps.map((p: any) => p._id));
-    const additionalProps = Array.from(staffPropertiesMap.values())
-      .filter((p: any) => !countryIds.has(p._id))
-      .map(p => ({
-        ...p,
-        value: p, // Maintain consistent structure with country properties
-        formattedPrice: `$${p.price}`,
-        isAssigned: true,
-        _id: p._id
-      }));
-      
-    console.log(additionalProps, 'additionalProps');
-
-    return [...countryProps, ...additionalProps];
-  }, [countryProperties, formData.properties]);
-
-  const handlePropertySelect = (propertyId: string) => {
-    setSelectedProperties(prev => 
-      prev.includes(propertyId) 
-        ? prev.filter(id => id !== propertyId)
-        : [...prev, propertyId]
-    );
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await axios.put(`/api/staff/${id}`, {
         ...formData,
-        properties: selectedProperties.filter(Boolean)
+   
       });
       setSnackbar({
         open: true,
@@ -224,44 +181,7 @@ export default function EditStaff() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12}>
-                <Typography variant="h6" gutterBottom>
-                  Select Properties
-                </Typography>
-                <Grid container spacing={2}>
-                  {propertiesLoading ? (
-                    <Grid item xs={12}>
-                      <Typography>Loading properties...</Typography>
-                    </Grid>
-                  ) : mergedProperties?.length === 0 ? (
-                    <Grid item xs={12}>
-                      <Typography>No properties found for this country</Typography>
-                    </Grid>
-                  ) : (
-                    mergedProperties.map((property: any) => (
-                      <Grid item xs={12} sm={6} md={4} key={property._id}>
-                        <FormControlLabel
-                          control={
-                            <Checkbox
-                              checked={selectedProperties.includes(property._id)}
-                              onChange={() => handlePropertySelect(property._id)}
-                              name={property._id}
-                            />
-                          }
-                          label={
-                            <Box>
-                              <Typography variant="subtitle1">{property.title}</Typography>
-                              <Typography variant="body2" color="textSecondary">
-                                {property.formattedPrice}
-                              </Typography>
-                            </Box>
-                          }
-                        />
-                      </Grid>
-                    ))
-                  )}
-                </Grid>
-              </Grid>
+           
             <Grid item xs={12}>
               <Button type="submit" variant="contained" color="primary">
                 Update Staff

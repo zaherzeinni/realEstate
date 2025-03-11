@@ -2,25 +2,37 @@ import useSWR from "swr";
 import axios from "axios";
 
 const fetcher = (url: string) =>
-  axios.get(url).then(({ data }: any) => data?.data);
+  axios.get(url).then(({ data }) => data);
+
+interface StatusCounts {
+  pending: number;
+  confirmed: number;
+  cancelled: number;
+}
+
+interface StaffPropertiesResponse {
+  success: boolean;
+  properties: any[];
+  statusCounts: StatusCounts;
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
 
 export default function useStaffProperties(filters = {}) {
-  const { data, error, isLoading, mutate } = useSWR(
+  const { data, error, isLoading, mutate } = useSWR<StaffPropertiesResponse>(
     `/api/staff/properties?${new URLSearchParams(filters as any).toString()}`,
     fetcher
   );
 
+  console.log(data, "data HOOKS🧑‍💻⚠️🧑‍💻⚠️");
+
   return {
     properties: data?.properties || [],
-    statusCounts: data?.statusCounts || {},
-    currentPage: data?.pagination?.currentPage || 1,
-    hasNextPage: data?.pagination?.hasNextPage || false,
-    hasPrevPage: data?.pagination?.hasPrevPage || false,
-    //statusCounts: formattedStatusCounts,
-    statusCounts: data?.statusCounts || {},
-    limit: data?.pagination?.limit || 10,
-    totalItems: data?.pagination?.totalItems || 0,
-    totalPages: data?.pagination?.totalPages || 1,
+    statusCounts: data?.statusCounts || { pending: 0, confirmed: 0, cancelled: 0 },
+    currentPage: data?.currentPage || 1,
+    totalPages: data?.totalPages || 1,
+    totalItems: data?.totalItems || 0,
     isLoading,
     error,
     mutate,

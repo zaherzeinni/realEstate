@@ -19,11 +19,9 @@ interface BookDetails {
   image: string;
 }
 
-const fetcher = (url: string) => axios.get(url).then(({ data }: any) => data);
+const fetcher = (url: string) => axios.get(url).then(({ data }) => data);
 
-export default function useCountries({
-    
-} = {}) {
+export default function useCountries() {
   const { data, isLoading, error, mutate } = useSWR(
     `/api/country/handler`,
     fetcher,
@@ -36,9 +34,8 @@ export default function useCountries({
 
   return {
     data,
-
-    isLoading: isLoading,
-    error: error,
-    mutate: mutate,
+    isLoading,
+    error,
+    mutate,
   };
 }

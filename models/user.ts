@@ -50,11 +50,6 @@ const schema = new mongoose.Schema(
       ref: "Country",
     },
 
-    properties: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Book",
-      required: true,
-    }],
 
 
 

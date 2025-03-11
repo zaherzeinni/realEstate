@@ -7,7 +7,7 @@ import AdminMainLayout from "@/components/Site/dashboardLayout";
 import { Grid, Button, FormControl, InputLabel, Select, MenuItem, Typography, FormControlLabel, Checkbox, Box } from "@mui/material";
 import axios from "axios";
 import useCountries from "@/hooks/useCountries";
-import useCountryProperties from "@/hooks/useCountryProperties";
+
 
 export default function CreateStaff() {
   const router = useRouter();
@@ -24,33 +24,19 @@ export default function CreateStaff() {
     country: countries?.[0]?._id || "",
     status: "active",
     joinDate: "",
-    properties: [],
+    
   });
 
-  const { properties, isLoading: propertiesLoading } = useCountryProperties(
-    formData.country
-  );
 
-  const [selectedProperties, setSelectedProperties] = useState<string[]>([]);
 
-  const handlePropertySelect = (propertyId: string) => {
-    setSelectedProperties(prev => 
-      prev.includes(propertyId) 
-        ? prev.filter(id => id !== propertyId)
-        : [...prev, propertyId]
-    );
-    setFormData(prev => ({
-      ...prev,
-      properties: selectedProperties
-    }));
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post("/api/staff", {
         ...formData,
-        properties: selectedProperties
+       
       });
       router.push("/admin/staffs");
     } catch (error) {
@@ -151,35 +137,7 @@ export default function CreateStaff() {
                 </Select>
               </FormControl>
             </Grid>
-            {formData.country && (
-              <Grid item xs={12}>
-                <Typography variant="h6" gutterBottom>
-                  Select Properties
-                </Typography>
-                <Grid container spacing={2}>
-                  {properties.map((property: any) => (
-                    <Grid item xs={12} sm={6} md={4} key={property._id}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={selectedProperties.includes(property._id)}
-                            onChange={() => handlePropertySelect(property._id)}
-                          />
-                        }
-                        label={
-                          <Box>
-                            <Typography variant="subtitle1">{property.title}</Typography>
-                            <Typography variant="body2" color="textSecondary">
-                              {property.formattedPrice}
-                            </Typography>
-                          </Box>
-                        }
-                      />
-                    </Grid>
-                  ))}
-                </Grid>
-              </Grid>
-            )}
+    
             <Grid item xs={12}>
               <Button type="submit" variant="contained" color="primary">
                 Add Staff

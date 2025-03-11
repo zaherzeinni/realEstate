@@ -95,13 +95,11 @@ export default function StaffPropertiesTable() {
 
   const getStatusColor = (status: string) => {
     switch (status?.toLowerCase()) {
-      case 'active':
+      case 'confirmed':
         return 'text-green-500';
       case 'pending':
         return 'text-yellow-500';
-      case 'completed':
-        return 'text-blue-500';
-      case 'rejected':
+      case 'cancelled':
         return 'text-red-500';
       default:
         return 'text-gray-500';
@@ -114,10 +112,18 @@ export default function StaffPropertiesTable() {
   };
 
   const statusCards = [
-    { status: 'active', label: 'Active', color: 'bg-green-100 border-green-500' },
     { status: 'pending', label: 'Pending', color: 'bg-yellow-100 border-yellow-500' },
-    { status: 'completed', label: 'Completed', color: 'bg-blue-100 border-blue-500' },
-    { status: 'rejected', label: 'Rejected', color: 'bg-red-100 border-red-500' },
+    { status: 'confirmed', label: 'Confirmed', color: 'bg-green-100 border-green-500' },
+    { status: 'cancelled', label: 'Cancelled', color: 'bg-red-100 border-red-500' },
+    { 
+      status: '', 
+      label: 'All Bookings', 
+      color: 'bg-blue-100 border-blue-500',
+      count: statusCounts ? 
+        (statusCounts.pending || 0) + 
+        (statusCounts.confirmed || 0) + 
+        (statusCounts.cancelled || 0) : 0
+    }
   ];
 
   return (
@@ -126,9 +132,9 @@ export default function StaffPropertiesTable() {
       <div dir="ltr" className="container mx-auto px-4 py-8">
         {/* Status Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-6">
-          {statusCards.map(({ status, label, color }) => (
+          {statusCards.map(({ status, label, color, count }) => (
             <div
-              key={status}
+              key={status || 'all'}
               onClick={() => handleStatusCardClick(status)}
               className={`cursor-pointer border rounded-lg p-2 sm:p-4 ${color} ${
                 filters.status === status ? 'ring-2 ring-offset-2' : ''
@@ -136,7 +142,7 @@ export default function StaffPropertiesTable() {
             >
               <h3 className="text-sm sm:text-lg font-semibold">{label}</h3>
               <p className="text-lg sm:text-2xl font-bold">
-                {statusCounts && statusCounts[status] ? statusCounts[status] : 0}
+                {count !== undefined ? count : (statusCounts && statusCounts[status] ? statusCounts[status] : 0)}
               </p>
             </div>
           ))}
@@ -164,8 +170,12 @@ export default function StaffPropertiesTable() {
                 <TableCell>Price</TableCell>
                 <TableCell>Type</TableCell>
                 <TableCell>Location</TableCell>
+                <TableCell>Customer</TableCell>
+                <TableCell>Staff</TableCell>
+                <TableCell>Date Range</TableCell>
+                <TableCell>Remaining Time</TableCell>
                 <TableCell>Status</TableCell>
-                <TableCell>Date</TableCell>
+                <TableCell>Created</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -175,16 +185,42 @@ export default function StaffPropertiesTable() {
                   <TableCell>${property.price?.toLocaleString()}</TableCell>
                   <TableCell>{property.type}</TableCell>
                   <TableCell>{property.city}</TableCell>
+                  <TableCell>{property.booking?.customer?.firstName } {property.booking?.customer?.lastName || 'N/A'}</TableCell>
+                  <TableCell>{property.booking?.staff?.name || 'N/A'}</TableCell>
+                  <TableCell>
+                    {property.booking?.startDate && property.booking?.endDate ? 
+                      `${new Date(property.booking.startDate).toLocaleDateString('en-GB')} - 
+                       ${new Date(property.booking.endDate).toLocaleDateString('en-GB')}` : 
+                      'N/A'}
+                  </TableCell>
+                  <TableCell>
+                    {property.booking?.endDate ? 
+                      (() => {
+                        const today = new Date();
+                        const endDate = new Date(property.booking.endDate);
+                        const diffTime = endDate.getTime() - today.getTime();
+                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                        
+                        if (diffDays < 0) {
+                          return <span className="text-green-500">Commission Due</span>;
+                        } else if (diffDays === 0) {
+                          return <span className="text-orange-500">Due Today</span>;
+                        } else {
+                          return <span className="text-blue-500">{diffDays} days remaining</span>;
+                        }
+                      })() : 
+                      'N/A'}
+                  </TableCell>
                   <TableCell>
                     <span 
-                      className={`cursor-pointer ${getStatusColor(property.status)}`}
+                      className={`cursor-pointer ${getStatusColor(property.booking?.status)}`}
                       onClick={() => handleStatusClick(property)}
                     >
-                      {property.status || 'pending'}
+                      {property.booking?.status || 'N/A'}
                     </span>
                   </TableCell>
                   <TableCell>
-                    {new Date(property.createdAt).toLocaleDateString()}
+                    {new Date(property.createdAt).toLocaleDateString('en-GB')}
                   </TableCell>
                 </TableRow>
               ))}
@@ -215,10 +251,9 @@ export default function StaffPropertiesTable() {
               label="Status"
               onChange={(e) => handleStatusUpdate(e.target.value)}
             >
-              <MenuItem value="active">Active</MenuItem>
               <MenuItem value="pending">Pending</MenuItem>
-              <MenuItem value="completed">Completed</MenuItem>
-              <MenuItem value="rejected">Rejected</MenuItem>
+              <MenuItem value="confirmed">Confirmed</MenuItem>
+              <MenuItem value="cancelled">Cancelled</MenuItem>
             </Select>
           </FormControl>
         </DialogContent>

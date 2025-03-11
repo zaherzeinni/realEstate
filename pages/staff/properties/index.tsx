@@ -66,6 +66,12 @@ interface PropertyCardProps {
     whatsapp?: string;
     video?: string;
     googleLink?: string;
+    booking?: {
+      commission: number;
+      status: string;
+      startDate?: string;
+      endDate?: string;
+    };
   };
 }
 
@@ -78,7 +84,6 @@ export default function StaffProperties() {
     country: "",
   });
 
-  // Redirect if not authenticated or not staff
   const { user, loading } = useAuth({
     redirectTo: '/auth/login',
     redirectIfFound: false,
@@ -92,15 +97,30 @@ export default function StaffProperties() {
 
   const { properties, isLoading, totalPages } = useStaffProperties({ 
     page,
+    limit: 10,
     ...filters 
   });
+  console.log(properties, "properties🧑‍💻⚠️🧑‍💻⚠️");
 
-  const { data: countries, isLoading: isLoadingCountries } = useCountries();
-
-  console.log(properties , "properties");
+  const { data: countries } = useCountries();
 
   const handlePageChange = (event: any, value: number) => {
     setPage(value);
+  };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilters(prev => ({ ...prev, search: e.target.value }));
+    setPage(1);
+  };
+
+  const handleTypeChange = (e: any) => {
+    setFilters(prev => ({ ...prev, type: e.target.value }));
+    setPage(1);
+  };
+
+  const handleCountryChange = (e: any) => {
+    setFilters(prev => ({ ...prev, country: e.target.value }));
+    setPage(1);
   };
 
   return (
@@ -126,7 +146,7 @@ export default function StaffProperties() {
                       fullWidth
                       size="small"
                       value={filters.country}
-                      onChange={(e) => setFilters({...filters, country: e.target.value})}
+                      onChange={handleCountryChange}
                       className="bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                       SelectProps={{
                         MenuProps: {
@@ -142,7 +162,7 @@ export default function StaffProperties() {
                     >
                       <MenuItem value="">All Countries</MenuItem>
                       {countries?.map((country: any) => (
-                        <MenuItem key={country._id} value={country._id}>
+                        <MenuItem key={country._id} value={country.title}>
                           {country.title}
                         </MenuItem>
                       ))}
@@ -160,7 +180,7 @@ export default function StaffProperties() {
                       fullWidth
                       size="small"
                       value={filters.type}
-                      onChange={(e) => setFilters({...filters, type: e.target.value})}
+                      onChange={handleTypeChange}
                       className="bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                       SelectProps={{
                         MenuProps: {
@@ -194,7 +214,7 @@ export default function StaffProperties() {
                       size="small"
                       placeholder="Search by title, reference"
                       value={filters.search}
-                      onChange={(e) => setFilters({...filters, search: e.target.value})}
+                      onChange={handleSearch}
                       className="bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -210,7 +230,7 @@ export default function StaffProperties() {
                   <button
                     type="button"
                     onClick={() => setFilters({ search: "", type: "", country: "" })}
-                   className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2"
+                    className="px-6 py-2.5 bg-[#63ab45] text-white rounded-lg hover:bg-[#518c37] transition-colors duration-200 flex items-center gap-2"
                   >
                     Reset
                   </button>
@@ -242,7 +262,8 @@ export default function StaffProperties() {
                           propertyInfo: property.propertyInfo,
                           whatsapp: property.whatsapp,
                           video: property.video,
-                          googleLink: property.googleLink
+                          googleLink: property.googleLink,
+                          booking: property.booking
                         }}
                       />
                     ))}
@@ -325,12 +346,12 @@ export function PropertyCard({ property }: PropertyCardProps) {
           </div>
           <div className="absolute top-4 right-4 flex flex-col gap-2">
             {services?.isfeatured && (
-              <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <div className="bg-[#63ab45] text-white px-3 py-1 rounded-full text-sm font-medium">
                 Featured
               </div>
             )}
             {services?.Furnished && (
-              <div className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <div className="bg-[#63ab45] text-white px-3 py-1 rounded-full text-sm font-medium">
                 Furnished
               </div>
             )}
@@ -345,15 +366,70 @@ export function PropertyCard({ property }: PropertyCardProps) {
           )}
 
           <Link href={`/properties/${_id}`}>
-            <h5 className="text-xl font-semibold text-gray-800 mb-3 hover:text-blue-600 transition-colors">
+            <h5 className="text-xl font-semibold text-gray-800 mb-3 hover:text-[#63ab45] transition-colors">
               {title}
             </h5>
           </Link>
 
           <div className="flex items-center gap-2 mb-4">
-            <MdLocationOn className="text-blue-600 text-xl" />
+            <MdLocationOn className="text-[#63ab45] text-xl" />
             <span className="text-gray-600">{city}</span>
           </div>
+
+          {property.booking && (
+            <div className="bg-[#63ab45]/10 rounded-lg p-4 mb-4 border-l-4 border-[#63ab45]">
+              <h6 className="text-lg font-semibold text-[#63ab45] mb-3">Booking Details</h6>
+              
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-[#63ab45]/20 p-2 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Commission</span>
+                  <p className="text-md font-semibold text-gray-800">${property.booking.commission}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-[#63ab45]/20 p-2 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Status</span>
+                  <p className="text-md font-semibold">
+                    <Chip
+                      size="small"
+                      label={property.booking.status}
+                      color={property.booking.status === "confirmed" ? "success" : property.booking.status === "cancelled" ? "error" : "default"}
+                    />
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <div className="bg-[#63ab45]/20 p-2 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Booking Period</span>
+                  <p className="text-md font-semibold text-gray-800">
+                    {property.booking.startDate && property.booking.endDate ? (
+                      <>
+                        {new Date(property.booking.startDate).toLocaleDateString('en-GB')} - 
+                        {new Date(property.booking.endDate).toLocaleDateString('en-GB')}
+                      </>
+                    ) : "No dates specified"}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {(propertyInfo?.constructionYear || propertyInfo?.condition) && (
             <div className="flex gap-4 mb-4 text-sm text-gray-600">
@@ -379,7 +455,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
                 <span className="text-gray-700">{details.baths} Baths</span>
               </div>
             )}
-            {details?.areaSqM && (
+            {/* {details?.areaSqM && (
               <div className="flex items-center gap-2">
                 <BiArea className="text-gray-500 text-xl" />
                 <span className="text-gray-700">{details.areaSqM} m²</span>
@@ -390,7 +466,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
                 <FaParking className="text-gray-500 text-xl" />
                 <span className="text-gray-700">{details.parkings} Parking</span>
               </div>
-            )}
+            )} */}
           </div>
 
           <div className="flex flex-wrap gap-2 mb-4">
@@ -410,13 +486,13 @@ export function PropertyCard({ property }: PropertyCardProps) {
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
               <span className="text-gray-500 text-sm">Price</span>
-              <span className="text-2xl font-bold text-blue-600">
+              <span className="text-2xl font-bold text-[#63ab45]">
                 ${price?.toLocaleString()}
               </span>
             </div>
             <Link 
               href={`/properties/${_id}`}
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center gap-2 bg-[#63ab45] text-white px-4 py-2 rounded-lg hover:bg-[#518c37] transition-colors"
             >
               <span>View Details</span>
               <HiArrowRight className="text-lg" />

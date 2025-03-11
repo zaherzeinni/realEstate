@@ -1,7 +1,7 @@
 import auth from "@/utils/auth";
 import type { NextApiRequest, NextApiResponse } from "next";
 import Book from "@/models/book";
-import Country from "@/models/country";
+import Booking from "@/models/booking";
 import dbConnect from "@/utils/dbConnect";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -22,246 +22,125 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const {
           page = 1,
           limit = 10,
-          country = "",
           search = "",
+          country = "",
           type = "",
           status = "",
-          minPrice,
-          maxPrice,
-          beds,
-          baths,
         } = req.query;
-        
-        // console.log(user , "user❎✳❎✳❎✳");
-        // // First, get the country name from the user's country ID
-        const userCountry = country ? await Country.findById(country) : null;
-        
-        // if (!userCountry) {
-        //   return res.status(404).json({
-        //     success: false,
-        //     message: "Staff country not found",
-        //   });
-        // }
 
-        // Base query for staff's properties
-        let baseQuery = { _id: { $in: user.properties } };
+        const pageNumber = parseInt(page as string);
+        const limitNumber = parseInt(limit as string);
+        const skip = (pageNumber - 1) * limitNumber;
 
-        // Get status counts first
-        const statusCounts = await Book.aggregate([
-          { $match: baseQuery },
-          {
-            $group: {
-              _id: { $ifNull: ["$status", "pending"] },
-              count: { $sum: 1 }
-            }
-          }
-        ]);
+        // First, get all bookings for this staff member
+        let bookingQuery: any = { staff: user._id };
 
-        // Build the main query
-        let query = {
-          ...baseQuery
-        };
-
-        // Add status filter
-        if (status) {
-          // Handle 'pending' status specially since it could be null or 'pending'
-          if (status === 'pending') {
-            query.$or = [
-              { status: 'pending' },
-              { status: null },
-              { status: { $exists: false } }
-            ];
-          } else {
-            query.status = status;
-          }
+        // Add country filter if provided - using a "contains" approach
+        if (country && country !== "") {
+          bookingQuery.country = { $regex: country, $options: 'i' }; // Changed to contains match
         }
 
-        // Add search filter
+        // Add status filter if provided
+        if (status && status !== "") {
+          bookingQuery.status = status;
+        }
+
+        console.log("Booking query:", bookingQuery); // Log the query for debugging
+
+        // Get all bookings for this staff to calculate status counts
+        const allBookings = await Booking.find({ staff: user._id });
+        
+        // Calculate status counts
+        const statusCounts = {
+          pending: allBookings.filter(booking => booking.status === 'pending').length,
+          confirmed: allBookings.filter(booking => booking.status === 'confirmed').length,
+          cancelled: allBookings.filter(booking => booking.status === 'cancelled').length
+        };
+
+        // Get all booking IDs for this staff with the applied filters
+        const bookings = await Booking.find(bookingQuery)
+          .select('property country status commission startDate endDate')
+          .populate({
+            path: 'property',
+            select: 'title titlefr type country city cityFr price details services image propertyId reference whatsapp video googleLink createdAt'
+          })
+          .populate({
+            path: 'staff',
+            select: 'name email'
+          })
+          .populate({
+            path: 'customer',
+            select: 'firstName lastName email'
+          });
+
+        console.log(`Found ${bookings.length} bookings with filter`); // Debug log
+
+        // Extract unique properties from bookings and remove duplicates
+        // And include the booking details with each property
+        let properties = [...new Map(
+          bookings
+            .map(booking => ({
+              ...booking.property.toObject(),
+              booking: {
+                status: booking.status,
+                commission: booking.commission,
+                startDate: booking.startDate,
+                endDate: booking.endDate,
+                _id: booking._id,
+                staff: booking.staff,
+                customer: booking.customer
+              }
+            }))
+            .filter((property): property is any => property !== null)
+            .map(property => [property._id, property])
+        ).values()];
+
+        // Apply search filter
         if (search) {
-          query.$or = [
-            { title: { $regex: search, $options: "i" } },
-            { titlefr: { $regex: search, $options: "i" } },
-            { city: { $regex: search, $options: "i" } },
-            { cityFr: { $regex: search, $options: "i" } },
-            { propertyId: { $regex: search, $options: "i" } },
-            { story: { $regex: search, $options: "i" } },
-            { storyfr: { $regex: search, $options: "i" } },
-            { area: { $regex: search, $options: "i" } },
-            { address: { $regex: search, $options: "i" } },
-            { reference: { $regex: search, $options: "i" } },
-          ];
+          const searchRegex = new RegExp(search, 'i');
+          properties = properties.filter(property => 
+            searchRegex.test(property.title) ||
+            searchRegex.test(property.titlefr) ||
+            searchRegex.test(property.city) ||
+            searchRegex.test(property.cityFr) ||
+            searchRegex.test(property.propertyId?.toString() || '') ||
+            searchRegex.test(property.reference?.toString() || '')
+          );
         }
 
-        // Add type filter
+        // Apply type filter
         if (type) {
-          query.type = type;
+          properties = properties.filter(property => property.type === type);
         }
 
-        if (country !== "" && userCountry !== null) {
-          query.country = userCountry?.title;
-        }
+        // Calculate pagination
+        const totalItems = properties.length;
+        const totalPages = Math.ceil(totalItems / limitNumber) || 1; // Ensure at least 1 page
 
-        console.log(query , "query❎✳❎✳❎✳");
+        // Apply pagination
+        const paginatedProperties = properties.slice(skip, skip + limitNumber);
 
-        // Add price range filter
-        if (minPrice || maxPrice) {
-          query.price = {};
-          if (minPrice) query.price.$gte = Number(minPrice);
-          if (maxPrice) query.price.$lte = Number(maxPrice);
-        }
-
-        // Add beds filter
-        if (beds) {
-          query["details.beds"] = Number(beds);
-        }
-
-        // Add baths filter
-        if (baths) {
-          query["details.baths"] = Number(baths);
-        }
-
-        // Get paginated results
-        const skip = (Number(page) - 1) * Number(limit);
-
-        // Get properties with pagination
-        const properties = await Book.find(query)
-          .sort({ createdAt: -1 })
-          .skip(skip)
-          .limit(Number(limit))
-          .lean();
-
-        // Get total count for pagination
-        const total = await Book.countDocuments(query);
-
-        // Calculate total pages
-        const totalPages = Math.ceil(total / Number(limit));
-
-        // Transform the data to include all necessary information
-        const transformedProperties = properties.map((property) => ({
-          ...property,
-          id: property._id,
-          imageUrl: property.image?.[0] || "",
-          cover: property.cover?.[0] || "",
-          
-          formattedPrice: new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD",
-          }).format(property.price),
-          // countryName: userCountry.title,
-          details: {
-            ...property.details,
-            totalRooms: property.details?.rooms || 0,
-            totalBeds: property.details?.beds || 0,
-            totalBaths: property.details?.baths || 0,
-            areaSqM: property.details?.areaSqM || 0,
-            parkings: property.details?.parkings || 0,
-          },
-          features: {
-            ...property.features,
-            ac: property.features?.ac || false,
-            balcony: property.features?.balcony || false,
-            tv: property.features?.tv || false,
-            internet: property.features?.internet || false,
-            pet: property.features?.pet || false,
-            bathtub: property.features?.bathtub || false,
-          },
-          services: {
-            ...property.services,
-            isfeatured: property.services?.isfeatured || false,
-            resale: property.services?.resale || false,
-            lockoff: property.services?.lockoff || false,
-            security: property.services?.security || false,
-            cctv: property.services?.cctv || false,
-            elevator: property.services?.elevator || false,
-            pool: property.services?.pool || false,
-            gym: property.services?.gym || false,
-            parking: property.services?.parking || false,
-            garden: property.services?.garden || false,
-            Furnished: property.services?.Furnished || false,
-            airBn: property.services?.airBn || false,
-            balcon: property.services?.balcon || false,
-            golf: property.services?.golf || false,
-            malls: property.services?.malls || false,
-            roomservice: property.services?.roomservice || false,
-            gezepo: property.services?.gezepo || false,
-            animalsallow: property.services?.animalsallow || false,
-            aircondition: property.services?.aircondition || false,
-            beachaccess: property.services?.beachaccess || false,
-            cock: property.services?.cock || false,
-            electric: property.services?.electric || false,
-          },
-          coordinate: {
-            lat: property.coordinate?.lat || "",
-            lng: property.coordinate?.lng || "",
-          },
-          propertyInfo: {
-            constructionYear: property.constructionYear || "",
-            condition: property.condition || "",
-            reference: property.reference || "",
-            category: property.category || "",
-            area: property.area || "",
-          },
-          translations: {
-            titlefr: property.titlefr || "",
-            storyfr: property.storyfr || "",
-            cityFr: property.cityFr || "",
-          }
-        }));
-
-        // Format status counts
-        const formattedStatusCounts = {
-          active: 0,
-          pending: 0,
-          completed: 0,
-          rejected: 0,
-          ...Object.fromEntries(
-            statusCounts.map(({ _id, count }) => [
-              (_id || "pending").toLowerCase(),
-              count
-            ])
-          )
-        };
-
-        console.log(formattedStatusCounts , "formattedStatusCounts❎✳❎✳❎✳");
-
-        res.status(200).json({
+        return res.status(200).json({
           success: true,
-          data: {
-            properties: transformedProperties,
-            statusCounts: formattedStatusCounts,
-            pagination: {
-              currentPage: Number(page),
-              totalPages,
-              totalItems: total,
-              limit: Number(limit),
-              hasNextPage: Number(page) < totalPages,
-              hasPrevPage: Number(page) > 1,
-            },
-            filters: {
-              search,
-              type,
-              minPrice,
-              maxPrice,
-              beds,
-              baths,
-              country,
-              status,
-            },
-          },
+          properties: paginatedProperties,
+          statusCounts,
+          currentPage: pageNumber,
+          totalPages,
+          totalItems,
         });
+
       } catch (error) {
         console.error("Error fetching staff properties:", error);
-        res.status(500).json({
+        return res.status(500).json({
           success: false,
           message: "Error fetching properties",
           error: process.env.NODE_ENV === "development" ? error : undefined,
         });
       }
-      break;
 
     default:
       res.setHeader("Allow", ["GET"]);
-      res.status(405).json({
+      return res.status(405).json({
         success: false,
         message: `Method ${req.method} Not Allowed`,
       });
