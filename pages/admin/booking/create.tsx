@@ -80,7 +80,7 @@ export default function CreateBooking() {
     <AdminMainLayout>
       <PageLayout title="Create Booking">
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} marginTop={10}>
             <Grid item xs={12} md={6}>
               <FormControl fullWidth required>
                 <InputLabel>Country</InputLabel>

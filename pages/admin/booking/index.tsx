@@ -89,6 +89,9 @@ export default function BookingList() {
           </Button>
         }
       >
+
+        {/* --------------filter---------------------- */}
+        <div className="mt-10">
         <Paper elevation={2} sx={{ mb: 3, p: 2 }}>
           <Grid container spacing={2} alignItems="center">
             <Grid item xs={12} md={5}>
@@ -133,6 +136,9 @@ export default function BookingList() {
             </Grid>
           </Grid>
         </Paper>
+        </div>
+
+
 
         <Paper elevation={2}>
           <Box sx={{ p: 2 }}>
