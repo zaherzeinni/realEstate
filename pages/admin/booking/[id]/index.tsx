@@ -123,9 +123,7 @@ export default function EditBooking() {
                   <MenuItem value="">Select Property</MenuItem>
                   {properties?.books?.map((property: any) => (
                     <MenuItem key={property._id} value={property._id}>
-                      {property.title}
-                    priceeee  {property.price}
-
+                      {property.price}
                     </MenuItem>
                   ))}
                 </Select>
