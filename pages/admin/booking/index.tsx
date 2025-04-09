@@ -169,7 +169,7 @@ export default function BookingList() {
                   <TableCell>{`${booking.customer?.firstName || ""} ${booking.customer?.lastName || ""}`}</TableCell>
                   <TableCell>{booking.country}</TableCell>
                   <TableCell>{booking.commission}</TableCell>
-                  <TableCell>{booking.price}</TableCell>
+                  <TableCell>{booking.propertyId}</TableCell>
                   <TableCell>
                     
                     <Chip
