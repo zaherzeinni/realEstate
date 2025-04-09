@@ -157,7 +157,7 @@ export default function BookingList() {
                 <TableCell><strong>Start Date</strong></TableCell>
                 <TableCell><strong>End Date</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
-                <TableCell><strong>Created At</strong></TableCell>
+                {/* <TableCell><strong>Created At</strong></TableCell> */}
                 <TableCell><strong>Actions</strong></TableCell>
               </TableRow>
             </TableHead>
@@ -169,7 +169,7 @@ export default function BookingList() {
                   <TableCell>{`${booking.customer?.firstName || ""} ${booking.customer?.lastName || ""}`}</TableCell>
                   <TableCell>{booking.country}</TableCell>
                   <TableCell>{booking.commission}</TableCell>
-                  <TableCell>{(booking.commission*booking.property?.price)/100}</TableCell>
+                  <TableCell>{booking.property?.price}</TableCell>
                   <TableCell>
                     
                     <Chip
@@ -188,7 +188,7 @@ export default function BookingList() {
                       size="small"
                     />
                   </TableCell>
-                  <TableCell>{new Date(booking.createdAt).toLocaleDateString('en-GB')}</TableCell>
+                  {/* <TableCell>{new Date(booking.createdAt).toLocaleDateString('en-GB')}</TableCell> */}
                   <TableCell>
                     <Stack direction="row" spacing={1}>
                       <IconButton onClick={() => router.push(`/admin/booking/${booking._id}`)}>
