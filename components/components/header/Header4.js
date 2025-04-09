@@ -541,6 +541,7 @@ const { data, isLoading, error } = useCountries();
 
           </ul>
           <div className="topbar-right d-lg-none d-block">
+          <Link href="auth/login">  
             <button
               type="button"
               className="modal-btn header-cart-btn"
@@ -561,6 +562,7 @@ const { data, isLoading, error } = useCountries();
               </svg>
               REGISTER/ LOGIN
             </button>
+          </Link>
           </div>
           <div className="hotline-area d-lg-none d-flex">
             <div className="icon">

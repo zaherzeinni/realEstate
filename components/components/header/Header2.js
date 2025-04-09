@@ -518,6 +518,7 @@ const { data, isLoading, error } = useCountries();
 
           </ul>
           <div className="topbar-right d-lg-none d-block">
+            <Link href="auth/login">
             <button
               type="button"
               className="modal-btn header-cart-btn"
@@ -538,6 +539,7 @@ const { data, isLoading, error } = useCountries();
               </svg>
               REGISTER/ LOGIN
             </button>
+            </Link>
           </div>
           <div className="hotline-area d-lg-none d-flex">
             <div className="icon">
@@ -564,7 +566,7 @@ const { data, isLoading, error } = useCountries();
         <div className="nav-right d-flex jsutify-content-end align-items-center">
           <ul className="icon-list         ">
             <li className="d-lg-flex d-none">
-              <a className="hidden lg:block" href="#" data-bs-toggle="modal" data-bs-target="#user-login">
+              <a className="hidden lg:block" href="/auth/login" data-bs-toggle="modal" data-bs-target="#user-login">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={24}

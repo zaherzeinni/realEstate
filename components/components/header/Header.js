@@ -447,6 +447,7 @@ const Header = () => {
             })}
           </ul>
           <div className="topbar-right d-lg-none d-block">
+            <Link href="auth/login"> 
             <button
               type="button"
               className="modal-btn header-cart-btn"
@@ -467,6 +468,7 @@ const Header = () => {
               </svg>
               REGISTER/ LOGIN
             </button>
+            </Link>
           </div>
           <div className="hotline-area d-lg-none d-flex">
             <div className="icon">
@@ -492,7 +494,7 @@ const Header = () => {
         <div className="nav-right d-flex jsutify-content-end align-items-center">
           <ul className="icon-list">
             <li onClick={openModal} className="d-lg-flex d-none">
-              <a href="#" data-bs-toggle="modal" data-bs-target="#user-login">
+              <a href="auth/login" data-bs-toggle="modal" data-bs-target="#user-login">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={27}
