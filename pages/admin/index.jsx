@@ -9,9 +9,9 @@ import Link from "next/link";
 const Page = () => {
 
 
-  const { data, isLoading, error, mutate,user } = useCounts({});
+  const { data, isLoading, error, mutate } = useCounts({});
 console.log("DATA-->" , data)
-console.log(user?.role,'userrrrrr')
+
 
   const handleContainerClick = (event) => {
     const target = event.target;

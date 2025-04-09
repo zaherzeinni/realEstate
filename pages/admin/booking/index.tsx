@@ -152,6 +152,8 @@ export default function BookingList() {
                 <TableCell><strong>Customer</strong></TableCell>
                 <TableCell><strong>Country</strong></TableCell>
                 <TableCell><strong>Commission</strong></TableCell>
+                <TableCell><strong>Transaction</strong></TableCell>
+                <TableCell><strong>Expense</strong></TableCell>
                 <TableCell><strong>Start Date</strong></TableCell>
                 <TableCell><strong>End Date</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
@@ -167,6 +169,16 @@ export default function BookingList() {
                   <TableCell>{`${booking.customer?.firstName || ""} ${booking.customer?.lastName || ""}`}</TableCell>
                   <TableCell>{booking.country}</TableCell>
                   <TableCell>{booking.commission}</TableCell>
+                  <TableCell>{booking.commission*booking.property.price/100}</TableCell>
+                  <TableCell>
+                    
+                    <Chip
+                      label={booking.status}
+                      color={booking.status === "paid" ? "success" : booking.status === "pending" ? "error" : "default"}
+                      size="small"
+                    />
+                    
+                    </TableCell>
                   <TableCell>{booking.startDate ? new Date(booking.startDate).toLocaleDateString('en-GB') : "N/A"}</TableCell>
                   <TableCell>{booking.endDate ? new Date(booking.endDate).toLocaleDateString('en-GB') : "N/A"}</TableCell>
                   <TableCell>
