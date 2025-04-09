@@ -151,9 +151,9 @@ export default function BookingList() {
                 <TableCell><strong>Staff</strong></TableCell>
                 <TableCell><strong>Customer</strong></TableCell>
                 <TableCell><strong>Country</strong></TableCell>
-                <TableCell><strong>Commission</strong></TableCell>
-                <TableCell><strong>Transaction</strong></TableCell>
+                <TableCell><strong>Fees</strong></TableCell>
                 <TableCell><strong>Expense</strong></TableCell>
+                <TableCell><strong>Transfer</strong></TableCell>
                 <TableCell><strong>Start Date</strong></TableCell>
                 <TableCell><strong>End Date</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
