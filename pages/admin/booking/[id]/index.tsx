@@ -124,6 +124,8 @@ export default function EditBooking() {
                   {properties?.books?.map((property: any) => (
                     <MenuItem key={property._id} value={property._id}>
                       {property.title}
+                      {property.price}
+
                     </MenuItem>
                   ))}
                 </Select>
