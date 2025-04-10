@@ -29,6 +29,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import axios from "axios";
 import { message } from "antd";
 import useCountries from "@/hooks/useCountries";
+import useCounts from '@/hooks/useCounts'
+
 
 const fetcher = (url: string) => axios.get(url).then(({ data }) => data);
 
@@ -75,6 +77,14 @@ export default function BookingList() {
     setCountry(e.target.value);
     setPage(1); // Reset to first page when filtering
   };
+
+
+
+
+    const { data, isLoading, error, mutate } = useCounts({});
+  console.log("DATA--> in boookingggggg" , data)
+
+
 
   return (
     <AdminMainLayout>
