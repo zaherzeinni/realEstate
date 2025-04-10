@@ -40,6 +40,13 @@ export default function BookingList() {
   const [limit] = useState(10);
   const { data: countriesData } = useCountries();
  
+
+
+
+
+
+
+
   
   const { data, error, mutate } = useSWR(
     `/api/bookings?page=${page}&limit=${limit}&search=${search}&country=${country}`,
@@ -48,7 +55,7 @@ export default function BookingList() {
   
   const bookings = data?.bookings || [];
   const totalPages = data?.totalPages || 1;
- 
+  console.log(data,"dataaaaaaaa")
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this booking?")) {
