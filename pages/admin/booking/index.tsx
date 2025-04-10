@@ -47,6 +47,7 @@ export default function BookingList() {
   );
   
   const bookings = data?.bookings || [];
+  console.log(bookings,'boookkkkingggssss')
   const totalPages = data?.totalPages || 1;
  
 
