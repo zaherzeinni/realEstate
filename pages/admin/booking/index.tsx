@@ -40,13 +40,6 @@ export default function BookingList() {
   const [limit] = useState(10);
   const { data: countriesData } = useCountries();
  
-
-
-
-
-
-
-
   
   const { data, error, mutate } = useSWR(
     `/api/bookings?page=${page}&limit=${limit}&search=${search}&country=${country}`,
@@ -55,7 +48,7 @@ export default function BookingList() {
   
   const bookings = data?.bookings || [];
   const totalPages = data?.totalPages || 1;
-  console.log(data,"dataaaaaaaa")
+ 
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this booking?")) {
@@ -158,13 +151,11 @@ export default function BookingList() {
                 <TableCell><strong>Staff</strong></TableCell>
                 <TableCell><strong>Customer</strong></TableCell>
                 <TableCell><strong>Country</strong></TableCell>
-                <TableCell><strong>Fees</strong></TableCell>
-                <TableCell><strong>Expense</strong></TableCell>
-                <TableCell><strong>Transfer</strong></TableCell>
+                <TableCell><strong>Commission</strong></TableCell>
                 <TableCell><strong>Start Date</strong></TableCell>
                 <TableCell><strong>End Date</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
-                {/* <TableCell><strong>Created At</strong></TableCell> */}
+                <TableCell><strong>Created At</strong></TableCell>
                 <TableCell><strong>Actions</strong></TableCell>
               </TableRow>
             </TableHead>
@@ -176,17 +167,6 @@ export default function BookingList() {
                   <TableCell>{`${booking.customer?.firstName || ""} ${booking.customer?.lastName || ""}`}</TableCell>
                   <TableCell>{booking.country}</TableCell>
                   <TableCell>{booking.commission}</TableCell>
-                  <TableCell>{booking.commission}</TableCell>
-                  {/* <TableCell>{(booking.commission*booking.property?.price)/100}</TableCell> */}
-                  <TableCell>
-                    
-                    <Chip
-                      label={booking.status}
-                      color={booking.status === "paid" ? "success" : booking.status === "pending" ? "error" : "default"}
-                      size="small"
-                    />
-                    
-                    </TableCell>
                   <TableCell>{booking.startDate ? new Date(booking.startDate).toLocaleDateString('en-GB') : "N/A"}</TableCell>
                   <TableCell>{booking.endDate ? new Date(booking.endDate).toLocaleDateString('en-GB') : "N/A"}</TableCell>
                   <TableCell>
@@ -196,7 +176,7 @@ export default function BookingList() {
                       size="small"
                     />
                   </TableCell>
-                  {/* <TableCell>{new Date(booking.createdAt).toLocaleDateString('en-GB')}</TableCell> */}
+                  <TableCell>{new Date(booking.createdAt).toLocaleDateString('en-GB')}</TableCell>
                   <TableCell>
                     <Stack direction="row" spacing={1}>
                       <IconButton onClick={() => router.push(`/admin/booking/${booking._id}`)}>

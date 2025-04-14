@@ -30,7 +30,7 @@ export default function CreateBooking() {
     fetcher
   );
 
-  console.log(properties, "properties");
+  // console.log(properties, "properties");
 
   const { data: staffList } = useSWR("/api/staff", fetcher);
   const { data: customers } = useSWR(
