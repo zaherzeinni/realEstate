@@ -29,6 +29,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import axios from "axios";
 import { message } from "antd";
 import useCountries from "@/hooks/useCountries";
+import useProducts from "@/hooks/useProducts";
+
 
 const fetcher = (url: string) => axios.get(url).then(({ data }) => data);
 
@@ -39,16 +41,33 @@ export default function BookingList() {
   const [country, setCountry] = useState("");
   const [limit] = useState(10);
   const { data: countriesData } = useCountries();
- 
+
+
+
+
+
+
+
+
+ const { data:bookData  } = useProducts({});
+
+console.log(bookData,"DATAAAA")
+
   
+
+
+
+
+
   const { data, error, mutate } = useSWR(
     `/api/bookings?page=${page}&limit=${limit}&search=${search}&country=${country}`,
     fetcher
   );
   
   const bookings = data?.bookings || [];
+
   const totalPages = data?.totalPages || 1;
- 
+
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this booking?")) {
@@ -87,9 +106,13 @@ export default function BookingList() {
           >
             Create Booking
           </Button>
+
+        
         }
       >
 
+<div>
+              </div>
         {/* --------------filter---------------------- */}
         <div className="mt-10">
         <Paper elevation={2} sx={{ mb: 3, p: 2 }}>
@@ -112,13 +135,20 @@ export default function BookingList() {
                   onChange={handleCountryChange}
                   label="Filter by Country"
                 >
+                  <div dir="ltr" className="flex flex-col">
                   <MenuItem value="">All Countries</MenuItem>
                   {countriesData?.map((country: any) => (
+                    
                     <MenuItem key={country.id} value={country.title}>
+                      <div>
                       {country.title}
+                      </div>
                     </MenuItem>
+                  
                   ))}
+                    </div>
                 </Select>
+                
               </FormControl>
             </Grid>
             <Grid item xs={12} md={2}>
@@ -152,6 +182,7 @@ export default function BookingList() {
                 <TableCell><strong>Customer</strong></TableCell>
                 <TableCell><strong>Country</strong></TableCell>
                 <TableCell><strong>Commission</strong></TableCell>
+                <TableCell><strong>Price</strong></TableCell>
                 <TableCell><strong>Start Date</strong></TableCell>
                 <TableCell><strong>End Date</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
@@ -167,6 +198,7 @@ export default function BookingList() {
                   <TableCell>{`${booking.customer?.firstName || ""} ${booking.customer?.lastName || ""}`}</TableCell>
                   <TableCell>{booking.country}</TableCell>
                   <TableCell>{booking.commission}</TableCell>
+                  <TableCell>{booking.price}</TableCell>
                   <TableCell>{booking.startDate ? new Date(booking.startDate).toLocaleDateString('en-GB') : "N/A"}</TableCell>
                   <TableCell>{booking.endDate ? new Date(booking.endDate).toLocaleDateString('en-GB') : "N/A"}</TableCell>
                   <TableCell>
@@ -189,6 +221,7 @@ export default function BookingList() {
                   </TableCell>
                 </TableRow>
               ))}
+
               {!data && !error && (
                 <TableRow>
                   <TableCell colSpan={8} align="center">Loading...</TableCell>

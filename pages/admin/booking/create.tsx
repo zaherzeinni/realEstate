@@ -89,9 +89,9 @@ export default function CreateBooking() {
                   label="Country"
                   onChange={(e) => setSelectedCountry(e.target.value)}
                 >
-                  <MenuItem value="">Select Country</MenuItem>
+                  <MenuItem dir="ltr" value="">Select Country</MenuItem>
                   {countries?.map((country: any) => (
-                    <MenuItem key={country._id} value={country.title}>
+                    <MenuItem dir="ltr" key={country._id} value={country.title}>
                       {country.title}
                     </MenuItem>
                   ))}
@@ -106,9 +106,9 @@ export default function CreateBooking() {
                   label="Property"
                   onChange={(e) => setSelectedProperty(e.target.value)}
                 >
-                  <MenuItem value="">Select Property</MenuItem>
+                  <MenuItem dir="ltr" value="">Select Property</MenuItem>
                   {properties?.books?.map((property: any) => (
-                    <MenuItem key={property._id} value={property._id}>
+                    <MenuItem dir="ltr" key={property._id} value={property._id}>
                       {property.title}
                     </MenuItem>
                   ))}
@@ -123,9 +123,9 @@ export default function CreateBooking() {
                   label="Staff"
                   onChange={(e) => setSelectedStaff(e.target.value)}
                 >
-                  <MenuItem value="">Select Staff</MenuItem>
+                  <MenuItem dir="ltr" value="">Select Staff</MenuItem>
                   {staffList?.staffs?.map((staff: any) => (
-                    <MenuItem key={staff._id} value={staff._id}>
+                    <MenuItem dir="ltr" key={staff._id} value={staff._id}>
                       {staff.name}
                     </MenuItem>
                   ))}
@@ -140,9 +140,9 @@ export default function CreateBooking() {
                   label="Customer"
                   onChange={(e) => setSelectedCustomer(e.target.value)}
                 >
-                  <MenuItem value="">Select Customer</MenuItem>
+                  <MenuItem dir="ltr" value="">Select Customer</MenuItem>
                   {customers?.customers?.map((customer: any) => (
-                    <MenuItem key={customer._id} value={customer._id}>
+                    <MenuItem dir="ltr" key={customer._id} value={customer._id}>
                       {`${customer.firstName} ${customer.lastName}`}
                     </MenuItem>
                   ))}
@@ -167,9 +167,9 @@ export default function CreateBooking() {
                   label="Status"
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <MenuItem value="pending">Pending</MenuItem>
-                  <MenuItem value="confirmed">Confirmed</MenuItem>
-                  <MenuItem value="cancelled">Cancelled</MenuItem>
+                  <MenuItem dir="ltr" value="pending">Pending</MenuItem>
+                  <MenuItem dir="ltr" value="confirmed">Confirmed</MenuItem>
+                  <MenuItem dir="ltr" value="cancelled">Cancelled</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
