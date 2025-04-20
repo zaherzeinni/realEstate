@@ -6,6 +6,7 @@ const schema = new mongoose.Schema(
   {
     propertyId: {
       type: String,
+      ref: "Property",
       required: [true, "Please Enter Property ID"],
     },
 

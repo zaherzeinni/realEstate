@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/utils/dbConnect";
 import Booking from "@/models/booking";
+import Customer from "@/models/customer";
 import auth from "@/utils/auth";
 import mongoose from "mongoose";
 
@@ -38,7 +39,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           // If there's a search term, we need to fetch all matching documents first
           // and then filter them in memory after population
           const allBookings = await Booking.find(query) // Use query here instead of baseQuery
-            .populate("property", "title country")
+            .populate("property", "title country price")
             .populate("staff", "name phone email")
             .populate("customer", "firstName lastName")
             .sort({ createdAt: -1 });
@@ -74,7 +75,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         } else {
           // If no search term, use regular pagination with the database
           bookings = await Booking.find(query)
-            .populate("property", "title country")
+            .populate("property", "title country price")
             .populate("staff", "name phone email")
             .populate("customer", "firstName lastName")
             .sort({ createdAt: -1 })
@@ -144,7 +145,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
         // Populate the created booking with related data
         const populatedBooking = await Booking.findById(booking._id)
-          .populate("property", "title country")
+          .populate("property", "title country price")
           .populate("staff", "name phone email")
           .populate("customer", "firstName lastName");
 

@@ -79,6 +79,9 @@ bookingSchema.pre("save", async function (next) {
       return next(new Error("Invalid property"));
     }
 
+    await Customer.findById(this.customer);
+
+
     next();
   } catch (error) {
     next(error as Error);

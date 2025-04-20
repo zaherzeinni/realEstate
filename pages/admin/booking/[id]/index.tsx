@@ -49,7 +49,9 @@ export default function EditBooking() {
       setSelectedCountry(booking.booking.property.country);
       setSelectedProperty(booking.booking.property._id);
       setSelectedStaff(booking.booking.staff._id);
-      setSelectedCustomer(booking.booking.customer._id);
+      if (booking.booking.customer) {
+        setSelectedCustomer(booking.booking.customer._id);
+      }
       setCommission(booking.booking.commission.toString());
       setStatus(booking.booking.status);
       
