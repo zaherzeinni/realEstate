@@ -81,7 +81,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limitNumber)
-            .select("property staff customer country commission status startDate endDate createdAt");
+            .select("property staff customer country commission bills status startDate endDate createdAt");
             
           const totalPages = Math.ceil(totalDocuments / limitNumber);
 
@@ -103,7 +103,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     case "POST":
       try {
-        const { property, staff, customer, commission, status, country, startDate, endDate } = req.body;
+        const { property, staff, customer, commission,bills, status, country, startDate, endDate } = req.body;
         console.log(req.body, "req.body🧑‍💻⚠️🧑‍💻⚠️");
         // Validate required fields
         if (!property || !staff || !customer || !commission || !country || !startDate || !endDate) {
@@ -137,6 +137,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           staff,
           customer,
           commission: Number(commission),
+          bills: bills || "in process",
           status: status || "pending",
           country: country.trim(),
           startDate: startDateObj,

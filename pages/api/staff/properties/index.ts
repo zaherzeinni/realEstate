@@ -59,7 +59,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         // Get all booking IDs for this staff with the applied filters
         const bookings = await Booking.find(bookingQuery)
-          .select('property country status commission startDate endDate')
+          .select('property country status bills commission startDate endDate')
           .populate({
             path: 'property',
             select: 'title titlefr type country city cityFr price details services image propertyId reference whatsapp video googleLink createdAt'
@@ -84,6 +84,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               booking: {
                 status: booking.status,
                 commission: booking.commission,
+                bills: booking.bills,
                 startDate: booking.startDate,
                 endDate: booking.endDate,
                 _id: booking._id,

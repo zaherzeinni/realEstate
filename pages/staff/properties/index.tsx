@@ -69,6 +69,7 @@ interface PropertyCardProps {
     booking?: {
       commission: number;
       status: string;
+      bills: string;
       startDate?: string;
       endDate?: string;
     };

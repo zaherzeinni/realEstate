@@ -172,6 +172,7 @@ export default function StaffPropertiesTable() {
                 <TableCell>Location</TableCell>
                 <TableCell>Customer</TableCell>
                 <TableCell>Staff</TableCell>
+                <TableCell>Bills</TableCell>
                 <TableCell>Date Range</TableCell>
                 <TableCell>Remaining Time</TableCell>
                 <TableCell>Status</TableCell>
@@ -187,6 +188,7 @@ export default function StaffPropertiesTable() {
                   <TableCell>{property.city}</TableCell>
                   <TableCell>{property.booking?.customer?.firstName } {property.booking?.customer?.lastName || 'N/A'}</TableCell>
                   <TableCell>{property.booking?.staff?.name || 'N/A'}</TableCell>
+                  <TableCell>{property.booking?.bills || 'N/A'}</TableCell>
                   <TableCell>
                     {property.booking?.startDate && property.booking?.endDate ? 
                       `${new Date(property.booking.startDate).toLocaleDateString('en-GB')} - 

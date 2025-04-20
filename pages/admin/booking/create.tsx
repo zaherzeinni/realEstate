@@ -22,6 +22,7 @@ export default function CreateBooking() {
   const [selectedCustomer, setSelectedCustomer] = useState("");
   const [commission, setCommission] = useState("");
   const [status, setStatus] = useState("pending");
+  const [bills, setBills] = useState("in process");
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(addDays(new Date(), 7));
 
@@ -65,6 +66,7 @@ export default function CreateBooking() {
         staff: selectedStaff,
         customer: selectedCustomer,
         commission: parseFloat(commission),
+        bills,
         status,
         country: selectedCountry,
         startDate,
@@ -170,6 +172,20 @@ export default function CreateBooking() {
                   <MenuItem dir="ltr" value="pending">Pending</MenuItem>
                   <MenuItem dir="ltr" value="confirmed">Confirmed</MenuItem>
                   <MenuItem dir="ltr" value="cancelled">Cancelled</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <FormControl fullWidth>
+                <InputLabel>Bills</InputLabel>
+                <Select
+                  value={bills}
+                  label="bills"
+                  onChange={(e) => setBills(e.target.value)}
+                >
+                  <MenuItem dir="ltr" value="in process">In Process</MenuItem>
+                  <MenuItem dir="ltr" value="paid">Paid</MenuItem>
+                  <MenuItem dir="ltr" value="not paid">Not Paid</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

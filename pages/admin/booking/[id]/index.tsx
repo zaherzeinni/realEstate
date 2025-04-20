@@ -25,6 +25,7 @@ export default function EditBooking() {
   const [selectedCustomer, setSelectedCustomer] = useState("");
   const [commission, setCommission] = useState("");
   const [status, setStatus] = useState("pending");
+  const [bills, setBills] = useState("in process");
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
@@ -54,6 +55,7 @@ export default function EditBooking() {
       }
       setCommission(booking.booking.commission.toString());
       setStatus(booking.booking.status);
+      setBills(booking.booking.bills);
       
       setStartDate(booking.booking.startDate ? new Date(booking.booking.startDate) : null);
       setEndDate(booking.booking.endDate ? new Date(booking.booking.endDate) : null);
@@ -79,6 +81,7 @@ export default function EditBooking() {
         staff: selectedStaff,
         customer: selectedCustomer,
         commission: parseFloat(commission),
+        bills,
         status,
         startDate,
         endDate,
@@ -189,6 +192,20 @@ export default function EditBooking() {
                 </Select>
               </FormControl>
             </Grid>
+                  <Grid item xs={12} md={6}>
+                          <FormControl fullWidth>
+                            <InputLabel>Bills</InputLabel>
+                            <Select
+                              value={bills}
+                              label="bills"
+                              onChange={(e) => setBills(e.target.value)}
+                            >
+                              <MenuItem dir="ltr" value="in process">In Process</MenuItem>
+                              <MenuItem dir="ltr" value="paid">Paid</MenuItem>
+                              <MenuItem dir="ltr" value="not paid">Not Paid</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
             <Grid item xs={12} md={6}>
               <FormControl fullWidth required>
                 <InputLabel shrink>Start Date</InputLabel>

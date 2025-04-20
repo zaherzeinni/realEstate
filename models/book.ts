@@ -15,6 +15,11 @@ const schema = new mongoose.Schema(
       required: true,
       default: "pending",
     },
+    bills: {
+      type: String,
+      required: true,
+      default: "in process",
+    },
 
     whatsapp: {
       type: String,

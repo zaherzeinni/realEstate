@@ -185,7 +185,7 @@ export default function BookingList() {
                 <strong>Collect</strong>
                 </TableCell>
                 <TableCell>
-                <strong>Transfer</strong>
+                <strong>Bills</strong>
                 </TableCell>
                 <TableCell>
                 <strong>StartDate</strong>
@@ -222,11 +222,11 @@ export default function BookingList() {
                 </TableCell>
                 <TableCell>
                 <Chip
-                  label={booking.status}
+                  label={booking.bills}
                   color={
-                    booking.status === "confirmed"
+                    booking.bills === "paid"
                     ? "success"
-                    : booking.status === "cancelled"
+                    : booking.bills === "not paid"
                     ? "error"
                     : "default"
                   }

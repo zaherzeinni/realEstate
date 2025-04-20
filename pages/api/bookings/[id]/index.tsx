@@ -35,7 +35,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         if (user.role !== "admin") {
           return res.status(403).json({ success: false, message: "Only admins can update bookings" });
         }
-        const { commission, status, property, staff, customer, country, startDate, endDate } = req.body;
+        const { commission, status,bills, property, staff, customer, country, startDate, endDate } = req.body;
 
         // Validate dates if provided
         if (startDate && endDate) {
@@ -67,6 +67,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
         booking.commission = commission ?? booking.commission;
         booking.status = status ?? booking.status;
+        booking.bills = bills ?? booking.bills;
         booking.property = property ?? booking.property;
         booking.staff = staff ?? booking.staff;
         booking.customer = customer ?? booking.customer;
