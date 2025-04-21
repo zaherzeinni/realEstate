@@ -70,7 +70,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           })
           .populate({
             path: 'customer',
-            select: 'firstName lastName email'
+            select: 'firstName lastName email phone'
           });
 
         console.log(`Found ${bookings.length} bookings with filter`); // Debug log
@@ -105,6 +105,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             searchRegex.test(property.city) ||
             searchRegex.test(property.cityFr) ||
             searchRegex.test(property.propertyId?.toString() || '') ||
+            searchRegex.test(property.booking?.customer?.firstName.toString() || '') ||
+            searchRegex.test(property.booking?.customer?.lastName.toString() || '') ||
+            searchRegex.test(property.booking?.customer?.email.toString() || '') ||
+            searchRegex.test(property.booking?.customer?.phone.toString() || '') ||
             searchRegex.test(property.reference?.toString() || '')
           );
         }

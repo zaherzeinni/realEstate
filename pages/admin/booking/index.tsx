@@ -215,10 +215,10 @@ export default function BookingList() {
                 <TableCell>{booking.country}</TableCell>
                 <TableCell>{booking.commission}%</TableCell>
                 <TableCell>
-                  {booking.property ? booking.property.price : ""} $
+                 $ {booking.property ? booking.property.price : ""} 
                 </TableCell>
                 <TableCell>
-                  {(booking.commission*booking.property.price/100)} $
+                 $ {(booking.commission*booking.property.price/100)} 
                 </TableCell>
                 <TableCell>
                 <Chip

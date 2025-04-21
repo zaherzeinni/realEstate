@@ -131,8 +131,12 @@ export default function StaffProperties() {
 
 <BreadcrumbForSaleApp />
 
-
-        <div dir="rtl" className="container pt-6 mb-12">
+      <div className="container mx-auto text-center py-6">
+        <Link href="/staff/properties/properties-table" className="inline-flex items-center gap-2 bg-[#63ab45] text-white px-4 py-2 rounded-lg hover:bg-[#518c37] transition-colors">
+        <button className="">Dashboard</button>
+        </Link> 
+      </div>
+        <div dir="ltr" className="container pt-6 mb-12">
           <div className="bg-white rounded-lg shadow-lg p-6">
             <form className="text-start">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -142,7 +146,7 @@ export default function StaffProperties() {
                   </label>
                   <div className="relative">
                     <TextField
-                      dir="rtl"
+                      dir="ltr"
                       select
                       fullWidth
                       size="small"
@@ -161,9 +165,9 @@ export default function StaffProperties() {
                         },
                       }}
                     >
-                      <MenuItem value="">All Countries</MenuItem>
+                      <MenuItem className="flex flex-col"  value="">All Countries</MenuItem>
                       {countries?.map((country: any) => (
-                        <MenuItem key={country._id} value={country.title}>
+                        <MenuItem className="flex flex-col" key={country._id} value={country.title}>
                           {country.title}
                         </MenuItem>
                       ))}
@@ -195,16 +199,18 @@ export default function StaffProperties() {
                         },
                       }}
                     >
-                      <MenuItem value="">All Types</MenuItem>
-                      <MenuItem value="townhome">Townhome</MenuItem>
-                      <MenuItem value="office">Office</MenuItem>
-                      <MenuItem value="house">House</MenuItem>
-                      <MenuItem value="villa">Villa</MenuItem>
-                      <MenuItem value="apartment">Apartment</MenuItem>
+                  
+                  <MenuItem className="flex flex-col" value="">All Types</MenuItem>
+                  <MenuItem  className="flex flex-col" value="townhome">Townhome</MenuItem>
+                  <MenuItem  className="flex flex-col" value="office">Office</MenuItem>
+                 <MenuItem  className="flex flex-col" value="house">House</MenuItem>
+                  <MenuItem  className="flex flex-col" value="villa">Villa</MenuItem>
+                  <MenuItem  className="flex flex-col" value="apartment">Apartment</MenuItem>
+                                    
                     </TextField>
                   </div>
                 </div>
-
+{/* -------------------filter in properties------------------- */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Search Properties

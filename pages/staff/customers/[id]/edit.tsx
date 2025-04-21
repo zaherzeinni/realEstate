@@ -51,8 +51,10 @@ export default function EditCustomer() {
   const handleInputChange = (name: string, value: string) => {
     setCustomerData(prev => ({
       ...prev,
+      userId: user._id,
       [name]: value
     }));
+    console.log(customerData, "customerData");
   };
 
   const handleUploadImages = async (filesArray: any) => {
@@ -97,11 +99,12 @@ export default function EditCustomer() {
       let imageUrl = customerData.image;
       if (files.length > 0) {
         const uploadedImages = await handleUploadImages(files);
-        imageUrl = uploadedImages[0];
+          imageUrl = uploadedImages[0];
       }
-
+      
       const data = {
         ...customerData,
+        userId: user._id,
         image: imageUrl,
       };
 

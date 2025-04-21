@@ -120,11 +120,11 @@ export default function StaffCustomers() {
                           {new Date(customer.createdAt).toLocaleDateString()}
                         </TableCell>
                         <TableCell>
-                          <IconButton>
+                          {/* <IconButton>
                             <Link href={`/staff/customers/${customer._id}`}>
                               <EyeIcon size={20} fill="#29221f" />
                             </Link>
-                          </IconButton>
+                          </IconButton> */}
                           <IconButton>
                             <Link href={`/staff/customers/${customer._id}/edit`}>
                               <EditIcon size={20} fill="#c45e4c" />
