@@ -12,6 +12,8 @@ import User from "@/models/user";
 import Order from "@/models/order";
 import Category from "@/models/category";
 import Book from "@/models/book";
+import Preload from "@/components/loading/loading";
+
 
 export default function DashboardPage({
   usersCount,
@@ -30,7 +32,7 @@ export default function DashboardPage({
   });
 
 
-  if (user && user.role !== "admin") return <NotFound />;
+  if (user && user.role !== "admin") return <Preload onClose={undefined} />;
 
 
   

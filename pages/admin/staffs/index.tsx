@@ -37,6 +37,7 @@ export default function StaffList() {
   });
 
   const { staffs, isLoading, mutate } = useStaffs(filters);
+  console.log(staffs, "staffs");
   const { data: countries } = useCountries();
 
   const handleDelete = async (id: string) => {
@@ -146,6 +147,7 @@ export default function StaffList() {
               >
                 <TableCell><strong>Name</strong></TableCell>
                 <TableCell><strong>Email</strong></TableCell>
+                <TableCell><strong>Photo</strong></TableCell>
                 <TableCell><strong>Country</strong></TableCell>
                 <TableCell><strong>Position</strong></TableCell>
                 <TableCell><strong>Department</strong></TableCell>
@@ -158,6 +160,11 @@ export default function StaffList() {
                 <TableRow key={staff._id} hover>
                   <TableCell>{staff.name}</TableCell>
                   <TableCell>{staff.email}</TableCell>
+                    <TableCell>
+                      {staff.image !== "" && (
+                    <img src={`https://dash93.nyc3.digitaloceanspaces.com/${staff.image}`} className="w-16 h-16 rounded-full   object-fill" />
+                      )}
+                    </TableCell>
                   <TableCell>
                     {staff.country?.title || "N/A"}
                   </TableCell>

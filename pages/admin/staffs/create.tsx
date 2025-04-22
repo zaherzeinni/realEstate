@@ -1,5 +1,5 @@
 // pages/admin/staff/create.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { TextInput, SelectInput } from "@/components/inputs";
 import { PageLayout } from "@/layouts";
@@ -15,11 +15,13 @@ import { uploadApi } from "@/utils/global";
 
 
 export default function CreateStaff() {
+
+
   const router = useRouter();
   const { data: countries, isLoading: countriesLoading } = useCountries();
   const [files, setFiles] = useState([]);
   
-  const [formData, setFormData] = useState({
+  const [staffData, setStaffData] = useState({
     name: "",
     email: "",
     password: "",
@@ -33,6 +35,7 @@ export default function CreateStaff() {
   });
 
 // -------------for uploading images------------------
+
 
 
 
@@ -74,12 +77,12 @@ export default function CreateStaff() {
 
 
       const data = {
-        ...formData,
+        ...staffData,
         // userId: selectedStaff ? selectedStaff._id : user._id,
         image: imageUrl,
       };
 
-
+      console.log("staff data: ", data);
       await axios.post("/api/staff", data);
       message.success("staff created successfully");
       router.push("/admin/staffs");
@@ -88,16 +91,6 @@ export default function CreateStaff() {
       console.error(error);
     }
   };
-
-
-  //     await axios.post("/api/staff", {
-  //       ...formData,
-  //     });
-  //     router.push("/admin/staffs");
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
 
 
@@ -114,8 +107,8 @@ export default function CreateStaff() {
               <TextInput
                 required
                 label="Name"
-                value={formData.name}
-                onChange={(value) => setFormData({...formData, name: value})}
+                value={staffData.name}
+                onChange={(value) => setStaffData({...staffData, name: value})}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -123,8 +116,8 @@ export default function CreateStaff() {
                 required
                 type="email"
                 label="Email"
-                value={formData.email}
-                onChange={(value) => setFormData({...formData, email: value})}
+                value={staffData.email}
+                onChange={(value) => setStaffData({...staffData, email: value})}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -132,24 +125,24 @@ export default function CreateStaff() {
                 required
                 type="password"
                 label="Password"
-                value={formData.password}
-                onChange={(value) => setFormData({...formData, password: value})}
+                value={staffData.password}
+                onChange={(value) => setStaffData({...staffData, password: value})}
               />
             </Grid>
             <Grid item xs={12} md={6}>
               <TextInput
                 label="Phone"
-                value={formData.phone}
-                onChange={(value) => setFormData({...formData, phone: value})}
+                value={staffData.phone}
+                onChange={(value) => setStaffData({...staffData, phone: value})}
               />
             </Grid>
             <Grid item xs={12} md={6}>
               <FormControl fullWidth required>
                 <InputLabel>Country</InputLabel>
                 <Select
-                  value={formData.country}
+                  value={staffData.country}
                   label="Country"
-                  onChange={(e) => setFormData({...formData, country: e.target.value})}
+                  onChange={(e) => setStaffData({...staffData, country: e.target.value})}
                 >
                   {countriesLoading ? (
                     <MenuItem disabled>Loading...</MenuItem>
@@ -166,32 +159,32 @@ export default function CreateStaff() {
             <Grid item xs={12} md={6}>
               <TextInput
                 label="Position"
-                value={formData.position}
-                onChange={(value) => setFormData({...formData, position: value})}
+                value={staffData.position}
+                onChange={(value) => setStaffData({...staffData, position: value})}
               />
             </Grid>
             <Grid item xs={12} md={6}>
               <TextInput
                 label="Department"
-                value={formData.department}
-                onChange={(value) => setFormData({...formData, department: value})}
+                value={staffData.department}
+                onChange={(value) => setStaffData({...staffData, department: value})}
               />
             </Grid>
             <Grid item xs={12} md={6}>
               <TextInput
                 type="date"
                 label=""
-                value={formData.joinDate}
-                onChange={(value) => setFormData({...formData, joinDate: value})}
+                value={staffData.joinDate}
+                onChange={(value) => setStaffData({...staffData, joinDate: value})}
               />
             </Grid>
             <Grid item xs={12} md={6}>
               <FormControl fullWidth>
                 <InputLabel>Status</InputLabel>
                 <Select
-                  value={formData.status}
+                  value={staffData.status}
                   label="Status"
-                  onChange={(e) => setFormData({...formData, status: e.target.value})}
+                  onChange={(e) => setStaffData({...staffData, status: e.target.value})}
                 >
                   <MenuItem value="active">Active</MenuItem>
                   <MenuItem value="inactive">Inactive</MenuItem>

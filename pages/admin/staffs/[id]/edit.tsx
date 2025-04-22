@@ -6,7 +6,9 @@ import AdminMainLayout from "@/components/Site/dashboardLayout";
 import { Grid, Button, FormControl, InputLabel, Select, MenuItem, Typography, FormControlLabel, Checkbox, Box, Snackbar, Alert } from "@mui/material";
 import axios from "axios";
 import useCountries from "@/hooks/useCountries";
-import { message } from "antd";
+import { message, Upload } from "antd";
+import { ImageEndpoint, uploadApi } from "@/utils/global";
+import { MdDeleteForever } from "react-icons/md";
 
 
 export default function EditStaff() {
@@ -29,10 +31,10 @@ export default function EditStaff() {
     country: "",
     status: "",
     joinDate: "",
-
+    image: "",
   });
 
-
+  const [files, setFiles] = useState([]);
 
   useEffect(() => {
     if (id) {
@@ -58,7 +60,7 @@ export default function EditStaff() {
         country: staff.country?._id || "",
         status: staff.status || "active",
         joinDate: staff.joinDate ? staff.joinDate.split('T')[0] : "",
-   
+        image: staff.image || "",
       });
       
 
@@ -75,28 +77,95 @@ export default function EditStaff() {
 
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await axios.put(`/api/staff/${id}`, {
-        ...formData,
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios.put(`/api/staff/${id}`, {
+  //       ...formData,
+  //       image: files.length > 0 ? files[0] : formData.image,
    
-      });
-      setSnackbar({
-        open: true,
-        message: "Staff updated successfully",
-        severity: 'success'
-      });
-      router.push("/admin/staffs");
-    } catch (error) {
-      setSnackbar({
-        open: true,
-        message: "Error updating staff",
-        severity: 'error'
-      });
-    }
-  };
+  //     });
+  //     setSnackbar({
+  //       open: true,
+  //       message: "Staff updated successfully",
+  //       severity: 'success'
+  //     });
+  //     router.push("/admin/staffs");
+  //   } catch (error) {
+  //     setSnackbar({
+  //       open: true,
+  //       message: "Error updating staff",
+  //       severity: 'error'
+  //     });
+  //   }
+  // };
 
+
+
+
+   const handleUploadImages = async (filesArray: any) => {
+      try {
+        const formData = new FormData();
+        filesArray.forEach((image: any) => {
+          formData.append("images", image);
+        });
+  
+        const response = await axios.post(
+          `${uploadApi}/file/uploads?size=600&hieghtsize=800`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        return response?.data?.files;
+      } catch (error) {
+        console.error("Error uploading files:", error);
+        return [];
+      }
+    };
+  
+    const handleDeleteImage = async (fileName: string) => {
+      try {
+        await axios.delete(`${uploadApi}/file/delete?fileName=${fileName}`);
+        setFormData(prev => ({ ...prev, image: "" }));
+        message.success("Image deleted successfully");
+      } catch (error) {
+        console.error("Error deleting image:", error);
+        message.error("Error deleting image");
+      }
+    };
+  
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      try {
+        message.loading("Updating customer...");
+  
+        let imageUrl = formData.image;
+        if (files.length > 0) {
+          const uploadedImages = await handleUploadImages(files);
+            imageUrl = uploadedImages[0];
+        }
+        
+        const data = {
+          ...formData,
+          // userId: user._id,
+          image: imageUrl,
+        };
+  
+        await axios.put(`/api/staff/${id}`, data);
+        message.success("staff updated successfully");
+        router.push("/admin/staffs");
+      } catch (error) {
+        message.error("Error updating staff");
+        console.error(error);
+      }
+    };
+
+
+
+  
   return (
     <AdminMainLayout>
       <PageLayout title="Edit Staff">
@@ -164,7 +233,7 @@ export default function EditStaff() {
             <Grid item xs={12} md={6}>
               <TextInput
                 type="date"
-                label="Join Date"
+                label=""
                 value={formData.joinDate}
                 onChange={(value) => setFormData({...formData, joinDate: value})}
               />
@@ -183,6 +252,46 @@ export default function EditStaff() {
               </FormControl>
             </Grid>
            
+
+           <Grid item xs={12}>
+                         {formData.image && (
+                           <div className="relative inline-block">
+                             <img
+                               src={`${ImageEndpoint}/${formData.image}`}
+                               alt="Customer"
+                               className="w-32 h-32 rounded-full object-cover"
+                             />
+                             <button
+                               type="button"
+                               onClick={() => handleDeleteImage(formData.image)}
+                               className="absolute -top-2 -right-2 text-red-600"
+                             >
+                               <MdDeleteForever className="w-6 h-6" />
+                             </button>
+                           </div>
+                         )}
+       
+                         <Upload
+                           accept="image/*"
+                           beforeUpload={(file) => {
+                             setFiles((prev) => [...prev, file]);
+                             return false;
+                           }}
+                           listType="picture-card"
+                           onRemove={(file) => {
+                             setFiles((prev) => {
+                               const index = prev.indexOf(file);
+                               const newFileList = prev.slice();
+                               newFileList.splice(index, 1);
+                               return newFileList;
+                             });
+                           }}
+                         >
+                           Upload Image
+                         </Upload>
+                       </Grid>
+
+
             <Grid item xs={12}>
               <Button type="submit" variant="contained" color="primary">
                 Update Staff

@@ -44,31 +44,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         return res.status(500).json({ success: false, error: error.message });
       }
 
-//     case "POST":
-//       try {
-//         const {  ...rest } = req.body;
-//         const staff = await User.create({
-//           ...rest,
-//           role: "staff",
-//           provider: "jwt",
-         
-//         });
-//         return res.status(201).json({ success: true, staff });
-//       } catch (error: any) {
-//         return res.status(500).json({ success: false, error: error.message });
-//       }
-
-//     default:
-//       res.setHeader("Allow", ["GET", "POST"]);
-//       return res.status(405).end(`Method ${req.method} Not Allowed`);
-//   }
-// }
-
 
 
     case "POST":
       try {
-        const formData = { ...req.body, userId: req.body.userId ?? req.user._id };
+        const formData = { ...req.body, role: "staff", provider: "jwt" };
         const staff = await User.create(formData);
         res.status(201).json(staff);
       } catch (error) {
