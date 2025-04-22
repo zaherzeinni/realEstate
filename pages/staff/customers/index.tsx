@@ -44,7 +44,7 @@ export default function StaffCustomers() {
   console.log("dataXXXXXXXXXXX",data);
 
   // Move the auth check here, after all hooks
-  if (!user || (  user.role !== "staff")) {
+  if (!user || (user.role !== "staff" && user.role !== "admin")) {
     return <NotFound />;
   }
 

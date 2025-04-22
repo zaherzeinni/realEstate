@@ -100,7 +100,8 @@ export default function EditStaff() {
   return (
     <AdminMainLayout>
       <PageLayout title="Edit Staff">
-        <form onSubmit={handleSubmit}>
+        <h1 className="text-2xl font-bold my-10">Edit Staff</h1>
+        <form onSubmit={handleSubmit} >
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
               <TextInput

@@ -9,10 +9,15 @@ import axios from "axios";
 import useCountries from "@/hooks/useCountries";
 
 
+import { message, Upload } from "antd";
+import { uploadApi } from "@/utils/global";
+
+
+
 export default function CreateStaff() {
   const router = useRouter();
   const { data: countries, isLoading: countriesLoading } = useCountries();
-
+  const [files, setFiles] = useState([]);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -24,29 +29,85 @@ export default function CreateStaff() {
     country: countries?.[0]?._id || "",
     status: "active",
     joinDate: "",
-    
+    image: "",
   });
 
+// -------------for uploading images------------------
 
 
 
+  const handleUploadImages = async (filesArray: any) => {
+    try {
+      const formData = new FormData();
+      filesArray.forEach((image: any) => {
+        formData.append("images", image);
+      });
 
-  const handleSubmit = async (e) => {
+      const response = await axios.post(
+        `${uploadApi}/file/uploads?size=600&hieghtsize=800`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return response?.data?.files;
+    } catch (error) {
+      console.error("Error uploading files:", error);
+      return [];
+    }
+  };
+
+  const handleSubmit = async  (e: React.FormEvent)  => {
     e.preventDefault();
     try {
-      await axios.post("/api/staff", {
+      message.loading("Creating staff...");
+      let imageUrl = "";
+      if (files.length > 0) {
+        const uploadedImages = await handleUploadImages(files);
+        imageUrl = uploadedImages[0];
+      }
+
+
+
+
+
+      const data = {
         ...formData,
-       
-      });
+        // userId: selectedStaff ? selectedStaff._id : user._id,
+        image: imageUrl,
+      };
+
+
+      await axios.post("/api/staff", data);
+      message.success("staff created successfully");
       router.push("/admin/staffs");
     } catch (error) {
+      message.error("Error creating staff");
       console.error(error);
     }
   };
 
+
+  //     await axios.post("/api/staff", {
+  //       ...formData,
+  //     });
+  //     router.push("/admin/staffs");
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+
+
+
+
+
   return (
     <AdminMainLayout>
       <PageLayout title="Add New Staff">
+      <h1 className="text-2xl font-bold my-10">Add New Staff</h1>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
@@ -119,7 +180,7 @@ export default function CreateStaff() {
             <Grid item xs={12} md={6}>
               <TextInput
                 type="date"
-                label="Join Date"
+                label=""
                 value={formData.joinDate}
                 onChange={(value) => setFormData({...formData, joinDate: value})}
               />
@@ -138,6 +199,29 @@ export default function CreateStaff() {
               </FormControl>
             </Grid>
     
+
+         <Grid item xs={12}>
+                  <Upload
+                    accept="image/*"
+                    beforeUpload={(file) => {
+                      setFiles((prev) => [...prev, file]);
+                      return false;
+                    }}
+                    listType="picture-card"
+                    onRemove={(file) => {
+                      setFiles((prev) => {
+                        const index = prev.indexOf(file);
+                        const newFileList = prev.slice();
+                        newFileList.splice(index, 1);
+                        return newFileList;
+                      });
+                    }}
+                  >
+                    Upload Image
+                  </Upload>
+                </Grid>
+
+
             <Grid item xs={12}>
               <Button type="submit" variant="contained" color="primary">
                 Add Staff

@@ -44,24 +44,44 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         return res.status(500).json({ success: false, error: error.message });
       }
 
+//     case "POST":
+//       try {
+//         const {  ...rest } = req.body;
+//         const staff = await User.create({
+//           ...rest,
+//           role: "staff",
+//           provider: "jwt",
+         
+//         });
+//         return res.status(201).json({ success: true, staff });
+//       } catch (error: any) {
+//         return res.status(500).json({ success: false, error: error.message });
+//       }
+
+//     default:
+//       res.setHeader("Allow", ["GET", "POST"]);
+//       return res.status(405).end(`Method ${req.method} Not Allowed`);
+//   }
+// }
+
+
+
     case "POST":
       try {
-        const {  ...rest } = req.body;
-        const staff = await User.create({
-          ...rest,
-          role: "staff",
-          provider: "jwt",
-         
-        });
-        return res.status(201).json({ success: true, staff });
-      } catch (error: any) {
-        return res.status(500).json({ success: false, error: error.message });
+        const formData = { ...req.body, userId: req.body.userId ?? req.user._id };
+        const staff = await User.create(formData);
+        res.status(201).json(staff);
+      } catch (error) {
+        res.status(400).json({ success: false, error: (error as Error).message });
       }
+      break;
 
     default:
-      res.setHeader("Allow", ["GET", "POST"]);
-      return res.status(405).end(`Method ${req.method} Not Allowed`);
+      res.status(405).json({ success: false, message: "Method not allowed" });
+      break;
   }
-}
+};
+
+
 
 export default auth(handler);

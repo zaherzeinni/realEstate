@@ -44,9 +44,9 @@ export default function EditCustomer() {
     });
   }, [id]);
 
-  if (!user || ( user.role !== "staff")) {
-    return <NotFound />;
-  }
+  // if (!user || ( user.role !== "staff")) {
+  //   return <NotFound />;
+  // }
 
   const handleInputChange = (name: string, value: string) => {
     setCustomerData(prev => ({

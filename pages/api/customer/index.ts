@@ -54,7 +54,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     case "POST":
       try {
-        const customerData = { ...req.body, userId: user._id };
+        const customerData = { ...req.body, userId: req.body.userId ?? user._id };
         const customer = await Customer.create(customerData);
         res.status(201).json(customer);
       } catch (error) {

@@ -14,9 +14,9 @@ const StaffMainLayout = ({ children }) => {
 
   useEffect(() => {
     // If we have user data and they're not an admin, redirect to home
-    if (user && user.role !== 'staff') {
-      router.push('/');
-    }
+    // if (user && user.role !== 'staff') {
+    //   router.push('/');
+    // }
   }, [user, router]);
 
   // Show nothing while checking authentication
@@ -25,9 +25,9 @@ const StaffMainLayout = ({ children }) => {
   }
 
   // If user is not admin, don't render the layout
-  if (user.role !== 'staff') {
-    return null;
-  }
+  // if (user.role !== 'staff') {
+  //   return null;
+  // }
 
   return (
     <div dir="ltr" className="dashboard-wrapper">

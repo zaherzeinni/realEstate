@@ -98,6 +98,61 @@ const router =useRouter()
           </li>
 
           <li className="">
+            <Link href="/admin/staffs">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={18}
+                height={18}
+                viewBox="0 0 18 18"
+              >
+                <path d="M12 2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6V4h12v12zM8 7h8v2H8zm0 4h8v2H8zm0 4h8v2H8z"/>
+              </svg>
+              <h6>Staffs</h6>
+            </Link>
+          </li>
+         
+          <li className="">
+            <Link href="/admin/staffs/create">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={18}
+                height={18}
+                viewBox="0 0 18 18"
+              >
+                <path d="M12 2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6V4h12v12zM8 7h8v2H8zm0 4h8v2H8zm0 4h8v2H8z"/>
+              </svg>
+              <h6>Add Staff</h6>
+            </Link>
+          </li>
+          <li className="">
+            <Link href="/staff/customers">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={18}
+                height={18}
+                viewBox="0 0 18 18"
+              >
+                <path d="M12 2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6V4h12v12zM8 7h8v2H8zm0 4h8v2H8zm0 4h8v2H8z"/>
+              </svg>
+              <h6>Customers</h6>
+            </Link>
+          </li>
+         
+          <li className="">
+            <Link href="/staff/customers/create">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={18}
+                height={18}
+                viewBox="0 0 18 18"
+              >
+                <path d="M12 2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6V4h12v12zM8 7h8v2H8zm0 4h8v2H8zm0 4h8v2H8z"/>
+              </svg>
+              <h6>Add Customer</h6>
+            </Link>
+          </li>
+
+          <li className="">
             <Link href="/admin/country">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
