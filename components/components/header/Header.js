@@ -229,9 +229,27 @@ const Header = () => {
     };
   });
 
+
+
+
+
+    const [modalOpen, setModalOpen] = useState(false);
+  
+    const showModal = () => {
+      setModalOpen(true);
+    };
+  
+    const handleClose = () => {
+      setModalOpen(false);
+    };
+  
+  
+
+
+
   return (
-    <div dir="ltr">
-      {/* <LoginModal isOpen={isOpen} closeModal={closeModal} /> */}
+    <div dir="ltr" className="hidden">
+     <LoginModal open={modalOpen} isOpen={setModalOpen} onClose={handleClose} />
       <header
         ref={headerRef}
         className={`header-area style-1  ${state.scrollY > 10 ? "sticky" : ""}`}
@@ -493,8 +511,9 @@ const Header = () => {
         </div>
         <div className="nav-right d-flex jsutify-content-end align-items-center">
           <ul className="icon-list">
-            <li onClick={openModal} className="d-lg-flex d-none">
-              <a href="auth/login" data-bs-toggle="modal" data-bs-target="#user-login">
+            <li className="d-lg-flex d-none">
+              <button onClick={showModal} >
+              <a  data-bs-toggle="modal" data-bs-target="#user-login">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={27}
@@ -522,6 +541,7 @@ const Header = () => {
                   />
                 </svg>
               </a>
+              </button>
             </li>
 
             {/* LANGUAGE switch */}

@@ -94,7 +94,7 @@ export default function Login() {
           <TextInput
             name="email"
             required
-            label={"email"}
+            label={"Email"}
             type="email"
             autoComplete="email"
             onChange={setEmail}
@@ -102,7 +102,7 @@ export default function Login() {
 
           <PasswordInput
             name="password"
-            label={"pass"}
+            label={"Password"}
             required={true}
             autoComplete="password"
             onChange={setPassword}
@@ -111,16 +111,16 @@ export default function Login() {
           <Button
             type="submit"
             variant="contained"
-            className=" bg-primary text-white"
+            className=" bg-primary text-white primary-btn1"
             fullWidth
             disabled={loading}
           >
-            Send
+            Login
             {/* <FormattedMessage id={"btn.continue"} /> */}
           </Button>
           
           <Box marginTop={2}>
-            <NoAccount text={"Dont have account"} />
+            {/* <NoAccount text={"Dont have account"} /> */}
           </Box>
         </Form>
       </AuthLayout>

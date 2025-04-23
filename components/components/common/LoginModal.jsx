@@ -1,78 +1,120 @@
+import React, { useState } from "react";
+import { Modal } from "antd";
+import { Button } from "antd";
+import useAuth from "@/hooks/useAuth";
+import Link from "next/link";
+import router from "next/router";
 
-import React from 'react'
+const LoginModal = ({ open, onClose, isOpen }) => {
+  const [loading, setLoading] = useState(false);
+  // const [open, setOpen] = useState(false);
 
-export default function LoginModal() {
+  // Use the useAuth hook to get user information
+
+  const { user, logout } = useAuth() || {}; // Ensure useAuth returns an object
+  const userName = user?.name || "Guest";
+  const userEmail = user?.email || "Not Available";
+  const userRole = user?.role || "Not Available";
+  console.log("userRoleee", userRole);
+
+  const handleLogout = async () => {
+    localStorage.clear();
+    // console.log("logout⚡⚡⚡⚡⚡⚡");
+    await logout();
+    router.reload();
+    router.push("/auth/login");
+  };
+
+  const showModal = () => {
+    setOpen(true);
+  };
+  const handleOk = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      // setOpen(false);
+      isOpen(false);
+    }, 3000);
+  };
+  const handleCancel = () => {
+    setOpen(false);
+  };
   return (
-    <div>LoginModal</div>
-  )
-}
+    <div>
+      <Button onClick={showModal}></Button>
+      <Modal
+        className=" text-start flex justify-start w-auto mr-20 -mt-10"
+        open={open}
+        title=""
+        onOk={handleOk}
+        onCancel={onClose}
+        footer={[
+          // <Button key="back" onClick={handleCancel}  >
 
+          userRole === "Not Available" ? null : (
+            <Button key="back" onClick={handleLogout}>
+              Logout
+            </Button>
+          ),
 
-
-// import React ,{Fragment} from 'react'
-// import { Dialog, Transition } from '@headlessui/react'
-
-// export default function LoginModal({isOpen ,closeModal}) {
-//   return (
-//     <Transition appear show={isOpen} as={Fragment}>
-//     <Dialog as="div" className="relative z-10" onClose={closeModal}>
-//       <Transition.Child
-//         as={Fragment}
-//         enter="ease-out duration-300"
-//         enterFrom="opacity-0"
-//         enterTo="opacity-100"
-//         leave="ease-in duration-200"
-//         leaveFrom="opacity-100"
-//         leaveTo="opacity-0"
-//       >
-//         <div className="fixed inset-0 bg-black/25" />
-//       </Transition.Child>
-
-//       <div className="fixed inset-0 overflow-y-auto">
-//         <div className="flex min-h-full items-center justify-center p-4 text-center">
-//           <Transition.Child
-//             as={Fragment}
-//             enter="ease-out duration-300"
-//             enterFrom="opacity-0 scale-95"
-//             enterTo="opacity-100 scale-100"
-//             leave="ease-in duration-200"
-//             leaveFrom="opacity-100 scale-100"
-//             leaveTo="opacity-0 scale-95"
-//           >
-
-//     <div className='modal-body login-modal'>
-//     <div className="login-registration-form">
-//                 <div className="form-title">
-//                   <h2>Sign in to continue</h2>
-//                   <p>Enter your email address for Login.</p>
-//                 </div>
-//                 <form>
-//                   <div className="form-inner mb-20">
-//                     <input type="text" placeholder="User name or Email *" />
-//                   </div>
-//                   <a href="#" className="login-btn mb-25">
-//                     Sign In
-//                   </a>
-//                   <div className="divider">
-//                     <span>or</span>
-//                   </div>
-//                   <a href="#" className="google-login-btn">
-//                     <div className="icon">
-//                       <img src="/assets/img/home1/icon/google-icon.svg" alt="" />
-//                     </div>
-//                     Sign in with Google
-//                   </a>
-//                 </form>
-//               </div>
-//               </div>
-
-
-// </Transition.Child>
-// </div>
-// </div>
-// </Dialog>
-// </Transition>
-
-//   )
-// }
-
+          userRole === "Not Available" ? (
+            <Link href="/admin" className="text-white">
+              <Button
+                key="submit"
+                className=" primary-btn2 text-white mr-3 "
+                loading={loading}
+                onClick={handleOk}
+              >
+                Login
+              </Button>
+            </Link>
+          ) : userRole === "admin" ? (
+            <Link href="/admin" className="text-white">
+              <Button
+                key="submit"
+                className=" primary-btn2 text-white mr-3 "
+                loading={loading}
+                onClick={handleOk}
+              >
+                Admin Dashboard
+              </Button>
+            </Link>
+          ) : userRole === "staff" ? (
+            <Link
+              href="/staff/properties/properties-table"
+              className="text-white"
+            >
+              <Button
+                key="submit"
+                className=" primary-btn2 text-white mr-3 "
+                loading={loading}
+                onClick={handleOk}
+              >
+                Staff Dashboard
+              </Button>
+            </Link>
+          ) : null,
+        ]}
+      >
+        {/* Display user information */}
+        <div className="user-info mt-4 ">
+          <ul dir="ltr" className="list-disc- list-inside">
+            <li className="text-lg font-bold  underline-offset-2 underline">
+              User Information:
+            </li>
+            <li className="text-sm">
+              Name: <b>{userName}</b>
+            </li>
+            <li className="text-sm">
+              Email: <b>{userEmail}</b>
+            </li>
+            <li className="text-sm">
+              Role: <b>{userRole}</b>
+            </li>
+          </ul>
+        </div>
+      </Modal>
+    </div>
+  );
+};
+export default LoginModal;

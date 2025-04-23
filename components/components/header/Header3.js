@@ -5,7 +5,6 @@ import Link from "next/link";
 import navData from "../../../data/nav.json";
 import destinaiton_sidebar_data from "../../../data/destination-_idebar.json";
 import { useEffect, useMemo, useReducer, useRef, useCallback } from "react";
-import LoginModal from "../common/LoginModal";
 import english2 from "@/public/turkish2.jpg";
 import english from "@/public/english2.png";
 import arabic from "@/public/arabic2.png";
@@ -19,7 +18,7 @@ import useCities from "@/hooks/useCities";
 import useBuyguides from "@/hooks/useBuyguides";
 
 import ContactModal from "../../../components/Site/ContactModal"
-
+import LoginModal from "../common/LoginModal";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
@@ -313,10 +312,23 @@ const { data, isLoading, error } = useCountries();
   // }, [city, language]); // Dependencies to re-run effect when country or language changes
   
 
+  
+    const [modalOpen, setModalOpen] = useState(false);
+  
+    const showModal = () => {
+      setModalOpen(true);
+    };
+  
+    const handleClose = () => {
+      setModalOpen(false);
+    };
+  
 
   return (
+    <>
+    
     <div dir="ltr">
-      
+     
       <header
         ref={headerRef}
         className={`header-area style-2 ${state.scrollY < 1 ? "!bg-[#000000cc] lg:-mt-8" : "!bg-[#000000cc]"}`}
@@ -589,7 +601,10 @@ const { data, isLoading, error } = useCountries();
         <div className="nav-right d-flex jsutify-content-end align-items-center">
           <ul className="icon-list         ">
             <li className="d-lg-flex d-none">
-              <a className="hidden lg:block" href="auth/login" data-bs-toggle="modal" data-bs-target="#user-login">
+               {/* -----------------user login in modall------------------ */}
+            
+          
+              <a href="/auth/login" className="hidden lg:block"  data-bs-target="#user-login">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={24}
@@ -617,6 +632,7 @@ const { data, isLoading, error } = useCountries();
                   />
                 </svg>
               </a>
+      
             </li>
             <li className="right-sidebar-button" onClick={toggleRightSidebar}>
               <svg
@@ -895,6 +911,7 @@ const { data, isLoading, error } = useCountries();
         </div>
       </div>
     </div>
+    </>
   );
 };
 
