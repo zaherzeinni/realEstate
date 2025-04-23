@@ -334,7 +334,9 @@ const { data, isLoading, error } = useCountries();
 
   return (
     <>
-      <LoginModal open={modalOpen} isOpen={setModalOpen} onClose={handleClose} />
+      <div className="hidden">
+               <LoginModal open={modalOpen} isOpen={setModalOpen} onClose={handleClose} />
+               </div>
       <header
         ref={headerRef}
         className={`header-area style-2 ${state.scrollY < 1 ? "!bg-[#000000cc] lg:-mt-8" : "!bg-[#000000cc] -mt-8"}`}

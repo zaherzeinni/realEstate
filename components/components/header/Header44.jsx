@@ -212,7 +212,9 @@ const Header = () => {
 
   return (
     <>
-      <LoginModal />
+             <div className="hidden">
+               <LoginModal open={modalOpen} isOpen={setModalOpen} onClose={handleClose} />
+               </div>
       <header
         ref={headerRef}
         className={`header-area style-1 ${state.scrollY > 10 ? "sticky" : ""}`}

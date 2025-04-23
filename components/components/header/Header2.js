@@ -301,11 +301,14 @@ const handleClose = () => {
 
   return (
     <div dir="ltr">
-       <LoginModal open={modalOpen} isOpen={setModalOpen} onClose={handleClose} />
+     
       <header
         ref={headerRef}
         className={`header-area style-2 ${state.scrollY > 10 ? "!m !bg-[#000000cc] lg:-mt-8" : ""}`}
       >
+        <div className="hidden">
+          <LoginModal open={modalOpen} isOpen={setModalOpen} onClose={handleClose} />
+          </div>
         <div className="header-logo">
           <Link href="/">
             <img
