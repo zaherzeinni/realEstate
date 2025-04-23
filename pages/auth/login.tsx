@@ -76,8 +76,10 @@ export default function Login() {
   pagename="Login page"
   pagetitle="Login page"
 />
-
-
+      
+      
+   
+      
       <AuthLayout dir="ltr">
         <Typography component={"span"} variant="h5">
           {/* <FormattedMessage id={"title.login"} /> */}
@@ -118,7 +120,14 @@ export default function Login() {
             Login
             {/* <FormattedMessage id={"btn.continue"} /> */}
           </Button>
-          
+          <Link href="/">
+           <Button
+           type="submit"
+           fullWidth
+           className=" primary-btn1 mt-2"
+           >
+             Home</Button>
+           </Link>
           <Box marginTop={2}>
             {/* <NoAccount text={"Dont have account"} /> */}
           </Box>
