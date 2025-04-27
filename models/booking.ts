@@ -21,7 +21,7 @@ const bookingSchema = new mongoose.Schema({
   customer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Customer",
-    required: [true, "Customer is required"],
+    required: [false, "Customer optional "],
   },
   commission: {
     type: Number,
@@ -30,8 +30,8 @@ const bookingSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["pending", "confirmed", "cancelled"],
-    default: "pending",
+    enum: ["draft","pending", "confirmed", "cancelled"],
+    default: "draft",
   },
   bills: {
     type: String,

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { PageLayout } from "@/layouts";
 import AdminMainLayout from "@/components/Site/dashboardLayout";
-import { Grid, Button, FormControl, InputLabel, Select, MenuItem, TextField } from "@mui/material";
+import { Grid, Button, FormControl, InputLabel, Select, MenuItem, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import useCountries from "@/hooks/useCountries";
 import DatePicker from "react-datepicker";
@@ -24,7 +24,7 @@ export default function EditBooking() {
   const [selectedStaff, setSelectedStaff] = useState("");
   const [selectedCustomer, setSelectedCustomer] = useState("");
   const [commission, setCommission] = useState("");
-  const [status, setStatus] = useState("pending");
+  const [status, setStatus] = useState("draft");
   const [bills, setBills] = useState("in process");
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
@@ -79,7 +79,7 @@ export default function EditBooking() {
       await axios.put(`/api/bookings/${id}`, {
         property: selectedProperty,
         staff: selectedStaff,
-        customer: selectedCustomer,
+        customer: selectedCustomer || null,
         commission: parseFloat(commission),
         bills,
         status,
@@ -98,6 +98,7 @@ export default function EditBooking() {
   return (
     <AdminMainLayout>
       <PageLayout title="Edit Booking">
+         <Typography variant="h6" className="text-2xl font-bold my-20">Edit Booking</Typography>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
@@ -108,9 +109,9 @@ export default function EditBooking() {
                   label="Country"
                   onChange={(e) => setSelectedCountry(e.target.value)}
                 >
-                  <MenuItem value="">Select Country</MenuItem>
+                  <MenuItem className="flex flex-col" value="">Select Country</MenuItem>
                   {countries?.map((country: any) => (
-                    <MenuItem key={country._id} value={country.title}>
+                    <MenuItem className="flex flex-col" key={country._id} value={country.title}>
                       {country.title}
                     </MenuItem>
                   ))}
@@ -125,9 +126,9 @@ export default function EditBooking() {
                   label="Property"
                   onChange={(e) => setSelectedProperty(e.target.value)}
                 >
-                  <MenuItem value="">Select Property</MenuItem>
+                  <MenuItem className="flex flex-col" value="">Select Property</MenuItem>
                   {properties?.books?.map((property: any) => (
-                    <MenuItem key={property._id} value={property._id}>
+                    <MenuItem className="flex flex-col" key={property._id} value={property._id}>
                       {property.title}
                     </MenuItem>
                   ))}
@@ -144,7 +145,7 @@ export default function EditBooking() {
                 >
                   <MenuItem value="">Select Staff</MenuItem>
                   {staffList?.staffs?.map((staff: any) => (
-                    <MenuItem key={staff._id} value={staff._id}>
+                    <MenuItem className="flex flex-col" key={staff._id} value={staff._id}>
                       {staff.name}
                     </MenuItem>
                   ))}
@@ -152,16 +153,16 @@ export default function EditBooking() {
               </FormControl>
             </Grid>
             <Grid item xs={12} md={6}>
-              <FormControl fullWidth required>
+              <FormControl fullWidth >
                 <InputLabel>Customer</InputLabel>
                 <Select
                   value={selectedCustomer}
                   label="Customer"
                   onChange={(e) => setSelectedCustomer(e.target.value)}
                 >
-                  <MenuItem value="">Select Customer</MenuItem>
+                  <MenuItem className="flex flex-col" value="">Select Customer</MenuItem>
                   {customers?.customers?.map((customer: any) => (
-                    <MenuItem key={customer._id} value={customer._id}>
+                    <MenuItem className="flex flex-col" key={customer._id} value={customer._id}>
                       {`${customer.firstName} ${customer.lastName}`}
                     </MenuItem>
                   ))}
@@ -186,9 +187,10 @@ export default function EditBooking() {
                   label="Status"
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <MenuItem value="pending">Pending</MenuItem>
-                  <MenuItem value="confirmed">Confirmed</MenuItem>
-                  <MenuItem value="cancelled">Cancelled</MenuItem>
+                  <MenuItem  dir="ltr" value="draft">Draft</MenuItem>
+                  <MenuItem  dir="ltr" value="pending">Pending</MenuItem>
+                  <MenuItem  dir="ltr" value="confirmed">Confirmed</MenuItem>
+                  <MenuItem  dir="ltr" value="cancelled">Cancelled</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -238,21 +240,23 @@ export default function EditBooking() {
                   endDate={endDate}
                   minDate={startDate}
                   dateFormat="dd/MM/yyyy"
+             
                   customInput={
                     <TextField
                       fullWidth
                       label="End Date"
                       variant="outlined"
                       required
+                      
                     />
                   }
                 />
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <Button type="submit" variant="contained" color="primary">
+              <button type="submit" className="primary-btn1 z-0" color="primary">
                 Update Booking
-              </Button>
+              </button>
             </Grid>
           </Grid>
         </form>

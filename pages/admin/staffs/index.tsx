@@ -134,7 +134,7 @@ export default function StaffList() {
         {/* Staff Table Section */}
         <Paper elevation={2}>
           <Box sx={{ p: 2 }}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom className="text-2xl font-bold">
               Staff List
             </Typography>
           </Box>
@@ -145,9 +145,9 @@ export default function StaffList() {
                   backgroundColor: (theme) => theme.palette.grey[200],
                 }}
               >
+                <TableCell><strong>Photo</strong></TableCell>
                 <TableCell><strong>Name</strong></TableCell>
                 <TableCell><strong>Email</strong></TableCell>
-                <TableCell><strong>Photo</strong></TableCell>
                 <TableCell><strong>Country</strong></TableCell>
                 <TableCell><strong>Position</strong></TableCell>
                 <TableCell><strong>Department</strong></TableCell>
@@ -158,13 +158,13 @@ export default function StaffList() {
             <TableBody>
               {staffs?.map((staff: any) => (
                 <TableRow key={staff._id} hover>
-                  <TableCell>{staff.name}</TableCell>
-                  <TableCell>{staff.email}</TableCell>
                     <TableCell>
                       {staff.image !== "" && (
                     <img src={`https://dash93.nyc3.digitaloceanspaces.com/${staff.image}`} className="w-16 h-16 rounded-full   object-fill" />
                       )}
                     </TableCell>
+                  <TableCell>{staff.name}</TableCell>
+                  <TableCell>{staff.email}</TableCell>
                   <TableCell>
                     {staff.country?.title || "N/A"}
                   </TableCell>

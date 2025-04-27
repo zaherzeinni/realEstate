@@ -1,3 +1,5 @@
+// --------------------this is API for ACCOUNTING  STAFF PAGE (old name bookings)--------------------
+
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/utils/dbConnect";
 import Booking from "@/models/booking";
@@ -7,16 +9,22 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();
   const user = req.user;
 
-  if (!user || user.role !== "staff") {
+  if (!user || (user.role !== "staff" && user.role !== "admin")) {
     return res.status(403).json({ success: false, message: "Unauthorized" });
   }
 
   switch (req.method) {
     case "GET":
       try {
-        const bookings = await Booking.find({ staff: user._id })
-          .populate("property", "title")
-          .populate("customer", "firstName lastName")
+        const query = user.role === "admin" ? {} : { staff: user._id };
+        
+         // Add condition to exclude bookings with "draft" status
+      query.status = { $ne: "draft" };
+      
+        const bookings = await Booking.find(query)
+          .populate("property", "title price reference")
+          .populate("customer")
+          .populate("staff")
           .sort({ createdAt: -1 });
         
         // Format dates for consistent output

@@ -15,7 +15,7 @@ const LoginModal = ({ open, onClose, isOpen }) => {
   const userName = user?.name || "Guest";
   const userEmail = user?.email || "Not Available";
   const userRole = user?.role || "Not Available";
-  console.log("userRoleee", userRole);
+  // console.log("userRoleee", userRole);
 
   const handleLogout = async () => {
     localStorage.clear();

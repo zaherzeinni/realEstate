@@ -63,6 +63,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           // Adjust total pages based on filtered results
           const filteredTotal = filteredBookings.length;
           const totalPages = Math.ceil(filteredTotal / limitNumber);
+
+
+          
           
           return res.status(200).json({ 
             success: true, 
@@ -105,8 +108,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       try {
         const { property, staff, customer, commission,bills, status, country, startDate, endDate } = req.body;
         console.log(req.body, "req.body🧑‍💻⚠️🧑‍💻⚠️");
-        // Validate required fields
-        if (!property || !staff || !customer || !commission || !country || !startDate || !endDate) {
+        // Validate required fields   i delete the || !customer 
+        if (!property || !staff    || !commission || !country || !startDate || !endDate) {
           return res.status(400).json({ 
             success: false, 
             error: "Missing required fields. Property, staff, customer, commission, country, startDate, and endDate are required." 
@@ -135,10 +138,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         const booking = await Booking.create({
           property,
           staff,
-          customer,
+          customer : customer || null,
           commission: Number(commission),
           bills: bills || "in process",
-          status: status || "pending",
+          status: status || "draft",
           country: country.trim(),
           startDate: startDateObj,
           endDate: endDateObj

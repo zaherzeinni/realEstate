@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { PageLayout } from "@/layouts";
 import AdminMainLayout from "@/components/Site/dashboardLayout";
-import { Grid, Button, FormControl, InputLabel, Select, MenuItem, TextField } from "@mui/material";
+import { Grid, Button, FormControl, InputLabel, Select, MenuItem, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import useCountries from "@/hooks/useCountries";
 import DatePicker from "react-datepicker";
@@ -21,7 +21,7 @@ export default function CreateBooking() {
   const [selectedStaff, setSelectedStaff] = useState("");
   const [selectedCustomer, setSelectedCustomer] = useState("");
   const [commission, setCommission] = useState("");
-  const [status, setStatus] = useState("pending");
+  const [status, setStatus] = useState("draft");
   const [bills, setBills] = useState("in process");
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(addDays(new Date(), 7));
@@ -81,6 +81,7 @@ export default function CreateBooking() {
   return (
     <AdminMainLayout>
       <PageLayout title="Create Booking">
+      <Typography variant="h6" className="text-2xl font-bold pt-10">Add Booking</Typography>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2} marginTop={10}>
             <Grid item xs={12} md={6}>
@@ -91,9 +92,9 @@ export default function CreateBooking() {
                   label="Country"
                   onChange={(e) => setSelectedCountry(e.target.value)}
                 >
-                  <MenuItem dir="ltr" value="">Select Country</MenuItem>
+                  <MenuItem dir="ltr" className="flex flex-col" value="">Select Country</MenuItem>
                   {countries?.map((country: any) => (
-                    <MenuItem dir="ltr" key={country._id} value={country.title}>
+                    <MenuItem className="flex flex-col" dir="ltr" key={country._id} value={country.title}>
                       {country.title}
                     </MenuItem>
                   ))}
@@ -108,9 +109,9 @@ export default function CreateBooking() {
                   label="Property"
                   onChange={(e) => setSelectedProperty(e.target.value)}
                 >
-                  <MenuItem dir="ltr" value="">Select Property</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="">Select Property</MenuItem>
                   {properties?.books?.map((property: any) => (
-                    <MenuItem dir="ltr" key={property._id} value={property._id}>
+                    <MenuItem className="flex flex-col" dir="ltr" key={property._id} value={property._id}>
                       {property.title}
                     </MenuItem>
                   ))}
@@ -125,9 +126,9 @@ export default function CreateBooking() {
                   label="Staff"
                   onChange={(e) => setSelectedStaff(e.target.value)}
                 >
-                  <MenuItem dir="ltr" value="">Select Staff</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="">Select Staff</MenuItem>
                   {staffList?.staffs?.map((staff: any) => (
-                    <MenuItem dir="ltr" key={staff._id} value={staff._id}>
+                    <MenuItem className="flex flex-col" dir="ltr" key={staff._id} value={staff._id}>
                       {staff.name}
                     </MenuItem>
                   ))}
@@ -135,16 +136,16 @@ export default function CreateBooking() {
               </FormControl>
             </Grid>
             <Grid item xs={12} md={6}>
-              <FormControl fullWidth required disabled={!selectedStaff}>
+              <FormControl fullWidth  disabled={!selectedStaff}>
                 <InputLabel>Customer</InputLabel>
                 <Select
                   value={selectedCustomer}
                   label="Customer"
                   onChange={(e) => setSelectedCustomer(e.target.value)}
                 >
-                  <MenuItem dir="ltr" value="">Select Customer</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="">Select Customer</MenuItem>
                   {customers?.customers?.map((customer: any) => (
-                    <MenuItem dir="ltr" key={customer._id} value={customer._id}>
+                    <MenuItem className="flex flex-col" dir="ltr" key={customer._id} value={customer._id}>
                       {`${customer.firstName} ${customer.lastName}`}
                     </MenuItem>
                   ))}
@@ -169,9 +170,10 @@ export default function CreateBooking() {
                   label="Status"
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <MenuItem dir="ltr" value="pending">Pending</MenuItem>
-                  <MenuItem dir="ltr" value="confirmed">Confirmed</MenuItem>
-                  <MenuItem dir="ltr" value="cancelled">Cancelled</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="draft">Draft</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="pending">Pending</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="confirmed">Confirmed</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="cancelled">Cancelled</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -183,9 +185,9 @@ export default function CreateBooking() {
                   label="bills"
                   onChange={(e) => setBills(e.target.value)}
                 >
-                  <MenuItem dir="ltr" value="in process">In Process</MenuItem>
-                  <MenuItem dir="ltr" value="paid">Paid</MenuItem>
-                  <MenuItem dir="ltr" value="not paid">Not Paid</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="in process">In Process</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="paid">Paid</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="not paid">Not Paid</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -234,9 +236,9 @@ export default function CreateBooking() {
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <Button type="submit" variant="contained" color="primary">
+              <button type="submit"  color="primary" className="primary-btn1 z-0">
                 Create Booking
-              </Button>
+              </button>
             </Grid>
           </Grid>
         </form>

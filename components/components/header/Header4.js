@@ -373,7 +373,7 @@ const { data, isLoading, error } = useCountries();
           <ul className="menu-list">
           {/* COUNTRIES WITH CITIES HERE  */}
 
-  <li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
+  <li className={`${true ? "menu-item-has-children" : ""}`}>
               <Link href={projectslink} className="drop-down">
                 Destinations
               </Link>
@@ -393,7 +393,7 @@ const { data, isLoading, error } = useCountries();
                   }`}
                 >
                   {groupedData?.map((subItem, subIndex) => (
-                    <li key={subIndex}>
+                    <li key={subIndex + " " + subItem.id}>
                       <Link legacyBehavior href={subItem.link}>
                         <a> {language === "en" ? subItem.label : subItem.labelfr }    </a>
                       </Link>
@@ -495,7 +495,7 @@ const { data, isLoading, error } = useCountries();
                         }`}
                       >
                         {subMenu?.map((subItem, subIndex) => (
-                          <li key={subIndex}>
+                          <li key={subIndex + " " + subItem.id}>
                             <Link legacyBehavior href={subItem.link}>
                               <a>
                                 {language === "en" ? subItem.label : subItem.labelfr}
@@ -531,7 +531,7 @@ const { data, isLoading, error } = useCountries();
 
                             >
                               {buyguidesData?.map((guide, idx) => (
-                                <li key={idx}>
+                                <li key={idx+ " " + guide.id}>
                                   <Link legacyBehavior href={guide.link}>
                                   <a>{language === "en" ? guide.label
                         : handleChange(guide.label)}

@@ -40,10 +40,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           bookingQuery.country = { $regex: country, $options: 'i' }; // Changed to contains match
         }
 
-        // Add status filter if provided
+            // Add status filter if provided
         if (status && status !== "") {
           bookingQuery.status = status;
+        } else {
+          // Default to showing only "draft" status if no status is provided
+          bookingQuery.status = "draft";
         }
+
 
         console.log("Booking query:", bookingQuery); // Log the query for debugging
 

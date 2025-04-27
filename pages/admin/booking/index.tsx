@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { PageLayout } from "@/layouts";
 import AdminMainLayout from "@/components/Site/dashboardLayout";
+import Link from "next/link";
 import {
   Table,
   TableBody,
@@ -23,6 +24,10 @@ import {
   Select,
   MenuItem,
   Pagination,
+  DialogContent,
+  DialogActions,
+  Dialog,
+  DialogTitle,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -30,6 +35,7 @@ import axios from "axios";
 import { message } from "antd";
 import useCountries from "@/hooks/useCountries";
 import useProducts from "@/hooks/useProducts";
+import useStaffProperties from "@/hooks/useStaffProperties";
 
 const fetcher = (url: string) => axios.get(url).then(({ data }) => data);
 
@@ -88,6 +94,95 @@ export default function BookingList() {
     setCountry(e.target.value);
     setPage(1); // Reset to first page when filtering
   };
+
+
+
+  const getStatusColor = (status: string) => {
+    switch (status?.toLowerCase()) {
+      case 'confirmed':
+        return 'text-green-500 bg-green-100';
+      case 'pending':
+        return 'text-yellow-500 bg-yellow-100';
+      case 'cancelled':
+        return 'text-white bg-red-600';
+        case 'draft':
+          return 'text-white bg-gray-200';
+      default:
+        return 'text-gray-500';
+    }
+  };
+
+
+    const [statusDialog, setStatusDialog] = useState({
+      open: false,
+      propertyId: '',
+      currentStatus: ''
+    });
+
+  const handleStatusClick = (property: any) => {
+    setStatusDialog({
+      open: true,
+      propertyId: property._id,
+      currentStatus: property.status || 'pending'
+    });
+  };
+
+
+  const handleStatusUpdate = async (newStatus: string) => {
+    try {
+      await axios.put(`/api/book/${statusDialog.propertyId}/status`, {
+        status: newStatus
+      });
+      message.success("Status updated successfully");
+      // Refresh the properties data
+      router.replace(router.asPath);
+      setStatusDialog((prev) => ({
+        ...prev,
+        currentStatus: newStatus,
+        open: false,
+        propertyId: ''
+      }));
+    } catch (error) {
+      message.error("Error updating status");
+    }
+  };
+
+  
+    const [filters, setFilters] = useState({
+      search: "",
+      type: "",
+      country: "",
+      status: "",
+    });
+
+    
+    const { properties, statusCounts, isLoading,  } = useStaffProperties({ 
+      page,
+      ...filters 
+    });
+
+
+    const handleStatusCardClick = (status: string) => {
+      setFilters(prev => ({ ...prev, status }));
+      setPage(1);
+    };
+    
+  const statusCards = [
+    { status: 'pending', label: 'Pending', color: 'bg-yellow-100 border-yellow-500' },
+    { status: 'confirmed', label: 'Confirmed', color: 'bg-green-100 border-green-500' },
+    { status: 'cancelled', label: 'Cancelled', color: 'bg-red-100 border-red-500' },
+    { 
+      status: '', 
+      label: 'All Bookings', 
+      color: 'bg-blue-100 border-blue-500',
+      count: statusCounts ? 
+        (statusCounts.pending || 0) + 
+        (statusCounts.confirmed || 0) + 
+        (statusCounts.cancelled || 0) : 0
+    }
+  ];
+
+
 
   return (
     <AdminMainLayout>
@@ -151,12 +246,54 @@ export default function BookingList() {
               </Grid>
             </Grid>
           </Paper>
+
+
+          <div>        {/* Status Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-6">
+          {statusCards.map(({ status, label, color, count }) => (
+            <div
+              key={status || 'all'}
+              onClick={() => handleStatusCardClick(status)}
+              className={`cursor-pointer border rounded-lg p-2 sm:p-4 ${color} ${
+                filters.status === status ? 'ring-2 ring-offset-2' : ''
+              }`}
+            >
+              <h3 className="text-sm sm:text-lg font-semibold">{label}</h3>
+              <p className="text-lg sm:text-2xl font-bold">
+                {count !== undefined ? count : (statusCounts && statusCounts[status] ? statusCounts[status] : 0)}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Clear filters button */}
+        {filters.status && (
+          <Button
+            variant="outlined"
+            className="mb-4"
+            onClick={() => {
+              setFilters(prev => ({ ...prev, status: '' }));
+              setPage(1);
+            }}
+          >
+            Clear Status Filter
+          </Button>
+        )}
+        
+        </div>
         </div>
 
         <Paper elevation={2}>
           <Box sx={{ p: 2 }}>
-            <Typography variant="h6">Booking List</Typography>
+            <Typography variant="h6" className="text-2xl font-bold">Booking List</Typography>
+          
           </Box>
+          
+          <Link href="/admin/booking/create" passHref>
+          <button className="mx-auto justify-center flex mb-2 primary-btn1">Create Booking</button>
+          </Link>
+
+
             <Box sx={{ overflowX: "auto" }}>
             <Table>
               <TableHead>
@@ -164,18 +301,20 @@ export default function BookingList() {
                 sx={{ backgroundColor: (theme) => theme.palette.grey[200] }}
               >
                 <TableCell>
-                <strong>Property</strong>
-                </TableCell>
-                <TableCell>
                 <strong>Staff</strong>
                 </TableCell>
                 <TableCell>
                 <strong>Customer</strong>
                 </TableCell>
                 <TableCell>
-                <strong>Country</strong>
+                <strong>Property</strong>
                 </TableCell>
                 <TableCell>
+                <strong>Country</strong>
+                </TableCell>
+
+                {/* -----------------these columns are not used in the table------------------ but the are using in Accounting page------ */}
+                {/* <TableCell>
                 <strong>Comm</strong>
                 </TableCell>
                 <TableCell>
@@ -186,7 +325,7 @@ export default function BookingList() {
                 </TableCell>
                 <TableCell>
                 <strong>Bills</strong>
-                </TableCell>
+                </TableCell> */}
                 <TableCell>
                 <strong>StartDate</strong>
                 </TableCell>
@@ -207,13 +346,13 @@ export default function BookingList() {
               <TableBody>
               {dataSource?.map((booking: any) => (
                 <TableRow key={booking._id} hover>
-                <TableCell>{booking.property?.title || "N/A"}</TableCell>
                 <TableCell>{booking.staff?.name || "N/A"}</TableCell>
                 <TableCell>{`${booking.customer?.firstName || ""} ${
                   booking.customer?.lastName || ""
                 }`}</TableCell>
+                <TableCell>{booking.property?.title || "N/A"}</TableCell>
                 <TableCell>{booking.country}</TableCell>
-                <TableCell>{booking.commission}%</TableCell>
+                {/* <TableCell>{booking.commission}%</TableCell>
                 <TableCell>
                  $ {booking.property ? booking.property.price : ""} 
                 </TableCell>
@@ -232,19 +371,41 @@ export default function BookingList() {
                   }
                   size="small"
                   />
-                </TableCell>
+                </TableCell> */}
                 <TableCell>
                   {booking.startDate
                   ? new Date(booking.startDate).toLocaleDateString("en-GB")
                   : "N/A"}
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   {booking.endDate
                   ? new Date(booking.endDate).toLocaleDateString("en-GB")
                   : "N/A"}
-                </TableCell>
+                </TableCell> */}
+
+                   <TableCell>
+                                    {booking?.endDate ? 
+                                      (() => {
+                                        const today = new Date();
+                                        const endDate = new Date(booking.endDate);
+                                        const diffTime = endDate.getTime() - today.getTime();
+                                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                                        
+                                        if (diffDays < 0) {
+                                          return <span className="text-green-500">Commission Due</span>;
+                                        } else if (diffDays === 0) {
+                                          return <span className="text-orange-500">Due Today</span>;
+                                        } else {
+                                          return <span className="text-blue-500">{diffDays} days remaining</span>;
+                                        }
+                                      })() : 
+                                      'N/A'}
+                                  </TableCell>
+
                 <TableCell>
                   <Chip
+                  className={`cursor-pointer ${getStatusColor(booking?.status)}`}
+                  onClick={() => handleStatusClick(booking)}
                   label={booking.status}
                   color={
                     booking.status === "confirmed"
@@ -312,6 +473,38 @@ export default function BookingList() {
             </Box>
           )}
         </Paper>
+
+
+
+
+              <Dialog 
+        open={statusDialog.open} 
+        onClose={() => setStatusDialog({ open: false, propertyId: '', currentStatus: '' })}
+      >
+        <DialogTitle>Update Status</DialogTitle>
+        <DialogContent>
+          <FormControl fullWidth sx={{ mt: 2 }}>
+            <InputLabel>Status</InputLabel>
+            <Select
+              value={statusDialog.currentStatus}
+              label="Status"
+              onChange={(e) => handleStatusUpdate(e.target.value)}
+            >
+              <MenuItem className="flex flex-col" value="draft">Draft</MenuItem>
+              <MenuItem className="flex flex-col" value="pending">Pending</MenuItem>
+              <MenuItem className="flex flex-col" value="confirmed">Confirmed</MenuItem>
+              <MenuItem className="flex flex-col" value="cancelled">Cancelled</MenuItem>
+            </Select>
+          </FormControl>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setStatusDialog({ open: false, propertyId: '', currentStatus: '' })}>
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+
       </PageLayout>
     </AdminMainLayout>
   );

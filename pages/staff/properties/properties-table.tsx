@@ -99,11 +99,13 @@ export default function StaffPropertiesTable() {
   const getStatusColor = (status: string) => {
     switch (status?.toLowerCase()) {
       case 'confirmed':
-        return 'text-green-500';
+        return 'text-green-500 bg-green-100';
       case 'pending':
-        return 'text-yellow-500';
+        return 'text-yellow-500 bg-yellow-100';
       case 'cancelled':
-        return 'text-red-500';
+        return 'text-white bg-red-600';
+        case 'draft':
+          return 'text-white bg-gray-200';
       default:
         return 'text-gray-500';
     }
@@ -301,7 +303,7 @@ export default function StaffPropertiesTable() {
 
       <div dir="ltr" className="container mx-auto px-4 py-8">
         {/* Status Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-6">
+        {/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-6">
           {statusCards.map(({ status, label, color, count }) => (
             <div
               key={status || 'all'}
@@ -316,10 +318,10 @@ export default function StaffPropertiesTable() {
               </p>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Clear filters button */}
-        {filters.status && (
+        {/* {filters.status && (
           <Button
             variant="outlined"
             className="mb-4"
@@ -330,7 +332,7 @@ export default function StaffPropertiesTable() {
           >
             Clear Status Filter
           </Button>
-        )}
+        )} */}
 
         <TableContainer component={Paper}>
           <Table>
@@ -342,10 +344,10 @@ export default function StaffPropertiesTable() {
                 <TableCell>Customer</TableCell>
                 <TableCell className="!w-8 mx-auto">ُEmail</TableCell>
                 <TableCell>Phone</TableCell>        
-                <TableCell>Price</TableCell>
+                {/* <TableCell>Price</TableCell>
                 <TableCell>Comm</TableCell>
                 <TableCell>Collect</TableCell>
-                <TableCell>Bills</TableCell>
+                <TableCell>Bills</TableCell> */}
                 <TableCell>Date Range</TableCell>
                 <TableCell>Remaining Time</TableCell>
                 <TableCell>Status</TableCell>
@@ -360,16 +362,16 @@ export default function StaffPropertiesTable() {
                   
                   <TableCell>{property.type}</TableCell>
                   <TableCell>{property.city}</TableCell>
-                  <TableCell>{property.booking?.customer?.firstName } {property.booking?.customer?.lastName || 'N/A'}</TableCell>
+                  <TableCell>{property.booking?.customer?.firstName } {property.booking?.customer?.lastName || ""}</TableCell>
                     <TableCell style={{ wordWrap: 'break-word', maxWidth: '100px' }}>
-                    {property.booking?.customer?.email || 'N/A'}
+                    {property.booking?.customer?.email || ""}
                     </TableCell>
-                  <TableCell>{property.booking?.customer?.phone || 'N/A'}</TableCell>
+                  <TableCell>{property.booking?.customer?.phone || ""}</TableCell>
 
-                  <TableCell>${property.price?.toLocaleString()}</TableCell>
+                  {/* <TableCell>${property.price?.toLocaleString()}</TableCell>
                   <TableCell>{property.booking?.commission || 'N/A'}</TableCell>
                   <TableCell>$ {(property.booking?.commission*property.price/100)} </TableCell>
-                  <TableCell>{property.booking?.bills || 'N/A'}</TableCell>
+                  <TableCell>{property.booking?.bills || 'N/A'}</TableCell> */}
       
                   <TableCell>
                     {property.booking?.startDate && property.booking?.endDate ? 
@@ -397,7 +399,7 @@ export default function StaffPropertiesTable() {
                   </TableCell>
                   <TableCell>
                     <span 
-                      className={`cursor-pointer1 ${getStatusColor(property.booking?.status)}`}
+                      className={`cursor-pointer1 p-2 rounded-lg ${getStatusColor(property.booking?.status)}`}
                       // onClick={() => handleStatusClick(property)}
                     >
                       {property.booking?.status || 'N/A'}

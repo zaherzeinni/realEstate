@@ -13,7 +13,7 @@ const schema = new mongoose.Schema(
     status: {
       type: String,
       required: true,
-      default: "pending",
+      default: "draft",
     },
     bills: {
       type: String,
