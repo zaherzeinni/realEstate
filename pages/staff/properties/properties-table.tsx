@@ -170,8 +170,8 @@ export default function StaffPropertiesTable() {
     <StaffMainLayout>
     <PageLayout title="Properties Table View">
 
-
-
+    <h4 className="mt-10">Properties Table</h4>
+  
       {/* -------------------filter in properties------------------- */}
         <div dir="ltr" className="container pt-6 mb-12">
           <div className="bg-white rounded-lg shadow-lg p-6">

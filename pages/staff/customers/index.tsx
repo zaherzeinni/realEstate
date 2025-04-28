@@ -72,7 +72,7 @@ export default function StaffCustomers() {
         <div className="p-20">
           <Typography
             variant="h4"
-            align="center"
+            align="start"
             gutterBottom
             style={{ marginBottom: "40px" }}
           >

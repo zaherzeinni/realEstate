@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const user = req.user;
 
   // Check if user is authenticated and is a staff member
-  if (!user || user.role !== "staff") {
+  if (!user || user.role !== "staff" && user.role !== "admin") {
     return res.status(403).json({
       success: false,
       message: "Unauthorized access",
@@ -33,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const skip = (pageNumber - 1) * limitNumber;
 
         // First, get all bookings for this staff member
-        let bookingQuery: any = { staff: user._id };
+        let bookingQuery: any = { admin: user._id  };
 
         // Add country filter if provided - using a "contains" approach
         if (country && country !== "") {
@@ -50,15 +50,25 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 
         console.log("Booking query:", bookingQuery); // Log the query for debugging
+        console.log("Final bookingQuery:", JSON.stringify(bookingQuery, null, 2));
+        console.log("User ID:", user._id); // Log the user ID for debugging
+        console.log("User role:", user.role); // Log the user role for debugging
+        console.log("Database connected successfully"); // Log the database connection status
 
         // Get all bookings for this staff to calculate status counts
-        const allBookings = await Booking.find({ staff: user._id });
+        const allBookings = await Booking.find({ admin: user._id });
         
+        
+        if (status && status !== "") {
+          bookingQuery.status = status;
+        }
+
         // Calculate status counts
         const statusCounts = {
           pending: allBookings.filter(booking => booking.status === 'pending').length,
           confirmed: allBookings.filter(booking => booking.status === 'confirmed').length,
-          cancelled: allBookings.filter(booking => booking.status === 'cancelled').length
+          cancelled: allBookings.filter(booking => booking.status === 'cancelled').length,
+          draft: allBookings.filter(booking => booking.status === 'draft').length
         };
 
         // Get all booking IDs for this staff with the applied filters

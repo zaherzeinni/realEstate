@@ -168,14 +168,16 @@ export default function BookingList() {
     };
     
   const statusCards = [
+    { status: 'draft', label: 'draft', color: 'bg-gray-100 border-gray-500 ' },
     { status: 'pending', label: 'Pending', color: 'bg-yellow-100 border-yellow-500' },
     { status: 'confirmed', label: 'Confirmed', color: 'bg-green-100 border-green-500' },
     { status: 'cancelled', label: 'Cancelled', color: 'bg-red-100 border-red-500' },
     { 
       status: '', 
       label: 'All Bookings', 
-      color: 'bg-blue-100 border-blue-500',
+      color: 'bg-yellow-500 border-blue-500',
       count: statusCounts ? 
+        (statusCounts.draft || 0) + 
         (statusCounts.pending || 0) + 
         (statusCounts.confirmed || 0) + 
         (statusCounts.cancelled || 0) : 0
@@ -249,7 +251,7 @@ export default function BookingList() {
 
 
           <div>        {/* Status Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 sm:gap-4 mb-6">
           {statusCards.map(({ status, label, color, count }) => (
             <div
               key={status || 'all'}
