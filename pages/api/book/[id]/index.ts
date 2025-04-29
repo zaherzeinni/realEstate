@@ -1,33 +1,48 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import Book from "@/models/book";
+import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/utils/dbConnect";
+import Booking from "@/models/booking";
 
-
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();
 
-  switch (req.method) {
-    case "GET":
-      try {
-        const { id } = req.query;
-        let book = await Book.findOne({
-          _id: id,
-        });
+  if (req.method === "GET") {
+    try {
+      const { page = 1, limit = 10, search = "", status = "" } = req.query;
 
-        // const bookwithrelated = {...book , related}
-        console.log("RELATED AS:ALS", book);
+      const pageNumber = parseInt(page as string);
+      const limitNumber = parseInt(limit as string);
+      const skip = (pageNumber - 1) * limitNumber;
 
-        res.status(200).json({ book });
-      } catch (error) {
-        console.log(error);
-        res.status(400).json({ success: false, error });
+      const query: any = {};
+
+      if (search) {
+        query["customer.firstName"] = { $regex: search, $options: "i" };
       }
-      break;
 
-    default:
-      res.status(405).json({ success: false, message: "Method not allowed" });
-      break;
+      if (status) {
+        query.status = status;
+      }
+
+      const bookings = await Booking.find(query)
+        .skip(skip)
+        .limit(limitNumber)
+        .populate("property")
+        .populate("customer");
+
+      const totalItems = await Booking.countDocuments(query);
+
+      return res.status(200).json({
+        success: true,
+        bookings,
+        totalItems,
+        totalPages: Math.ceil(totalItems / limitNumber),
+      });
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+      return res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+  } else {
+    res.setHeader("Allow", ["GET"]);
+    return res.status(405).json({ success: false, message: `Method ${req.method} Not Allowed` });
   }
-};
-
-export default handler;
+}

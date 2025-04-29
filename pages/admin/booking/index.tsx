@@ -115,32 +115,33 @@ export default function BookingList() {
 
     const [statusDialog, setStatusDialog] = useState({
       open: false,
-      propertyId: '',
+      id: '',
       currentStatus: ''
     });
 
-  const handleStatusClick = (property: any) => {
+  const handleStatusClick = (booking: any) => {
     setStatusDialog({
       open: true,
-      propertyId: property._id,
-      currentStatus: property.status || 'pending'
+      id: booking._id,
+      currentStatus: booking.status || 'pending'
     });
   };
 
 
   const handleStatusUpdate = async (newStatus: string) => {
     try {
-      await axios.put(`/api/book/${statusDialog.propertyId}/status`, {
+    const response =  await axios.put(`/api/bookings/${statusDialog.id}/status`, {
         status: newStatus
       });
+      console.log(response, "response newStatus ,id",newStatus,statusDialog.id)
       message.success("Status updated successfully");
-      // Refresh the properties data
-      router.replace(router.asPath);
+      // mutate() from SWR to Refresh the properties data
+      mutate();
       setStatusDialog((prev) => ({
         ...prev,
         currentStatus: newStatus,
         open: false,
-        propertyId: ''
+        id: ''
       }));
     } catch (error) {
       message.error("Error updating status");
@@ -324,9 +325,6 @@ export default function BookingList() {
                 </TableCell>
                 <TableCell>
                 <strong>Collect</strong>
-                </TableCell>
-                <TableCell>
-                <strong>Bills</strong>
                 </TableCell> */}
                 <TableCell>
                 <strong>StartDate</strong>
@@ -336,6 +334,9 @@ export default function BookingList() {
                 </TableCell>
                 <TableCell>
                 <strong>Status</strong>
+                </TableCell>
+                <TableCell>
+                <strong>Bills</strong>
                 </TableCell>
                 {/* <TableCell>
                 <strong>Created At</strong>
@@ -360,20 +361,8 @@ export default function BookingList() {
                 </TableCell>
                 <TableCell>
                  $ {(booking.commission*booking.property.price/100)} 
-                </TableCell>
-                <TableCell>
-                <Chip
-                  label={booking.bills}
-                  color={
-                    booking.bills === "paid"
-                    ? "success"
-                    : booking.bills === "not paid"
-                    ? "error"
-                    : "default"
-                  }
-                  size="small"
-                  />
                 </TableCell> */}
+
                 <TableCell>
                   {booking.startDate
                   ? new Date(booking.startDate).toLocaleDateString("en-GB")
@@ -413,6 +402,19 @@ export default function BookingList() {
                     booking.status === "confirmed"
                     ? "success"
                     : booking.status === "cancelled"
+                    ? "error"
+                    : "default"
+                  }
+                  size="small"
+                  />
+                </TableCell>
+                <TableCell>
+                <Chip
+                  label={booking.bills}
+                  color={
+                    booking.bills === "paid"
+                    ? "success"
+                    : booking.bills === "not paid"
                     ? "error"
                     : "default"
                   }
@@ -481,7 +483,7 @@ export default function BookingList() {
 
               <Dialog 
         open={statusDialog.open} 
-        onClose={() => setStatusDialog({ open: false, propertyId: '', currentStatus: '' })}
+        onClose={() => setStatusDialog({ open: false, id: '', currentStatus: '' })}
       >
         <DialogTitle>Update Status</DialogTitle>
         <DialogContent>
@@ -500,7 +502,7 @@ export default function BookingList() {
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setStatusDialog({ open: false, propertyId: '', currentStatus: '' })}>
+          <Button onClick={() => setStatusDialog({ open: false, id: '', currentStatus: '' })}>
             Cancel
           </Button>
         </DialogActions>

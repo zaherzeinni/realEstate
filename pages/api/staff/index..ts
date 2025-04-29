@@ -13,7 +13,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         const limit = 10;
         const skip = (Number(page) - 1) * limit;
 
-        const query: any = { role: "staff" };
+        const query: any = { role: { $in: ["staff", "admin"] } };
         if (search) {
           query.$or = [
             { name: { $regex: search, $options: "i" } },

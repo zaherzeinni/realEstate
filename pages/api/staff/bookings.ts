@@ -16,9 +16,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case "GET":
       try {
-        const query = user.role === "admin" ? {} : { staff: user._id };
-        
-         // Add condition to exclude bookings with "draft" status
+      const query: { staff?: any; status?: any } = user.role === "admin" ? {} : { staff: user._id };
+      
+      // Add condition to exclude bookings with "draft" status
       query.status = { $ne: "draft" };
       
         const bookings = await Booking.find(query)
@@ -43,8 +43,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       }
 
     default:
-      res.setHeader("Allow", ["GET"]);
-      return res.status(405).end(`Method ${req.method} Not Allowed`);
+      res.setHeader("Allow", "GET");
+      return res.status(405).send(`Method ${req.method} Not Allowed`);
   }
 }
 

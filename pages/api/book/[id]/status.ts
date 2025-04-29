@@ -1,37 +1,37 @@
-import auth from "@/utils/auth";
-import type { NextApiRequest, NextApiResponse } from "next";
-import Book from "@/models/book";
+import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/utils/dbConnect";
+import Booking from "@/models/booking";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();
-  const user = req.user;
-  
-  if (user?.role !== "admin" && user?.role !== "staff") {
-    return res.status(403).json({
-      message: "You are not authorized to access this resource",
-    });
-  }
 
-  if (req.method !== "PUT") {
-    return res.status(405).json({ success: false, message: "Method not allowed" });
-  }
+  const { id } = req.query;
 
-  try {
-    const { id } = req.query;
-    const { status } = req.body;
+  if (req.method === "PUT") {
+    try {
+      const { status } = req.body;
 
-    if (!status) {
-      return res.status(400).json({ success: false, message: "Status is required" });
+      if (!status) {
+        return res.status(400).json({ success: false, message: "Status is required" });
+      }
+
+      const booking = await Booking.findByIdAndUpdate(
+        id,
+        { status },
+        { new: true }
+      );
+
+      if (!booking) {
+        return res.status(404).json({ success: false, message: "Booking not found" });
+      }
+
+      return res.status(200).json({ success: true, booking });
+    } catch (error) {
+      console.error("Error updating booking status:", error);
+      return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
-
-    await Book.findByIdAndUpdate(id, { status });
-    
-    res.status(200).json({ success: true, message: "Status updated successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({ success: false, error: (error as Error).message });
+  } else {
+    res.setHeader("Allow", ["PUT"]);
+    return res.status(405).json({ success: false, message: `Method ${req.method} Not Allowed` });
   }
-};
-
-export default auth(handler); 
+}
