@@ -69,22 +69,23 @@ export default function StaffPropertiesTable() {
     page,
     ...filters 
   });
-
+    console.log("propertiessssss", properties);
+  console.log("statusCountsssss", statusCounts);
   const handlePageChange = (event: any, value: number) => {
     setPage(value);
   };
 
-  const handleStatusClick = (property: any) => {
+  const handleStatusClick = (booking: any) => {
     setStatusDialog({
       open: true,
-      propertyId: property._id,
-      currentStatus: property.status || 'pending'
+      propertyId: booking._id,
+      currentStatus: booking.status || 'pending'
     });
   };
 
   const handleStatusUpdate = async (newStatus: string) => {
     try {
-      await axios.put(`/api/book/${statusDialog.propertyId}/status`, {
+      await axios.put(`/api/bookings/${statusDialog.propertyId}/status`, {
         status: newStatus
       });
       message.success("Status updated successfully");

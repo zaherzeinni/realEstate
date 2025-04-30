@@ -33,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const skip = (pageNumber - 1) * limitNumber;
 
         // First, get all bookings for this staff member
-        let bookingQuery: any = { admin: user._id  };
+        let bookingQuery: any = { staff: user._id || { admin: user._id } };
 
         // Add country filter if provided - using a "contains" approach
         if (country && country !== "") {
@@ -50,19 +50,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 
         console.log("Booking query:", bookingQuery); // Log the query for debugging
-        console.log("Final bookingQuery:", JSON.stringify(bookingQuery, null, 2));
-        console.log("User ID:", user._id); // Log the user ID for debugging
-        console.log("User role:", user.role); // Log the user role for debugging
-        console.log("Database connected successfully"); // Log the database connection status
 
         // Get all bookings for this staff to calculate status counts
-        const allBookings = await Booking.find({ admin: user._id });
+        const allBookings = await Booking.find({ staff: user._id || { admin: user._id } });
         
-        
-        if (status && status !== "") {
-          bookingQuery.status = status;
-        }
-
         // Calculate status counts
         const statusCounts = {
           pending: allBookings.filter(booking => booking.status === 'pending').length,
