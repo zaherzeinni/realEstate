@@ -11,7 +11,6 @@ import SwiperCore, {
 } from "swiper";
 import Link from "next/link";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
-import { ImageEndpoint } from "@/utils/global";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useLanguageContext } from "@/context/languageContext";

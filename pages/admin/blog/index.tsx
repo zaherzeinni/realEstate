@@ -40,7 +40,7 @@ import { fetcher } from "@/utils/fetcher";
 import useBlogs from "@/hooks/useBlogs";
 
 import AdminMainLayout from "@/components/Site/dashboardLayout";
-import { ImageEndpoint, defaultImage, uploadApi } from "@/utils/global";
+import { uploadApi } from "@/utils/global";
 
 interface Book {
   _id: string | number;
