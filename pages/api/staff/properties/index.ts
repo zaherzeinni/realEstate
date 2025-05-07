@@ -52,7 +52,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         console.log("Booking query:", bookingQuery); // Log the query for debugging
 
         // Get all bookings for this staff to calculate status counts
-        const allBookings = await Booking.find({ staff: user._id || { admin: user._id } });
+        const allBookings = await Booking.find({
+          $or: [
+            { staff: user._id },
+            { admin: user._id }
+          ]
+        });
         
         // Calculate status counts
         const statusCounts = {
