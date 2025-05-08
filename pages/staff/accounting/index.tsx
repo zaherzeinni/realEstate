@@ -63,8 +63,8 @@ export default function StaffBookings() {
                 <TableCell><strong>Collect</strong></TableCell>
                 <TableCell><strong>Start Date</strong></TableCell>
                 <TableCell><strong>End Date</strong></TableCell>
-                <TableCell><strong>Bills</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
+                <TableCell><strong>Bills</strong></TableCell>
                 {/* <TableCell><strong>Created At</strong></TableCell> */}
               </TableRow>
             </TableHead>
@@ -72,13 +72,34 @@ export default function StaffBookings() {
               {bookings?.map((booking: any) => (
                 <TableRow key={booking._id} hover>
                    <TableCell>{booking?.staff?.name || 'N/A'}</TableCell>
-                   <TableCell>{booking?.customer?.firstName  +" "+ booking?.customer?.lastName || 'N/A'}</TableCell>
+                            <TableCell>{`${booking.customer?.firstName || ""} ${
+                                     booking.customer?.lastName || ""
+                                   }`}</TableCell>
                   <TableCell>{booking.property?.title || "N/A"}</TableCell>
                   <TableCell>$ {booking.property?.price}</TableCell>
                   <TableCell>{booking.commission} %</TableCell>
                   <TableCell>$ {(booking?.commission*booking?.property?.price/100)} </TableCell>
                   <TableCell>{booking.startDate ? new Date(booking.startDate).toLocaleDateString('en-GB') : "N/A"}</TableCell>
                   <TableCell>{booking.endDate ? new Date(booking.endDate).toLocaleDateString('en-GB') : "N/A"}</TableCell>
+                  
+                  
+                  <TableCell>
+                                  <Chip
+                                  className={`cursor-pointer1 ${getStatusColor(booking?.status)}`}
+                                  // onClick={() => handleStatusClick(booking)}
+                                  label={booking.status}
+                                  color={
+                                    booking.status === "confirmed"
+                                    ? "success"
+                                    : booking.status === "cancelled"
+                                    ? "error"
+                                    : "default"
+                                  }
+                                  size="small"
+                                  />
+                                </TableCell>
+
+                  
                   <TableCell>
                 <Chip
                   label={booking.bills}
@@ -94,22 +115,6 @@ export default function StaffBookings() {
                 </TableCell>
 
 
-
-                    <TableCell>
-                                  <Chip
-                                  className={`cursor-pointer1 ${getStatusColor(booking?.status)}`}
-                                  // onClick={() => handleStatusClick(booking)}
-                                  label={booking.status}
-                                  color={
-                                    booking.status === "confirmed"
-                                    ? "success"
-                                    : booking.status === "cancelled"
-                                    ? "error"
-                                    : "default"
-                                  }
-                                  size="small"
-                                  />
-                                </TableCell>
 
 
 

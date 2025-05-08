@@ -25,6 +25,9 @@ import { message } from "antd";
 import axios from "axios";
 import NotFound from "@/pages/404";
 
+import { uploadApi } from "@/utils/global";
+
+
 export default function StaffCustomers() {
   const router = useRouter();
   const [page, setPage] = useState(1);
@@ -66,6 +69,18 @@ export default function StaffCustomers() {
         console.log(err);
       });
   };
+
+
+
+
+
+  // Use the URL in an API call
+fetch(`${uploadApi}/api/upload`)
+.then(response => response.json())
+.then(data => console.log(data));
+
+
+
   return (
     <StaffMainLayout>
       <PageLayout title="Customers">
