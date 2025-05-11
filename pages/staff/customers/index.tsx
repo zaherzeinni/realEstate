@@ -78,7 +78,7 @@ export default function StaffCustomers() {
 fetch(`${uploadApi}/api/upload`)
 .then(response => response.json())
 .then(data => console.log(data));
-
+console.log("uploadApi", uploadApi);
 
 
   return (
