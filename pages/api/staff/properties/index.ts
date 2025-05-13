@@ -52,7 +52,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         console.log("Booking query:", bookingQuery); // Log the query for debugging
 
         // Get all bookings for this staff to calculate status counts
-        const allBookings = await Booking.find({ staff: user._id || { admin: user._id } });
+        const allBookings = await Booking.find({ $or: [{ staff: user._id }, { admin: user._id }] });
+        console.log("All Bookingsss:", allBookings);
+        console.log("Booking Statuses:", allBookings.map(booking => booking.status));
         
         // Calculate status counts
         const statusCounts = {
@@ -61,6 +63,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           cancelled: allBookings.filter(booking => booking.status === 'cancelled').length,
           draft: allBookings.filter(booking => booking.status === 'draft').length
         };
+        console.log("Status Countssss:", statusCounts); // Log the counts for debugging
 
         // Get all booking IDs for this staff with the applied filters
         const bookings = await Booking.find(bookingQuery)

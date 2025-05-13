@@ -161,7 +161,7 @@ export default function BookingList() {
       page,
       ...filters 
     });
-
+    console.log("statusCountsssss", statusCounts);
 
     const handleStatusCardClick = (status: string) => {
       setFilters(prev => ({ ...prev, status }));
@@ -185,6 +185,10 @@ export default function BookingList() {
     }
   ];
 
+
+
+
+  
 
 
   return (
@@ -251,7 +255,7 @@ export default function BookingList() {
           </Paper>
 
 
-          <div>        {/* Status Cards */}
+          <div className="hidden">        {/* Status Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 sm:gap-4 mb-6">
           {statusCards.map(({ status, label, color, count }) => (
             <div
@@ -375,6 +379,8 @@ export default function BookingList() {
                 </TableCell> */}
 
                    <TableCell>
+                              {booking.status === "draft" ?
+                              <>
                                     {booking?.endDate ? 
                                       (() => {
                                         const today = new Date();
@@ -391,6 +397,17 @@ export default function BookingList() {
                                         }
                                       })() : 
                                       'N/A'}
+                                    </> 
+                                    :
+                                    <>
+                                    {booking?.endDate 
+                                      ? new Date(booking.endDate).toLocaleDateString("en-GB") 
+                                      : "N/A"}
+                                  </>
+                                  }
+
+
+
                                   </TableCell>
 
                 <TableCell>
