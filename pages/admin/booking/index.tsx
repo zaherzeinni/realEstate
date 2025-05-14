@@ -292,7 +292,7 @@ export default function BookingList() {
 
         <Paper elevation={2}>
           <Box sx={{ p: 2 }}>
-            <Typography variant="h6" className="text-2xl font-bold">Booking List</Typography>
+            <Typography variant="h6" className="text-2xl font-bold">Bookings</Typography>
           
           </Box>
           

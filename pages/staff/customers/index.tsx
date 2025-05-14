@@ -91,7 +91,8 @@ console.log("uploadApi", uploadApi);
             gutterBottom
             style={{ marginBottom: "40px" }}
           >
-            All Customers
+            {user.role === "staff" ?"My Customers" : "All Customers"}
+            
           </Typography>
 
           <Grid container spacing={4}>
