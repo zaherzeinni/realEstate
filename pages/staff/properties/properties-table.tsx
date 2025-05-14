@@ -416,7 +416,7 @@ export default function StaffPropertiesTable() {
           </Table>
         </TableContainer>
 
-
+              <div className="flex justify-center mt-4 text-red-400">
    {properties.length === 0 && (
                 <TableRow>
                 <TableCell colSpan={8} align="center">
@@ -424,6 +424,7 @@ export default function StaffPropertiesTable() {
                 </TableCell>
                 </TableRow>
               )}
+              </div>
 
 
         <div className="flex justify-center mt-4">
