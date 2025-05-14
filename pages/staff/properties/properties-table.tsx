@@ -416,6 +416,16 @@ export default function StaffPropertiesTable() {
           </Table>
         </TableContainer>
 
+
+   {properties.length === 0 && (
+                <TableRow>
+                <TableCell colSpan={8} align="center">
+                  No bookings found
+                </TableCell>
+                </TableRow>
+              )}
+
+
         <div className="flex justify-center mt-4">
           <Pagination
             count={totalPages}
