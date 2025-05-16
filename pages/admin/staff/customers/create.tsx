@@ -99,7 +99,7 @@ export default function CreateCustomer() {
 
       await axios.post("/api/customer", data);
       message.success("Customer created successfully");
-      router.push("/staff/customers");
+      router.push("admin/staff/customers");
     } catch (error) {
       message.error("Error creating customer");
       console.error(error);

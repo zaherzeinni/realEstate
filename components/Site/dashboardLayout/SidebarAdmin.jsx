@@ -98,7 +98,7 @@ const router =useRouter()
           </li>
           
           <li className="">
-            <Link href="/staff/accounting">
+            <Link href="/admin/staff/accounting">
             <CurrencyExchangeIcon/>
               <h6>Accounting</h6>
             </Link>
@@ -118,14 +118,14 @@ const router =useRouter()
             </Link>
           </li>
           <li className="">
-            <Link href="/staff/customers">
+            <Link href="admin/staff/customers">
 <Groups2Icon/>
               <h6>Customers</h6>
             </Link>
           </li>
          
           <li className="">
-            <Link href="/staff/customers/create">
+            <Link href="admin/staff/customers/create">
            <GroupAddIcon/>
               <h6>Add Customer</h6>
             </Link>

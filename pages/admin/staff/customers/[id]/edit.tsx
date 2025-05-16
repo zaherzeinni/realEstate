@@ -113,7 +113,7 @@ export default function EditCustomer() {
 
       await axios.put(`/api/customer/${id}`, data);
       message.success("Customer updated successfully");
-      router.push("/staff/customers");
+      router.push("admin/staff/customers");
     } catch (error) {
       message.error("Error updating customer");
       console.error(error);
