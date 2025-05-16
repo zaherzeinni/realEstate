@@ -19,7 +19,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       const query: { staff?: any; status?: any } = user.role === "admin" ? {} : { staff: user._id };
       
       // Add condition to exclude bookings with "draft" status
-      query.status = { $ne: "draft" };
+      query.status = { $nin: ["pending", "reserved"] };
       
         const bookings = await Booking.find(query)
           .populate("property", "title price reference")

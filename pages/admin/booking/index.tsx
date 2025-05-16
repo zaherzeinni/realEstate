@@ -99,13 +99,13 @@ export default function BookingList() {
 
   const getStatusColor = (status: string) => {
     switch (status?.toLowerCase()) {
-      case 'confirmed':
-        return 'text-green-500 bg-green-100';
       case 'pending':
         return 'text-yellow-500 bg-yellow-100';
+      case 'confirmed':
+        return 'text-green-500 bg-green-100';
       case 'cancelled':
         return 'text-white bg-red-600';
-        case 'draft':
+        case 'reserved':
           return 'text-white bg-gray-200';
       default:
         return 'text-gray-500';
@@ -169,8 +169,8 @@ export default function BookingList() {
     };
     
   const statusCards = [
-    { status: 'draft', label: 'draft', color: 'bg-gray-100 border-gray-500 ' },
     { status: 'pending', label: 'Pending', color: 'bg-yellow-100 border-yellow-500' },
+    { status: 'reserved', label: 'reserved', color: 'bg-gray-100 border-gray-500 ' },
     { status: 'confirmed', label: 'Confirmed', color: 'bg-green-100 border-green-500' },
     { status: 'cancelled', label: 'Cancelled', color: 'bg-red-100 border-red-500' },
     { 
@@ -178,8 +178,8 @@ export default function BookingList() {
       label: 'All Bookings', 
       color: 'bg-yellow-500 border-blue-500',
       count: statusCounts ? 
-        (statusCounts.draft || 0) + 
-        (statusCounts.pending || 0) + 
+      (statusCounts.pending || 0) + 
+      (statusCounts.reserved || 0) + 
         (statusCounts.confirmed || 0) + 
         (statusCounts.cancelled || 0) : 0
     }
@@ -379,7 +379,7 @@ export default function BookingList() {
                 </TableCell> */}
 
                    <TableCell>
-                              {booking.status === "draft" ?
+                              {booking.status === "pending" ?
                               <>
                                     {booking?.endDate ? 
                                       (() => {
@@ -511,8 +511,8 @@ export default function BookingList() {
               label="Status"
               onChange={(e) => handleStatusUpdate(e.target.value)}
             >
-              <MenuItem className="flex flex-col" value="draft">Draft</MenuItem>
               <MenuItem className="flex flex-col" value="pending">Pending</MenuItem>
+              <MenuItem className="flex flex-col" value="reserved">Reserved</MenuItem>
               <MenuItem className="flex flex-col" value="confirmed">Confirmed</MenuItem>
               <MenuItem className="flex flex-col" value="cancelled">Cancelled</MenuItem>
             </Select>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import SidebarAdmin from "./sidebar";
+import SidebarAdmin from "./sidebarAdmin";
 import FooterAdmin from "./footer";
 import Header4 from "../../../components/components/header/Header4";
 import useAuth from '@/hooks/useAuth';

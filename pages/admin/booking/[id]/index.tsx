@@ -24,7 +24,7 @@ export default function EditBooking() {
   const [selectedStaff, setSelectedStaff] = useState("");
   const [selectedCustomer, setSelectedCustomer] = useState("");
   const [commission, setCommission] = useState("");
-  const [status, setStatus] = useState("draft");
+  const [status, setStatus] = useState("pending");
   const [bills, setBills] = useState("in process");
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
@@ -187,8 +187,8 @@ export default function EditBooking() {
                   label="Status"
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <MenuItem  dir="ltr" value="draft">Draft</MenuItem>
                   <MenuItem  dir="ltr" value="pending">Pending</MenuItem>
+                  <MenuItem  dir="ltr" value="reserved">Reserved</MenuItem>
                   <MenuItem  dir="ltr" value="confirmed">Confirmed</MenuItem>
                   <MenuItem  dir="ltr" value="cancelled">Cancelled</MenuItem>
                 </Select>

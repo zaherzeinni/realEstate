@@ -8,7 +8,7 @@ interface StatusCounts {
   pending: number;
   confirmed: number;
   cancelled: number;
-  draft: number;
+  reserved: number;
 }
 
 interface StaffPropertiesResponse {
@@ -30,7 +30,7 @@ export default function useStaffProperties(filters = {}) {
 
   return {
     properties: data?.properties || [],
-    statusCounts: data?.statusCounts || { pending: 0, confirmed: 0, cancelled: 0,draft: 0 },
+    statusCounts: data?.statusCounts || { pending: 0, confirmed: 0, cancelled: 0,reserved: 0 },
     currentPage: data?.currentPage || 1,
     totalPages: data?.totalPages || 1,
     totalItems: data?.totalItems || 0,

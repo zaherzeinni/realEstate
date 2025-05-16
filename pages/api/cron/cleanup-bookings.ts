@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     // Find and delete bookings where endDate is in the past
     const now = new Date();
-    const result = await Booking.deleteMany({ endDate: { $lt: now } });
+    const result = await Booking.deleteMany({ endDate: { $lt: now }, status: "pending" });
 
     return res.status(200).json({ 
       success: true, 

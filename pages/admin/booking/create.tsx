@@ -21,10 +21,10 @@ export default function CreateBooking() {
   const [selectedStaff, setSelectedStaff] = useState("");
   const [selectedCustomer, setSelectedCustomer] = useState("");
   const [commission, setCommission] = useState("");
-  const [status, setStatus] = useState("draft");
+  const [status, setStatus] = useState("pending");
   const [bills, setBills] = useState("in process");
   const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(addDays(new Date(), 7));
+  const [endDate, setEndDate] = useState<Date | null>(addDays(new Date(), 90));
 
   const { data: properties } = useSWR(
     selectedCountry ? `/api/book/country?country=${selectedCountry}` : null,
@@ -170,7 +170,7 @@ export default function CreateBooking() {
                   label="Status"
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <MenuItem className="flex flex-col" dir="ltr" value="draft">Draft</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="reserved">Reserved</MenuItem>
                   <MenuItem className="flex flex-col" dir="ltr" value="pending">Pending</MenuItem>
                   <MenuItem className="flex flex-col" dir="ltr" value="confirmed">Confirmed</MenuItem>
                   <MenuItem className="flex flex-col" dir="ltr" value="cancelled">Cancelled</MenuItem>

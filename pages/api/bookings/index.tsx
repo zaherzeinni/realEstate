@@ -141,7 +141,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           customer : customer || null,
           commission: Number(commission),
           bills: bills || "in process",
-          status: status || "draft",
+          status: status || "pending",
           country: country.trim(),
           startDate: startDateObj,
           endDate: endDateObj

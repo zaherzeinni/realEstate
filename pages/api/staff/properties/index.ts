@@ -45,7 +45,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           bookingQuery.status = status;
         } else {
           // Default to showing only "draft" status if no status is provided
-          bookingQuery.status = "draft";
+          bookingQuery.status = { $in: ["pending", "reserved"] };
         }
 
 
@@ -61,7 +61,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           pending: allBookings.filter(booking => booking.status === 'pending').length,
           confirmed: allBookings.filter(booking => booking.status === 'confirmed').length,
           cancelled: allBookings.filter(booking => booking.status === 'cancelled').length,
-          draft: allBookings.filter(booking => booking.status === 'draft').length
+          reserved: allBookings.filter(booking => booking.status === 'reserved').length
         };
         console.log("Status Countssss:", statusCounts); // Log the counts for debugging
 
