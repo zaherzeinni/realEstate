@@ -63,7 +63,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           cancelled: allBookings.filter(booking => booking.status === 'cancelled').length,
           reserved: allBookings.filter(booking => booking.status === 'reserved').length
         };
-        console.log("Status Countssss:", statusCounts); // Log the counts for debugging
+        console.log("Status Countssss api:", statusCounts); // Log the counts for debugging
 
         // Get all booking IDs for this staff with the applied filters
         const bookings = await Booking.find(bookingQuery)

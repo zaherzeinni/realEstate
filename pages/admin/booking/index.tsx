@@ -40,151 +40,149 @@ import useStaffProperties from "@/hooks/useStaffProperties";
 const fetcher = (url: string) => axios.get(url).then(({ data }) => data);
 
 export default function BookingList() {
-  const router = useRouter();
-  const [page, setPage] = useState(1);
+
   const [search, setSearch] = useState("");
   const [country, setCountry] = useState("");
   const [dataSource, setDataSource] = useState([]);
   const [limit] = useState(10);
-  const { data: countriesData } = useCountries();
-
-  // const { data: products } = useProducts({});
-
-  const { data, error, mutate } = useSWR(
-    `/api/bookings?page=${page}&limit=${limit}&search=${search}&country=${country}`,
-    fetcher
-  );
-
-  useEffect(()=>{
-    if (data &&  data.bookings ){
-      console.log("bookings: ", data.bookings)
-      setDataSource(data.bookings)
-    }
-
-  }, [data])
-  
-  const totalPages = data?.totalPages || 1;
-
-
-  const handleDelete = async (id: string) => {
-    if (confirm("Are you sure you want to delete this booking?")) {
-      try {
-        await axios.delete(`/api/bookings/${id}`);
-        message.success("Booking deleted successfully");
-        mutate();
-      } catch (error) {
-        message.error("Error deleting booking");
-      }
-    }
-  };
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setPage(value);
-  };
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    setPage(1); // Reset to first page when searching
-  };
-
-  const handleCountryChange = (e: any) => {
-    setCountry(e.target.value);
-    setPage(1); // Reset to first page when filtering
-  };
 
 
 
-  const getStatusColor = (status: string) => {
-    switch (status?.toLowerCase()) {
-      case 'pending':
-        return 'text-yellow-500 bg-yellow-100';
-      case 'confirmed':
-        return 'text-green-500 bg-green-100';
-      case 'cancelled':
-        return 'text-white bg-red-600';
-        case 'reserved':
-          return 'text-white bg-gray-200';
-      default:
-        return 'text-gray-500';
-    }
-  };
 
 
-    const [statusDialog, setStatusDialog] = useState({
-      open: false,
-      id: '',
-      currentStatus: ''
-    });
 
-  const handleStatusClick = (booking: any) => {
-    setStatusDialog({
-      open: true,
-      id: booking._id,
-      currentStatus: booking.status || 'pending'
-    });
-  };
-
-
-  const handleStatusUpdate = async (newStatus: string) => {
-    try {
-    const response =  await axios.put(`/api/bookings/${statusDialog.id}/status`, {
-        status: newStatus
-      });
-      console.log(response, "response newStatus ,id",newStatus,statusDialog.id)
-      message.success("Status updated successfully");
-      // mutate() from SWR to Refresh the properties data
-      mutate();
-      setStatusDialog((prev) => ({
-        ...prev,
-        currentStatus: newStatus,
-        open: false,
-        id: ''
-      }));
-    } catch (error) {
-      message.error("Error updating status");
-    }
-  };
-
-  
+   const router = useRouter();
+    const [page, setPage] = useState(1);
     const [filters, setFilters] = useState({
       search: "",
       type: "",
       country: "",
       status: "",
     });
+    const [statusDialog, setStatusDialog] = useState({
+      open: false,
+      propertyId: '',
+      currentStatus: ''
+    });
+    const { data: countriesData } = useCountries();
 
-    
-    const { properties, statusCounts, isLoading,  } = useStaffProperties({ 
+    const { data, error, mutate } = useSWR(
+      `/api/bookings?page=${page}&limit=${limit}&search=${search}&country=${country}`,
+      fetcher
+    );
+  
+    useEffect(()=>{
+      if (data &&  data.bookings ){
+        console.log("bookings: ", data.bookings)
+        setDataSource(data.bookings)
+      }
+  
+    }, [data])
+
+
+    const { properties, statusCounts, isLoading, totalPages } = useStaffProperties({ 
       page,
       ...filters 
     });
-    console.log("statusCountsssss", statusCounts);
-
+      console.log("propertiessssss of admin/booking", properties);
+      // console.log("propertiessssss of admin/booking", dataSource);
+    console.log("statusCountsssssProperties", statusCounts);
+    const handlePageChange = (event: any, value: number) => {
+      setPage(value);
+    };
+  
+    const handleStatusClick = (booking: any) => {
+      setStatusDialog({
+        open: true,
+        propertyId: booking._id,
+        currentStatus: booking.status || 'pending'
+      });
+    };
+  
+    const handleStatusUpdate = async (newStatus: string) => {
+      try {
+        await axios.put(`/api/bookings/${statusDialog.propertyId}/status`, {
+          status: newStatus
+        });
+        message.success("Status updated successfully");
+        // Refresh the properties data
+        router.replace(router.asPath);
+        setStatusDialog({ open: false, propertyId: '', currentStatus: '' });
+      } catch (error) {
+        message.error("Error updating status");
+      }
+    };
+  
+    const getStatusColor = (status: string) => {
+      switch (status?.toLowerCase()) {
+        case 'confirmed':
+          return 'text-green-500 bg-green-100';
+        case 'pending':
+          return 'text-yellow-500 bg-yellow-100';
+        case 'cancelled':
+          return 'text-white bg-red-600';
+          case 'reserved':
+            return 'text-white bg-gray-200';
+        default:
+          return 'text-gray-500';
+      }
+    };
+  
     const handleStatusCardClick = (status: string) => {
       setFilters(prev => ({ ...prev, status }));
       setPage(1);
     };
-    
-  const statusCards = [
-    { status: 'pending', label: 'Pending', color: 'bg-yellow-100 border-yellow-500' },
-    { status: 'reserved', label: 'reserved', color: 'bg-gray-100 border-gray-500 ' },
-    { status: 'confirmed', label: 'Confirmed', color: 'bg-green-100 border-green-500' },
-    { status: 'cancelled', label: 'Cancelled', color: 'bg-red-100 border-red-500' },
-    { 
-      status: '', 
-      label: 'All Bookings', 
-      color: 'bg-yellow-500 border-blue-500',
-      count: statusCounts ? 
-      (statusCounts.pending || 0) + 
-      (statusCounts.reserved || 0) + 
-        (statusCounts.confirmed || 0) + 
-        (statusCounts.cancelled || 0) : 0
-    }
-  ];
-
+  
+    const statusCards = [
+      { status: 'pending', label: 'Pending', color: 'bg-yellow-100 border-yellow-500' },
+      { status: 'reserved', label: 'Reserved', color: 'bg-yellow-300 border-yellow-400' },
+      { status: 'confirmed', label: 'Confirmed', color: 'bg-green-100 border-green-500' },
+      { status: 'cancelled', label: 'Cancelled', color: 'bg-red-100 border-red-500' },
+      { 
+        status: '', 
+        label: 'All Bookings', 
+        color: 'bg-blue-100 border-blue-500',
+        count: statusCounts ? 
+          (statusCounts.pending || 0) + 
+          (statusCounts.reserved || 0) + 
+          (statusCounts.confirmed || 0) + 
+          (statusCounts.cancelled || 0) : 0
+      }
+    ];
+  
+  
+  
+  
+  
+    // -------------------filter in properties-------------------
+  
+  
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFilters(prev => ({ ...prev, search: e.target.value }));
+      setPage(1);
+      const searchValue = e.target.value.toLowerCase();
+      setFilters(prev => ({
+        ...prev,
+        search: searchValue,
+        filteredProperties: properties?.filter(property => 
+          property.booking?.customer?.firstName?.toLowerCase().includes(searchValue) || 
+          property.booking?.customer?.lastName?.toLowerCase().includes(searchValue)
+      
+        )
+      }));
+    };
+  
+    const handleTypeChange = (e: any) => {
+      setFilters(prev => ({ ...prev, type: e.target.value }));
+      setPage(1);
+    };
+  
+    const handleCountryChange = (e: any) => {
+      setFilters(prev => ({ ...prev, country: e.target.value }));
+      setPage(1);
+    };
+  
+  
 
 
 
@@ -255,7 +253,7 @@ export default function BookingList() {
           </Paper>
 
 
-          <div className="hidden">        {/* Status Cards */}
+          <div className="hidden1">        {/* Status Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 sm:gap-4 mb-6">
           {statusCards.map(({ status, label, color, count }) => (
             <div
@@ -265,6 +263,7 @@ export default function BookingList() {
                 filters.status === status ? 'ring-2 ring-offset-2' : ''
               }`}
             >
+              
               <h3 className="text-sm sm:text-lg font-semibold">{label}</h3>
               <p className="text-lg sm:text-2xl font-bold">
                 {count !== undefined ? count : (statusCounts && statusCounts[status] ? statusCounts[status] : 0)}

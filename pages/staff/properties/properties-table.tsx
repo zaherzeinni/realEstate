@@ -70,7 +70,7 @@ export default function StaffPropertiesTable() {
     ...filters 
   });
     console.log("propertiessssss", properties);
-  console.log("statusCountsssss", statusCounts);
+  console.log("statusCountsssssProperties", statusCounts);
   const handlePageChange = (event: any, value: number) => {
     setPage(value);
   };

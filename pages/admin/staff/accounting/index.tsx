@@ -116,7 +116,7 @@ export default function StaffBookings() {
                 </TableCell>
 
 
-  <TableCell>{booking.datePaid ? new Date(booking.datePaid).toLocaleDateString('en-GB') : "N/A"}</TableCell>
+  <TableCell>{booking.datePaid ? new Date(booking.datePaid).toLocaleDateString('en-GB') : ""}</TableCell>
 
 
                 </TableRow>
