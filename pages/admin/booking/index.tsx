@@ -58,6 +58,8 @@ export default function BookingList() {
       type: "",
       country: "",
       status: "",
+      bills: "",
+      filteredProperties: [],
     });
     const [statusDialog, setStatusDialog] = useState({
       open: false,
@@ -71,14 +73,49 @@ export default function BookingList() {
       fetcher
     );
   
-    useEffect(()=>{
-      if (data &&  data.bookings ){
-        console.log("bookings: ", data.bookings)
-        setDataSource(data.bookings)
-      }
-  
-    }, [data])
+    useEffect(() => {
+      if (data && data.bookings) {
+      console.log("bookings: ", data.bookings);
+      let filteredBookings = data.bookings;
 
+      // Apply search filter
+      if (filters.search) {
+        const searchValue = filters.search.toLowerCase();
+        filteredBookings = filteredBookings.filter((booking: any) =>
+        booking.customer?.firstName?.toLowerCase().includes(searchValue) ||
+        booking.customer?.lastName?.toLowerCase().includes(searchValue) ||
+        booking.property?.title?.toLowerCase().includes(searchValue) ||
+        booking.country?.toLowerCase().includes(searchValue) ||
+        booking.staff?.name?.toLowerCase().includes(searchValue) ||
+        booking.bills?.toLowerCase().includes(searchValue) ||
+        booking.status?.toLowerCase().includes(searchValue)
+        );
+      }
+
+      // Apply country filter
+      if (filters.country) {
+        filteredBookings = filteredBookings.filter(
+        (booking: any) => booking.country === filters.country
+        );
+      }
+
+      // Apply status filter
+      if (filters.status) {
+        filteredBookings = filteredBookings.filter(
+        (booking: any) => booking.status === filters.status
+        );
+      }
+      // Apply bills filter
+      if (filters.bills) {
+        filteredBookings = filteredBookings.filter(
+          (booking: any) => booking.bills === filters.bills
+        );
+      }
+      setDataSource(filteredBookings);
+      }
+    }, [data, filters]);
+
+// -----------------------------useStaffProperties are unused in this page------------------
 
     const { properties, statusCounts, isLoading, totalPages } = useStaffProperties({ 
       page,
@@ -212,7 +249,7 @@ export default function BookingList() {
                   fullWidth
                   label="Search by customer, property, or staff name"
                   variant="outlined"
-                  value={search}
+                  value={filters.search}
                   onChange={handleSearch}
                   size="small"
                 />

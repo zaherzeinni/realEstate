@@ -42,6 +42,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             .populate("property", "title country price")
             .populate("staff", "name phone email")
             .populate("customer", "firstName lastName")
+            .populate("bills")
             .sort({ createdAt: -1 });
             
           // Filter in memory after population
@@ -51,8 +52,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             const customerName = `${booking.customer?.firstName || ''} ${booking.customer?.lastName || ''}`.trim();
             const customerMatch = customerName.match(searchRegex);
             const staffMatch = booking.staff?.name?.match(searchRegex);
+            const billsMatch = booking.bills.match(searchRegex);
             
-            return propertyMatch || customerMatch || staffMatch;
+            return propertyMatch || customerMatch || customerName || staffMatch || billsMatch || booking.status.match(searchRegex);
           });
           
           // Apply pagination in memory
@@ -81,6 +83,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             .populate("property", "title country price")
             .populate("staff", "name phone email")
             .populate("customer", "firstName lastName")
+            .populate("bills")
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limitNumber)
@@ -160,7 +163,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         const populatedBooking = await Booking.findById(booking._id)
           .populate("property", "title country price")
           .populate("staff", "name phone email")
-          .populate("customer", "firstName lastName");
+          .populate("customer", "firstName lastName")
+          .populate("bills");
 
         return res.status(201).json({ 
           success: true, 

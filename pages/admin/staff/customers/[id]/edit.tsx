@@ -65,8 +65,8 @@ export default function EditCustomer() {
       });
 
       const response = await axios.post(
-        // `${uploadApi}/file/uploads?size=600&heightsize=800`,
-        `${uploadApi}/api/upload?size=600&heightsize=800`,
+        `${uploadApi}/file/uploads?size=600&heightsize=800`,
+        // `${uploadApi}/api/upload?size=600&heightsize=800`,
         formData,
         {
           headers: {
