@@ -84,7 +84,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limitNumber)
-            .select("property staff customer country commission bills status startDate endDate createdAt");
+            .select("property staff customer country commission bills status startDate endDate datePaid createdAt");
             
           const totalPages = Math.ceil(totalDocuments / limitNumber);
 
@@ -106,7 +106,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     case "POST":
       try {
-        const { property, staff, customer, commission,bills, status, country, startDate, endDate } = req.body;
+        const { property, staff, customer, commission,bills, status, country, startDate, endDate,datePaid } = req.body;
         console.log(req.body, "req.body🧑‍💻⚠️🧑‍💻⚠️");
         // Validate required fields   i delete the || !customer 
         if (!property || !staff    || !commission || !country || !startDate || !endDate) {
@@ -119,6 +119,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         // Validate dates
         const startDateObj = new Date(startDate);
         const endDateObj = new Date(endDate);
+        const datePaidObj = new Date(datePaid);
         
         if (isNaN(startDateObj.getTime()) || isNaN(endDateObj.getTime())) {
           return res.status(400).json({
@@ -134,6 +135,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           });
         }
 
+        if (datePaidObj < startDateObj) {
+          return res.status(400).json({
+            success: false,
+            error: "Date paid cannot be before start date"
+          });
+        }
+
         // Create booking with validated data
         const booking = await Booking.create({
           property,
@@ -144,7 +152,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           status: status || "pending",
           country: country.trim(),
           startDate: startDateObj,
-          endDate: endDateObj
+          endDate: endDateObj,
+          datePaid: datePaidObj
         });
 
         // Populate the created booking with related data

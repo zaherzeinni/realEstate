@@ -24,6 +24,7 @@ export default function CreateBooking() {
   const [status, setStatus] = useState("pending");
   const [bills, setBills] = useState("in process");
   const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [datePaid, setDatePaid] = useState("");
   const [endDate, setEndDate] = useState<Date | null>(addDays(new Date(), 90));
 
   const { data: properties } = useSWR(
@@ -71,6 +72,7 @@ export default function CreateBooking() {
         country: selectedCountry,
         startDate,
         endDate,
+        datePaid,
       });
       router.push("/admin/booking");
     } catch (error) {
@@ -177,20 +179,7 @@ export default function CreateBooking() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <FormControl fullWidth>
-                <InputLabel>Bills</InputLabel>
-                <Select
-                  value={bills}
-                  label="bills"
-                  onChange={(e) => setBills(e.target.value)}
-                >
-                  <MenuItem className="flex flex-col" dir="ltr" value="in process">In Process</MenuItem>
-                  <MenuItem className="flex flex-col" dir="ltr" value="paid">Paid</MenuItem>
-                  <MenuItem className="flex flex-col" dir="ltr" value="not paid">Not Paid</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
+     
             <Grid item xs={12} md={6}>
               <FormControl fullWidth required>
                 <InputLabel shrink>Start Date</InputLabel>
@@ -235,6 +224,65 @@ export default function CreateBooking() {
                 />
               </FormControl>
             </Grid>
+
+            <Grid item xs={12} md={6}>
+              <FormControl fullWidth>
+                <InputLabel>Bills</InputLabel>
+                <Select
+                  value={bills}
+                  label="bills"
+                  onChange={(e) => setBills(e.target.value)}
+                >
+                  <MenuItem className="flex flex-col" dir="ltr" value="in process">In Process</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="paid">Paid</MenuItem>
+                  <MenuItem className="flex flex-col" dir="ltr" value="not paid">Not Paid</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+
+
+            <Grid item xs={12} md={6}>
+              <FormControl fullWidth>
+              <InputLabel>Date Paid</InputLabel>
+              <Select
+                value={datePaid ? "yes" : "no"}
+                onChange={(e) => {
+                if (e.target.value === "yes") {
+                  setDatePaid(new Date());
+                } else {
+                  setDatePaid("");
+                }
+                }}
+              >
+                <MenuItem value="no">No</MenuItem>
+                <MenuItem value="yes">Yes</MenuItem>
+              </Select>
+              </FormControl>
+            </Grid>
+            {datePaid && (
+              <Grid item xs={12} md={6}>
+              <FormControl fullWidth required>
+                <InputLabel shrink>Date Paid</InputLabel>
+                <DatePicker
+                selected={datePaid}
+                onChange={(date) => setDatePaid(date)}
+                minDate={new Date()}
+                dateFormat="dd/MM/yyyy"
+                customInput={
+                  <TextField
+                  fullWidth
+                  label="Date Paid"
+                  variant="outlined"
+                  required
+                  />
+                }
+                />
+              </FormControl>
+              </Grid>
+            )}
+
+
+
             <Grid item xs={12}>
               <button type="submit"  color="primary" className="primary-btn1 z-0">
                 Create Booking

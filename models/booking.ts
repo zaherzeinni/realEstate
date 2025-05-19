@@ -30,7 +30,7 @@ const bookingSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["reserved","pending", "confirmed", "cancelled"],
+    enum: ["reserved", "pending", "confirmed", "cancelled"],
     default: "pending",
   },
   bills: {
@@ -42,12 +42,25 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-
-
   startDate: {
     type: Date,
     required: [true, "Start date is required"],
   },
+
+
+  datePaid: {
+    type: mongoose.Schema.Types.Mixed,
+    required: [false, "Insert date paid"],
+    default: "",
+    validate: {
+      validator: function (value: any) {
+        return value === null || value === "" || value instanceof Date;
+      },
+      message: "Date paid must be a Date, null, or an empty string",
+    },
+  },
+
+
   endDate: {
     type: Date,
     required: [true, "End date is required"],
@@ -58,9 +71,14 @@ const bookingSchema = new mongoose.Schema({
       message: "End date must be after start date",
     },
   },
+});
 
-
-
+// Ensure datePaid is set to an empty string if it's null or an invalid date
+bookingSchema.pre("save", function (next) {
+  if (!this.datePaid || (this.datePaid instanceof Date && isNaN(this.datePaid.getTime()))) {
+    this.datePaid = "";
+  }
+  next();
 });
 
 // Pre-save validation

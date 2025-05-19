@@ -65,6 +65,7 @@ export default function StaffBookings() {
                 <TableCell><strong>End Date</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
                 <TableCell><strong>Bills</strong></TableCell>
+                <TableCell><strong>Date Paid</strong></TableCell>
                 {/* <TableCell><strong>Created At</strong></TableCell> */}
               </TableRow>
             </TableHead>
@@ -115,7 +116,7 @@ export default function StaffBookings() {
                 </TableCell>
 
 
-
+  <TableCell>{booking.datePaid ? new Date(booking.datePaid).toLocaleDateString('en-GB') : "N/A"}</TableCell>
 
 
                 </TableRow>

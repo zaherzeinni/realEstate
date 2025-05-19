@@ -14,11 +14,19 @@ import {
   Box,
   Typography,
   Chip,
+  Grid,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Button,
 } from "@mui/material";
 import axios from "axios";
+import {useEffect, useState} from "react";
+import useCountries from "@/hooks/useCountries";
 
 const fetcher = (url: string) => axios.get(url).then(({ data }) => data.bookings);
-
 
 
 
@@ -45,9 +53,71 @@ export default function StaffBookings() {
 
 
 
+    const [page, setPage] = useState(1);
+    const [search, setSearch] = useState("");
+    const [dataSource, setDataSource] = useState([]);
+  const [limit] = useState(10);
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    setPage(1); // Reset to first page when searching
+  };
+
+  const { data: countriesData } = useCountries();
+  const { data, mutate } = useSWR(
+    `/api/bookings?page=${page}&limit=${limit}&search=${search}`,
+    fetcher
+  );
+
+  useEffect(()=>{
+    if (data &&  data.bookings ){
+      console.log("bookings: ", data.bookings)
+      setDataSource(data.bookings)
+    }
+
+  }, [data])
+  
+  const totalPages = data?.totalPages || 1;
+
+
   return (
     <StaffMainLayout>
       <PageLayout title="Accounting" description="View and manage your bookings.">
+        
+              
+              
+                {/* --------------filter---------------------- */}
+                <div className="mt-10">
+                  <Paper elevation={2} sx={{ mb: 3, p: 2 }}>
+                    <Grid container spacing={2} alignItems="center">
+                      <Grid item xs={12} md={5}>
+                        <TextField
+                          fullWidth
+                          label="Search by Bills"
+                          variant="outlined"
+                          value={search}
+                          onChange={handleSearch}
+                          size="small"
+                        />
+                      </Grid>
+                      <Grid item xs={12} md={2}>
+                        <Button
+                          fullWidth
+                          variant="outlined"
+                          onClick={() => {
+                            setSearch("");
+                            setPage(1);
+                          }}
+                        >
+                          Clear Filters
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </Paper>
+                </div>
+
+
+
+                
         <Paper elevation={2} className="mt-20">
           <Box sx={{ p: 2 }}>
             <Typography variant="h6" className="text-2xl  font-bold">Accounting</Typography>
@@ -65,6 +135,7 @@ export default function StaffBookings() {
                 <TableCell><strong>End Date</strong></TableCell>
                 <TableCell><strong>Status</strong></TableCell>
                 <TableCell><strong>Bills</strong></TableCell>
+                <TableCell><strong>Date Paid</strong></TableCell>
                 {/* <TableCell><strong>Created At</strong></TableCell> */}
               </TableRow>
             </TableHead>
@@ -116,6 +187,7 @@ export default function StaffBookings() {
 
 
 
+                <TableCell>{booking.datePaid ? new Date(booking.datePaid).toLocaleDateString('en-GB') : "N/A"}</TableCell>
 
 
                 </TableRow>

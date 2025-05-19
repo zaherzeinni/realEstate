@@ -27,6 +27,7 @@ export default function EditBooking() {
   const [status, setStatus] = useState("pending");
   const [bills, setBills] = useState("in process");
   const [startDate, setStartDate] = useState<Date | null>(null);
+  const [datePaid, setDatePaid] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(null);
 
   const { data: properties } = useSWR(
@@ -59,6 +60,7 @@ export default function EditBooking() {
       
       setStartDate(booking.booking.startDate ? new Date(booking.booking.startDate) : null);
       setEndDate(booking.booking.endDate ? new Date(booking.booking.endDate) : null);
+      setDatePaid(booking.booking.datePaid ? new Date(booking.booking.datePaid) : null);
     }
   }, [booking]);
 
@@ -85,6 +87,7 @@ export default function EditBooking() {
         status,
         startDate,
         endDate,
+        datePaid,
       });
       router.push("/admin/booking");
     } catch (error) {
@@ -194,20 +197,7 @@ export default function EditBooking() {
                 </Select>
               </FormControl>
             </Grid>
-                  <Grid item xs={12} md={6}>
-                          <FormControl fullWidth>
-                            <InputLabel>Bills</InputLabel>
-                            <Select
-                              value={bills}
-                              label="bills"
-                              onChange={(e) => setBills(e.target.value)}
-                            >
-                              <MenuItem dir="ltr" value="in process">In Process</MenuItem>
-                              <MenuItem dir="ltr" value="paid">Paid</MenuItem>
-                              <MenuItem dir="ltr" value="not paid">Not Paid</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
+      
             <Grid item xs={12} md={6}>
               <FormControl fullWidth required>
                 <InputLabel shrink>Start Date</InputLabel>
@@ -253,6 +243,64 @@ export default function EditBooking() {
                 />
               </FormControl>
             </Grid>
+
+            <Grid item xs={12} md={6}>
+                          <FormControl fullWidth>
+                            <InputLabel>Bills</InputLabel>
+                            <Select
+                              value={bills}
+                              label="bills"
+                              onChange={(e) => setBills(e.target.value)}
+                            >
+                              <MenuItem dir="ltr" value="in process">In Process</MenuItem>
+                              <MenuItem dir="ltr" value="paid">Paid</MenuItem>
+                              <MenuItem dir="ltr" value="not paid">Not Paid</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+
+
+             <Grid item xs={12} md={6}>
+               <FormControl fullWidth>
+               <InputLabel>Date Paid</InputLabel>
+               <Select
+                 value={datePaid ? "yes" : "no"}
+                 onChange={(e) => {
+                 if (e.target.value === "yes") {
+                   setDatePaid(new Date());
+                 } else {
+                   setDatePaid(null);
+                 }
+                 }}
+               >
+                 <MenuItem value="no">No</MenuItem>
+                 <MenuItem value="yes">Yes</MenuItem>
+               </Select>
+               </FormControl>
+             </Grid>
+             {datePaid && (
+               <Grid item xs={12} md={6}>
+               <FormControl fullWidth required>
+                 <InputLabel shrink>Date Paid</InputLabel>
+                 <DatePicker
+                 selected={datePaid}
+                 onChange={(date) => setDatePaid(date)}
+                 minDate={new Date()}
+                 dateFormat="dd/MM/yyyy"
+                 customInput={
+                   <TextField
+                   fullWidth
+                   label="Date Paid"
+                   variant="outlined"
+                   required
+                   />
+                 }
+                 />
+               </FormControl>
+               </Grid>
+             )}
+
+
             <Grid item xs={12}>
               <button type="submit" className="primary-btn1 z-0" color="primary">
                 Update Booking

@@ -33,7 +33,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           return {
             ...bookingObj,
             startDate: booking.startDate,
-            endDate: booking.endDate
+            endDate: booking.endDate,
+            datePaid: booking.datePaid
           };
         });
         

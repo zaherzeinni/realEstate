@@ -342,6 +342,9 @@ export default function BookingList() {
                 <TableCell>
                 <strong>Bills</strong>
                 </TableCell>
+                <TableCell>
+                <strong>Date Paid</strong>
+                </TableCell>
                 {/* <TableCell>
                 <strong>Created At</strong>
                 </TableCell> */}
@@ -403,6 +406,7 @@ export default function BookingList() {
                                     {booking?.endDate 
                                       ? new Date(booking.endDate).toLocaleDateString("en-GB") 
                                       : "N/A"}
+                                 
                                   </>
                                   }
 
@@ -441,6 +445,11 @@ export default function BookingList() {
                 {/* <TableCell>
                   {new Date(booking.createdAt).toLocaleDateString("en-GB")}
                 </TableCell> */}
+                <TableCell>
+                {booking?.datePaid 
+                                      ? new Date(booking.datePaid).toLocaleDateString("en-GB") 
+                                      : ""}
+                </TableCell>
                 <TableCell>
                   <Stack direction="row" spacing={1}>
                   <IconButton

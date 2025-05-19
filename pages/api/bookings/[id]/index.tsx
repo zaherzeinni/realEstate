@@ -37,12 +37,33 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         }
         const { commission, status,bills, property, staff, customer, country, startDate, endDate } = req.body;
 
+
+
+        const datePaid = req.body.datePaid !== undefined ? req.body.datePaid : booking.datePaid;
+
+        if (datePaid) {
+          const datePaidObj = new Date(datePaid);
+          if (isNaN(datePaidObj.getTime())) {
+            return res.status(400).json({
+              success: false,
+              error: "Invalid date format for datePaid"
+            });
+          }
+          booking.datePaid = datePaidObj;
+        } else {
+          booking.datePaid = undefined; // Clear the datePaid field if not provided
+        }
+
+
+
+        
         // Validate dates if provided
         if (startDate && endDate) {
           const startDateObj = new Date(startDate);
           const endDateObj = new Date(endDate);
           
-          if (isNaN(startDateObj.getTime()) || isNaN(endDateObj.getTime())) {
+          
+          if (isNaN(startDateObj.getTime()) || isNaN(endDateObj.getTime() )) {
             return res.status(400).json({
               success: false,
               error: "Invalid date format for startDate or endDate"
@@ -56,8 +77,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             });
           }
           
+
+
+
+          
           booking.startDate = startDateObj;
           booking.endDate = endDateObj;
+     
         } else if ((startDate && !endDate) || (!startDate && endDate)) {
           return res.status(400).json({
             success: false,
@@ -72,6 +98,16 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         booking.staff = staff ?? booking.staff;
         booking.customer = customer ?? booking.customer;
         booking.country = country ?? booking.country;
+        if (datePaid) {
+          const datePaidObj = new Date(datePaid);
+          if (isNaN(datePaidObj.getTime())) {
+            return res.status(400).json({
+              success: false,
+              error: "Invalid date format for datePaid"
+            });
+          }
+          booking.datePaid = datePaidObj;
+        }
 
         await booking.save();
         return res.status(200).json({ success: true, booking });
