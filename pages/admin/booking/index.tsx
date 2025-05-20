@@ -44,7 +44,8 @@ export default function BookingList() {
   const [search, setSearch] = useState("");
   const [country, setCountry] = useState("");
   const [dataSource, setDataSource] = useState([]);
-  const [limit] = useState(10);
+  // ----------------LIMIT----------------
+  const [limit] = useState();
 
 
 
