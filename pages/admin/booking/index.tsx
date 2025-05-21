@@ -35,7 +35,7 @@ import axios from "axios";
 import { message } from "antd";
 import useCountries from "@/hooks/useCountries";
 import useProducts from "@/hooks/useProducts";
-import useStaffProperties from "@/hooks/useStaffProperties";
+import useAdminProperties from "@/hooks/useAdminProperties";
 
 const fetcher = (url: string) => axios.get(url).then(({ data }) => data);
 
@@ -60,14 +60,14 @@ export default function BookingList() {
       country: "",
       status: "",
       bills: "",
-      filteredProperties: [],
+      // filteredProperties: [],
     });
     const [statusDialog, setStatusDialog] = useState({
       open: false,
       propertyId: '',
       currentStatus: ''
     });
-    const { data: countriesData } = useCountries();
+
 
     const { data, error, mutate } = useSWR(
       `/api/bookings?page=${page}&limit=${limit}&search=${search}&country=${country}`,
@@ -118,11 +118,11 @@ export default function BookingList() {
 
 // -----------------------------useStaffProperties are unused in this page------------------
 
-    const { properties, statusCounts, isLoading, totalPages } = useStaffProperties({ 
+    const { properties, statusCounts, isLoading, totalPages } = useAdminProperties({ 
       page,
       ...filters 
     });
-      console.log("propertiessssss of admin/booking", properties);
+      console.log("useAdminProperties of admin/booking", properties);
       // console.log("propertiessssss of admin/booking", dataSource);
     console.log("statusCountsssssProperties", statusCounts);
     const handlePageChange = (event: any, value: number) => {
@@ -194,7 +194,7 @@ export default function BookingList() {
   
     // -------------------filter in properties-------------------
   
-  
+    const { data: countriesData } = useCountries();
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
       setFilters(prev => ({ ...prev, search: e.target.value }));
       setPage(1);
@@ -259,7 +259,7 @@ export default function BookingList() {
                 <FormControl fullWidth size="small">
                   <InputLabel>Filter by Country</InputLabel>
                   <Select
-                    value={country}
+                    value={filters.country}
                     onChange={handleCountryChange}
                     label="Filter by Country"
                   >

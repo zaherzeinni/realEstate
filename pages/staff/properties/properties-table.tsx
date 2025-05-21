@@ -306,7 +306,7 @@ export default function StaffPropertiesTable() {
 
       <div dir="ltr" className="container mx-auto px-4 py-8">
         {/* Status Cards */}
-        {/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 sm:gap-4 mb-6">
           {statusCards.map(({ status, label, color, count }) => (
             <div
               key={status || 'all'}
@@ -321,10 +321,10 @@ export default function StaffPropertiesTable() {
               </p>
             </div>
           ))}
-        </div> */}
+        </div>
 
         {/* Clear filters button */}
-        {/* {filters.status && (
+        {filters.status && (
           <Button
             variant="outlined"
             className="mb-4"
@@ -335,7 +335,7 @@ export default function StaffPropertiesTable() {
           >
             Clear Status Filter
           </Button>
-        )} */}
+        )}
 
         <TableContainer component={Paper}>
           <Table>
