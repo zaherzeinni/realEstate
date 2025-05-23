@@ -311,11 +311,11 @@ export default function BookUpdatePage() {
     try {
       const formData = new FormData();
       filesarray.forEach((image: any) => {
-        formData.append("images", image);
+        formData.append("files", image);
       });
 
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
-      const response = await axios.post(`${uploadApi}/file/uploads?size=600&hieghtsize=600`, formData, {
+      const response = await axios.post(`${uploadApi}/api/upload?width=800&height=800`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -343,11 +343,11 @@ export default function BookUpdatePage() {
 
   // ------------ SINGLE IMAGE ADD DELETE
 
-  const handleDelete2 = async (fileToDelete) => {
+  const handleDelete2 = async (fileName: string) => {
     try {
-      console.log("FILE TO DLEETe-->", fileToDelete);
+      console.log("FILE TO DLEETe-->", fileName);
       const res = await axios.delete(
-        `${uploadApi}/file/delete?fileName=${fileToDelete}`
+        `${uploadApi}/api/delete?fileName=${fileName}`
       );
       console.log("File deleted successfully", res);
       message.success("single image deleted success");
@@ -365,8 +365,8 @@ export default function BookUpdatePage() {
       console.log("File Data", file);
 
       const endpoint = logo
-        ? `${uploadApi}/file/upload?size=450&&hieghtsize=450`
-        : `${uploadApi}/file/upload?size=600&hieghtsize=800`;
+        ? `${uploadApi}/api/upload?size=450&&hieghtsize=450`
+        : `${uploadApi}/api/upload?size=600&hieghtsize=800`;
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
       const response = await axios.post(endpoint, formData, {
         headers: {

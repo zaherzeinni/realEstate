@@ -40,7 +40,7 @@ import {
   message,
 } from "antd";
 import AdminMainLayout from "@/components/Site/dashboardLayout";
-const uploadApi = "https://file-uploader-red.vercel.app";
+const uploadApi = "https://filemanager-rho.vercel.app";
 import { ImageEndpoint } from "@/utils/global";
 
 import dynamic from "next/dynamic";
@@ -155,8 +155,8 @@ export default function AdminAllCountries() {
       console.log("File Data", file);
 
       const endpoint = logo
-        ? `${uploadApi}/file/upload?size=450&hieghtsize=450`
-        : `${uploadApi}/file/upload?size=600&hieghtsize=800`;
+        ? `${uploadApi}/api/upload?size=450&hieghtsize=450`
+        : `${uploadApi}/api/upload?size=600&hieghtsize=800`;
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
       const response = await axios.post(endpoint, formData, {
         headers: {
@@ -172,11 +172,11 @@ export default function AdminAllCountries() {
     }
   };
 
-  const handleDelete2 = async (fileToDelete) => {
+  const handleDelete2 = async (fileName: string) => {
     try {
-      console.log("FILE TO DLEETe-->", fileToDelete);
+      console.log("FILE TO DLEETe-->", fileName);
       const res = await axios.delete(
-        `${uploadApi}/file/delete?fileName=${fileToDelete}`
+        `${uploadApi}/api/delete?fileName=${fileName}`
       );
       message.success("File Deleted successfully");
       console.log("File deleted successfully", res);

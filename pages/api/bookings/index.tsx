@@ -16,7 +16,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case "GET":
       try {
-        const { page = 1, limit = 10, search = "", country = "" } = req.query;
+        const { page = 1, limit = 10, search = "", country = "" ,status = "" } = req.query;
         const pageNumber = parseInt(page as string, 10);
         const limitNumber = parseInt(limit as string, 10);
         const skip = (pageNumber - 1) * limitNumber;
@@ -68,6 +68,53 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
 
           
+
+
+
+
+
+
+ // First, get all bookings for this staff member or admin
+        let bookingQuery: any = { staff: user._id || { admin: user._id } };
+
+        // Add country filter if provided - using a "contains" approach
+        if (country && country !== "") {
+          bookingQuery.country = { $regex: country, $options: 'i' }; // Changed to contains match
+        }
+
+            // Add status filter if provided
+        if (status && status !== "") {
+          bookingQuery.status = status;
+        } else {
+          // Default to showing only "draft" status if no status is provided
+          bookingQuery.status = { $in: ["pending", "reserved"] };
+        }
+
+
+        console.log("Booking query:", bookingQuery); // Log the query for debugging
+
+        // Get all bookings for this staff to calculate status counts
+        const allBookings1 = await Booking.find({ $or: [{ staff: user._id }, { admin: user._id }] });
+        console.log("All Bookingsss:", allBookings1);
+        console.log("Booking Statuses:", allBookings1.map(booking => booking.status));
+        
+        // Calculate status counts
+        const statusCounts = {
+          pending: allBookings1.filter(booking => booking.status === 'pending').length,
+          confirmed: allBookings1.filter(booking => booking.status === 'confirmed').length,
+          cancelled: allBookings1.filter(booking => booking.status === 'cancelled').length,
+          reserved: allBookings1.filter(booking => booking.status === 'reserved').length
+        };
+        console.log("Status Countssss api booking:", statusCounts); // Log the counts for debugging
+
+
+
+
+
+
+
+
+
           
           return res.status(200).json({ 
             success: true, 
@@ -75,6 +122,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             page: pageNumber,
             limit: limitNumber,
             totalPages,
+            statusCounts,
             totalDocuments: filteredTotal
           });
         } else {

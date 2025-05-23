@@ -22,7 +22,7 @@ interface AdminPropertiesResponse {
 
 export default function useAdminProperties(filters = {}) {
   const { data, error, isLoading, mutate } = useSWR<AdminPropertiesResponse>(
-    `/api/bookings?${new URLSearchParams(filters as any).toString()}`,
+    `/api/staff/properties?${new URLSearchParams(filters as any).toString()}`,
     fetcher
   );
 

@@ -33,7 +33,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 import { Rating as ReactRating } from "@smastrom/react-rating";
 
-const uploadApi = "https://file-uploader-red.vercel.app";
+const uploadApi = "https://filemanager-rho.vercel.app";
 
 const colorList = [
   "#001f3f",
@@ -128,12 +128,12 @@ export default function VisaCreatePage() {
     try {
       const formData = new FormData();
       filesarray.forEach((image: any) => {
-        formData.append("images", image);
+        formData.append("files", image);
       });
 
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
       const response = await axios.post(
-        `${uploadApi}/file/uploads?size=360&hieghtsize=360`,
+        `${uploadApi}/api/upload?width=360&height=360`,
         formData,
         {
           headers: {

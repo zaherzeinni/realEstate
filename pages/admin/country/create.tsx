@@ -17,7 +17,7 @@ import "react-quill/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-const uploadApi = "https://file-uploader-red.vercel.app";
+const uploadApi = "https://filemanager-rho.vercel.app";
 
 const colorList = [
   "#001f3f",
@@ -98,8 +98,8 @@ export default function CreateCountry() {
       console.log("File Data", file);
 
       const endpoint = logo
-        ? `${uploadApi}/file/upload?size=650&&hieghtsize=800`
-        : `${uploadApi}/file/upload?size=650&&hieghtsize=800`;
+        ? `${uploadApi}/api/upload?size=650&&hieghtsize=800`
+        : `${uploadApi}/api/upload?size=650&&hieghtsize=800`;
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
       const response = await axios.post(endpoint, formData, {
         headers: {

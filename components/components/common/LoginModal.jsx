@@ -43,7 +43,7 @@ const LoginModal = ({ open, onClose, isOpen }) => {
     <div>
       <Button onClick={showModal}></Button>
       <Modal
-        className="justify-start flex w-auto"
+        className="justify-start flex w-auto "
         open={open}
         title=""
         onOk={handleOk}

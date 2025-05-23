@@ -185,11 +185,11 @@ export default function BookUpdatePage() {
     try {
       const formData = new FormData();
       filesarray.forEach((image: any) => {
-        formData.append("images", image);
+        formData.append("files", image);
       });
 
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
-      const response = await axios.post(`${uploadApi}/file/uploads?size=600&hieghtsize=800`, formData, {
+      const response = await axios.post(`${uploadApi}/api/upload?size=600&hieghtsize=800`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

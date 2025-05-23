@@ -163,10 +163,10 @@ export default function AllBooks() {
 
   
   // In your front-end code ARRAY IMAGES ADD DELETE
-  const handleDeleteAllImages = async (filesToDelete: any) => {
+  const handleDeleteAllImages = async (fileName: any) => {
     try {
-      const res = await axios.post(`${uploadApi}/file/delets`, {
-        filesToDelete,
+      const res = await axios.post(`${uploadApi}/api/delete`, {
+        fileName,
       });
       console.log("Files deleted successfully", res);
       message.success("image deleted success");
@@ -177,11 +177,11 @@ export default function AllBooks() {
 
   // ------------ SINGLE IMAGE ADD DELETE
 
-  const handleDeleteSingleImage = async (fileToDelete) => {
+  const handleDeleteSingleImage = async (fileName: string) => {
     try {
-      console.log("FILE TO DLEETe-->", fileToDelete);
+      console.log("FILE TO DLEETe-->", fileName);
       const res = await axios.delete(
-        `${uploadApi}/file/delete?fileName=${fileToDelete}`
+        `${uploadApi}/api/delete?fileName=${fileName}`
       );
       console.log("File deleted successfully", res);
       message.success("single image deleted success");

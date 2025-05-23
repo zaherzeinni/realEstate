@@ -112,20 +112,20 @@ const router =useRouter()
           </li>
          
           <li className="">
-            <Link href="/admin/staffs/create">
+            <Link href="admin/staffs/create">
 <PersonAddAltIcon/>
               <h6>Add Staff</h6>
             </Link>
           </li>
           <li className="">
-            <Link href="admin/staff/customers">
+            <Link href="staff/customers">
 <Groups2Icon/>
               <h6>Customers</h6>
             </Link>
           </li>
          
           <li className="">
-            <Link href="admin/staff/customers/create">
+            <Link href="staff/customers/create">
            <GroupAddIcon/>
               <h6>Add Customer</h6>
             </Link>

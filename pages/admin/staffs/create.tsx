@@ -43,11 +43,11 @@ export default function CreateStaff() {
     try {
       const formData = new FormData();
       filesArray.forEach((image: any) => {
-        formData.append("images", image);
+        formData.append("files", image);
       });
 
       const response = await axios.post(
-        `${uploadApi}/file/uploads?size=600&hieghtsize=800`,
+        `${uploadApi}/api/upload?size=600&hieghtsize=800`,
         formData,
         {
           headers: {

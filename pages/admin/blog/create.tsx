@@ -15,7 +15,6 @@ import useAuth from "@/hooks/useAuth";
 import axios from "axios";
 import { message } from "antd";
 import { useRouter } from "next/router";
-import { db } from "@/utils/firebaseConfig";
 import { useMemo } from "react";
 import { uploadImages, deleteImages, deleteImage } from "@/utils/getData";
 import useBlogs from "@/hooks/useBlogs";
@@ -31,7 +30,7 @@ import "react-quill/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-const uploadApi = "https://file-uploader-red.vercel.app";
+const uploadApi = "https://filemanager-rho.vercel.app";
 
 const colorList = [
   "#001f3f",
@@ -153,7 +152,8 @@ export default function BookCreatePage() {
 
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
       const response = await axios.post(
-        `${uploadApi}/file/uploads?size=600&hieghtsize=800`,
+        // `${uploadApi}/file/uploads?size=600&hieghtsize=800`,
+        `${uploadApi}/api/upload?size=600&hieghtsize=800`,
         formData,
         {
           headers: {

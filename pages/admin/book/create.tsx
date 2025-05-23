@@ -35,7 +35,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 
 
-const uploadApi = "https://file-uploader-red.vercel.app";
+const uploadApi = "https://filemanager-rho.vercel.app";
 
 const types = [
   { id: 1, label: "Villa", value: "villa" },
@@ -290,11 +290,11 @@ export default function BookCreatePage() {
     try {
       const formData = new FormData();
       filesarray.forEach((image: any) => {
-        formData.append("images", image);
+        formData.append("files", image);
       });
 
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
-      const response = await axios.post(`${uploadApi}/file/uploads?size=600&hieghtsize=600`, formData, {
+      const response = await axios.post(`${uploadApi}/api/upload?width=800&height=800`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -328,8 +328,8 @@ export default function BookCreatePage() {
       console.log("File Data", file);
 
       const endpoint = logo
-        ? `${uploadApi}/file/upload?size=450&&hieghtsize=450`
-        : `${uploadApi}/file/upload?size=650&hieghtsize=423`;
+        ? `${uploadApi}/api/upload?size=450&&hieghtsize=450`
+        : `${uploadApi}/api/upload?size=650&hieghtsize=423`;
         // 650 * 423
       const response = await axios.post(endpoint, formData, {
         headers: {

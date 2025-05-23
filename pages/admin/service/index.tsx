@@ -124,11 +124,11 @@ export default function AllBooks() {
 
   if (error) return <div>failed to load</div>;
 
-  const handleDelete2 = async (fileToDelete) => {
+  const handleDelete2 = async (fileName) => {
     try {
-      console.log("FILE TO DLEETe-->", fileToDelete);
+      console.log("FILE TO DLEETe-->", fileName);
       const res = await axios.delete(
-        `${uploadApi}/file/delete?fileName=${fileToDelete}`
+        `${uploadApi}/api/delete?fileName=${fileName}`
       );
       console.log("File deleted successfully", res);
       message.success("single image deleted success");

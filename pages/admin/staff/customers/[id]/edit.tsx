@@ -61,11 +61,11 @@ export default function EditCustomer() {
     try {
       const formData = new FormData();
       filesArray.forEach((image: any) => {
-        formData.append("images", image);
+        formData.append("files", image);
       });
 
       const response = await axios.post(
-        `${uploadApi}/file/uploads?size=600&heightsize=800`,
+        `${uploadApi}/api/upload?width=800&height=800`,
         // `${uploadApi}/api/upload?size=600&heightsize=800`,
         formData,
         {

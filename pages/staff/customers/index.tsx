@@ -71,16 +71,6 @@ export default function StaffCustomers() {
   };
 
 
-
-
-
-  // Use the URL in an API call
-fetch(`${uploadApi}/api/upload`)
-.then(response => response.json())
-.then(data => console.log(data));
-console.log("uploadApi", uploadApi);
-
-
   return (
     <StaffMainLayout>
       <PageLayout title="Customers">

@@ -61,12 +61,12 @@ export default function EditCustomer() {
     try {
       const formData = new FormData();
       filesArray.forEach((image: any) => {
-        formData.append("images", image);
+        formData.append("files", image);
       });
 
       const response = await axios.post(
-        `${uploadApi}/file/uploads?size=600&heightsize=800`,
-        // `${uploadApi}/api/upload?size=600&heightsize=800`,
+        // `${uploadApi}/api/upload?${process.env.NEXT_PUBLIC_AWS_BUCKET_NAME}&width=800&height=800`,
+        `${uploadApi}/api/upload?size=600&heightsize=800`,
         formData,
         {
           headers: {
@@ -82,10 +82,11 @@ export default function EditCustomer() {
   };
 
   
+// curl -X DELETE "https://filemanager-rho.vercel.app/api/delete?fileName=https://realestateca.nyc3.digitaloceanspaces.com/VwIf9Nw1pABXnuBa.jpg"  to test it
 
   const handleDeleteImage = async (fileName: string) => {
     try {
-      await axios.delete(`${uploadApi}/file/delete?fileName=${fileName}`);
+      await axios.delete(`${uploadApi}/api/delete?fileName=${fileName}`);
       setCustomerData(prev => ({ ...prev, image: "" }));
       message.success("Image deleted successfully");
     } catch (error) {

@@ -33,7 +33,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 import { Rating as ReactRating } from "@smastrom/react-rating";
 
-const uploadApi = "https://file-uploader-red.vercel.app";
+const uploadApi = "https://filemanager-rho.vercel.app";
 
 
 
@@ -135,11 +135,11 @@ export default function BookCreatePage() {
     try {
       const formData = new FormData();
       filesarray.forEach((image: any) => {
-        formData.append("images", image);
+        formData.append("files", image);
       });
 
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
-      const response = await axios.post(`${uploadApi}/file/uploads?size=360&hieghtsize=360`, formData, {
+      const response = await axios.post(`${uploadApi}/api/upload?width=360&height=360`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
