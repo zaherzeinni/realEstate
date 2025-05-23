@@ -15,7 +15,6 @@ import {
     onSnapshot,
     serverTimestamp
   } from "firebase/firestore";
-  import { db, storage } from "./firebaseConfig";
   import { message } from "antd";
   
   
