@@ -63,8 +63,10 @@ const ProjectDetails = () => {
 
   // Set the reference when the project loads
   useEffect(() => {
-    if (data) {
+    if (data?.book) {
       setReference(data.book.reference); // Adjust according to your data structure
+    } else {
+      setReference(null); // Reset reference if no data is available
     }
   }, [data, setReference]);
 
